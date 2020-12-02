@@ -38,7 +38,7 @@ class CreateQcmTelemedicineDataDetailsTable extends Migration
             $table->text('employer_occupation');
             $table->text('qcard_number');
             $table->text('payment_option');
-            $table->text('membership_type')->nullable()->change();
+            $table->text('membership_type')->nullable();
             $table->text('cc_first_name');
             $table->text('cc_last_name');
             $table->text('cc_number');
