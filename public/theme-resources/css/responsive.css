@@ -1,0 +1,80 @@
+@media(max-width:992px) {
+    main .sidebar {
+        width: 210px;
+    }
+    .submission-headers h2 {
+        font-size: 20px;
+    }
+    .submissions-table tr>* {
+        min-width: 200px;
+    }
+}
+
+@media(max-width:767px) {
+    body {
+        overflow-y: auto;
+    }
+    .logo img {
+        width: 120px;
+    }
+    header {
+        padding: 10px 15px;
+    }
+    .sub-header a {
+        padding: 14px 27px;
+    }
+    .sub-header {
+        height: 70px;
+        padding: 15px;
+    }
+    body main.d-flex {
+        display: block !important;
+    }
+    main .sidebar {
+        width: auto;
+        margin: 0;
+    }
+    .xs-h-auto {
+        height: auto !important;
+    }
+    .main-content {
+        padding: 15px 15px;
+    }
+    .main-content .main-heading {
+        padding-bottom: 10px;
+    }
+    .class-type-items .class-type {
+        margin-bottom: 40px;
+    }
+    .form-type .main-top p {
+        line-height: 25px;
+        margin-top: 10px;
+    }
+    .form-type-1 label {
+        margin-bottom: 10px;
+    }
+    .submission-headers {
+        display: block !important;
+    }
+    .submission-headers h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    .search-form {
+        width: 80%;
+    }
+    .search-form input:not([type="submit"]) {
+        display: block;
+        width: 60%;
+    }
+    .download-all {
+        width: 60%;
+        margin: 0;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+    .submissions-table tr>* {
+        min-width: 180px;
+    }
+}

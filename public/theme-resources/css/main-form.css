@@ -1,0 +1,348 @@
+.qcm-form-container {
+    margin-top: 60px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
+    padding: 20px 15px;
+    margin-bottom: 50px;
+}
+
+.qcm-form {
+    font-size: 10px;
+    color: #555;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    /*overflow: scroll;*/
+}
+
+.qcm-form p,
+.qcm-form label {
+    font-size: 1.4em;
+}
+
+.qcm-form p {
+    line-height: 1.6em;
+}
+
+.qcm-form .top-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+.qcm-form .top-section {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.qcm-form .form-section {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.qcm-form .form-section.no-border {
+    border: 0 !important;
+}
+
+.qcm-form .form-section:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.qcm-form label {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.qcm-form label .required {
+    color: #ee1d25;
+}
+
+.qcm-form .form-group.margin-top {
+    margin-top: 30px;
+}
+
+.qcm-form h4 {
+    font-size: 2em;
+    margin-top: 30px;
+}
+
+.qcm-form .custom-mainforminput {
+    font-size: 1.4em;
+}
+
+.qcm-form div[class^="col"]:not(:last-child) .padding-wrap {
+    padding-right: 7px;
+}
+
+.qcm-form .link-style {
+    color: #ee1d25;
+}
+
+.qcm-form .radio-item {
+    padding: 10px
+}
+
+.qcm-form .radio-item:not(:last-child),
+.qcm-form .radio-item:not(:first-child) {
+    margin-bottom: 20px;
+}
+
+.qcm-form .radio-item label {
+    margin: 0;
+    font-weight: 400;
+}
+
+.qcm-form .radio-item:hover {
+    background-color: #ddd;
+}
+
+.qcm-form .radio-item label:hover {
+    cursor: pointer;
+}
+
+.qcm-form .radio-item img {
+    width: 50px;
+    margin-right: 30px;
+}
+
+.qcm-form .radio-item input {
+    margin-right: 5px;
+}
+
+.qcm-form .details-radio {
+    margin-top: 5px;
+    display: block;
+    line-height: 1.6em;
+    color: #999;
+}
+
+.qcm-form .total-amount {
+    font-size: 1.6em;
+}
+
+.qcm-form .disclaimer {
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.qcm-form .submitbtn {
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 40px;
+    color: #fff;
+    border: 0;
+}
+
+.qcm-form .logos-form {
+    left: 0;
+    padding: 0 15px;
+    padding-top: 10px;
+    pointer-events: none;
+    bottom: 0;
+}
+
+.qcm-form .logos-form img {
+    max-width: 120px;
+}
+
+.qcm-form .form-section.last {
+    border: 0;
+}
+
+.qcm-form .datepicker {
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: 0;
+}
+
+.qcm-form .slot-selection {
+    text-align: center;
+}
+
+.qcm-form .slot-selection .main-titlee {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.qcm-form .slot-selection .main-titlee select {
+    font-size: 13px;
+    padding: 5px 0;
+}
+
+.qcm-form h6.date-valset {
+    margin: 0;
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.qcm-form .slot-selection .slots-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    min-height: 120px;
+    max-height: 195px;
+    overflow: auto;
+}
+
+.qcm-form .slot-selection .slots-items .message {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.qcm-form .slot-selection .slots-item {
+    border: 1px solid #5cc4ef;
+    padding: 11px 10px;
+    width: calc(50% - 10px);
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #5cc4ef;
+    border-radius: 5px;
+    transition: .2s ease-out;
+}
+
+.qcm-form .slot-selection .slots-item.selected {
+    background-color: #5cc4ef;
+    color: #fff;
+}
+
+.qcm-form .datepicker-div {
+    position: relative;
+}
+
+.qcm-form .datepicker-div:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+    opacity: 0.6;
+    z-index: 1000000;
+    display: none;
+}
+
+.qcm-form .datepicker-div.loading:after {
+    display: block;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-results__option {
+    font-size: 14px;
+}
+
+
+/* .modal-body {
+    color: red;
+    line-height: 32px;
+    font-size: 13px
+} */
+
+.form-control.has-error {
+    background: #ffbdbd;
+    color: red;
+}
+
+.qcm-form .custom-mainforminput[readonly] {
+    background: #fff;
+}
+
+.custom-accordion .card {
+    margin-bottom: 20px;
+    border: 0;
+}
+
+.custom-accordion .card-header {
+    padding: 0;
+    border: 0;
+}
+
+.otherfield {
+    font-size: 14px !important;
+}
+
+.custom-accordion .card-link {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 15px;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.custom-accordion .card-link::after {
+    position: absolute;
+    right: 0;
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f077";
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+}
+
+.custom-accordion strong {
+    font-weight: 700;
+}
+
+.custom-accordion p {
+    margin: 10px 0;
+}
+
+.custom-divider {
+    border-bottom: 1px solid #e6e6e6;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.custom-accordion .card-link.collapsed::after {
+    content: "\f078";
+}
+
+@media(max-width:767px) {
+    .qcm-form label {
+        margin-top: 20px;
+    }
+    .qcm-form small {
+        margin-bottom: 20px;
+        display: block;
+        margin-top: 3px;
+    }
+    .qcm-form .radio-item label {
+        line-height: 1.3em;
+    }
+    .qcm-form .submitbtn {
+        white-space: normal;
+        line-height: 21px;
+    }
+}
+
+@media(min-width:1400px) {
+    .qcm-form>* {
+        width: 1170px;
+        margin: 0 auto;
+        max-width: 100%;
+        position: relative;
+        padding: 10px;
+        box-shadow: 0px 0 20px 15px rgba(222, 222, 222, 0.5);
+        background: #fff;
+    }
+    .qcm-form {
+        width: 100%;
+        background: #f1f1f1;
+    }
+}
