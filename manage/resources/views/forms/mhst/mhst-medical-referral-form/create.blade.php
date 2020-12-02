@@ -118,7 +118,7 @@
 
 
                                 <div class="col-12 col-md-3">
-                                    <label>Email </label>
+                                    <label>Emails </label>
                                     <div class="padding-wrap">
                                         <input type="email"
                                                class="form-control custom-mainforminput "
