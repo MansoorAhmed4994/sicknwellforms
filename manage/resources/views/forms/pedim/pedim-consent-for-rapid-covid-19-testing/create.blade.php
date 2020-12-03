@@ -148,7 +148,16 @@
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>
-
+<!--Just for Checking -->
+                                <div class="col-12 col-md-2">
+                                    <label>Telephone <span class="required">*</span></label>
+                                    <div class="padding-wrap">
+                                        <input type="tel"
+                                               class="form-control custom-mainforminput "
+                                               name="telephone" id="telephone" value=""
+                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -169,7 +178,7 @@
 
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-4">
-                                    <label style="margin-left: 10px;">Responsible Party</label>
+                                    <label style="margin-left: 10px;">Responsible Party/Parent Signature</label>
                                     <div id="signArea" >
                                         <div class="sig sigWrapper" style="height:auto;">
                                             <canvas class="sign-pad" id="sign-pad" width="300" height="100"></canvas>
