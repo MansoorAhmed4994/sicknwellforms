@@ -108,11 +108,11 @@
                                         <div class="row">
                                             <div class="col-12 col-md-3">
                                                 <label class="mt-2"><input type="radio"
-                                                                           name="answer" value="yes">Yes</label>
+                                                                           name="answer" value="yes"> Yes</label>
                                             </div>
                                             <div class="col-12 col-md-3">
                                                 <label class="mt-2"><input type="radio"
-                                                                           name="answer" value="no" checked>No</label>
+                                                                           name="answer" value="no" checked> No</label>
                                             </div>
                                         </div>
                                     </div>
@@ -148,17 +148,6 @@
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>
-<!--Just for Checking -->
-                                <div class="col-12 col-md-2">
-                                    <label>Telephone <span class="required">*</span></label>
-                                    <div class="padding-wrap">
-                                        <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="telephone" id="telephone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
 
