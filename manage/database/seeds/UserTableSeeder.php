@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'Admin User',
             'email' => 'mansoor.zaheer994@gmail.com',
-            'password' => Hash::make('mansoor123')
+            'password' => '$2y$10$elnTpsmxikPBYQB1UsJDbuMrrDjU7tEqnVtCp1y99sq7sPp0Y84Qm'
         ]);
 
     }
