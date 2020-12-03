@@ -74,7 +74,7 @@
                         <div class="wizard-sec active">
 
                                 <div class="top-section">
-                                    <h2 style="text-align: center;">Adult Patient Information</h2>
+                                    <h2 style="text-align: center;">Adult Patient Informations</h2>
                                 </div>
 
                                 <div class="form-group row mt-2">
