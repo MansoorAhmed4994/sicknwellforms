@@ -26,6 +26,9 @@ class CreateAdultPrivacyPolicyTable extends Migration
             $table->date('witness_today_date');
             $table->rememberToken();
             $table->timestamps();
+            $table->bigInteger('created_by');
+            $table->bigInteger('updated_by');
+            $table->string('status', 20);
         });
     }
 
