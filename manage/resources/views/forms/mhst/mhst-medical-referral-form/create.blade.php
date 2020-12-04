@@ -89,7 +89,7 @@
 
                     <strong style="color: blue; font-size: 14pt" >Physician Information</strong>
                 </div>
-                <div class="form-section">
+
                     <div class="form-group row mt-4">
 
                         <div class="col-12 col-md-12">
@@ -155,7 +155,7 @@
                         </div>
                     </div>
 
-                </div>
+              <hr>
 
 
                     <div id="accordion" class="custom-accordion">
@@ -244,8 +244,7 @@
                         </div>
                     </div>
 
-                <div class="form-section">
-
+             <hr>
                     <strong style="color: blue; font-size: 14pt" >Patient Information</strong>
 
                     <div class="form-group row mt-4">
@@ -423,14 +422,11 @@
 
                     </div>
 
-
-                </div>
+<hr>
 
                 <div class="form-section">
                     <strong style="color: blue; font-size: 14pt">Section A<small> - Reason for Study: Please check all that apply (minimum of TWO).</small></strong>
                 </div>
-
-                <div class="form-section">
 
 
                     <strong style="color: blue; font-size: 14pt">Symptoms or Medical History</strong>
@@ -663,10 +659,9 @@
                         </div>
                     </div>
 
-                </div>
+               <hr>
 
 
-                <div class="form-section">
 
 
                     <div class="form-group row mt-4">
@@ -703,16 +698,14 @@
                         </div>
 
                     </div>
-                </div>
+               <hr>
 
-
-                <div class="form-section last mb-5">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Submit"
                                id="signaturebtn"
                                class="submitbtn" style="background: red;" />
                     </div>
-                </div>
+
 
 
             </form>
