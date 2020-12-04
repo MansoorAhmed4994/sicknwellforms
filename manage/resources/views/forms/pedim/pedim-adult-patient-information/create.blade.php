@@ -4211,7 +4211,9 @@
 
                                         <div class="col-12 col-md-4">
                                             <label class="" for="">Patient Signature</label>
-                                            <div id="sig" ></div>  <br/>
+                                            <div>
+                                                <div  id="sig"  style="width:383px !Important;height: 200px;" ></div>  <br/>
+                                            </div>
 
                                             <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                             <textarea id="signature64" name="signed" style="display: none"></textarea>
@@ -4448,8 +4450,9 @@
 
                                         <div class="col-12 col-md-4">
                                             <label class="" for="">Patient Signature</label>
-                                            <div id="sig2" ></div>
-                                            <br/>
+                                            <div>
+                                                <div  id="sig2"  style="width:383px !Important;height: 200px;" ></div>  <br/>
+                                            </div>
 
                                             <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                             <textarea id="signature642" name="signed2" style="display: none"></textarea>

@@ -218,6 +218,7 @@
                                 </div>
 
 
+
                             </div>
                         </div>
 
@@ -300,7 +301,7 @@
             dataType: 'json',
             success: function(response)
             {
-                alert('save');
+                alert(response);
             }
         });
     })
