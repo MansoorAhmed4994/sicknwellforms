@@ -163,11 +163,9 @@
                                 <div class="col-12 col-md-4">
 <<<<<<< Updated upstream
                                     <label class="" for="">Parent/Legal Guardian</label>
-                                    <div>
-                                        <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
-                                    </div>
+                                    <div id="sig" ></div>  <br/>
 
-                                    <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                     <textarea id="signature64" name="signed" style="display: none"></textarea>
 
 =======
@@ -185,11 +183,10 @@
                                 </div>
                                 <div style="margin-left: 20px;" class="col-12 col-md-4">
                                     <label class="" for="">Witness Signature</label>
-                                    <div>
-                                        <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
-                                    </div>
+                                    <div id="sig2" ></div>
+                                    <br/>
 
-                                    <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                     <textarea id="signature642" name="signed2" style="display: none"></textarea>
 
 <<<<<<< Updated upstream

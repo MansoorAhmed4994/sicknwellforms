@@ -55,6 +55,10 @@
 
 
 
+
+
+
+
     </script>
 
 
@@ -95,14 +99,13 @@
                 <div class="form-section">
                     <p>Sign up for the Qcard and get medical services at any of our 10 Quick Care Med locations.
                         Become a member for only $1 a day, plus a $10 copay when you visit. Locations available in  Citrus, Marion,
-                        Alachua and Levy counties.<br>
+                        Alachua and Levy counties.</b>
                     </p>
                 </div>
 
                 <div class="form-section">
                     <div class="form-group row mt-4">
                      <div class="col-12 col-md-12">
-                         <div class="row no-gutters">
 
                          <div class="cok-12 col-md-4">
                          <div class="padding-wrap">
@@ -112,23 +115,26 @@
                                                         name="answer" value="yes">
                                     Yes</label>
                          </div>
+                     </div>
+                    </div>
 
-                         <div class="cok-12 col-md-4">
+                         <div class="row mt-4">
+                             <div class="col-12 col-md-12">
+                                 <div class="cok-12 col-md-4">
                              <div class="padding-wrap">
                                  <label>Qcard Membership</label></div>
                              <label class="mt-2"><input type="radio"
                                                         name="answer" value="yes" checked>
                                  $90 for the first 90 days then, $30 per month</label>
                          </div>
-                     </div>
-                     </div>
-                    </div>
+                             </div>
+                         </div>
 
                     <div class="form-group row mt-4">
-                        <div class="col-12 col-md-12">
+                        <div class="col-12 col-md-6">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-4">
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
@@ -138,7 +144,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-4">
                                     <label>First Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -149,7 +155,7 @@
                                 </div>
 
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-4">
                                     <label>Last Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -179,12 +185,12 @@
                     </div>
                 </div>
 
-
+                <div class="form-section">
                     <div class="form-group row mt-4">
-                        <div class="col-12 col-md-12">
+                        <div class="col-12 col-md-6">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-4">
                                     <label>Full Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -194,7 +200,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-4">
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
@@ -204,21 +210,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-4">
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
                                                class="form-control custom-mainforminput "
                                                name="patient_email" id="patient_email"
                                                value="" />
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <div class="padding-wrap">
-                                        <label>Date of birth</label>
-                                        <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
-                                               name="dob" id="dob" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -230,7 +228,7 @@
                         <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Address <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -240,7 +238,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>City <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -250,7 +248,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>State <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -261,7 +259,7 @@
                                 </div>
 
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Zip <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -274,7 +272,21 @@
                         </div>
 
                     </div>
-                    <hr>
+
+
+                    <div class="row no-gutters">
+                        <div class="col-12 col-md-2">
+                            <div class="padding-wrap">
+                                <label>Date of birth</label>
+                                <input type="text" value=""
+                                       class="form-control custom-mainforminput dobpicker  "
+                                       name="dob" id="dob" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                    </div>
 
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
@@ -325,17 +337,6 @@
                                                value="" />
                                     </div>
                                 </div>
-
-                                <div class="col-12 col-md-2">
-
-                                    <div class="padding-wrap">
-                                        <label>Today's Date</label>
-                                        <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
-                                               name="todate" id="todate" readonly />
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
 
@@ -354,6 +355,16 @@
                                 </div>
 
 
+                                <div class="col-12 col-md-2">
+
+                                    <div class="padding-wrap">
+                                        <label>Today's Date</label>
+                                        <input type="text" value=""
+                                               class="form-control custom-mainforminput dobpicker  "
+                                               name="todate" id="todate" readonly />
+                                    </div>
+
+                                </div>
 
                             </div>
                         </div>
@@ -361,14 +372,22 @@
                     </div>
 
 
-<hr>
 
+                  <!--  <div data-component="divider" style="border-bottom:1px solid #e6e6e6;">
+
+
+                    </div>-->
+
+
+
+                </div>
+                <div class="form-section last mb-5">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Submit"
                                id="signaturebtn"
                                class="submitbtn" style="background: red;" />
                     </div>
-
+                </div>
 
             </form>
         </div>
