@@ -187,7 +187,7 @@
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                            class="form-control custom-mainforminput "
-                                                           name="Address_1" id="Address_1"
+                                                           name="address" id="address"
                                                            value="" />
                                                 </div>
                                             </div>
@@ -266,7 +266,7 @@
                                         <label>Date of birth</label>
                                         <input type="text" value=""
                                                class="form-control custom-mainforminput dobpicker  "
-                                               name="dob_question" id="dob_question" readonly />
+                                               name="dob" id="dob" readonly />
                                     </div>
                                 </div>
 
@@ -275,7 +275,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                                class="form-control custom-mainforminput "
-                                               name="phone_number" id="phone_number" value=""
+                                               name="phone" id="phone" value=""
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>
@@ -286,7 +286,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                                class="form-control custom-mainforminput "
-                                               name="alternate_telephone" id="alternate_telephone" value=""
+                                               name="alternate_phone" id="alternate_phone" value=""
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>

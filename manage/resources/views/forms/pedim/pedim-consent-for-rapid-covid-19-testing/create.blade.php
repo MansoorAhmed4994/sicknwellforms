@@ -103,7 +103,7 @@
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
-                                               name="patient_first_name" id="patient_first_name"
+                                               name="patient_name" id="patient_name"
                                                value="" />
                                     </div>
                                 </div>
@@ -117,11 +117,11 @@
                                         <div class="row">
                                             <div class="col-12 col-md-3">
                                                 <label class="mt-2"><input type="radio"
-                                                                           name="answer" value="yes"> Yes</label>
+                                                                           name="is_patient_minor" id="is_patient_minor" value="yes"> Yes</label>
                                             </div>
                                             <div class="col-12 col-md-3">
                                                 <label class="mt-2"><input type="radio"
-                                                                           name="answer" value="no" checked> No</label>
+                                                                           name="is_patient_minor" id="is_patient_minor" value="no" checked> No</label>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@
                                     <div id="sig1" ></div>  <br/>
 
                                     <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="signature641" name="signed" style="display: none"></textarea>
+                                    <textarea id="sign_responsible_party" name="sign_responsible_party" style="display: none"></textarea>
 
                                 </div>
                                 <div class="col-12 col-md-2">
@@ -189,7 +189,7 @@
                                         <label>Date<span class="required">*</span> </label>
                                         <input type="text" value=""
                                                class="form-control custom-mainforminput dobpicker  "
-                                               name="todate" id="todate" readonly />
+                                               name="date" id="date" readonly />
                                     </div>
 
                                 </div>

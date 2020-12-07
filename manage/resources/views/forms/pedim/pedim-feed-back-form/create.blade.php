@@ -108,7 +108,7 @@
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
-                                               name="patient_first_name" id="patient_first_name"
+                                               name="patient_name" id="patient_name"
                                                value="" />
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
 
                                         <input type="text" value=""
                                                class="form-control custom-mainforminput dobpicker  "
-                                               name="doa" id="doa" readonly />
+                                               name="appointment_date" id="appointment_date" readonly />
                                     </div>
                                 </div>
 
@@ -127,7 +127,7 @@
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
-                                               name="time_of_appointment" id="time_of_appointment"
+                                               name="appointment_time" id="appointment_time"
                                                value="" />
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                             <div class="padding-wrap">
                                 <input type="tel"
                                        class="form-control custom-mainforminput "
-                                       name="telephone" id="telephone" value=""
+                                       name="number" id="number" value=""
                                        data-inputmask='"mask": "(999) 999-9999"' data-mask /></div>
                         </div>
 
@@ -197,7 +197,7 @@
                                 <input class="form-control" type="hidden" name="secondNumber"/>
                                 <div class="form-group">
                                     <p id="captchaQuest" style="width: 90px"></p>
-                                    <input class="form-control " type="text" name="answer" id=""/>
+                                    <input class="form-control " type="text" name="answer" id="answer"/>
                                 </div>
 
                             </form>
