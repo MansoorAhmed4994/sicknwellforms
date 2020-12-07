@@ -95,7 +95,7 @@
                         <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Provider Name
                                     </label>
                                     <div class="padding-wrap">
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Telephone </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Fax </label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -127,12 +127,22 @@
                                 </div>
 
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Emails </label>
                                     <div class="padding-wrap">
                                         <input type="email"
                                                class="form-control custom-mainforminput "
                                                name="patient_email" id="patient_email"
+                                               value="" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <label>Contact Person / Referral Coordinator
+                                    </label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="contact_person" id="contact_person"
                                                value="" />
                                     </div>
                                 </div>
@@ -143,16 +153,7 @@
 
                     </div>
                     <div class="row no-gutters">
-                        <div class="col-12 col-md-3">
-                            <label>Contact Person / Referral Coordinator
-                            </label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="contact_person" id="contact_person"
-                                       value="" />
-                            </div>
-                        </div>
+
                     </div>
 
               <hr>
@@ -250,7 +251,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Patient Name
                                     </label>
                                     <div class="padding-wrap">
@@ -291,6 +292,25 @@
                                     </div>
                                 </div>
 
+                                <div class="col-12 col-md-2">
+                                    <label>Email</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="email_patient" id="email_patient"
+                                               value="" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <label>City</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="city" id="city_patient"
+                                               value="" />
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -298,17 +318,32 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                        <div class="col-12 col-md-3">
-                            <label>Email</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="email_patient" id="email_patient"
-                                       value="" />
-                            </div>
-                        </div>
 
-                        <div class="col-12 col-md-3">
+
+
+                                <div class="col-12 col-md-2">
+                                    <label>State</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="state" id="state_patient"
+                                               value="" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12 col-md-2">
+                                    <label>Zip</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="zip" id="zip_patient"
+                                               value="" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12 col-md-3">
                             <label>Address</label>
                             <div class="padding-wrap">
                                 <input type="text"
@@ -328,56 +363,25 @@
                             </div>
                         </div>
 
+                                <div class="col-12 col-md-2">
+                                    <label>Height</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="height" id="height"
+                                               value="" />
+                                    </div>
+                                </div>
+
                             </div></div>
                     </div>
 
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                        <div class="col-12 col-md-3">
-                            <label>City</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="city" id="city_patient"
-                                       value="" />
-                            </div>
-                        </div>
 
-                        <div class="col-12 col-md-3">
-                            <label>State</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="state" id="state_patient"
-                                       value="" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <label>Zip</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="zip" id="zip_patient"
-                                       value="" />
-                            </div>
-                        </div>
-                            </div></div>
-                    </div>
-                    <div class="form-group row mt-4">
-                        <div class="col-12 col-md-12">
-                            <div class="row no-gutters">
-                        <div class="col-12 col-md-3">
-                            <label>Height</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="height" id="height"
-                                       value="" />
-                            </div>
-                        </div>
 
-                        <div class="col-12 col-md-3">
+                        <div class="col-12 col-md-2">
                             <label>Weight</label>
                             <div class="padding-wrap">
                                 <input type="text"
@@ -386,7 +390,7 @@
                                        value="" />
                             </div>
                         </div>
-                        <div class="col-12 col-md-3">
+                        <div class="col-12 col-md-2">
                             <label>Neck Size</label>
                             <div class="padding-wrap">
                                 <input type="text"
@@ -395,31 +399,28 @@
                                        value="" />
                             </div>
                         </div>
+
+                                <div class="col-12 col-md-3">
+
+                                    <label>Insurance Card Front</label>
+                                    <div class="padding-wrap">
+                                        <input type="file"
+                                               class="form-control custom-mainforminput "
+                                               name="file" id="front_card"
+                                               value=""  />
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3">
+                                    <label>Insurance Card Back</label>
+                                    <div class="padding-wrap">
+                                        <input type="file"
+                                               class="form-control custom-mainforminput "
+                                               name="file" id="back_card"
+                                               value="" />
+                                    </div>
+                                </div>
                             </div></div>
-                    </div>
-                    <div class="form-group row mt-4">
-
-                        <div class="col-12 col-md-4">
-
-                            <label>Insurance Card Front</label>
-                            <div class="padding-wrap">
-                                <input type="file"
-                                       class="form-control custom-mainforminput "
-                                       name="file" id="front_card"
-                                       value=""  />
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-4">
-                            <label>Insurance Card Back</label>
-                            <div class="padding-wrap">
-                                <input type="file"
-                                       class="form-control custom-mainforminput "
-                                       name="file" id="back_card"
-                                       value="" />
-                            </div>
-                        </div>
-
                     </div>
 
 <hr>
@@ -429,7 +430,7 @@
                 </div>
 
 
-                    <strong style="color: blue; font-size: 14pt">Symptoms or Medical History</strong>
+                    <h3 style="color: blue; font-size: 14pt; margin-top: 10px;">Symptoms or Medical History</h3 >
 
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">

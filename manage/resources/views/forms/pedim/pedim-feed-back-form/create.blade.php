@@ -98,54 +98,37 @@
                     </div>
                 </div>
 
+                <div class="form-section">
                     <div class="form-group row mt-4">
-                        <div class="col-12 col-md-12">
+                        <div class="col-12 col-md-6">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-md-4">
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
-                                               name="patient_first_name" id="patient_first_name"
+                                               name="patient_name" id="patient_name"
                                                value="" />
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-md-4">
                                     <label>Date of Appointment</label>
                                     <div class="padding-wrap">
 
                                         <input type="text" value=""
                                                class="form-control custom-mainforminput dobpicker  "
-                                               name="doa" id="doa" readonly />
+                                               name="appointment_date" id="appointment_date" readonly />
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-md-4">
                                     <label>Time of Appointment </label>
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
-                                               name="time_of_appointment" id="time_of_appointment"
+                                               name="appointment_time" id="appointment_time"
                                                value="" />
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <label>Contact Number <span class="required">*</span></label>
-                                    <div class="padding-wrap">
-                                        <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="telephone" id="telephone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask /></div>
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <label>Email </label>
-                                    <div class="padding-wrap">
-                                        <input type="email"
-                                               class="form-control custom-mainforminput "
-                                               name="patient_email" id="patient_email"
-                                               value="" />
-                                        <p><small>example@example.com</small></p>
                                     </div>
                                 </div>
 
@@ -157,7 +140,25 @@
 
                             <div class="col-12 col-md-12">
                                 <div class="row no-gutters">
+                        <div class="col-12 col-md-2">
+                            <label>Contact Number <span class="required">*</span></label>
+                            <div class="padding-wrap">
+                                <input type="tel"
+                                       class="form-control custom-mainforminput "
+                                       name="number" id="number" value=""
+                                       data-inputmask='"mask": "(999) 999-9999"' data-mask /></div>
+                        </div>
 
+                        <div class="col-12 col-md-2">
+                            <label>Email </label>
+                            <div class="padding-wrap">
+                                <input type="email"
+                                       class="form-control custom-mainforminput "
+                                       name="patient_email" id="patient_email"
+                                       value="" />
+                                <p><small>example@example.com</small></p>
+                            </div>
+                        </div>
                         <div class="col-12 col-md-4">
                             <label>I would like to be contacted by management</label>
                             <select
@@ -185,7 +186,7 @@
                     <div class="form-section">
                         <p style="font-weight: bold ">This form is intended for Feedback from our Patients in order to improve our services and practice.
                             Not for general commercial offers or sales. Please note that only genuine feedback emails will be processed.
-                            <br>
+                            </b>
                         </p>
                     </div>
 
@@ -196,21 +197,27 @@
                                 <input class="form-control" type="hidden" name="secondNumber"/>
                                 <div class="form-group">
                                     <p id="captchaQuest" style="width: 90px"></p>
-                                    <input class="form-control " type="text" name="answer" id=""/>
+                                    <input class="form-control " type="text" name="answer" id="answer"/>
                                 </div>
 
                             </form>
 
                         </div>
-                        <p class="d-flex justify-content-center" id="status"></p>
+
                     </div>
 
+                </div>
+
+
+                <div class="form-section last mb-5 ">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Submit"
                                id="send"
                                class="submitbtn" style="background: red;" />
-                    </div>
 
+                    </div>
+                    <p id="status"></p>
+                </div>
 
 
             </form>
