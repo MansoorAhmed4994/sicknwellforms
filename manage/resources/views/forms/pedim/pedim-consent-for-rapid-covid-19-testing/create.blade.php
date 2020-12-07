@@ -183,7 +183,7 @@
                                     <textarea id="signature641" name="signed" style="display: none"></textarea>
 
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div style="margin-left: 10px;" class="col-12 col-md-2">
 
                                     <div class="padding-wrap">
                                         <label>Date<span class="required">*</span> </label>
