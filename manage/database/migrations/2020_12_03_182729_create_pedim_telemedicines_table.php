@@ -33,12 +33,13 @@ class CreatePedimTelemedicinesTable extends Migration
             $table->date('dob');
             $table->string('is_patient_minor', 225);
             $table->text('symptoms');
-            $table->string('responsible_party_name', 225);
-            $table->string('insurance_subscriber', 225);
-            $table->string('relation_patient', 225);
+            $table->string('responsible_party_name', 225)->nullable();
+            $table->string('insurance_subscriber', 225)->nullable();
+            $table->string('relation_patient', 225)->nullable();
             $table->bigInteger('insurance_telephone');
             $table->text('insurance_email');
-            $table->text('primary_insurance_company');
+            $table->text('primary_insurance_company')->nullable();
+            $table->text('secondary_insurance_company')->nullable();
             $table->string('accept_financial_policy', 225);
             $table->date('fp_date');
             $table->string('accept_consent_for_treatment', 225);
@@ -60,5 +61,6 @@ class CreatePedimTelemedicinesTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('pedim_telemedicines');
     }
 }

@@ -126,7 +126,7 @@
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
-                                               name="parent_name" id="patients_name"
+                                               name="patient_name" id="patient_name"
                                                value="" />
                                     </div>
                                 </div>
@@ -161,6 +161,7 @@
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-4">
+<<<<<<< Updated upstream
                                     <label class="" for="">Parent/Legal Guardian</label>
                                     <div>
                                         <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
@@ -169,6 +170,18 @@
                                     <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                     <textarea id="signature64" name="signed" style="display: none"></textarea>
 
+=======
+                                    <div id="signArea" >
+                                        <label>Parent/Legal Guardian</label>
+                                        <div class="sig sigWrapper" style="height:auto;">
+                                            <div class="typed"></div>
+                                            <canvas class="sign-pad" name="sign_parent" id="sign_parent" width="300" height="100"></canvas>
+                                        </div>
+                                        <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
+                Clear
+              </span>
+                                    </div>
+>>>>>>> Stashed changes
                                 </div>
                                 <div style="margin-left: 20px;" class="col-12 col-md-4">
                                     <label class="" for="">Witness Signature</label>
@@ -179,6 +192,20 @@
                                     <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                     <textarea id="signature642" name="signed2" style="display: none"></textarea>
 
+<<<<<<< Updated upstream
+=======
+                                <div class="col-12 col-md-4">
+                                    <div id="signArea_w" >
+                                        <label>Witness Signature</label>
+                                        <div class="sig sigWrapper" style="height:auto;">
+                                            <div class="typed"></div>
+                                            <canvas class="sign-pad" name="sign_witness" id="sign_witness" width="300" height="100"></canvas>
+                                        </div>
+                                        <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
+                Clear
+              </span>
+                                    </div>
+>>>>>>> Stashed changes
                                 </div>
 
 

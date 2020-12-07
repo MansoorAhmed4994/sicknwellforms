@@ -87,25 +87,26 @@
                 <div class="custom-wizard">
 
 
-                    <div class="wizard-sec active" >
+                    <div class="wizard-sec active ">
                         <div class="top-section">
                             <h2>Sleep Test Registration</h2>
                         </div>
+                        <div class="form-section">
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-12">
                                     <div class="row no-gutters">
 
 
-                                <div class="col-12 col-md-2">
-                                    <label>Full Name<span class="required">*</span></label>
+                                <div class="col-12 col-md-3">
+                                    <label>Full Name (First, Middle Initial, Last) <span class="required">*</span></label>
                                     <div class="padding-wrap">
-                                        <input type="text" placeholder="First, Middle Initial, Last"
+                                        <input type="text"
                                                class="form-control custom-mainforminput "
                                                name="full_name" id="full_name"
                                                value="" />
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-md-3">
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
@@ -115,7 +116,16 @@
                                         <p><small>example@example.com</small></p>
                                     </div>
                                 </div>
-                                        <div class="col-12 col-md-2">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row mt-4">
+                                <div class="col-12 col-md-12">
+                                    <div class="row no-gutters">
+                                        <div class="col-12 col-md-3">
                                             <label>Cellular Phone Number <span class="required">*</span></label>
                                             <div class="padding-wrap">
                                                 <input type="tel"
@@ -124,8 +134,9 @@
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-2">
-                                            <label>Daytime Telephone</label>
+
+                                        <div class="col-12 col-md-3">
+                                            <label>Daytime Telephone Number</label>
                                             <div class="padding-wrap">
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
@@ -133,8 +144,9 @@
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-2">
-                                            <label>State
+
+                                        <div class="col-12 col-md-3">
+                                            <label>State of Residence
                                                 <span class="required">*</span></label>
                                             <div class="padding-wrap">
                                                 <input type="text"
@@ -143,29 +155,36 @@
                                                        value="" />
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-2">
-                                            <label>How did you hear about us?<span class="required">*</span> </label>
-                                            <select
-                                                    class="form-control custom-mainforminput  "
-                                                    value="" name="contact_managment" id="contact_managment">
-                                                <option value=""> </option>
-                                                <option value="Google">Google</option>
-                                                <option value="Facebook"> Facebook</option>
-                                                <option value="Twitter"> Twitter</option>
-                                                <option value="Internet"> Internet</option>
-                                                <option value="Freind"> Friend</option>
-                                                <option value="Family"> Family</option>
-                                                <option value="Doctor"> Doctor</option>
-                                            </select>
-                                        </div>
-
 
                                     </div>
+
                                 </div>
 
                             </div>
-                        <hr>
+                            <div class="form-group row mt-4">
+                                <div class="col-12 col-md-12">
+                            <div class="row no-gutters">
+                                <div class="col-12 col-md-3">
+                                    <label>How did you hear about us?<span class="required">*</span> </label>
+                                    <select
+                                            class="form-control custom-mainforminput  "
+                                            value="" name="contact_managment" id="contact_managment">
+                                        <option value=""> </option>
+                                        <option value="Google">Google</option>
+                                        <option value="Facebook"> Facebook</option>
+                                        <option value="Twitter"> Twitter</option>
+                                        <option value="Internet"> Internet</option>
+                                        <option value="Freind"> Friend</option>
+                                        <option value="Family"> Family</option>
+                                        <option value="Doctor"> Doctor</option>
+                                    </select>
+                                </div>
+                            </div>
 
+
+                        </div>
+                            </div>
+                        </div>
 
                         <div class="form-group row mt-4">
                             <div class="col-12 col-md-6">
@@ -197,7 +216,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-2">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row mt-4">
+                            <div class="col-12 col-md-12">
+
+                                <div class="row no-gutters">
+                                    <div class="col-12 col-md-3">
                                         <label>Shipping City <span class="required">*</span></label>
                                         <div class="padding-wrap">
                                             <input type="text"
@@ -207,7 +235,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-md-3">
                                         <label>Shipping State <span class="required">*</span></label>
                                         <div class="padding-wrap">
                                             <input type="text"
@@ -217,7 +245,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-md-3">
                                         <label>Shipping Zip <span class="required">*</span></label>
                                         <div class="padding-wrap">
                                             <input type="text"
@@ -227,14 +255,17 @@
                                         </div>
                                     </div>
 
+
                                 </div>
                             </div>
 
                         </div>
 
-
+                        <div data-component="divider" style="border-bottom:1px solid #e6e6e6;">
+                        </div>
 
                         <div class="form-group row mt-4">
+
                             <div class="col-12 col-md-12">
 
                                 <div class="row no-gutters">
@@ -283,18 +314,16 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <hr>
-
+                        <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
                                 <input type="submit" value="Submit & Continue"
                                        id="btnSaveSign2"
                                        class="submitbtn nextprevbtn next" style="background: red;" />
                             </div>
+                        </div>
                     </div>
 
-                    <div class="wizard-sec ">
+                    <div class="wizard-sec">
                         <div class="form-group row mt-4">
                             <div class="col-12 col-md-6">
                                 <strong style="color: blue; font-size: 12pt; font-weight: bold">Payment options and availability of service. </strong>
@@ -326,7 +355,10 @@
                             </div>
                         </div>
 
-                    <hr>
+                        <div data-component="divider" style="border-bottom:1px solid #e6e6e6;">
+
+
+                        </div>
 
                         <div class="form-group row mt-4">
                             <div class="col-12 col-md-6">
@@ -442,19 +474,18 @@
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
 
+                                        <div class="form-section">
                                             <div class="form-group row mt-4">
-                                                <div class="col-12 col-md-12">
-                                                    <div class="row no-gutters">
-                                                <div class="col-12 col-md-2">
-                                                    <label>Patient's Name</label>
+                                                <div class="col-12 col-md-3">
+                                                    <label>Patient's Name (First, Middle Initial, Last)</label>
                                                     <div class="padding-wrap">
-                                                        <input type="text" placeholder="First, Middle Initial, Last"
+                                                        <input type="text"
                                                                class="form-control custom-mainforminput "
                                                                name="patient_name" id="patient_name"
                                                                value="" />
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-2">
+                                                <div class="col-12 col-md-3">
                                                     <label>Patient's  Email</label>
                                                     <div class="padding-wrap">
                                                         <input type="email"
@@ -463,53 +494,59 @@
                                                                value="" />
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-2">
-                                                    <label>Primary Insurance</label>
+
+
+                                            </div>
+                                            <div class="form-group row mt-4">
+                                                <div class="col-12 col-md-8">
+                                                    <label>Primary Insurance Company Name and Plan</label>
                                                     <div class="padding-wrap">
                                                         <input type="text"
-                                                               placeholder="Company Name & Plan"
                                                                class="form-control custom-mainforminput "
                                                                name="insurance_name" id="insurance_name"
                                                                value="" />
                                                     </div>
                                                 </div>
-                                                        <div class="col-12 col-md-2">
-                                                            <label>Member ID#</label>
-                                                            <div class="padding-wrap">
-                                                                <input type="text"
-                                                                       class="form-control custom-mainforminput "
-                                                                       name="member_id_1" id="member_id_1"
-                                                                       value="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-2">
-                                                            <label>Subscriber Name</label>
-                                                            <div class="padding-wrap">
-                                                                <input type="text"
-                                                                       class="form-control custom-mainforminput "
-                                                                       name="subcribers_name_1" id="subcribers_name_1"
-                                                                       value="" />
-                                                            </div>
-                                                        </div>
 
-                                                    </div>
-
-                                            </div>
                                             </div>
 
                                             <div class="form-group row mt-4">
-                                                <div class="col-12 col-md-12">
-                                                    <div class="row no-gutters">
-                                                <div class="col-12 col-md-2">
-                                                    <label>Secondary Insurance</label>
+                                                <div class="col-12 col-md-3">
+                                                    <label>Member ID#</label>
                                                     <div class="padding-wrap">
-                                                        <input type="text" placeholder="Company Name & Plan"
+                                                        <input type="text"
+                                                               class="form-control custom-mainforminput "
+                                                               name="member_id_1" id="member_id_1"
+                                                               value="" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3">
+                                                    <label>Subscriber Name</label>
+                                                    <div class="padding-wrap">
+                                                        <input type="text"
+                                                               class="form-control custom-mainforminput "
+                                                               name="subcribers_name_1" id="subcribers_name_1"
+                                                               value="" />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="form-group row mt-4">
+                                                <div class="col-12 col-md-8">
+                                                    <label>Secondary Insurance Company Name and Plan</label>
+                                                    <div class="padding-wrap">
+                                                        <input type="text"
                                                                class="form-control custom-mainforminput "
                                                                name="secondary_insurance_name" id="secondary_insurance_name"
                                                                value="" />
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-2">
+                                            </div>
+
+                                            <div class="form-group row mt-4">
+                                                <div class="col-12 col-md-3">
                                                     <label>Member ID#</label>
                                                     <div class="padding-wrap">
                                                         <input type="text"
@@ -518,7 +555,7 @@
                                                                value="" />
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-2">
+                                                <div class="col-12 col-md-3">
                                                     <label>Subscriber Name</label>
                                                     <div class="padding-wrap">
                                                         <input type="text"
@@ -527,8 +564,13 @@
                                                                value="" />
                                                     </div>
                                                 </div>
+
+
+                                            </div>
+
+                                            <div class="form-group row mt-4">
                                                 <div class="col-12 col-md-3">
-                                                    <label>Insurance Card Front</label>
+                                                    <label>Insurance Card Front Upload</label>
                                                     <div class="padding-wrap">
                                                         <input type="file"
                                                                class="form-control custom-mainforminput "
@@ -536,8 +578,11 @@
                                                                value=""  />
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="form-group row mt-4">
                                                 <div class="col-12 col-md-3">
-                                                    <label>Insurance Card Back</label>
+                                                    <label>Insurance Card Back Upload</label>
                                                     <div class="padding-wrap">
                                                         <input type="file"
                                                                class="form-control custom-mainforminput "
@@ -545,11 +590,10 @@
                                                                value="" />
                                                     </div>
                                                 </div>
-
-                                                    </div>
-                                                </div>
                                             </div>
+                                        </div>
 
+                                        <div class="form-section">
                                             <div class="form-group row mt-">
                                                 <div class="col-12 col-md-12">
                                                     <p>
@@ -589,6 +633,10 @@
                                                     </div>
                                                 </div>
 
+
+                                            </div>
+
+                                            <div class="form-group row mt-4">
                                                 <div class="col-12 col-md-3">
                                                     <label>Upload Photo of Physician Script</label>
                                                     <div class="padding-wrap">
@@ -598,24 +646,24 @@
                                                                value="" />
                                                     </div>
                                                 </div>
-
-
                                             </div>
+
+                                        </div>
 
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
                                 <input type="submit" value="Submit & Continue"
                                        id="btnSaveSign3"
                                        class="submitbtn nextprevbtn next" style="background: red;" />
                             </div>
-
+                        </div>
                     </div>
-                    <div class="wizard-sec ">
+                    <div class="wizard-sec">
                         <div class="top-section">
                             <h2 style="color: blue" >Register for a Home Sleep Testing – Terms & Conditions</h2>
                         </div>
@@ -623,14 +671,14 @@
                         <div style="margin-top: 20px">
                             <strong style="color: black; font-weight: bold; font-size: 12pt">Consent for Treatment | Driving Acknowledgement | Financial Responsibility | Terms & Conditions</strong>
                         </div>
-                        <div data-component="divider" style="border-bottom:1px solid #e6e6e6; margin-top: 20px"></div>
-
+                        <div data-component="divider" style="border-bottom:1px solid #e6e6e6; margin-top: 30px"></div>
+                        <div class="form-section">
 
                             <div class="form-group row mt-4">
-                                <div class="col-12 col-md-12">
+                                <div class="col-12 col-md-6">
 
                                     <div class="row no-gutters">
-                                        <div class="col-12 col-md-2">
+                                        <div class="col-12 col-md-4">
                                             <label>Patient Name <span class="required">*</span></label>
                                             <div class="padding-wrap">
                                                 <input type="text"
@@ -640,53 +688,24 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-md-2">
+                                        <div class="col-12 col-md-4">
                                             <label >Date of Birth<span class="required">*</span></label>
-                                            <div class="padding-wrap">
                                             <input type="text" value=""
                                                    class="form-control custom-mainforminput dobpicker  "
                                                    name="dob_patient_terms" id="dob_patient_terms" readonly />
-                                            </div>
                                         </div>
 
 
-                                        <div class="col-12 col-md-2">
+                                        <div class="col-12 col-md-4">
 
-
+                                            <div class="padding-wrap">
                                                 <label>Is Patient a Minor? </label>
-                                            <div class="padding-wrap">
+
+                                                <div class="col-12 col-md-4">
                                                     <label class="mt-2"><input id="checkbox_div" type="checkbox"
-                                                                               name=" " value="yes">  Yes</label>
+                                                                               name=" " value="yes">Yes</label>
+                                                </div>
 
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-2" id="parent_guardian_div" style="display: none;">
-                                            <label>Parent or Guardian </label>
-                                            <div class="padding-wrap">
-                                                <input type="text"
-                                                       class="form-control custom-mainforminput "
-                                                       name="parent_guardian" id="parent_guardian"
-                                                       value="" />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-md-2">
-                                            <label>Email <span class="required">*</span></label>
-                                            <div class="padding-wrap">
-                                                <input type="email"
-                                                       class="form-control custom-mainforminput "
-                                                       name="patient_email_terms" id="patient_email_terms"
-                                                       value="" />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-md-2">
-                                            <label>Telephone <span class="required">*</span></label>
-                                            <div class="padding-wrap">
-                                                <input type="tel"
-                                                       class="form-control custom-mainforminput "
-                                                       name="patient_telephone_terms" id="patient_telephone_terms" value=""
-                                                       data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
 
@@ -697,7 +716,44 @@
 
                             </div>
 
+                            <div class="form-group row mt-4">
+                                <div class="col-12 col-md-6">
+                                    <div class="row no-gutters">
 
+                                        <div class="col-12 col-md-4" id="parent_guardian_div" style="display: none;">
+                                            <label>Parent or Guardian </label>
+                                            <div class="padding-wrap">
+                                                <input type="text"
+                                                       class="form-control custom-mainforminput "
+                                                       name="parent_guardian" id="parent_guardian"
+                                                       value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <label>Email <span class="required">*</span></label>
+                                            <div class="padding-wrap">
+                                                <input type="email"
+                                                       class="form-control custom-mainforminput "
+                                                       name="patient_email_terms" id="patient_email_terms"
+                                                       value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <label>Telephone <span class="required">*</span></label>
+                                            <div class="padding-wrap">
+                                                <input type="tel"
+                                                       class="form-control custom-mainforminput "
+                                                       name="patient_telephone_terms" id="patient_telephone_terms" value=""
+                                                       data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <div id="accordion2" class="custom-accordion">
                             <div class="card">
                                 <div class="card-header">
@@ -1027,7 +1083,14 @@
                             </div>
                         </div>
                         <div class="form-group row mt-4">
-
+                            <div class="col-12 col-md-2">
+                                <div class="padding-wrap">
+                                    <label>Today's Date<span class="required">*</span></label>
+                                    <input type="text" value=""
+                                           class="form-control custom-mainforminput dobpicker  "
+                                           name="today_date" id="today_date" readonly />
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row mt-4">
@@ -1044,7 +1107,7 @@
 
                                     </div>
 
-                                    <div style="margin-left:5px; " class="col-12 col-md-2 ">
+                                    <div class="col-12 col-md-3 ">
 
                                         <div class="padding-wrap">
                                             <label>Type Full Name<span class="required">*</span> </label>
@@ -1053,15 +1116,6 @@
                                                    name="type_full_name" id="type_full_name" />
                                         </div>
 
-                                    </div>
-
-                                    <div class="col-12 col-md-2">
-                                        <div class="padding-wrap">
-                                            <label>Today's Date<span class="required">*</span></label>
-                                            <input type="text" value=""
-                                                   class="form-control custom-mainforminput dobpicker  "
-                                                   name="today_date" id="today_date" readonly />
-                                        </div>
                                     </div>
 
                                 </div>
@@ -1073,7 +1127,7 @@
                             <div class="col-12 col-md-12">
                                 <label><span class="required">*</span> </label>
                                 <div class="row no-gutters">
-                                    <label><input type="checkbox" name=" " value="">
+                                    <label><input type="radio" name=" " value="">
                                         &nbsp; I understand that checking this box constitutes a legal signature confirming that I
                                         acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents
                                     </label>
@@ -1081,7 +1135,7 @@
                                 </div>
                                 <br>
                                 <div class="row no-gutters">
-                                    <label><input type="checkbox" name=" " value="">
+                                    <label><input type="radio" name=" " value="">
                                         &nbsp; Sign me up for continued sleep health tips and updates.</label>
                                 </div>
 
@@ -1089,12 +1143,13 @@
                             </div>
                         </div>
 
+                        <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
                                 <input type="submit" value="Almost Done, Submit & Continue To Last Step"
                                        id="btnSaveSign4"
                                        class="submitbtn nextprevbtn next" style="background: red;" />
                             </div>
-
+                        </div>
                     </div>
 
                     <div class="wizard-sec">
@@ -1134,6 +1189,9 @@
                                            data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
                             </div>
+
+                        </div>
+                        <div class="form-group row mt-4">
                             <div class="col-12 col-md-3">
                                 <div class="padding-wrap">
                                     <label>Date of birth<span class="required">*</span></label>
@@ -1142,11 +1200,12 @@
                                            name="dob_question" id="dob_question" readonly />
                                 </div>
                             </div>
-
                         </div>
-<hr>
 
+                        <div data-component="divider" style="border-bottom:1px solid #e6e6e6;">
+                        </div>
 
+                        <div class="form-section">
                             <div class="col-12 col-md-4">
 
                                 <p><span style="color: #3366ff;"><strong>Snoring?</strong></span></p>
@@ -1167,8 +1226,8 @@
                                 <label class="mt-2"><input type="radio"
                                                            name="" value="no" > No</label>
                             </div>
-
-                        <hr>
+                        </div>
+                        <div class="form-section">
                             <div class="col-12 col-md-4">
 
                                 <p><span style="color: #3366ff;"><strong>Tired?</strong></span></p>
@@ -1188,8 +1247,8 @@
                                 <label class="mt-2"><input type="radio"
                                                            name="" value="no" > No</label>
                             </div>
-                        <hr>
-
+                        </div>
+                        <div class="form-section">
                             <div class="col-12 col-md-4">
 
                                 <p><span style="color: #3366ff;"><strong>Observed?</strong></span></p>
@@ -1209,8 +1268,8 @@
                                 <label class="mt-2"><input type="radio"
                                                            name="" value="no" > No</label>
                             </div>
-                      <hr>
-
+                        </div>
+                        <div class="form-section">
                             <div class="col-12 col-md-4">
 
                                 <p><span style="color: #3366ff;"><strong>Pressure?</strong></span></p>
@@ -1230,9 +1289,8 @@
                                 <label class="mt-2"><input type="radio"
                                                            name="" value="no" > No</label>
                             </div>
-
-                        <hr>
-
+                        </div>
+                        <div class="form-section">
                             <div class="col-12 col-md-4">
 
                                 <p><span style="color: #3366ff;"><strong>Body?</strong></span></p>
@@ -1252,7 +1310,8 @@
                                 <label class="mt-2"><input type="radio"
                                                            name="" value="no" > No</label>
                             </div>
-                       <hr>
+                        </div>
+                        <div class="form-section">
                             <div class="col-12 col-md-4">
 
                                 <p><span style="color: #3366ff;"><strong>Age?</strong></span></p>
@@ -1272,7 +1331,8 @@
                                 <label class="mt-2"><input type="radio"
                                                            name="" value="no" > No</label>
                             </div>
-                      <hr>
+                        </div>
+                        <div class="form-section">
                             <div class="col-12 col-md-4">
 
                                 <p><span style="color: #3366ff;"><strong>Neck?</strong></span></p>
@@ -1292,7 +1352,7 @@
                                 <label class="mt-2"><input type="radio"
                                                            name="" value="no" > No</label>
                             </div>
-                        <hr>
+                        </div>
                         <div style="margin-top: 20px;">
                             <div class="col-12 col-md-4">
 
@@ -1355,12 +1415,13 @@
                         </div>
 
 
+                        <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
                                 <input type="submit" value="Click Here To Submit & Finish"
                                        id="signaturebtn"
                                        class="submitbtn" style="background: red;" />
                             </div>
-
+                        </div>
 
 
 
