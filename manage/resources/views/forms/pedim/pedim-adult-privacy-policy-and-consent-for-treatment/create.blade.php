@@ -73,7 +73,21 @@
 
 <body>
 
-
+<?php
+        $start_date = "";
+        $end_date = "";
+        $time_zone = "";
+        //echo $appoint_date_range->start_date;
+        if($appoint_date_range != null)
+        {
+            echo 
+            $start_date = "";
+            $end_date = "";
+            $time_zone = "Pacific/Wake";
+        } 
+         
+        
+        ?>
 
 <div class="wrapper d-flex flex-column">
     <main class="flex-1 d-flex">
@@ -129,9 +143,19 @@
                                         <input type="tel"
                                                class="form-control custom-mainforminput "
                                                name="telephone" id="telephone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                                />
                                     </div>
                                 </div>
+
+                                <!-- <div class="col-12 col-md-2">
+                                    <label>Telephone <span class="required">*</span></label>
+                                    <div class="padding-wrap">
+                                        <input type="tel"
+                                               class="form-control custom-mainforminput "
+                                               name="telephone" id="telephone" value=""
+                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                    </div>
+                                </div> -->
 
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
@@ -169,7 +193,7 @@
                                     </div>
 
                                     <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="signature64" name="signed" style="display: none"></textarea>
+                                    <textarea id="signature64" name="patient_signature" style="display: none"></textarea>
 
                                 </div>
 
@@ -181,7 +205,7 @@
                                     </div>
 
                                     <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="signature642" name="signed2" style="display: none"></textarea>
+                                    <textarea id="signature642" name="witness_signature" style="display: none"></textarea>
 
                                 </div>
 

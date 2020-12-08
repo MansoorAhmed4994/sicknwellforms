@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Traits\RecordAuthActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class Adult_privacy_policy extends Model

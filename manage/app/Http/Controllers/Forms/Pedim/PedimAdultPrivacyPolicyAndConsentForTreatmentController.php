@@ -12,6 +12,8 @@ use App\Models\appointment_schedule;
 use App\Models\appointment_limits; 
 use App\Models\Clients;
 use App\Models\Client_forms;
+use App\Models\Adult_privacy_policy;
+
 
 class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
 {
@@ -75,21 +77,20 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         
         $this->validate($request, $valiedation_from_array);
         
-        
-        
-        $adult_privacy_policy = new Adult_privacy_policy();
-        $adult_privacy_policy->patient_name = request('patient_name');
-        $adult_privacy_policy->patient_name = request('telephone');
-        $adult_privacy_policy->patient_name = request('email');
-        $adult_privacy_policy->patient_name = request('date_of_birth');
-        $adult_privacy_policy->patient_name = request('patient_signature');
-        $adult_privacy_policy->patient_name = request('patients_today_date');
-        $adult_privacy_policy->patient_name = request('witness_signature');
-        $adult_privacy_policy->patient_name = request('witness_name');
-        $adult_privacy_policy->patient_name = request('witness_today_date');
-        $adult_privacy_policy->client_forms_id = request('client_forms_id');   
-        $adult_privacy_policy->status = 'active';  
-        $adult_privacy_policy->save();
+
+        $adult_privacy_policies = new Adult_privacy_policy();
+        $adult_privacy_policies->patient_name = request('patient_name');
+        $adult_privacy_policies->telephone = request('telephone');
+        $adult_privacy_policies->email = request('email');
+        $adult_privacy_policies->date_of_birth = request('date_of_birth');
+        $adult_privacy_policies->patient_signature = request('patient_signature');
+        $adult_privacy_policies->patients_today_date = request('patients_today_date');
+        $adult_privacy_policies->witness_signature = request('witness_signature');
+        $adult_privacy_policies->witness_name = request('witness_name');
+        $adult_privacy_policies->witness_today_date = request('witness_today_date');
+        $adult_privacy_policies->client_forms_id = request('client_forms_id');   
+        $adult_privacy_policies->status = 'active';  
+        $adult_privacy_policies->save();
 
 
         session()->flash("success","Successfully Submited");  

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateAdultPrivacyPolicyTable extends Migration
+class CreateAdultPrivacyPoliciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAdultPrivacyPolicyTable extends Migration
      */
     public function up()
     {
-        Schema::create('adult_privacy_policy', function (Blueprint $table) {
+        Schema::create('adult_privacy_policies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('patient_name');
             $table->string('email')->unique();
@@ -39,6 +39,6 @@ class CreateAdultPrivacyPolicyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adult_privacy_policy');
+        //
     }
 }
