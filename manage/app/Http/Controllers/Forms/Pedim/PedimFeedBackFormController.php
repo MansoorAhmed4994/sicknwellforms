@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Forms\Pedim;
 use App\Http\Controllers\Controller;
 use App\Models\Forms\Pedim\pedim_feed_backs;
 use Illuminate\Http\Request;
+use App\Models\Client_forms;
 
 class PedimFeedBackFormController extends Controller
 {
@@ -81,7 +82,7 @@ class PedimFeedBackFormController extends Controller
 
         //
     }
-
+ 
     /**
      * Display the specified resource.
      *
@@ -99,8 +100,23 @@ class PedimFeedBackFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($submission_id)
     {
+        //dd(Auth);
+        $InOfficeAppointments = pedim_feed_backs::find($submission_id); 
+        $client_form_id = $InOfficeAppointments->client_forms_id; 
+        return view('forms.pedim.pedim-feed-back-form.edit')->with(array('client_form_id' => $client_form_id, 'InOfficeAppointmentsDetails' => $InOfficeAppointments)); 
+        
+        //
+    }
+
+ 
+    public function submissions($client_form_id)
+    { 
+        $submissions = pedim_feed_backs::all()->where('client_forms_id', $client_form_id);
+        //dd($submissions);
+        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id;  
+        return view('forms.pedim.pedim-feed-back-form.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
         //
     }
 

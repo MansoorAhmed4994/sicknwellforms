@@ -127,8 +127,7 @@ class InOfficeAppointmentsController extends Controller
     public function edit($submission_id)
     {
         //dd(Auth);
-        $InOfficeAppointments = In_office_appointments::find($submission_id);
-        //dd(In_office_appointments::all());
+        $InOfficeAppointments = In_office_appointments::find($submission_id); 
         $client_form_id = $InOfficeAppointments->client_forms_id;
         $time_before_interval = available_doctor::all()->where('client_forms_id', $client_form_id)->first()->time_before_appointment;
         $appoint_date_range = appointment_limits::all()->where('client_forms_id', $client_form_id)->first();  
