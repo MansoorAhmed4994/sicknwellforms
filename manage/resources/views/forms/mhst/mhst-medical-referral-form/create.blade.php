@@ -132,7 +132,7 @@
                                     <div class="padding-wrap">
                                         <input type="email"
                                                class="form-control custom-mainforminput "
-                                               name="patient_email" id="patient_email"
+                                               name="email" id="email"
                                                value="" />
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                            class="form-control custom-mainforminput "
-                                                           name="Address_2" id="Address_2"
+                                                           name="address_2" id="address_2"
                                                            value="" />
                                                 </div>
                                             </div>
@@ -313,7 +313,7 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="Address_patient" id="Address_patient"
+                                       name="address_patient" id="address_patient"
                                        value="" />
                             </div>
                         </div>
@@ -323,7 +323,7 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="Address_2_patient" id="Address_2_patient"
+                                       name="address_2_patient" id="address_2_patient"
                                        value="" />
                             </div>
                         </div>
@@ -339,7 +339,7 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="city" id="city_patient"
+                                       name="city_patient" id="city_patient"
                                        value="" />
                             </div>
                         </div>
@@ -349,7 +349,7 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="state" id="state_patient"
+                                       name="state_patient" id="state_patient"
                                        value="" />
                             </div>
                         </div>
@@ -358,7 +358,7 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="zip" id="zip_patient"
+                                       name="zip_patient" id="zip_patient"
                                        value="" />
                             </div>
                         </div>
@@ -405,7 +405,7 @@
                             <div class="padding-wrap">
                                 <input type="file"
                                        class="form-control custom-mainforminput "
-                                       name="file" id="front_card"
+                                       name="card_front" id="card_front"
                                        value=""  />
                             </div>
                         </div>
@@ -415,7 +415,7 @@
                             <div class="padding-wrap">
                                 <input type="file"
                                        class="form-control custom-mainforminput "
-                                       name="file" id="back_card"
+                                       name="card_back" id="card_back"
                                        value="" />
                             </div>
                         </div>
@@ -442,16 +442,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="*Hypertention">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Hypertention">
                             <label> *Hypertention </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*History of Stroke">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*History of Stroke">
                             <label > *History of Stroke </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*Impaired Cognition">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Impaired Cognition">
                             <label > *Impaired Cognition </label>
                         </div>
                     </div>
@@ -459,16 +459,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="*Ischemic Heart Disease">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Ischemic Heart Disease">
                             <label> *Ischemic Heart Disease </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*Mood Disorders">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Mood Disorders">
                             <label > *Mood Disorders </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*Excessive Daytime Sleepiness">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Excessive Daytime Sleepiness">
                             <label > *Excessive Daytime Sleepiness </label>
                         </div>
                     </div>
@@ -477,16 +477,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="*Insomnia">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Insomnia">
                             <label> *Insomnia </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Atrial Fibrillation">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Atrial Fibrillation">
                             <label > Atrial Fibrillation </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Reflux">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Reflux">
                             <label > Reflux </label>
                         </div>
                     </div>
@@ -495,12 +495,12 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Witnessed Apnea">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Witnessed Apnea">
                             <label> Witnessed Apnea </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Congestive Heart Failure">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Congestive Heart Failure">
                             <label > Congestive Heart Failure </label>
                         </div>
                         <div class="col-12 col-md-3">
@@ -513,16 +513,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Memory Loss">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Memory Loss">
                             <label> Memory Loss </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Depression">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Depression">
                             <label > Depression </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Sleep Disturbance">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Sleep Disturbance">
                             <label> Sleep Disturbance </label>
                         </div>
                     </div>
@@ -531,16 +531,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Seizures">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Seizures">
                             <label> Seizures </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="COPD">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="COPD">
                             <label > COPD </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Morning Headache">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Morning Headache">
                             <label> Morning Headache </label>
                         </div>
                     </div>
@@ -549,18 +549,18 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Nocturia">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Nocturia">
                             <label> Nocturia </label>
                         </div>
 
                         <div style="display: flex;" class="col-12 col-md-3">
-                            <input type="checkbox" value="Large neck size (greater than 17&quot; for men, greater than 16&quot; for women).">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Large neck size (greater than 17&quot; for men, greater than 16&quot; for women).">
                             <label>&nbsp;Large neck size (greater than 17" for men, greater than 16" for women)</label>
                         </div>
 
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Other">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Other">
                             <label> Other </label>
                         </div>
                     </div>
@@ -574,11 +574,11 @@
                             <div class="row">
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="answer" value="yes"> Yes</label>
+                                                               name="oxygen" id="oxygen" value="yes"> Yes</label>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="answer" value="no" > No</label>
+                                                               name="oxygen" id="oxygen" value="no" > No</label>
                                 </div>
                             </div>
                         </div>
@@ -615,7 +615,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea">
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea">
                             <label> G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea </label>
                         </div>
 
@@ -623,7 +623,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence">
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence">
                             <label > G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence </label>
 
                         </div>
@@ -637,7 +637,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="Commercial 95800">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Commercial 95800">
                             <label > Commercial 95800 </label>
 
                         </div>
@@ -645,7 +645,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="Medicare G0399">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Medicare G0399">
                             <label > Medicare G0399</label>
 
                         </div>
@@ -653,7 +653,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="Self-Pay $169">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Self-Pay $169">
                             <label > Self-Pay $169</label>
 
                         </div>
@@ -683,7 +683,7 @@
                                 <label>Referring Physician Name<span class="required">*</span> </label>
                                 <input type="text" value=""
                                        class="form-control custom-mainforminput "
-                                       name="referring_phy_name" id="referring_phy_name"  />
+                                       name="physician_name" id="physician_name"  />
                             </div>
 
                         </div>
@@ -693,7 +693,7 @@
                             <div id="sig1" class="kbw-signature"></div>  <br/>
 
                             <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                            <textarea id="signature641" name="signed" style="display: none"></textarea>
+                            <textarea id="signature" name="signature" style="display: none"></textarea>
 
                         </div>
 

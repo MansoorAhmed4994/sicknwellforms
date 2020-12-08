@@ -135,7 +135,7 @@
                                 <div class="padding-wrap">
                                     <input type="email"
                                            class="form-control custom-mainforminput  @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
-                                           name="patient_email" id="patient_email"/>
+                                           name="email" id="email"/>
                                 </div>
                             </div>
 
@@ -187,7 +187,7 @@
                                 <div id="sig" ></div>  <br/>
 
                                 <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                <textarea id="signature64" name="signed2" style="display: none"></textarea>
+                                <textarea id="parent_signature" name="parent_signature" style="display: none"></textarea>
 
                             </div>
 
@@ -197,7 +197,7 @@
                                 <label class="" for="">Witness Signature</label> <br/>
                                 <div class="padding-wrap">
                                 <div id="sig2" ></div>  <br/>
-                                <textarea id="signature642" name="signed" style="display: none" ></textarea>
+                                <textarea id="witness_signature" name="witness_signature" style="display: none" ></textarea>
                                 <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                 {{-- <button type="button" id="signaturebtn2"class="btn btn-success">Save</button>--}}
                                 </div>
@@ -223,7 +223,7 @@
                                 <div class="padding-wrap">
                             <input  type="text" value=""
                                     class="form-control custom-mainforminput dobpicker  "
-                                    name="wtodate" id="wtodate" readonly />
+                                    name="todate" id="todate" readonly />
                                 </div>
                             </div>
                             <div  class="col-12 col-md-2">
@@ -245,7 +245,7 @@
                                      <label >Today's Date</label>
                                      <input type="text" value=""
                                             class="form-control custom-mainforminput dobpicker  "
-                                            name="todate" id="todate" readonly />
+                                            name="wtodate" id="wtodate" readonly />
                                  </div>
 
                              </div>

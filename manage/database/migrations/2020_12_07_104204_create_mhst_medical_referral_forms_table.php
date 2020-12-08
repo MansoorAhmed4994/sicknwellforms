@@ -43,6 +43,8 @@ class CreateMhstMedicalReferralFormsTable extends Migration
             $table->text('card_front');
             $table->text('card_back');
             $table->text('symptoms');
+            $table->text('oxygen');
+            $table->text('lpm')->nullable;
             $table->text('diagnostic_codes');
             $table->text('sleep_testing');
             $table->text('comment');

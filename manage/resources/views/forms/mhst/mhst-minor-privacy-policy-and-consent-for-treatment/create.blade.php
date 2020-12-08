@@ -116,7 +116,7 @@
                                 <div class="padding-wrap">
                                     <input type="text"
                                            class="form-control custom-mainforminput "
-                                           name="parent_or_legal" id="parent_or_legal"
+                                           name="parent_name" id="parent_name"
                                            value="" />
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                 <div class="padding-wrap">
                                     <input type="email"
                                            class="form-control custom-mainforminput "
-                                           name="patient_email" id="patient_email"
+                                           name="email" id="email"
                                            value="" />
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                 <div class="padding-wrap">
                                     <input type="text"
                                            class="form-control custom-mainforminput "
-                                           name="parent_name" id="patients_name"
+                                           name="patient_name" id="patient_name"
                                            value="" />
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                                 <div id="sig" ></div>  <br/>
 
                                 <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                <textarea id="signature64" name="signed2" style="display: none"></textarea>
+                                <textarea id="parent_signature" name="parent_signature" style="display: none"></textarea>
 
                                {{-- <button type="button" id="signaturebtn"class="btn btn-success">Save</button>--}}
                             </div>
@@ -199,7 +199,7 @@
 
                                 <label class="" for="">Witness Signature</label> <br/>
                                 <div id="sig2" ></div>  <br/>
-                                <textarea id="signature642" name="signed" style="display: none" ></textarea>
+                                <textarea id="witness_signature" name="witness_signature" style="display: none" ></textarea>
                                 <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                                 {{-- <button type="button" id="signaturebtn2"class="btn btn-success">Save</button>--}}
                             </div>

@@ -1166,7 +1166,7 @@
                                 <div class="padding-wrap">
                                     <input type="text"
                                            class="form-control custom-mainforminput "
-                                           name="first_name_questions" id="first_name_questions"
+                                           name="name_questions" id="name_questions"
                                            value="" />
                                 </div>
                             </div>
@@ -1175,7 +1175,7 @@
                                 <div class="padding-wrap">
                                     <input type="email"
                                            class="form-control custom-mainforminput "
-                                           name="email_question" id="email_question"
+                                           name="email_questions" id="email_questions"
                                            value="" />
                                 </div>
                             </div>
@@ -1197,7 +1197,7 @@
                                     <label>Date of birth<span class="required">*</span></label>
                                     <input type="text" value=""
                                            class="form-control custom-mainforminput dobpicker  "
-                                           name="dob_question" id="dob_question" readonly />
+                                           name="dob_questions" id="dob_questions" readonly />
                                 </div>
                             </div>
                         </div>
@@ -1220,11 +1220,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="snoring" id="snoring" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="snoring" id="snoring" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1241,11 +1241,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="tired" id="tired" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="tired" id="tired" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1262,11 +1262,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="observed" id="observed" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="observed" id="observed" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1283,11 +1283,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="pressure" id="pressure" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="pressure" id="pressure" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1304,11 +1304,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="body" value="body"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="body" id="body" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1325,11 +1325,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="age" id="age" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="age" id="age" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1346,11 +1346,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="neck" id="neck" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="neck" id="neck" value="no" > No</label>
                             </div>
                         </div>
                         <div style="margin-top: 20px;">
@@ -1367,11 +1367,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes">  Yes</label>
+                                                           name="gender_questions" id="gender_questions" value="yes">  Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" >  No</label>
+                                                           name="gender_questions" id="gender_questions" value="no" >  No</label>
                             </div>
                         </div>
                         <div id="accordion3" class="custom-accordion">
