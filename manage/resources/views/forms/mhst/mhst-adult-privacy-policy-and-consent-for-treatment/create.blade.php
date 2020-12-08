@@ -207,7 +207,7 @@
                                     <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
 
                                 </div>
-                                <textarea id="signature642" name="signed2" style="display: none" ></textarea>
+                                <textarea id="witness_signature" name="witness_signature" style="display: none" ></textarea>
                                 <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; margin-right: 10px; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                             </div>
 

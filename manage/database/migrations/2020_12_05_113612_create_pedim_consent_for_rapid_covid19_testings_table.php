@@ -19,6 +19,7 @@ class CreatePedimConsentForRapidCovid19TestingsTable extends Migration
             $table->bigIncrements('id');
             $table->text('patient_name');
             $table->text('is_patient_minor');
+            $table->text('parent_guardian');
             $table->text('patient_email');
             $table->bigInteger('telephone');
             $table->text('sign_responsible_party');
