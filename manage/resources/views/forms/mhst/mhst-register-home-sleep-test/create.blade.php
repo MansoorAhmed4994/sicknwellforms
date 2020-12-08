@@ -130,7 +130,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
-                                                       name="number" id="number" value=""
+                                                       name="telephone" id="telephone" value=""
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
@@ -140,7 +140,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
-                                                       name="d_number" id="d_number" value=""
+                                                       name="telephone_d" id="telephone_d" value=""
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="state" id="state"
+                                                       name="state_name" id="state_name"
                                                        value="" />
                                             </div>
                                         </div>
@@ -168,7 +168,7 @@
                                     <label>How did you hear about us?<span class="required">*</span> </label>
                                     <select
                                             class="form-control custom-mainforminput  "
-                                            value="" name="hear_about_us" id="hear_about_us">
+                                            value="" name="contact_managment" id="contact_managment">
                                         <option value=""> </option>
                                         <option value="Google">Google</option>
                                         <option value="Facebook"> Facebook</option>
@@ -211,7 +211,7 @@
                                         <div class="padding-wrap">
                                             <input type="text"
                                                    class="form-control custom-mainforminput "
-                                                   name="shipping_line" id="shipping_line" value=""
+                                                   name="shipping_address_line_2" id="shipping_address_line_2" value=""
                                             />
                                         </div>
                                     </div>
@@ -240,7 +240,7 @@
                                         <div class="padding-wrap">
                                             <input type="text"
                                                    class="form-control custom-mainforminput "
-                                                   name="shipping_state" id="shipping_state" value=""
+                                                   name="state" id="state" value=""
                                             />
                                         </div>
                                     </div>
@@ -392,7 +392,7 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                                           name="pay_via_credit_card" id="pay_via_credit_card" value="98.00">  Telemedicine Consultation $ 98.00
+                                                                           name="   " value="98.00">  Telemedicine Consultation $ 98.00
 
                                                     <p style="font-size: 10pt; color: grey;">Consultation with Board Certified Sleep Doctor. Select this option if you have been referred by
                                                         Primary Doctor, Dentist or are experiencing sleep related issues.
@@ -404,7 +404,7 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="169.00">  Home Sleep Test $ 169.00
+                                                                           name=" " value="169.00">  Home Sleep Test $ 169.00
 
                                                     <p style="font-size: 10pt; color: grey;">Select this option if initial Sleep Consultation has already
                                                         been done by a Certified Sleep Doctor.
@@ -415,7 +415,7 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="98.00">  Telemedicine Follow-up Consultation $ 98.00
+                                                                           name=" " value="98.00">  Telemedicine Follow-up Consultation $ 98.00
 
                                                     <p style="font-size: 10pt; color: grey;">Consultation with Board Certified Sleep Doctor.
                                                         Follow-up consultation to discuss results and course of action needed.
@@ -427,7 +427,7 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="250.00">  Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00
+                                                                           name=" " value="250.00">  Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00
 
                                                     <p style="font-size: 10pt; color: grey;">Select this option if this is the first time dealing with issue or referred by your Primary Doctor or Dentist.
                                                         Telemedicine Consultation with Doctor and Home Sleep Test Package. $17.00 Savings.
@@ -439,7 +439,7 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="300.00">   Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00
+                                                                           name=" " value="300.00">   Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00
 
                                                     <p style="font-size: 10pt; color: grey;">Select this option if this is the first time dealing
                                                         with issue and referred by your Primary Doctor or Dentist. Telemedicine Consultation with Doctor.
@@ -574,7 +574,7 @@
                                                     <div class="padding-wrap">
                                                         <input type="file"
                                                                class="form-control custom-mainforminput "
-                                                               name="front_card" id="front_card"
+                                                               name="file" id="front_card"
                                                                value=""  />
                                                     </div>
                                                 </div>
@@ -586,7 +586,7 @@
                                                     <div class="padding-wrap">
                                                         <input type="file"
                                                                class="form-control custom-mainforminput "
-                                                               name="back_card" id="back_card"
+                                                               name="file" id="back_card"
                                                                value="" />
                                                     </div>
                                                 </div>
@@ -642,7 +642,7 @@
                                                     <div class="padding-wrap">
                                                         <input type="file"
                                                                class="form-control custom-mainforminput "
-                                                               name="phy_script" id="phy_script"
+                                                               name="file" id="phy_script"
                                                                value="" />
                                                     </div>
                                                 </div>
@@ -683,7 +683,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="name_patient_terms" id="name_patient_terms"
+                                                       name="patient_first_name" id="patient_first_name"
                                                        value="" />
                                             </div>
                                         </div>
@@ -703,7 +703,7 @@
 
                                                 <div class="col-12 col-md-4">
                                                     <label class="mt-2"><input id="checkbox_div" type="checkbox"
-                                                                               name="is_patient_minor" id="is_patient_minor" value="yes">Yes</label>
+                                                                               name=" " value="yes">Yes</label>
                                                 </div>
 
                                             </div>
@@ -735,7 +735,7 @@
                                             <div class="padding-wrap">
                                                 <input type="email"
                                                        class="form-control custom-mainforminput "
-                                                       name="email_patient_terms" id="email_patient_terms"
+                                                       name="patient_email_terms" id="patient_email_terms"
                                                        value="" />
                                             </div>
                                         </div>
@@ -745,7 +745,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
-                                                       name="telephone_patient_terms" id="telephone_patient_terms" value=""
+                                                       name="patient_telephone_terms" id="patient_telephone_terms" value=""
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
@@ -1030,7 +1030,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                                   name="term_condition" id="term_condition" value="">
+                                                   name=" " value="">
                                         I agree and have reviewed the Consent for Treatment Section.
                                     </label>
                                 </div>
@@ -1044,7 +1044,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                                   name="term_condition" id="term_condition" value="">
+                                                   name=" " value="">
                                         I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.
                                     </label>
                                 </div>
@@ -1058,7 +1058,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                                   name="term_condition" id="term_condition" value="">
+                                                   name=" " value="">
 
                                         I agree and accept the Financial Responsibility Section.
                                     </label>
@@ -1073,7 +1073,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                                   name="term_condition" id="term_condition" value="">
+                                                   name=" " value="">
 
                                         I agree to the Terms & Conditions.
                                     </label>
@@ -1088,7 +1088,7 @@
                                     <label>Today's Date<span class="required">*</span></label>
                                     <input type="text" value=""
                                            class="form-control custom-mainforminput dobpicker  "
-                                           name="todate" id="todate" readonly />
+                                           name="today_date" id="today_date" readonly />
                                 </div>
                             </div>
                         </div>
@@ -1103,7 +1103,7 @@
                                             <div  id="sig1"  style="width:380px !Important;height: 200px;" ></div>  <br/>
                                         </div>
                                         <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                        <textarea id="signature" name="signature" style="display: none"></textarea>
+                                        <textarea id="signature641" name="signed" style="display: none"></textarea>
 
                                     </div>
 
@@ -1113,7 +1113,7 @@
                                             <label>Type Full Name<span class="required">*</span> </label>
                                             <input type="text" value=""
                                                    class="form-control custom-mainforminput"
-                                                   name="full_name_patient_terms" id="full_name_patient_terms" />
+                                                   name="type_full_name" id="type_full_name" />
                                         </div>
 
                                     </div>
@@ -1127,7 +1127,7 @@
                             <div class="col-12 col-md-12">
                                 <label><span class="required">*</span> </label>
                                 <div class="row no-gutters">
-                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="">
+                                    <label><input type="radio" name=" " value="">
                                         &nbsp; I understand that checking this box constitutes a legal signature confirming that I
                                         acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents
                                     </label>
@@ -1135,7 +1135,7 @@
                                 </div>
                                 <br>
                                 <div class="row no-gutters">
-                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="">
+                                    <label><input type="radio" name=" " value="">
                                         &nbsp; Sign me up for continued sleep health tips and updates.</label>
                                 </div>
 

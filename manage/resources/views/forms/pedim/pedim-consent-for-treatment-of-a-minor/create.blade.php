@@ -34,6 +34,14 @@
 
     <script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+
+
     <script>
 
         function selectElement(id, valueToSelect) {
@@ -363,16 +371,14 @@
 
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-4">
-                                    <div id="signArea" >
                                         <label>Signature Parent/Guardian <span class="required">*</span> </label>
-                                        <div class="sig sigWrapper" style="height:auto;">
-                                            <div class="typed"></div>
-                                            <canvas class="sign-pad" id="sign-pad" width="300" height="100"></canvas>
+                                        <div>
+                                            <div  id="sig"  ></div>  <br/>
                                         </div>
-                                        <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
-                Clear
-              </span>
-                                    </div>
+
+                                        <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                        <textarea id="signature64" name="signed" style="display: none"></textarea>
+
                                 </div>
 
                                 <div class="col-12 col-md-3">
@@ -402,7 +408,7 @@
                 <div class="form-section last mb-5">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Submit"
-                               id="btnSaveSign2"
+                               id="signaturebtn "
                                class="submitbtn" style="background: red;" />
                     </div>
                 </div>
@@ -414,28 +420,40 @@
     </main>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('#signArea').signaturePad({drawOnly:true, drawBezierCurves:true, lineTop:90});
+<script type="text/javascript">
+    var base_url = '<?php echo e(url('/')); ?>';
+    var token = "<?php echo csrf_token() ?>";
+    var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
+
+    $('#clear').click(function(e) {
+        e.preventDefault();
+        sig.signature('clear');
+        $("#signature64").val('');
     });
 
-    $("#btnSaveSign2").click(function(e){
-        html2canvas([document.getElementById('sign-pad')], {
-            onrendered: function (canvas) {
-                var canvas_img_data = canvas.toDataURL('image/png');
-                var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
-                $.ajax({
-                    url: 'save_sign.php',
-                    data: { img_data:img_data },
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+
+
+
+    $('#signaturebtn').on('click', function(e)
+    {
+        var signature = jQuery("#signature64").val();
+        alert(signature);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert('save');
             }
         });
-    });
+    })
 
 </script>
 

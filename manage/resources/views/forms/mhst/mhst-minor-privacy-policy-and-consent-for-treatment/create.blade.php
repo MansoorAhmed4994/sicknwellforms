@@ -186,27 +186,29 @@
                         <div class="row no-gutters">
                             <div class="col-12 col-md-4">
                                 <label class="" for="">Parent or Legal Guardian Signature</label>
-                                <div id="sig" ></div>  <br/>
+                                <div>
+                                    <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                </div>
 
-                                <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                <textarea id="parent_signature" name="parent_signature" style="display: none"></textarea>
 
-                               {{-- <button type="button" id="signaturebtn"class="btn btn-success">Save</button>--}}
+                                <textarea id="signature64" name="signed" style="display: none"></textarea>
+                                <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; margin-right: 10px; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+
+
                             </div>
 
 
                             <div style="margin-left: 20px;" class="col-12 col-md-4">
 
-                                <label class="" for="">Witness Signature</label> <br/>
-                                <div id="sig2" ></div>  <br/>
-                                <textarea id="witness_signature" name="witness_signature" style="display: none" ></textarea>
-                                <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                {{-- <button type="button" id="signaturebtn2"class="btn btn-success">Save</button>--}}
+
+                                <label class="" for="">Witness Signature</label>
+                                <div>
+                                    <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                </div>
+                                <textarea id="signature642" name="signed2" style="display: none" ></textarea>
+                                <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; margin-right: 10px; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+
                             </div>
-
-
-
-
 
 
                         </div>
@@ -262,13 +264,12 @@
                 </div>
                 <hr>
 
-                <div class="form-section last mb-5">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Submit"
                                id="signaturebtn"
                                class="submitbtn" style="background: red;" />
                     </div>
-                </div>
+
 
 
             </form>
@@ -296,7 +297,7 @@
 
     $('#clear2').click(function(e) {
         e.preventDefault();
-        sig.signature('clear');
+        sig2.signature('clear');
         $("#signature642").val('');
     });
 
@@ -325,7 +326,7 @@
 
     $('#signaturebtn').on('click', function(e)
     {
-        var signature = jQuery("#signature64").val();
+        var signature = jQuery("#signature642").val();
         alert(signature);
         $.ajax({
             headers: {
