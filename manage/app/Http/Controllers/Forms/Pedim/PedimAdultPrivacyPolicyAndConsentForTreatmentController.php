@@ -58,6 +58,42 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
     public function store(Request $request)
     {
         //
+        $valiedation_from_array = [
+            
+            'patient_name' => 'required',
+            'telephone' => 'required',
+            'email' => 'required',
+            'date_of_birth' => 'required',
+            'patient_signature' => 'required',
+            'patients_today_date' => 'required',
+            'witness_signature' => 'required',
+            'witness_name' => 'required',  
+            'witness_today_date' => 'required'
+
+        ];
+
+        
+        $this->validate($request, $valiedation_from_array);
+        
+        
+        
+        $adult_privacy_policy = new Adult_privacy_policy();
+        $adult_privacy_policy->patient_name = request('patient_name');
+        $adult_privacy_policy->patient_name = request('telephone');
+        $adult_privacy_policy->patient_name = request('email');
+        $adult_privacy_policy->patient_name = request('date_of_birth');
+        $adult_privacy_policy->patient_name = request('patient_signature');
+        $adult_privacy_policy->patient_name = request('patients_today_date');
+        $adult_privacy_policy->patient_name = request('witness_signature');
+        $adult_privacy_policy->patient_name = request('witness_name');
+        $adult_privacy_policy->patient_name = request('witness_today_date');
+        $adult_privacy_policy->client_forms_id = request('client_forms_id');   
+        $adult_privacy_policy->status = 'active';  
+        $adult_privacy_policy->save();
+
+
+        session()->flash("success","Successfully Submited");  
+        return view('forms.status');
     }
 
     /**

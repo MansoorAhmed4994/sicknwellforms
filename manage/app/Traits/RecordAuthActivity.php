@@ -19,7 +19,7 @@ trait RecordAuthActivity
             {
                 $table->updated_by = '1';
             }
-        });
+        }); 
         
         static::creating(function ($table) {
             if ($table->hasAColumn('created_by') && $table->hasAColumn('updated_by') && auth()->user()) {
