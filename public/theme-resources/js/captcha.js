@@ -10,9 +10,9 @@ $(document).ready(function(){
 
 
 
-    $('#send').click(function(e) {
+    $('form').submit(function(e) {
 
-        e.preventDefault();
+        
 
         var answer       = $('input[name="answer"]').val();
         var firstNumber  =  $('input[name="firstNumber"]').val();
@@ -32,11 +32,14 @@ $(document).ready(function(){
                 $('#captchaQuest').html(random1 + ' + ' + random2 + ' = ');
 
                 $('#status').html("Answer is wrong, try again."), $('#status').css('color', 'red');
+                e.preventDefault();
             }else{
                 $('#status').html("Answer is right, Form is submitted."), $('#status').css('color', 'green');
+                return true;
             }
         } else {
             $('#status').html("Please answer the captcha."), $('#status').css('color', 'red');
+            e.preventDefault();
         }
     });
 });

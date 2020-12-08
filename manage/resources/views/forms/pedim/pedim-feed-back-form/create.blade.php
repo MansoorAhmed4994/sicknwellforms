@@ -75,13 +75,13 @@
 </head>
 <body>
 
-
+@include('forms.alerts.notifications')
 <div class="wrapper d-flex flex-column">
     <main class="flex-1 d-flex">
         <style>
             body {
                 overflow-y: auto;
-            }
+            } 
         </style>
         <div class="qcm-form">
             <form method="post" action="{{route('PedimFeedBackForm.create')}}" class="position-relative">
@@ -110,26 +110,23 @@
                                 <div class="col-12 col-md-4">
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
-                                        <input type="text" class="form-control custom-mainforminput" name="patient_name" id="patient_name" value="" />
+                                        <input type="text" class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}" name="patient_name" id="patient_name" />
                                     </div> 
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <label>Date of Appointment</label>
-                                    <div class="padding-wrap">
-  
-                                        <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
-                                               name="appointment_date" id="appointment_date" readonly />
+                                    <div class="padding-wrap"> 
+                                        <input type="text" class="form-control custom-mainforminput dobpicker @if($errors->get('appointment_date')) is-invalid @endif"name="appointment_date" value="{{old('appointment_date')}}" id="appointment_date" readonly />
                                     </div>
-                                </div>
+                                </div> 
 
                                 <div class="col-12 col-md-4">
                                     <label>Time of Appointment </label>
                                     <div class="padding-wrap">
-                                        <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="appointment_time" id="appointment_time"
-                                               value="" />
+                                        <input type="time"
+                                               class="form-control custom-mainforminput  @if($errors->get('appointment_time')) is-invalid @endif"
+                                               name="appointment_time" value="{{old('appointment_time')}}" id="appointment_time"
+                                                 />
                                     </div>
                                 </div>
 
@@ -145,8 +142,8 @@
                             <label>Contact Number <span class="required">*</span></label>
                             <div class="padding-wrap">
                                 <input type="tel"
-                                       class="form-control custom-mainforminput "
-                                       name="number" id="number" value=""
+                                       class="form-control custom-mainforminput  @if($errors->get('number')) is-invalid @endif"
+                                       name="number" id="number"  value="{{old('number')}}"
                                        data-inputmask='"mask": "(999) 999-9999"' data-mask /></div>
                         </div>
 
@@ -154,18 +151,18 @@
                             <label>Email </label>
                             <div class="padding-wrap">
                                 <input type="email"
-                                       class="form-control custom-mainforminput "
+                                       class="form-control custom-mainforminput  @if($errors->get('patient_email')) is-invalid @endif"
                                        name="patient_email" id="patient_email"
-                                       value="" />
+                                       value="{{old('patient_email')}}" />
                                 <p><small>example@example.com</small></p>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <label>I would like to be contacted by management</label>
                             <select
-                                    class="form-control custom-mainforminput  "
-                                    value="" name="contact_managment" id="contact_managment">
-                                <option value=""> </option>
+                                    class="form-control custom-mainforminput   @if($errors->get('contact_managment')) is-invalid @endif"
+                                     name="contact_managment" id="contact_managment">
+                                <option value="">Select Option</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
@@ -178,9 +175,9 @@
                         <div class="col-12 col-md-8">
                             <label>Please tell us about your visit. <span class="required">*</span></label>
                             <textarea
-                                    class="form-control custom-mainforminput "
-                                    rows="5" name="description"
-                                    id="description"></textarea>
+                                    class="form-control custom-mainforminput  @if($errors->get('description')) is-invalid @endif"
+                                    rows="5" name="description" 
+                                    id="description"> {{old('description')}}</textarea>
                         </div>
                     </div>
 
@@ -200,9 +197,7 @@
                                     <p id="captchaQuest" style="width: 90px"></p>
                                     <input class="form-control " type="text" name="answer" id="answer"/>
                                 </div>
-
-                            </form>
-
+ 
                         </div>
 
                     </div>
@@ -212,9 +207,7 @@
 
                 <div class="form-section last mb-5 ">
                     <div class="d-flex justify-content-center">
-                        <input type="submit" value="Submit"
-                               id="send"
-                               class="submitbtn" style="background: red;" />
+                        <input type="submit" value="submit" id="send" class="submitbtn" style="background: red;" />
 
                     </div>
                     <p id="status"></p>
@@ -227,7 +220,10 @@
     </main>
 </div>
 
+<script>
 
+    selectElement('contact_managment', '{{old('contact_managment')}}');
+</script>
 
 <script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>
 

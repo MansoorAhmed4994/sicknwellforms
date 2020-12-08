@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePedimFeedbackFormsTable extends Migration
+class CreatePedimFeedbackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,13 @@ class CreatePedimFeedbackFormsTable extends Migration
     public function up()
     {
         //
-        Schema::create('pedim_feedback_forms', function (Blueprint $table) {
+        Schema::create('pedim_feed_backs', function (Blueprint $table) {
 
             $table->bigIncrements('id');
             $table->text('patient_name');
             $table->date('appointment_date');
             $table->time('appointment_time');
-            $table->bigInteger('number');
+            $table->text('number');
             $table->text('patient_email');
             $table->text('contact_managment');
             $table->text('description');
@@ -42,6 +42,6 @@ class CreatePedimFeedbackFormsTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('pedim_feedback_forms');
+        Schema::dropIfExists('pedim_feed_backs');
     }
 }
