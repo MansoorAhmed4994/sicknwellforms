@@ -28,10 +28,7 @@
     </script>
 </head>
 
-<body>
-    @if(count($errors) > 0)
-    
-    @endif
+<body> 
 
 
 
@@ -44,20 +41,18 @@
             </style>
             <div class="qcm-form">
                 <?php
-        $start_date = "";
-        $end_date = "";
-        $time_zone = "";
-        //echo $appoint_date_range->start_date;
-        if($appoint_date_range != null)
-        {
-            echo 
-            $start_date = "";
-            $end_date = "";
-            $time_zone = "Pacific/Wake";
-        } 
-         
-        
-        ?>
+                    $start_date = "";
+                    $end_date = "";
+                    $time_zone = "";
+                    //echo $appoint_date_range->start_date;
+                    if($appoint_date_range != null)
+                    {
+                        echo 
+                        $start_date = "";
+                        $end_date = "";
+                        $time_zone = "Pacific/Wake";
+                    }  
+                ?>
 
 
                 <form method="post" action="{{route('InOfficeAppointments.create')}}" class="position-relative">

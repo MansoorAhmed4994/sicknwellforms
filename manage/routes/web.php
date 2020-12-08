@@ -104,7 +104,7 @@ Route::post('/PedimPediatricPatientInformation/create', 'Forms\Pedim\PedimPediat
 //PedimTelemedicineController CRUD 
 Route::get('/PedimTelemedicine/{clien_form_id}', 'Forms\Pedim\PedimTelemedicineController@create')->name('PedimTelemedicine');
 Route::post('/PedimTelemedicine/create', 'Forms\Pedim\PedimTelemedicineController@store')->name('PedimTelemedicine.create');
- 
+  
 //PedimFeedBackFormController CRUD
 Route::get('/PedimFeedBackForm/{clien_form_id}', 'Forms\Pedim\PedimFeedBackFormController@create')->name('PedimFeedBackForm');
 Route::post('/PedimFeedBackForm/create', 'Forms\Pedim\PedimFeedBackFormController@store')->name('PedimFeedBackForm.create');

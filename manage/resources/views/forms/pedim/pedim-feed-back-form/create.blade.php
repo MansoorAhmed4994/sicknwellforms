@@ -84,7 +84,11 @@
             }
         </style>
         <div class="qcm-form">
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
+            <form method="post" action="{{route('PedimFeedBackForm.create')}}" class="position-relative">
+                {{csrf_field()}} 
+                <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+                <input type="hidden" value="pedim_feedback_forms" id="table_name" name="table_name">
+             
 
                 <div class="top-section">
                     <h2>SicknWell Feedback Form</h2>
@@ -106,16 +110,13 @@
                                 <div class="col-12 col-md-4">
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
-                                        <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="patient_name" id="patient_name"
-                                               value="" />
-                                    </div>
+                                        <input type="text" class="form-control custom-mainforminput" name="patient_name" id="patient_name" value="" />
+                                    </div> 
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <label>Date of Appointment</label>
                                     <div class="padding-wrap">
-
+  
                                         <input type="text" value=""
                                                class="form-control custom-mainforminput dobpicker  "
                                                name="appointment_date" id="appointment_date" readonly />
