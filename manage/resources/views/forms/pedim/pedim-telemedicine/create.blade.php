@@ -77,18 +77,35 @@
             }
         </style>
         <div class="qcm-form">
+        <?php
+        $start_date = "";
+        $end_date = "";
+        $time_zone = "";
+        //echo $appoint_date_range->start_date;
+        if($appoint_date_range != null)
+        {
+            echo 
+            $start_date = "";
+            $end_date = "";
+            $time_zone = "Pacific/Wake";
+        } 
+         
+        
+        ?>
 
 
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
+            <form method="post" action="{{route('PedimTelemedicine.create')}}" class="position-relative">
 
-                <input type="hidden" name="_token" value="RQZ901nX00yK0gQppO77Mv2Pg5PlN1VondUInwfR">
+            {{csrf_field()}} 
+                    <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+                    <input type="hidden" value="{{$time_before_interval ? $time_before_interval : '0'}}" id="time_before_interval" name="time_before_interval">
+                    <input type="hidden" value="{{$start_date}}" id="start_date_limit" name="start_date_limit">
+                    <input type="hidden" value="{{$end_date}}" id="end_date_limit" name="end_date_limit">
+                    <input type="hidden" value="{{$time_zone}}" id="time_zone" name="time_zone">
+                    <input type="hidden" value="pedim_telemedicines" id="table_name" name="table_name">
+                
 
-                <input type="hidden" value="" id="client_forms_id" name="client_forms_id">
-
-                <input type="hidden" value="" id="time_before_interval" name="time_before_interval">
-                <input type="hidden" value="" id="start_date_limit" name="start_date_limit">
-                <input type="hidden" value="" id="end_date_limit" name="end_date_limit">
-                <input type="hidden" value="Pacific/Wake" id="time_zone" name="time_zone">
+                
                 <div class="custom-wizard">
                     <div class="wizard-sec active ">
                         <div class="top-section">
