@@ -35,6 +35,13 @@
 
     <script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+
     <script>
 
         function selectElement(id, valueToSelect) {
@@ -119,7 +126,7 @@
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
-                                               name="parent_name" id="patients_name"
+                                               name="patient_name" id="patient_name"
                                                value="" />
                                     </div>
                                 </div>
@@ -149,34 +156,58 @@
                     </div>
 
 
+
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-4">
+<<<<<<< Updated upstream
+                                    <label class="" for="">Parent/Legal Guardian</label>
+                                    <div>
+                                        <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                    </div>
+
+                                    <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <textarea id="signature64" name="signed" style="display: none"></textarea>
+
+=======
                                     <div id="signArea" >
                                         <label>Parent/Legal Guardian</label>
                                         <div class="sig sigWrapper" style="height:auto;">
                                             <div class="typed"></div>
-                                            <canvas class="sign-pad" id="sign-pad" width="300" height="100"></canvas>
+                                            <canvas class="sign-pad" name="sign_parent" id="sign_parent" width="300" height="100"></canvas>
                                         </div>
                                         <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
                 Clear
               </span>
                                     </div>
+>>>>>>> Stashed changes
                                 </div>
+                                <div style="margin-left: 20px;" class="col-12 col-md-4">
+                                    <label class="" for="">Witness Signature</label>
+                                    <div>
+                                        <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                    </div>
 
+                                    <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <textarea id="signature642" name="signed2" style="display: none"></textarea>
+
+<<<<<<< Updated upstream
+=======
                                 <div class="col-12 col-md-4">
                                     <div id="signArea_w" >
                                         <label>Witness Signature</label>
                                         <div class="sig sigWrapper" style="height:auto;">
                                             <div class="typed"></div>
-                                            <canvas class="sign-pad" id="sign-pad_w" width="300" height="100"></canvas>
+                                            <canvas class="sign-pad" name="sign_witness" id="sign_witness" width="300" height="100"></canvas>
                                         </div>
                                         <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
                 Clear
               </span>
                                     </div>
+>>>>>>> Stashed changes
                                 </div>
+
 
                             </div>
                         </div>
@@ -236,7 +267,7 @@
                 <div class="form-section last mb-5">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Submit"
-                               id="btnSaveSign2"
+                               id="signaturebtn"
                                class="submitbtn" style="background: red;" />
                     </div>
                 </div>
@@ -248,56 +279,71 @@
     </main>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('#signArea').signaturePad({drawOnly:true, drawBezierCurves:true, lineTop:90});
+
+
+<script type="text/javascript">
+    var base_url = '<?php echo e(url('/')); ?>';
+    var token = "<?php echo csrf_token() ?>";
+    var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
+
+    $('#clear').click(function(e) {
+        e.preventDefault();
+        sig.signature('clear');
+        $("#signature64").val('');
     });
 
-    $("#btnSaveSign2").click(function(e){
-        html2canvas([document.getElementById('sign-pad')], {
-            onrendered: function (canvas) {
-                var canvas_img_data = canvas.toDataURL('image/png');
-                var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
-                //ajax call to save image inside folder
-                $.ajax({
-                    url: 'save_sign.php',
-                    data: { img_data:img_data },
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+
+    var sig2 = $('#sig2').signature({syncField: '#signature642', syncFormat: 'PNG'});
+
+    $('#clear2').click(function(e) {
+        e.preventDefault();
+        sig2.signature('clear');
+        $("#signature642").val('');
+    });
+
+
+
+    $('#signaturebtn').on('click', function(e)
+    {
+        var signature = jQuery("#signature64").val();
+        alert(signature);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert('save');
             }
         });
-    });
+    })
 
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('#signArea_w').signaturePad({drawOnly:true, drawBezierCurves:true, lineTop:90});
-    });
-
-    $("#btnSaveSign").click(function(e){
-        html2canvas([document.getElementById('sign-pad_w')], {
-            onrendered: function (canvas) {
-                var canvas_img_data = canvas.toDataURL('image/png');
-                var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
-                //ajax call to save image inside folder
-                $.ajax({
-                    url: 'save_sign.php',
-                    data: { img_data:img_data },
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+    $('#signaturebtn').on('click', function(e)
+    {
+        var signature = jQuery("#signature642").val();
+        alert(signature);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert(response);
             }
         });
-    });
-
+    })
 </script>
 
 

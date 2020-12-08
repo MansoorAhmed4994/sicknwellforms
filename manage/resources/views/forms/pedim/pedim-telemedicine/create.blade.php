@@ -133,8 +133,8 @@
                                     <label>Description of issue <span class="required">*</span></label>
                                     <textarea
                                             class="form-control custom-mainforminput "
-                                            rows="5" name="description"
-                                            id="description"></textarea>
+                                            rows="5" name="description_of_issue"
+                                            id="description_of_issue"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row margin-top">
@@ -162,7 +162,7 @@
                                 <div class="col-12 col-md-4"></div>
                                 <div class="col-12 col-md-4">
 
-                                    <select class="timezonePicker" id="timezonepicker">
+                                    <select class="timezonePicker" id="pacific" name="pacific">
                                         <option value="Europe/Andorra">Europe/Andorra</option>
                                         <option value="Asia/Dubai">Asia/Dubai</option>
                                         <option value="Asia/Kabul">Asia/Kabul</option>
@@ -616,7 +616,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="patient_first_name" id="patient_first_name"
+                                                       name="patient_fname" id="patient_fname"
                                                        value="" />
                                                 <p><small>First name</small></p>
                                             </div>
@@ -625,7 +625,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="patient_middle_name" id="patient_middle_name"
+                                                       name="patient_mname" id="patient_mname"
                                                        value="" />
                                                 <p><small>Middle name</small></p>
                                             </div>
@@ -634,7 +634,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="patient_last_name" id="patient_last_name"
+                                                       name="patient_lname" id="patient_lname"
                                                        value="" />
                                                 <p><small>Last name</small></p>
 
@@ -686,7 +686,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="patient_first_name" id="patient_first_name"
+                                                       name="guardian_fname" id="guardian_fname"
                                                        value="" />
                                                 <p><small>First name</small></p>
                                             </div>
@@ -695,7 +695,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="patient_middle_name" id="patient_middle_name"
+                                                       name="guardian_mname" id="guardian_mname"
                                                        value="" />
                                                 <p><small>Middle name</small></p>
                                             </div>
@@ -704,7 +704,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text"
                                                        class="form-control custom-mainforminput "
-                                                       name="patient_last_name" id="patient_last_name"
+                                                       name="guardian_lname" id="guardian_lname"
                                                        value="" />
                                                 <p><small>Last name</small></p>
 
@@ -738,50 +738,50 @@
                                     <label>Symptoms you are experiencing <span class="required">*</span></label>
                                     <textarea
                                             class="form-control custom-mainforminput "
-                                            rows="5" name="description"
-                                            id="description"></textarea>
+                                            rows="5" name="symptoms"
+                                            id="symptoms"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-3">
                                     <label>Responsible Party (If Minor)</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="" id=""
+                                    <input type="text" class="form-control custom-mainforminput " name="responsible_party_name" id="responsible_party_name"
                                            value="">
                                     <p><small>Enter Full Legal Name
                                         </small></p>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label>Full Name of Insurance Subscriber</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="" id=""
+                                    <input type="text" class="form-control custom-mainforminput " name="insurance_subscriber" id="insurance_subscriber"
                                            value="">
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Relation to patient</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="" id=""
+                                    <input type="text" class="form-control custom-mainforminput " name="relation_patient" id="relation_patient"
                                            value="">
                                     <p><small>Self, Father, Mother, Son, etc.
                                         </small></p>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Telephone <span class="required">*</span></label>
-                                    <input type="tel" class="form-control custom-mainforminput " name="" id=""
+                                    <input type="tel" class="form-control custom-mainforminput " name="insurance_telephone" id="insurance_telephone"
                                            value="">
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
-                                    <input type="email" class="form-control custom-mainforminput " name="" id=""
+                                    <input type="email" class="form-control custom-mainforminput " name="insurance_email" id="insurance_email"
                                            value="">
                                 </div>
                             </div>
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-3">
                                     <label>Primary Insurance Company</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="" id=""
+                                    <input type="text" class="form-control custom-mainforminput " name="primary_insurance_company" id="primary_insurance_company"
                                            value="">
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label>Secondary Insurance Company</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="" id=""
+                                    <input type="text" class="form-control custom-mainforminput " name="secondary_insurance_company" id="secondary_insurance_company"
                                            value="">
                                 </div>
                             </div>
@@ -1013,7 +1013,7 @@
                                         <div class="col-12 col-md-2">
                                             <div class="padding-wrap">
                                                 <label>Click To Accept <span class="required">*</span></label><br />
-                                                <label class="mt-2"><input type="checkbox" class="mr-2" name=""
+                                                <label class="mt-2"><input type="checkbox" class="mr-2" name="accept_financial_policy" id="accept_financial_policy"
                                                                            value="accept">Accept</label>
                                             </div>
                                         </div>
@@ -1022,7 +1022,7 @@
                                                 <label>Date</label>
                                                 <input type="text"
                                                        class="form-control custom-mainforminput todayDatePicker"
-                                                       name="" id="" readonly />
+                                                       name="fp_date" id="fp_date" readonly />
                                             </div>
                                         </div>
                                     </div>
@@ -1098,7 +1098,7 @@
                                         <div class="col-12 col-md-2">
                                             <div class="padding-wrap">
                                                 <label>Click To Accept <span class="required">*</span></label><br />
-                                                <label class="mt-2"><input type="checkbox" class="mr-2" name=""
+                                                <label class="mt-2"><input type="checkbox" class="mr-2" name="accept_consent_for_treatment" id="accept_consent_for_treatment"
                                                                            value="accept">Accept</label>
                                             </div>
                                         </div>
@@ -1107,7 +1107,7 @@
                                                 <label>Date</label>
                                                 <input type="text"
                                                        class="form-control custom-mainforminput todayDatePicker"
-                                                       name="" id="" readonly />
+                                                       name="cft_date" id="cft_date" readonly />
                                             </div>
                                         </div>
                                     </div>
@@ -1123,39 +1123,39 @@
                                     <div class="row">
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Google">Google</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Google">Google</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Facebook">Facebook</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Facebook">Facebook</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Website">Website</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Website">Website</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Email">Email</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Email">Email</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Friends/Family">Friends/Family</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Friends/Family">Friends/Family</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Billboard">Billboard</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Billboard">Billboard</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Radio">Radio</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Radio">Radio</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="" value="Drove By">Drove By</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Drove By">Drove By</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2 d-flex align-items-center"><input type="checkbox" class="mr-2"
-                                                                                                 name="" value="Other"><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
+                                                                        name="hear_about_us" id="hear_about_us" value="Other"><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
                                         </div>
                                     </div>
                                 </div>

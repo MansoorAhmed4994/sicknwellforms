@@ -34,6 +34,16 @@
 
     <script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
 
+
+    <!--Scripts of Signatures-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+
+    <!--Scripts of Signatures-->
     <script>
 
         function selectElement(id, valueToSelect) {
@@ -79,13 +89,13 @@
 
                     <strong style="color: blue; font-size: 14pt" >Physician Information</strong>
                 </div>
-                <div class="form-section">
+
                     <div class="form-group row mt-4">
 
                         <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Provider Name
                                     </label>
                                     <div class="padding-wrap">
@@ -96,7 +106,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Telephone </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
@@ -106,7 +116,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Fax </label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -117,12 +127,22 @@
                                 </div>
 
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Emails </label>
                                     <div class="padding-wrap">
                                         <input type="email"
                                                class="form-control custom-mainforminput "
-                                               name="patient_email" id="patient_email"
+                                               name="email" id="email"
+                                               value="" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <label>Contact Person / Referral Coordinator
+                                    </label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="contact_person" id="contact_person"
                                                value="" />
                                     </div>
                                 </div>
@@ -133,19 +153,10 @@
 
                     </div>
                     <div class="row no-gutters">
-                        <div class="col-12 col-md-3">
-                            <label>Contact Person / Referral Coordinator
-                            </label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="contact_person" id="contact_person"
-                                       value="" />
-                            </div>
-                        </div>
+
                     </div>
 
-                </div>
+              <hr>
 
 
                     <div id="accordion" class="custom-accordion">
@@ -177,7 +188,7 @@
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                            class="form-control custom-mainforminput "
-                                                           name="Address_1" id="Address_1"
+                                                           name="address" id="address"
                                                            value="" />
                                                 </div>
                                             </div>
@@ -187,7 +198,7 @@
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                            class="form-control custom-mainforminput "
-                                                           name="Address_2" id="Address_2"
+                                                           name="address_2" id="address_2"
                                                            value="" />
                                                 </div>
                                             </div>
@@ -234,14 +245,13 @@
                         </div>
                     </div>
 
-                <div class="form-section">
-
+             <hr>
                     <strong style="color: blue; font-size: 14pt" >Patient Information</strong>
 
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-2">
                                     <label>Patient Name
                                     </label>
                                     <div class="padding-wrap">
@@ -257,7 +267,7 @@
                                         <label>Date of birth</label>
                                         <input type="text" value=""
                                                class="form-control custom-mainforminput dobpicker  "
-                                               name="dob_question" id="dob_question" readonly />
+                                               name="dob" id="dob" readonly />
                                     </div>
                                 </div>
 
@@ -266,7 +276,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                                class="form-control custom-mainforminput "
-                                               name="phone_number" id="phone_number" value=""
+                                               name="phone" id="phone" value=""
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>
@@ -277,8 +287,27 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                                class="form-control custom-mainforminput "
-                                               name="alternate_telephone" id="alternate_telephone" value=""
+                                               name="alternate_phone" id="alternate_phone" value=""
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-2">
+                                    <label>Email</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="email_patient" id="email_patient"
+                                               value="" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <label>City</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="city" id="city_patient"
+                                               value="" />
                                     </div>
                                 </div>
 
@@ -289,22 +318,37 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                        <div class="col-12 col-md-3">
-                            <label>Email</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="email_patient" id="email_patient"
-                                       value="" />
-                            </div>
-                        </div>
 
-                        <div class="col-12 col-md-3">
+
+
+                                <div class="col-12 col-md-2">
+                                    <label>State</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="state" id="state_patient"
+                                               value="" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12 col-md-2">
+                                    <label>Zip</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="zip" id="zip_patient"
+                                               value="" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12 col-md-3">
                             <label>Address</label>
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="Address_patient" id="Address_patient"
+                                       name="address_patient" id="address_patient"
                                        value="" />
                             </div>
                         </div>
@@ -314,10 +358,20 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="Address_2_patient" id="Address_2_patient"
+                                       name="address_2_patient" id="address_2_patient"
                                        value="" />
                             </div>
                         </div>
+
+                                <div class="col-12 col-md-2">
+                                    <label>Height</label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput "
+                                               name="height" id="height"
+                                               value="" />
+                                    </div>
+                                </div>
 
                             </div></div>
                     </div>
@@ -325,12 +379,13 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
+<<<<<<< HEAD
                         <div class="col-12 col-md-3">
                             <label>City</label>
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="city" id="city_patient"
+                                       name="city_patient" id="city_patient"
                                        value="" />
                             </div>
                         </div>
@@ -340,7 +395,7 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="state" id="state_patient"
+                                       name="state_patient" id="state_patient"
                                        value="" />
                             </div>
                         </div>
@@ -349,7 +404,7 @@
                             <div class="padding-wrap">
                                 <input type="text"
                                        class="form-control custom-mainforminput "
-                                       name="zip" id="zip_patient"
+                                       name="zip_patient" id="zip_patient"
                                        value="" />
                             </div>
                         </div>
@@ -367,8 +422,11 @@
                                        value="" />
                             </div>
                         </div>
+=======
 
-                        <div class="col-12 col-md-3">
+>>>>>>> c3d5be79c8d5bfeb5c93f920b0337e359af8094e
+
+                        <div class="col-12 col-md-2">
                             <label>Weight</label>
                             <div class="padding-wrap">
                                 <input type="text"
@@ -377,7 +435,7 @@
                                        value="" />
                             </div>
                         </div>
-                        <div class="col-12 col-md-3">
+                        <div class="col-12 col-md-2">
                             <label>Neck Size</label>
                             <div class="padding-wrap">
                                 <input type="text"
@@ -386,17 +444,15 @@
                                        value="" />
                             </div>
                         </div>
-                            </div></div>
-                    </div>
-                    <div class="form-group row mt-4">
 
+<<<<<<< HEAD
                         <div class="col-12 col-md-4">
 
                             <label>Insurance Card Front</label>
                             <div class="padding-wrap">
                                 <input type="file"
                                        class="form-control custom-mainforminput "
-                                       name="file" id="front_card"
+                                       name="card_front" id="card_front"
                                        value=""  />
                             </div>
                         </div>
@@ -406,24 +462,43 @@
                             <div class="padding-wrap">
                                 <input type="file"
                                        class="form-control custom-mainforminput "
-                                       name="file" id="back_card"
+                                       name="card_back" id="card_back"
                                        value="" />
                             </div>
                         </div>
+=======
+                                <div class="col-12 col-md-3">
 
+                                    <label>Insurance Card Front</label>
+                                    <div class="padding-wrap">
+                                        <input type="file"
+                                               class="form-control custom-mainforminput "
+                                               name="file" id="front_card"
+                                               value=""  />
+                                    </div>
+                                </div>
+>>>>>>> c3d5be79c8d5bfeb5c93f920b0337e359af8094e
+
+                                <div class="col-12 col-md-3">
+                                    <label>Insurance Card Back</label>
+                                    <div class="padding-wrap">
+                                        <input type="file"
+                                               class="form-control custom-mainforminput "
+                                               name="file" id="back_card"
+                                               value="" />
+                                    </div>
+                                </div>
+                            </div></div>
                     </div>
 
-
-                </div>
+<hr>
 
                 <div class="form-section">
                     <strong style="color: blue; font-size: 14pt">Section A<small> - Reason for Study: Please check all that apply (minimum of TWO).</small></strong>
                 </div>
 
-                <div class="form-section">
 
-
-                    <strong style="color: blue; font-size: 14pt">Symptoms or Medical History</strong>
+                    <h3 style="color: blue; font-size: 14pt; margin-top: 10px;">Symptoms or Medical History</h3 >
 
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
@@ -436,16 +511,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="*Hypertention">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Hypertention">
                             <label> *Hypertention </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*History of Stroke">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*History of Stroke">
                             <label > *History of Stroke </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*Impaired Cognition">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Impaired Cognition">
                             <label > *Impaired Cognition </label>
                         </div>
                     </div>
@@ -453,16 +528,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="*Ischemic Heart Disease">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Ischemic Heart Disease">
                             <label> *Ischemic Heart Disease </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*Mood Disorders">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Mood Disorders">
                             <label > *Mood Disorders </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="*Excessive Daytime Sleepiness">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Excessive Daytime Sleepiness">
                             <label > *Excessive Daytime Sleepiness </label>
                         </div>
                     </div>
@@ -471,16 +546,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="*Insomnia">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Insomnia">
                             <label> *Insomnia </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Atrial Fibrillation">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Atrial Fibrillation">
                             <label > Atrial Fibrillation </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Reflux">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Reflux">
                             <label > Reflux </label>
                         </div>
                     </div>
@@ -489,12 +564,12 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Witnessed Apnea">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Witnessed Apnea">
                             <label> Witnessed Apnea </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Congestive Heart Failure">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Congestive Heart Failure">
                             <label > Congestive Heart Failure </label>
                         </div>
                         <div class="col-12 col-md-3">
@@ -507,16 +582,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Memory Loss">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Memory Loss">
                             <label> Memory Loss </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Depression">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Depression">
                             <label > Depression </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Sleep Disturbance">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Sleep Disturbance">
                             <label> Sleep Disturbance </label>
                         </div>
                     </div>
@@ -525,16 +600,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Seizures">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Seizures">
                             <label> Seizures </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="COPD">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="COPD">
                             <label > COPD </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Morning Headache">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Morning Headache">
                             <label> Morning Headache </label>
                         </div>
                     </div>
@@ -543,18 +618,18 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" value="Nocturia">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Nocturia">
                             <label> Nocturia </label>
                         </div>
 
                         <div style="display: flex;" class="col-12 col-md-3">
-                            <input type="checkbox" value="Large neck size (greater than 17&quot; for men, greater than 16&quot; for women).">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Large neck size (greater than 17&quot; for men, greater than 16&quot; for women).">
                             <label>&nbsp;Large neck size (greater than 17" for men, greater than 16" for women)</label>
                         </div>
 
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Other">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Other">
                             <label> Other </label>
                         </div>
                     </div>
@@ -568,11 +643,11 @@
                             <div class="row">
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="answer" value="yes"> Yes</label>
+                                                               name="oxygen" id="oxygen" value="yes"> Yes</label>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="answer" value="no" > No</label>
+                                                               name="oxygen" id="oxygen" value="no" > No</label>
                                 </div>
                             </div>
                         </div>
@@ -609,7 +684,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea">
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea">
                             <label> G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea </label>
                         </div>
 
@@ -617,7 +692,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence">
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence">
                             <label > G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence </label>
 
                         </div>
@@ -631,7 +706,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="Commercial 95800">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Commercial 95800">
                             <label > Commercial 95800 </label>
 
                         </div>
@@ -639,7 +714,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="Medicare G0399">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Medicare G0399">
                             <label > Medicare G0399</label>
 
                         </div>
@@ -647,16 +722,15 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" value="Self-Pay $169">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Self-Pay $169">
                             <label > Self-Pay $169</label>
 
                         </div>
                     </div>
 
-                </div>
+               <hr>
 
 
-                <div class="form-section">
 
 
                     <div class="form-group row mt-4">
@@ -678,35 +752,29 @@
                                 <label>Referring Physician Name<span class="required">*</span> </label>
                                 <input type="text" value=""
                                        class="form-control custom-mainforminput "
-                                       name="referring_phy_name" id="referring_phy_name"  />
+                                       name="physician_name" id="physician_name"  />
                             </div>
 
                         </div>
 
-                        <div style="margin-left: 20px;" class="col-12 col-md-5">
-                            <div id="signArea" >
-                                <label>Signature<span class="required">*</span> </label>
-                                <div class="sig sigWrapper" style="height:auto;">
-                                    <div class="typed"></div>
-                                    <canvas class="sign-pad" id="sign-pad" width="300" height="100"></canvas>
-                                </div>
-                                <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
-                Clear
-              </span>
-                            </div>
+                        <div style="margin-left: 20px;" class="col-12 col-md-4">
+                            <label class="" >Signature<span class="required">*</span></label>
+                            <div id="sig1" class="kbw-signature"></div>  <br/>
+
+                            <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                            <textarea id="signature" name="signature" style="display: none"></textarea>
+
                         </div>
 
                     </div>
-                </div>
+               <hr>
 
-
-                <div class="form-section last mb-5">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Submit"
-                               id="btnSaveSign2"
+                               id="signaturebtn"
                                class="submitbtn" style="background: red;" />
                     </div>
-                </div>
+
 
 
             </form>
@@ -714,31 +782,45 @@
 
     </main>
 </div>
+<script type="text/javascript">
+    var base_url = '<?php echo e(url('/')); ?>';
+    var token = "<?php echo csrf_token() ?>";
 
-<script>
-    $(document).ready(function() {
-        $('#signArea').signaturePad({drawOnly:true, drawBezierCurves:true, lineTop:90});
+    var sig1 = $('#sig1').signature({syncField: '#signature641', syncFormat: 'PNG'});
+
+    $('#clear1').click(function(e) {
+        e.preventDefault();
+        sig1.signature('clear');
+        $("#signature64").val('');
     });
 
-    $("#btnSaveSign2").click(function(e){
-        html2canvas([document.getElementById('sign-pad')], {
-            onrendered: function (canvas) {
-                var canvas_img_data = canvas.toDataURL('image/png');
-                var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
-                $.ajax({
-                    url: 'save_sign.php',
-                    data: { img_data:img_data },
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+
+
+
+
+    $('#signaturebtn').on('click', function(e)
+    {
+        var signature = jQuery("#signature641").val();
+        alert(signature);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert('save');
             }
         });
-    });
+    })
 
 </script>
+
 
 
 

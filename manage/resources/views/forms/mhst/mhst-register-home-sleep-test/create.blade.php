@@ -35,6 +35,14 @@
 
     <script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
 
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+
     <script>
 
         function selectElement(id, valueToSelect) {
@@ -1090,16 +1098,13 @@
 
                                 <div class="row no-gutters">
                                     <div class="col-12 col-md-4">
-                                        <div id="signArea" >
-                                            <label>Signature<span class="required">*</span></label>
-                                            <div class="sig sigWrapper" style="height:auto;">
-                                                <div class="typed"></div>
-                                                <canvas class="sign-pad" id="sign-pad" width="300" height="100"></canvas>
-                                            </div>
-                                            <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
-                Clear
-              </span>
+                                        <label class="" >Signature<span class="required">*</span></label>
+                                        <div>
+                                            <div  id="sig1"  style="width:380px !Important;height: 200px;" ></div>  <br/>
                                         </div>
+                                        <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                        <textarea id="signature641" name="signed" style="display: none"></textarea>
+
                                     </div>
 
                                     <div class="col-12 col-md-3 ">
@@ -1161,7 +1166,7 @@
                                 <div class="padding-wrap">
                                     <input type="text"
                                            class="form-control custom-mainforminput "
-                                           name="first_name_questions" id="first_name_questions"
+                                           name="name_questions" id="name_questions"
                                            value="" />
                                 </div>
                             </div>
@@ -1170,7 +1175,7 @@
                                 <div class="padding-wrap">
                                     <input type="email"
                                            class="form-control custom-mainforminput "
-                                           name="email_question" id="email_question"
+                                           name="email_questions" id="email_questions"
                                            value="" />
                                 </div>
                             </div>
@@ -1192,7 +1197,7 @@
                                     <label>Date of birth<span class="required">*</span></label>
                                     <input type="text" value=""
                                            class="form-control custom-mainforminput dobpicker  "
-                                           name="dob_question" id="dob_question" readonly />
+                                           name="dob_questions" id="dob_questions" readonly />
                                 </div>
                             </div>
                         </div>
@@ -1215,11 +1220,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="snoring" id="snoring" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="snoring" id="snoring" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1236,11 +1241,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="tired" id="tired" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="tired" id="tired" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1257,11 +1262,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="observed" id="observed" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="observed" id="observed" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1278,11 +1283,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="pressure" id="pressure" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="pressure" id="pressure" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1299,11 +1304,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="body" value="body"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="body" id="body" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1320,11 +1325,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="age" id="age" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="age" id="age" value="no" > No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1341,11 +1346,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes"> Yes</label>
+                                                           name="neck" id="neck" value="yes"> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" > No</label>
+                                                           name="neck" id="neck" value="no" > No</label>
                             </div>
                         </div>
                         <div style="margin-top: 20px;">
@@ -1362,11 +1367,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="yes">  Yes</label>
+                                                           name="gender_questions" id="gender_questions" value="yes">  Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="" value="no" >  No</label>
+                                                           name="gender_questions" id="gender_questions" value="no" >  No</label>
                             </div>
                         </div>
                         <div id="accordion3" class="custom-accordion">
@@ -1413,7 +1418,7 @@
                         <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
                                 <input type="submit" value="Click Here To Submit & Finish"
-                                       id="btnSaveSign5"
+                                       id="signaturebtn"
                                        class="submitbtn" style="background: red;" />
                             </div>
                         </div>
@@ -1432,30 +1437,42 @@
     </main>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('#signArea').signaturePad({drawOnly:true, drawBezierCurves:true, lineTop:90});
+<script type="text/javascript">
+    var base_url = '<?php echo e(url('/')); ?>';
+    var token = "<?php echo csrf_token() ?>";
 
+    var sig1 = $('#sig1').signature({syncField: '#signature641', syncFormat: 'PNG'});
+
+    $('#clear1').click(function(e) {
+        e.preventDefault();
+        sig1.signature('clear');
+        $("#signature64").val('');
     });
 
-    $("#btnSaveSign5").click(function(e){
-        html2canvas([document.getElementById('sign-pad')], {
-            onrendered: function (canvas) {
-                var canvas_img_data = canvas.toDataURL('image/png');
-                var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
-                //ajax call to save image inside folder
-                $.ajax({
-                    url: 'save_sign.php',
-                    data: { img_data:img_data },
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+
+
+
+
+    $('#signaturebtn').on('click', function(e)
+    {
+        var signature = jQuery("#signature641").val();
+        alert(signature);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert('save');
             }
         });
-    });
+    })
 
 </script>
 

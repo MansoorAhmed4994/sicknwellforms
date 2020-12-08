@@ -135,7 +135,7 @@
                                 <div class="padding-wrap">
                                     <input type="email"
                                            class="form-control custom-mainforminput  @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
-                                           name="patient_email" id="patient_email"/>
+                                           name="email" id="email"/>
                                 </div>
                             </div>
 
@@ -184,26 +184,32 @@
                         <div class="row no-gutters">
                             <div class="col-12 col-md-4">
                                 <label class="" for="">Parent Signature</label>
-                                <div id="sig" ></div>  <br/>
+                                <div>
+                                    <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                </div>
 
+<<<<<<< HEAD
                                 <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                <textarea id="signature64" name="signed2" style="display: none"></textarea>
+                                <textarea id="parent_signature" name="parent_signature" style="display: none"></textarea>
+=======
+                                <textarea id="signature64" name="signed" style="display: none"></textarea>
+                                <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; margin-right: 10px; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+>>>>>>> c3d5be79c8d5bfeb5c93f920b0337e359af8094e
 
                             </div>
 
 
                             <div style="margin-left: 20px;" class="col-12 col-md-4">
 
-                                <label class="" for="">Witness Signature</label> <br/>
-                                <div class="padding-wrap">
-                                <div id="sig2" ></div>  <br/>
-                                <textarea id="signature642" name="signed" style="display: none" ></textarea>
-                                <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                {{-- <button type="button" id="signaturebtn2"class="btn btn-success">Save</button>--}}
+
+                                <label class="" for="">Witness Signature</label>
+                                <div>
+                                    <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+
                                 </div>
+                                <textarea id="witness_signature" name="witness_signature" style="display: none" ></textarea>
+                                <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; margin-right: 10px; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
                             </div>
-
-
 
 
                         </div>
@@ -223,7 +229,7 @@
                                 <div class="padding-wrap">
                             <input  type="text" value=""
                                     class="form-control custom-mainforminput dobpicker  "
-                                    name="wtodate" id="wtodate" readonly />
+                                    name="todate" id="todate" readonly />
                                 </div>
                             </div>
                             <div  class="col-12 col-md-2">
@@ -245,7 +251,7 @@
                                      <label >Today's Date</label>
                                      <input type="text" value=""
                                             class="form-control custom-mainforminput dobpicker  "
-                                            name="todate" id="todate" readonly />
+                                            name="wtodate" id="wtodate" readonly />
                                  </div>
 
                              </div>
@@ -255,12 +261,11 @@
 
                 </div>
                 
-
-                <div class="form-section last mb-5">
+                <hr>
                     <div class="d-flex justify-content-center">
-                        <input type="button" value="Submit" id="btnSaveSign2" class="submitbtn" style="background: red;" />
+                        <input type="button" value="Submit" id="signaturebtn" class="submitbtn" style="background: red;" />
                     </div>
-                </div>
+
 
 
             </form>
@@ -272,63 +277,64 @@
 
 
 <script type="text/javascript">
-    var base_url = '<?php echo e(url('/')); ?>'; 
+    var base_url = '<?php echo e(url('/')); ?>';
     var token = "<?php echo csrf_token() ?>";
+
     var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
-    
+
     $('#clear').click(function(e) {
         e.preventDefault();
         sig.signature('clear');
         $("#signature64").val('');
     });
 
-    
+
     var sig2 = $('#sig2').signature({syncField: '#signature642', syncFormat: 'PNG'});
-    
+
     $('#clear2').click(function(e) {
         e.preventDefault();
-        sig.signature('clear');
+        sig2.signature('clear');
         $("#signature642").val('');
     });
 
-    
 
-    $('#signaturebtn2').on('click', function(e) 
+
+    $('#signaturebtn').on('click', function(e)
     {
         var signature = jQuery("#signature64").val();
-        alert(signature); 
-        $.ajax({ 
+        alert(signature);
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: base_url + '/signaturepad',
             data: {
-                signed: signature, 
+                signed: signature,
             },
-            type: 'POST', 
-            dataType: 'json', 
-            success: function(response) 
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
             {
                 alert('save');
             }
         });
     })
 
-    $('#signaturebtn').on('click', function(e) 
+    $('#signaturebtn').on('click', function(e)
     {
-        var signature = jQuery("#signature64").val();
-        alert(signature); 
-        $.ajax({ 
+        var signature = jQuery("#signature642").val();
+        alert(signature);
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: base_url + '/signaturepad',
             data: {
-                signed: signature, 
+                signed: signature,
             },
-            type: 'POST', 
-            dataType: 'json', 
-            success: function(response) 
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
             {
                 alert('save');
             }

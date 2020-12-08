@@ -35,6 +35,15 @@
 
     <script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
 
+    <!--Scripts of Signatures-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+
+    <!--Scripts of Signatures-->
     <script>
 
         function selectElement(id, valueToSelect) {
@@ -122,10 +131,10 @@
                     </div>
 
                     <div class="form-group row mt-4">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
@@ -135,7 +144,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label>Primer Nombre <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -146,7 +155,7 @@
                                 </div>
 
 
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label>Apellido <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -176,12 +185,11 @@
                     </div>
                 </div>
 
-                <div class="form-section">
                     <div class="form-group row mt-4">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label>Nombre Completo <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -191,7 +199,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label>Teléfono <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
@@ -201,13 +209,21 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-3">
                                     <label>Correo Electrónico <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
                                                class="form-control custom-mainforminput "
                                                name="patient_email" id="patient_email"
                                                value="" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="padding-wrap">
+                                        <label>Fecha de Nacimiento</label>
+                                        <input type="text" value=""
+                                               class="form-control custom-mainforminput dobpicker  "
+                                               name="dob" id="dob" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +235,7 @@
                         <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-md-3">
                                     <label>Dirección <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -229,7 +245,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-md-3">
                                     <label>Ciudad <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -239,7 +255,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-2">
+                                <div class="col-12 col-md-3">
                                     <label>Estado <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
@@ -250,8 +266,8 @@
                                 </div>
 
 
-                                <div class="col-12 col-md-2">
-                                    <label>Estado <span class="required">*</span></label>
+                                <div class="col-12 col-md-3">
+                                    <label>Código Postal <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
                                                class="form-control custom-mainforminput "
@@ -264,20 +280,7 @@
 
                     </div>
 
-
-                    <div class="row no-gutters">
-                        <div class="col-12 col-md-2">
-                            <div class="padding-wrap">
-                                <label>Fecha de Nacimiento</label>
-                                <input type="text" value=""
-                                       class="form-control custom-mainforminput dobpicker  "
-                                       name="dob" id="dob" readonly />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                    </div>
+                <hr>
 
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
@@ -329,30 +332,6 @@
                                                value="" />
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group row mt-4">
-                        <div class="col-12 col-md-12">
-
-                            <div class="row no-gutters">
-                                <div class="col-12 col-md-4">
-                                    <div id="signArea" >
-                                        <!--<h2 class="tag-ingo">Put signature below,</h2>-->
-                                        <label>Firma<span class="required">*</span> </label>
-                                        <div class="sig sigWrapper" style="height:auto;">
-                                            <!--  <div class="typed"></div>-->
-                                            <canvas class="sign-pad" id="sign-pad" width="300" height="100"></canvas>
-                                        </div>
-                                        <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
-                Clear
-              </span>
-                                    </div>
-                                </div>
-
-
                                 <div class="col-12 col-md-2">
 
                                     <div class="padding-wrap">
@@ -363,29 +342,40 @@
                                     </div>
 
                                 </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <div class="col-12 col-md-12">
+
+                            <div class="row no-gutters">
+                                <div class="col-12 col-md-4">
+                                    <label class="" >Firma<span class="required">*</span></label>
+                                    <div id="sig1"></div>  <br/>
+
+                                    <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <textarea id="signature641" name="signed" style="display: none"></textarea>
+                                </div>
+
+
+
 
                             </div>
                         </div>
 
                     </div>
 
+                <hr>
 
 
-                    <!--  <div data-component="divider" style="border-bottom:1px solid #e6e6e6;">
-
-
-                      </div>-->
-
-
-
-                </div>
-                <div class="form-section last mb-5">
                     <div class="d-flex justify-content-center">
                         <input type="submit" value="Enviar"
-                               id="btnSaveSign2"
+                               id="signaturebtn"
                                class="submitbtn" style="background: red;" />
                     </div>
-                </div>
+
 
 
             </form>
@@ -393,32 +383,45 @@
 
     </main>
 </div>
-<script>
-    $(document).ready(function() {
-        $('#signArea').signaturePad({drawOnly:true, drawBezierCurves:true, lineTop:90});
+<script type="text/javascript">
+    var base_url = '<?php echo e(url('/')); ?>';
+    var token = "<?php echo csrf_token() ?>";
 
+    var sig1 = $('#sig1').signature({syncField: '#signature641', syncFormat: 'PNG'});
+
+    $('#clear1').click(function(e) {
+        e.preventDefault();
+        sig1.signature('clear');
+        $("#signature64").val('');
     });
 
-    $("#btnSaveSign2").click(function(e){
-        html2canvas([document.getElementById('sign-pad')], {
-            onrendered: function (canvas) {
-                var canvas_img_data = canvas.toDataURL('image/png');
-                var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
-                //ajax call to save image inside folder
-                $.ajax({
-                    url: 'save_sign.php',
-                    data: { img_data:img_data },
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+
+
+
+
+    $('#signaturebtn').on('click', function(e)
+    {
+        var signature = jQuery("#signature641").val();
+        alert(signature);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert('save');
             }
         });
-    });
+    })
 
 </script>
+
 
 
 
