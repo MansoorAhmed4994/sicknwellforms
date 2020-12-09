@@ -111,7 +111,12 @@
                 <div class="top-section">
                     <h2>Adult - Privacy Policy, Financial Responsibility and Consent for Treatment</h2>
                 </div>
-
+                @if(count($errors) > 0)
+                <div class="alert alert-danger my-2" style="font-size: 15px">
+                    <i class="fas fa-exclamation-triangle mr-2"></i><span>Please fill the Required
+                        fields</span>
+                </div>
+                @endif
                 <div class="form-section">
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
@@ -121,18 +126,18 @@
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
                                                name="patient_name" id="patient_name"
-                                               value="" />
+                                                />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}"
                                                name="email" id="email"
-                                               value="" />
+                                                />
                                         <p><small>example@example.com</small></p>
                                     </div>
                                 </div>
@@ -141,8 +146,8 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="telephone" id="telephone" value=""
+                                               class="form-control custom-mainforminput @if($errors->get('first_name')) is-invalid @endif" value="{{old('first_name')}}"
+                                               name="telephone" id="telephone"
                                                 />
                                     </div>
                                 </div>
@@ -161,7 +166,7 @@
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
                                         <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('date_of_birth')) is-invalid @endif" value="{{old('date_of_birth')}}"
                                                name="date_of_birth" id="date_of_birth" readonly />
                                     </div>
                                 </div>
@@ -193,7 +198,7 @@
                                     </div>
 
                                     <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="signature64" name="patient_signature" style="display: none"></textarea>
+                                    <textarea class="@if($errors->get('patient_signature')) is-invalid @endif" value="{{old('patient_signature')}}" id="signature64" name="patient_signature" style="display: none"></textarea>
 
                                 </div>
 
@@ -205,7 +210,7 @@
                                     </div>
 
                                     <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="signature642" name="witness_signature" style="display: none"></textarea>
+                                    <textarea class="@if($errors->get('witness_signature')) is-invalid @endif" value="{{old('witness_signature')}}" id="signature642" name="witness_signature" style="display: none"></textarea>
 
                                 </div>
 
@@ -226,7 +231,7 @@
                                     <div class="padding-wrap">
                                         <label>Today's Date</label>
                                         <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}}"
                                                name="patients_today_date" id="patients_today_date" readonly />
                                     </div>
 
@@ -235,7 +240,7 @@
                                     <label>Witness Name <span class="required"></span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="{{old('witness_name')}}"
                                                name="witness_name" id="witness_name"
                                                value="" />
                                     </div>
@@ -247,7 +252,7 @@
                                     <label>Today's Date</label>
                                     <div class="padding-wrap">
                                         <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}}"
                                                name="witness_today_date" id="witness_today_date" readonly />
                                     </div>
 
