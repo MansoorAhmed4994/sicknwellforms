@@ -121,11 +121,11 @@ Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/create', 'Forms\Pedi
 
 //AdultPrivacyPolicyAndConsentForTreatmentController CRUD
 Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@create')->name('PedimAdultPrivacyPolicyAndConsentForTreatment'); 
+
 Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@store')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.create'); 
 Route::namespace('Forms\\Pedim')->prefix('')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.')->group(function(){ 
    // Route::resource('/PedimAdultPrivacyPolicyAndConsentForTreatment', 'PedimAdultPrivacyPolicyAndConsentForTreatmentController', ['except' => ['show','create'] ]);  
 });
-
 
 //MinorPrivacyPolicyAndConsentForTreatmentController CRUD
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@create')->name('PedimMinorPrivacyPolicyAndConsentForTreatment');
