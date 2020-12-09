@@ -37,14 +37,15 @@ class PedimTelemedicineController extends Controller
         //
         //$time_before_interval = available_doctor::all()->where('client_forms_id', $client_form_id)->first();
         $time_before_interval = available_doctor::all()->where('client_forms_id', $client_form_id)->first();
-        if($time_before_interval)
+        if($time_before_interval )
         {
-            $time_before_interval->time_before_appointment;
+            $time_before_interval=$time_before_interval->time_before_appointment;
         }
         else
         {
             $time_before_interval = '';
         }
+        //dd($time_before_interval);
         $appoint_date_range = appointment_limits::all()->where('client_forms_id', $client_form_id)->first(); 
         
         //dd($appoint_date_range);

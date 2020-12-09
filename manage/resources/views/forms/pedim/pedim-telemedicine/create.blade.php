@@ -81,12 +81,12 @@
         $start_date = "";
         $end_date = "";
         $time_zone = "";
-        //echo $appoint_date_range->start_date;
+        
         if($appoint_date_range != null)
         {
             echo 
-            $start_date = "";
-            $end_date = "";
+            $start_date = $appoint_date_range->start_date;
+            $end_date = $appoint_date_range->end_date;
             $time_zone = "Pacific/Wake";
         } 
          
@@ -124,8 +124,8 @@
                                 <div class="col-12 col-md-4">
                                     <label>Visit Type <span class="required">*</span></label>
                                     <select
-                                            class="form-control custom-mainforminput  "
-                                            value="" name="visit_type" id="visit_type">
+                                            class="form-control custom-mainforminput @if($errors->get('visit_type')) is-invalid @endif"
+                                            value="{{old('visit_type')}}" name="visit_type" id="visit_type">
                                         <option value=""> </option>
                                         <option value="Covid-19 (Coronavirus) Screening"> Covid-19 (Coronavirus)
                                             Screening </option>
@@ -149,9 +149,9 @@
                                 <div class="col-12 col-md-8">
                                     <label>Description of issue <span class="required">*</span></label>
                                     <textarea
-                                            class="form-control custom-mainforminput "
+                                            class="form-control custom-mainforminput @if($errors->get('description_of_issue')) is-invalid @endif" 
                                             rows="5" name="description_of_issue"
-                                            id="description_of_issue"></textarea>
+                                            id="description_of_issue" value="{{old('description_of_issue')}}"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row margin-top">
@@ -159,7 +159,7 @@
                                     <h6 class="date-valset">Please select a date</h6>
                                 </div>
                                 <div class="col-12 col-md-4 ">
-                                    <div class="datepicker datepicker-div "
+                                    <div class="datepicker datepicker-div @if($errors->get('appointment_from')) is-invalid-div @endif"
                                          data-language='en'></div>
                                 </div>
                                 <div class="col-12 col-md-4 ">
@@ -179,7 +179,7 @@
                                 <div class="col-12 col-md-4"></div>
                                 <div class="col-12 col-md-4">
 
-                                    <select class="timezonePicker" id="pacific" name="pacific">
+                                    <select class="timezonePicker" id="timezonepicker" name="timezonepicker"  @if(isset($appoint_date_range->time_zone)) disabled @endif>
                                         <option value="Europe/Andorra">Europe/Andorra</option>
                                         <option value="Asia/Dubai">Asia/Dubai</option>
                                         <option value="Asia/Kabul">Asia/Kabul</option>
@@ -547,14 +547,14 @@
                                     </select>
                                 </div>
                                 <input type="hidden" id="date-hidden" name="appointment_date"
-                                       value="">
+                                       value="{{old('appointment_date')}}">
                                 <input type="hidden" id="appointment_from-hidden"
-                                       value="" name="appointment_from">
-                                <input type="hidden" id="appointment_to-hidden" value=""
+                                       value="{{old('appointment_from')}}" name="appointment_from">
+                                <input type="hidden" id="appointment_to-hidden" value="{{old('appointment_to')}}"
                                        name="appointment_to">
                             </div>
-                          {{--  <div class="form-group row margin-top">
-                                <div class="col-12 col-md-3">
+                           <div class="form-group row margin-top">
+                                <!-- <div class="col-12 col-md-3">
                                     <label>From Time <span class="required">*</span></label>
                                     <select class="form-control custom-mainforminput"  name="appointment_from"  id="appointment_from">
                                         <option value="">  </option>
@@ -619,8 +619,8 @@
                                 <div class="col-12 col-md-6">
                                     <label>Available Appointment Date  <span class="required">*</span></label>
                                     <input type="date" class="form-control custom-mainforminput" name="appointment_date"  id="appointment_date">
-                                </div>
-                            </div>--}}
+                                </div> -->
+                            </div>
                         </div>
                         <div class="form-section">
                             <div class="form-group row mt-4">
@@ -632,27 +632,27 @@
                                         <div class="col-12 col-md-4">
                                             <div class="padding-wrap">
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput "
+                                                       class="form-control custom-mainforminput @if($errors->get('patient_fname')) is-invalid @endif "
                                                        name="patient_fname" id="patient_fname"
-                                                       value="" />
+                                                       value="{{old('patient_fname')}}" />
                                                 <p><small>First name</small></p>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="padding-wrap">
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput "
+                                                       class="form-control custom-mainforminput @if($errors->get('patient_mname')) is-invalid @endif "
                                                        name="patient_mname" id="patient_mname"
-                                                       value="" />
+                                                       value="{{old('patient_mname')}}" />
                                                 <p><small>Middle name</small></p>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="padding-wrap">
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput "
+                                                       class="form-control custom-mainforminput @if($errors->get('patient_lname')) is-invalid @endif"
                                                        name="patient_lname" id="patient_lname"
-                                                       value="" />
+                                                       value="{{old('patient_lname')}}" />
                                                 <p><small>Last name</small></p>
 
                                             </div>
@@ -662,15 +662,15 @@
                                 <div class="col-12 col-md-2">
                                     <label>Telephone <span class="required">*</span></label>
                                     <input type="tel"
-                                           class="form-control custom-mainforminput "
-                                           name="telephone" id="telephone" value=""
+                                           class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif"
+                                           name="telephone" id="telephone" value="{{old('telephone')}}"
                                            data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
-                                    <input type="email"
+                                    <input type="email @if($errors->get('email')) is-invalid @endif"
                                            class="form-control custom-mainforminput "
-                                           value="" name="email" id="email" />
+                                           value="{{old('email')}}" name="email" id="email" />
                                 </div>
                             </div>
                         </div>
@@ -702,27 +702,27 @@
                                         <div class="col-12 col-md-4">
                                             <div class="padding-wrap">
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput "
+                                                       class="form-control custom-mainforminput @if($errors->get('guardian_fname')) is-invalid @endif"
                                                        name="guardian_fname" id="guardian_fname"
-                                                       value="" />
+                                                       value="{{old('guardian_fname')}}" />
                                                 <p><small>First name</small></p>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="padding-wrap">
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput "
+                                                       class="form-control custom-mainforminput @if($errors->get('guardian_mname')) is-invalid @endif"
                                                        name="guardian_mname" id="guardian_mname"
-                                                       value="" />
+                                                       value="{{old('guardian_mname')}}" />
                                                 <p><small>Middle name</small></p>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="padding-wrap">
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput "
+                                                       class="form-control custom-mainforminput @if($errors->get('guardian_lname')) is-invalid @endif"
                                                        name="guardian_lname" id="guardian_lname"
-                                                       value="" />
+                                                       value="{{old('guardian_lname')}}" />
                                                 <p><small>Last name</small></p>
 
                                             </div>
@@ -733,7 +733,7 @@
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
                                         <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
+                                               class="form-control custom-mainforminput dobpicker @if($errors->get('dob')) is-invalid @endif"
                                                name="dob" id="dob" readonly />
                                     </div>
                                 </div>
@@ -1203,7 +1203,9 @@
 
 
 
-
+<script>
+    selectElement('visit_type', '{{old('visit_type')}}');
+</script>
 
 <script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>
 

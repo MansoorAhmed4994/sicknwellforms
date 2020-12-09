@@ -21,7 +21,7 @@ class CreatePedimTelemedicinesTable extends Migration
             $table->time('appointment_from');
             $table->time('appointment_to');
             $table->date('appointment_date');
-            $table->text('pacific');
+            $table->text('timezonepicker');
             $table->text('patient_fname');
             $table->text('patient_mname');
             $table->text('patient_lname');
