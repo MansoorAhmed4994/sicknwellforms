@@ -343,8 +343,9 @@ class QcmTelemedicineFormController extends Controller
 
     public function submissions($client_form_id)
     {
+        
         $submissions = Qcm_telemedicine_data_details::all()->where('client_forms_id', $client_form_id);
-        $client_id = $submissions->first()->client_forms->client->id;
+        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
     //dd($submissions->first()->client_forms->client->id);
         return view('forms.Qcm_telemedicine_data_details.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_form_id)); 
         //

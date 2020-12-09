@@ -13,10 +13,11 @@ use App\Models\appointment_limits;
 use App\Models\Clients;
 use App\Models\Client_forms;
 use App\Models\Adult_privacy_policy;
+use App\Models\Forms\Pedim\Pedim_adult_privacy_policy_consent_treatments;
 
 
 class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +48,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         }
         $appoint_date_range = appointment_limits::all()->where('client_forms_id', $client_form_id)->first(); 
         return view('forms.pedim.pedim-adult-privacy-policy-and-consent-for-treatment.create')->with(array('time_before_interval'=>$time_before_interval, 'client_form_id' => $client_form_id, 'appoint_date_range' => $appoint_date_range)); 
-       
+        
         //
     }
 
@@ -59,13 +60,14 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $valiedation_from_array = [
-            
+        
+        //dd($witness_signature);
+
+        $valiedation_from_array = [ 
             'patient_name' => 'required',
             'telephone' => 'required',
             'email' => 'required',
-            'date_of_birth' => 'required',
+            'dob' => 'required',
             'patient_signature' => 'required',
             'patients_today_date' => 'required',
             'witness_signature' => 'required',
@@ -76,16 +78,17 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
 
         
         $this->validate($request, $valiedation_from_array);
-        
+        $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->witness_signature);
+        $patient_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->patient_signature);
 
-        $adult_privacy_policies = new Adult_privacy_policy();
+        $adult_privacy_policies = new Pedim_adult_privacy_policy_consent_treatments();
         $adult_privacy_policies->patient_name = request('patient_name');
         $adult_privacy_policies->telephone = request('telephone');
         $adult_privacy_policies->email = request('email');
-        $adult_privacy_policies->date_of_birth = request('date_of_birth');
-        $adult_privacy_policies->patient_signature = request('patient_signature');
+        $adult_privacy_policies->dob = request('dob');
+        $adult_privacy_policies->patient_signature = $patient_signature;
         $adult_privacy_policies->patients_today_date = request('patients_today_date');
-        $adult_privacy_policies->witness_signature = request('witness_signature');
+        $adult_privacy_policies->witness_signature = $witness_signature;
         $adult_privacy_policies->witness_name = request('witness_name');
         $adult_privacy_policies->witness_today_date = request('witness_today_date');
         $adult_privacy_policies->client_forms_id = request('client_forms_id');   
@@ -94,7 +97,19 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
 
 
         session()->flash("success","Successfully Submited");  
-        return view('forms.status');
+        return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment',$adult_privacy_policies->client_forms_id);
+    }
+
+    
+
+
+    public function submissions($client_form_id)
+    { 
+        
+        $submissions = Pedim_adult_privacy_policy_consent_treatments::all()->where('client_forms_id', $client_form_id);
+        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
+         
+        return view('forms.pedim.pedim-adult-privacy-policy-and-consent-for-treatment.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
     }
 
     /**

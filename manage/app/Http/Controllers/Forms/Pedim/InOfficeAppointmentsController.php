@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Forms\Pedim;
 
 
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;    
-use App\Models\In_office_appointments; 
+use App\Models\In_office_appointments;
+use GuzzleHttp\Client;
+use Illuminate\Support\Str; 
 use App\Models\available_doctor; 
 use App\Models\appointment_schedule;
 use App\Models\appointment_limits; 
@@ -109,16 +109,7 @@ class InOfficeAppointmentsController extends Controller
     public function submissions($client_form_id)
     { 
         $submissions = In_office_appointments::all()->where('client_forms_id', $client_form_id);
-        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id;
-        //dd($client_id);
-         
-        
-        
-        //dd($submissions->client_forms->client->id);
-        //dd(In_office_appointments::all()->where('client_forms_id', $client_form_id));
-        //$Qcm_telemedicine_data_details = In_office_appointments::find(1);
-        //dd($Qcm_telemedicine_data_details);
-        //dd();
+        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
          
         return view('forms.in-office-appointments.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
         //

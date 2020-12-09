@@ -99,7 +99,7 @@
         <div class="qcm-form">
 
 
-            <form method="post" action="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.create')}}" class="position-relative">
+            <form method="post" action="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.create',$client_form_id)}}" class="position-relative">
                 {{csrf_field()}} 
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
                     <input type="hidden" value="{{$time_before_interval ? $time_before_interval : '0'}}" id="time_before_interval" name="time_before_interval">
@@ -146,28 +146,16 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput @if($errors->get('first_name')) is-invalid @endif" value="{{old('first_name')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
                                                name="telephone" id="telephone"
                                                 />
                                     </div>
-                                </div>
-
-                                <!-- <div class="col-12 col-md-2">
-                                    <label>Telephone <span class="required">*</span></label>
-                                    <div class="padding-wrap">
-                                        <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="telephone" id="telephone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
-                                    </div>
-                                </div> -->
+                                </div> 
 
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
-                                        <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('date_of_birth')) is-invalid @endif" value="{{old('date_of_birth')}}"
-                                               name="date_of_birth" id="date_of_birth" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="{{old('dob')}}" name="dob" id="dob" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +181,7 @@
 
                                     <label class="" for="">Patient Signature</label>
                                     <div>
-                                        <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                        <div  id="sig"  style="width:370px !Important;height: 200px;@if($errors->get('patient_signature')) border-color:red; @endif" ></div>  <br/>
 
                                     </div>
 
@@ -205,12 +193,12 @@
                                 <div style="margin-left: 20px;" class="col-12 col-md-4">
                                     <label class="" for="">Witness Signature</label>
                                     <div>
-                                        <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                        <div  id="sig2"  style="width:370px !Important;height: 200px;@if($errors->get('witness_signature')) border-color:red; @endif" class=""></div>  <br/>
 
                                     </div>
 
                                     <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea class="@if($errors->get('witness_signature')) is-invalid @endif" value="{{old('witness_signature')}}" id="signature642" name="witness_signature" style="display: none"></textarea>
+                                    <textarea class="" id="signature642" name="witness_signature" style="display: none">{{old('witness_signature')}}</textarea>
 
                                 </div>
 
@@ -230,7 +218,7 @@
 
                                     <div class="padding-wrap">
                                         <label>Today's Date</label>
-                                        <input type="text" value=""
+                                        <input type="text" 
                                                class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}}"
                                                name="patients_today_date" id="patients_today_date" readonly />
                                     </div>
@@ -242,7 +230,7 @@
                                         <input type="text"
                                                class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="{{old('witness_name')}}"
                                                name="witness_name" id="witness_name"
-                                               value="" />
+                                                />
                                     </div>
 
 
@@ -251,8 +239,7 @@
                                 <div class="col-12 col-md-2">
                                     <label>Today's Date</label>
                                     <div class="padding-wrap">
-                                        <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}}"
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}}"
                                                name="witness_today_date" id="witness_today_date" readonly />
                                     </div>
 
@@ -289,27 +276,29 @@
     var token = "<?php echo csrf_token() ?>";
     var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
 
-    $('#clear').click(function(e) {
+    $('#clear').click(function(e) 
+    {
         e.preventDefault();
-        sig.signature('clear');
-        $("#signature64").val('');
+        sig.signature('clear'); 
+ 
     });
 
 
     var sig2 = $('#sig2').signature({syncField: '#signature642', syncFormat: 'PNG'});
 
     $('#clear2').click(function(e) {
-        e.preventDefault();
-        sig2.signature('clear');
-        $("#signature642").val('');
+        e.preventDefault(); 
+        //sig2.signature({syncField: '#signature64', syncFormat: 'PNG'});
+        sig2.signature('clear'); 
+        
     });
 
 
 
-    $('#signaturebtn').on('click', function(e)
+    $('#signaturebtn2').on('click', function(e)
     {
         var signature = jQuery("#signature64").val();
-        alert(signature);
+       
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -327,10 +316,10 @@
         });
     })
 
-    $('#signaturebtn').on('click', function(e)
+    $('#signaturebtn2').on('click', function(e)
     {
         var signature = jQuery("#signature642").val();
-        alert(signature);
+        
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

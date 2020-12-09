@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdultPrivacyPoliciesTable extends Migration
+class CreatePedimAdultPrivacyPolicyConsentTreatments extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateAdultPrivacyPoliciesTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('adult_privacy_policies', function (Blueprint $table) {
+    { 
+        Schema::create('Pedim_adult_privacy_policy_consent_treatments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('patient_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->bigInteger('telephone');
-            $table->date('date_of_birth');
+            $table->date('dob');
             $table->text('patient_signature');
             $table->date('patients_today_date');
             $table->text('witness_signature');
@@ -40,5 +40,6 @@ class CreateAdultPrivacyPoliciesTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('Pedim_adult_privacy_policy_consent_treatments');
     }
 }
