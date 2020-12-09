@@ -17,7 +17,7 @@ class FormsTableSeeder extends Seeder
     public function run()
     {
         //
-
+        Forms::truncate();
         Forms::create([
             'form_name' => 'QcmTelemedicineForm',
             'title' => 'QcmTelemedicine',
@@ -116,11 +116,11 @@ class FormsTableSeeder extends Seeder
 
         Forms::create([
                         
-            'form_name' => 'PedimFeedBackForm',
-            'title' => 'Pedim Feed Back Form',
+            'form_name' => 'PedimTelemedicine',
+            'title' => 'Pedim Telemedicine',
             'sub_title' => '',
             'fields_count' => '0',
-            'form_link' => 'PedimFeedBackForm',
+            'form_link' => 'PedimTelemedicine',
             'image_path' => '',
             'created_by' => '0',
             'updated_by' => '0',

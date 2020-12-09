@@ -6,8 +6,7 @@
         <h2 class="main-heading">Select a Template</h2>
 
         <div class="flex-1">
-            <div class="scrollbar-fancy h-100">
-                {{-- {{dd($client->form->first()->id);     }} --}}
+            <div class="scrollbar-fancy h-100"> 
                 @foreach($client->form as $form)
                 <div class="forms-items">
                     <div class="form-item d-flex align-items-center">

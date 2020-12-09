@@ -118,31 +118,31 @@
 <script>
     jQuery('[name="check_credentials"]').on('click', function() {  
              
-            jQuery.ajax({
-                url: base_url + "/clients/details/verified",
-                type: "POST",
-                beforeSend: function() {
-                    jQuery('[name="available_qty"]').empty().append('<option> Loading...<option>');
-                },
-                data: {
-                    id: jQuery("#id").val(),
-                    pass: jQuery("#pass").val(),
-                    client_id: "{{$clients["id"]}}",
-                    _token: token
-                },
-                dataType: "json"
-            }).done(function(data) { 
-                if (data.status) {
-                    $('#loginModal').modal('hide')
-                    $('.blur-container').removeClass('blur-container')
-                }else{
-                    $(".errshow").show();
-                }
-            }).fail(function(jqXHR, textStatus) {
-                alert("Something went wrong. Try Again.");
-            });
-        
-    });
+             jQuery.ajax({
+                 url: base_url + "/clients/details/verified",
+                 type: "POST",
+                 beforeSend: function() {
+                     jQuery('[name="available_qty"]').empty().append('<option> Loading...<option>');
+                 },
+                 data: {
+                     id: jQuery("#id").val(),
+                     pass: jQuery("#pass").val(),
+                     client_id: "{{$clients["id"]}}",
+                     _token: token
+                 },
+                 dataType: "json"
+             }).done(function(data) { 
+                 if (data.status) {
+                     $('#loginModal').modal('hide')
+                     $('.blur-container').removeClass('blur-container')
+                 }else{
+                     $(".errshow").show();
+                 }
+             }).fail(function(jqXHR, textStatus) {
+                 alert("Something went wrong. Try Again.");
+             });
+         
+     });
         
 </script>
 @endsection
