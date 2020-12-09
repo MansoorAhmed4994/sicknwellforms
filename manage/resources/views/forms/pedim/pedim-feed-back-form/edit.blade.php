@@ -84,7 +84,7 @@
             } 
         </style>
         <div class="qcm-form">
-            <form method="post" action="{{route('PedimFeedBackForm.create')}}" class="position-relative">
+            <form method="post" action="{{route('PedimFeedBackForm.update',$PedimFeedBack->id)}}" class="position-relative">
                 {{csrf_field()}} 
                 <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
                 <input type="hidden" value="pedim_feedback_forms" id="table_name" name="table_name">
@@ -110,22 +110,22 @@
                                 <div class="col-12 col-md-4">
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
-                                        <input type="text" class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}" name="patient_name" id="patient_name" />
+                                        <input type="text" class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}} @if(isset($PedimFeedBack)) {{$PedimFeedBack->patient_name}}  @endif" name="patient_name" id="patient_name" />
                                     </div> 
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <label>Date of Appointment</label>
                                     <div class="padding-wrap"> 
-                                        <input type="text" class="form-control custom-mainforminput dobpicker @if($errors->get('appointment_date')) is-invalid @endif"name="appointment_date" value="{{old('appointment_date')}}" id="appointment_date" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker @if($errors->get('appointment_date')) is-invalid @endif"name="appointment_date" value=" @if(isset($PedimFeedBack)) {{$PedimFeedBack->appointment_date}}@else{{old('appointment_date')}} @endif" id="appointment_date" readonly />
                                     </div>
-                                </div> 
+                                </div>  
 
                                 <div class="col-12 col-md-4">
                                     <label>Time of Appointment </label>
                                     <div class="padding-wrap">
                                         <input type="time"
                                                class="form-control custom-mainforminput  @if($errors->get('appointment_time')) is-invalid @endif"
-                                               name="appointment_time" value="{{old('appointment_time')}}" id="appointment_time"
+                                               name="appointment_time" value="@if(isset($PedimFeedBack)){{$PedimFeedBack->appointment_time}}@else{{old('appointment_time')}}@endif" id="appointment_time"
                                                  />
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                             <div class="padding-wrap">
                                 <input type="tel"
                                        class="form-control custom-mainforminput  @if($errors->get('number')) is-invalid @endif"
-                                       name="number" id="number"  value="{{old('number')}}"
+                                       name="number" id="number"  value="@if(isset($PedimFeedBack)) {{$PedimFeedBack->number}} @else {{old('number')}}  @endif"
                                        data-inputmask='"mask": "(999) 999-9999"' data-mask /></div>
                         </div>
 
@@ -153,14 +153,14 @@
                                 <input type="email"
                                        class="form-control custom-mainforminput  @if($errors->get('patient_email')) is-invalid @endif"
                                        name="patient_email" id="patient_email"
-                                       value="{{old('patient_email')}}" />
+                                       value="@if(isset($PedimFeedBack)) {{$PedimFeedBack->patient_email}} @else {{old('patient_email')}}  @endif" />
                                 <p><small>example@example.com</small></p>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <label>I would like to be contacted by management</label>
                             <select
-                                    class="form-control custom-mainforminput   @if($errors->get('contact_managment')) is-invalid @endif"
+                                    class="form-control custom-mainforminput  @if($errors->get('contact_managment')) is-invalid @endif"
                                      name="contact_managment" id="contact_managment">
                                 <option value="">Select Option</option>
                                 <option value="Yes">Yes</option>
@@ -177,7 +177,7 @@
                             <textarea
                                     class="form-control custom-mainforminput  @if($errors->get('description')) is-invalid @endif"
                                     rows="5" name="description" 
-                                    id="description"> {{old('description')}}</textarea>
+                                    id="description">@if(isset($PedimFeedBack)) {{$PedimFeedBack->description}} @else {{old('description')}} @endif</textarea>
                         </div>
                     </div>
 
@@ -222,7 +222,16 @@
 
 <script>
 
-    selectElement('contact_managment', '{{old('contact_managment')}}');
+    if("@if(isset($PedimFeedBack)){{$PedimFeedBack->contact_managment}}@endif)" != "")
+    { 
+        selectElement('contact_managment', '@if(isset($PedimFeedBack)){{$PedimFeedBack->contact_managment}}@endif');
+    }
+    else
+    {
+        selectElement('contact_managment', '{{old('contact_managment')}}');
+    }
+
+    
 </script>
 
 <script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>

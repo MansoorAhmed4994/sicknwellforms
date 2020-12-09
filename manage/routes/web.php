@@ -106,8 +106,8 @@ Route::get('/PedimFeedBackForm/{clien_form_id}', 'Forms\Pedim\PedimFeedBackFormC
 Route::post('/PedimFeedBackForm/create', 'Forms\Pedim\PedimFeedBackFormController@store')->name('PedimFeedBackForm.create');
 Route::post('/PedimFeedBackForm/submissions/', 'Forms\Pedim\PedimFeedBackFormController@GetVerifiedSubmission')->name('PedimFeedBackForm.get.submissions');
 Route::get('/PedimFeedBackForm/edit/{submission_id}', 'Forms\Pedim\PedimFeedBackFormController@edit')->name('PedimFeedBackForm.edit');
-Route::post('/PedimFeedBackForm/update/{submission_id}', 'Forms\Pedim\PedimFeedBackFormController@update')->name('PedimFeedBackForm.update');
-Route::get('/PedimFeedBackForm/create/meeting/{id}', 'Forms\Pedim\PedimFeedBackForm@CreateZoomMeeting')->name('PedimFeedBackForm.create.zoom.meeting'); 
+Route::post('/PedimFeedBackForm/update/{pedim_feed_backs}', 'Forms\Pedim\PedimFeedBackFormController@update')->name('PedimFeedBackForm.update');
+Route::get('/PedimFeedBackForm/create/meeting/{id}', 'Forms\Pedim\PedimFeedBackFormController@CreateZoomMeeting')->name('PedimFeedBackForm.create.zoom.meeting'); 
  
 //ConsentForRapidCovid19Testing CRUD
 Route::get('/PedimConsentForRapidCovid19Testing/{clien_form_id}', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@create')->name('PedimConsentForRapidCovid19Testing');

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Forms\Pedim\pedim_feed_backs;
 use Illuminate\Http\Request;
 use App\Models\Client_forms;
+use GuzzleHttp\Client;
+use Illuminate\Support\Str; 
+use Auth;
 
 class PedimFeedBackFormController extends Controller
 {
@@ -50,8 +53,7 @@ class PedimFeedBackFormController extends Controller
             'contact_managment' => 'required',
             'description' => 'required',
             'answer' => 'required',
-            'client_forms_id' => 'required',
-            'status' => 'active'
+            'client_forms_id' => 'required'
             ];
 
             $this->validate($request, $valiedation_from_array);
@@ -103,9 +105,9 @@ class PedimFeedBackFormController extends Controller
     public function edit($submission_id)
     {
         //dd(Auth);
-        $InOfficeAppointments = pedim_feed_backs::find($submission_id); 
-        $client_form_id = $InOfficeAppointments->client_forms_id; 
-        return view('forms.pedim.pedim-feed-back-form.edit')->with(array('client_form_id' => $client_form_id, 'InOfficeAppointmentsDetails' => $InOfficeAppointments)); 
+        $PedimFeedBack = pedim_feed_backs::find($submission_id); 
+        $client_form_id = $PedimFeedBack->client_forms_id; 
+        return view('forms.pedim.pedim-feed-back-form.edit')->with(array('client_form_id' => $client_form_id, 'PedimFeedBack' => $PedimFeedBack)); 
         
         //
     }
@@ -127,8 +129,57 @@ class PedimFeedBackFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, pedim_feed_backs $pedim_feed_backs)
     {
+        //dd($pedim_feed_backs);
+        $valiedation_from_array = [
+             
+            'patient_name' => 'required',
+            'appointment_date' => 'required',
+            'appointment_time' => 'required',
+            'number' => 'required',
+            'patient_email' => 'required',
+            'contact_managment' => 'required',
+            'description' => 'required',
+            'answer' => 'required',
+            'client_forms_id' => 'required', 
+            ];
+
+            $this->validate($request, $valiedation_from_array);
+
+            $pedim_feed_backs->patient_name = $request->patient_name;
+            $pedim_feed_backs->appointment_date = $request->appointment_date;
+            $pedim_feed_backs->appointment_time = $request->appointment_time;
+            $pedim_feed_backs->number = $request->number;
+            $pedim_feed_backs->patient_email = $request->patient_email;
+            $pedim_feed_backs->contact_managment = $request->contact_managment;
+            $pedim_feed_backs->description = $request->description;
+            $pedim_feed_backs->answer = $request->answer;
+            $pedim_feed_backs->client_forms_id = $request->client_forms_id; 
+            $update_status = $pedim_feed_backs->save();
+
+            //dd($id);
+            if($update_status)
+            {  
+                if(Auth::guard('clients')->check())
+                {
+                    session()->flash("success","Successfully Updated"); 
+                    return redirect()->route('client.PedimFeedBackForm.submissions',$pedim_feed_backs->client_forms_id);
+                }
+                else
+                {
+                    session()->flash("success","Successfully Updated"); 
+                    return redirect()->route('PedimFeedBackForm.submissions',$pedim_feed_backs->client_forms_id);
+                }
+
+            }
+            else
+            {
+                session()->flash("warning","Some thing went wrong, please Update again"); 
+                return redirect()->back();
+
+            }
+
         //
     }
 
@@ -141,5 +192,62 @@ class PedimFeedBackFormController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function CreateZoomMeeting($id)
+    {
+        
+        $ZoomClientApi = new Client();
+        $token = Str::random(60); 
+        $PedimFeedBacks = pedim_feed_backs::find($id);
+        $host = $PedimFeedBacks->client_forms->client->email;
+        $participant = $PedimFeedBacks->email;
+        //dd($InOfficeAppointmentsDetails->email);
+        $start_date = $PedimFeedBacks->appointment_date;
+        $start_time = $PedimFeedBacks->appointment_to;  
+        $timepicker = $PedimFeedBacks->appointment_from;  
+        $start_time = $start_date.' '.$timepicker;
+        $start_time = date('m/d/Y h:i:s a', strtotime($start_time)); 
+        $duration = (($PedimFeedBacks->duration_hour)*60)+$PedimFeedBacks->duration_minutes;
+        $timestamp = strtotime($start_time);
+        $start_time = date('yy-m-d\TH:m:s',$timestamp);
+        $start_time = (string)$start_time.'z';
+        //get time zone 
+        $timezone = appointment_limits::find($PedimFeedBacks->client_forms_id);
+        $timezone = $timezone->time_zone; 
+        
+        $response = $ZoomClientApi->request('POST', 'https://sicknwell.desenador.com/api/create-zoom-meeting', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$token,
+                'Accept' => 'application/json',
+            ],
+            'form_params' => [ 
+                'body' => [
+        			'topic' => 'checkup',
+        			'type' => 2,
+        			'start_time' => $start_time,
+        			'password' => '',
+        			'agenda' => '',
+                    'timezone' => $timezone,
+                    'duration' => $duration
+        		],
+        		'host' => $host,
+        		'participant' => $participant
+            ],
+            
+        ]);
+        
+        $response = json_decode($response->getBody(),true);
+        //dd($response);
+        session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+        
+        if(Auth::guard('clients')->check())
+        {
+            return redirect()->route('client.PedimFeedBackForm.submissions',$PedimFeedBacks->client_forms_id);
+        }
+        else
+        {
+            return redirect()->route('PedimFeedBackForm.submissions',$InOfficeAppointmentsDetails->client_forms_id);
+        } 
     }
 }

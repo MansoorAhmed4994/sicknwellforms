@@ -19,3 +19,4 @@ class pedim_feed_backs extends Model
         return $this->belongsTo(Client_forms::class,'client_forms_id','id');
     }
 }
+ 
