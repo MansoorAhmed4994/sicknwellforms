@@ -141,8 +141,7 @@ class PedimFeedBackFormController extends Controller
             'patient_email' => 'required',
             'contact_managment' => 'required',
             'description' => 'required',
-            'answer' => 'required',
-            'client_forms_id' => 'required', 
+            'answer' => 'required'
             ];
 
             $this->validate($request, $valiedation_from_array);
@@ -154,8 +153,7 @@ class PedimFeedBackFormController extends Controller
             $pedim_feed_backs->patient_email = $request->patient_email;
             $pedim_feed_backs->contact_managment = $request->contact_managment;
             $pedim_feed_backs->description = $request->description;
-            $pedim_feed_backs->answer = $request->answer;
-            $pedim_feed_backs->client_forms_id = $request->client_forms_id; 
+            $pedim_feed_backs->answer = $request->answer; 
             $update_status = $pedim_feed_backs->save();
 
             //dd($id);

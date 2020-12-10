@@ -96,7 +96,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         $adult_privacy_policies->save();
 
 
-        session()->flash("success","Successfully Submited");  
+        session()->flash("success","Successfully Submited");  dd();
         return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment',$adult_privacy_policies->client_forms_id);
     }
 
@@ -105,8 +105,9 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
 
     public function submissions($client_form_id)
     { 
-        
+        //dd($client_form_id);
         $submissions = Pedim_adult_privacy_policy_consent_treatments::all()->where('client_forms_id', $client_form_id);
+       // dd($submissions);
         $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
          
         return view('forms.pedim.pedim-adult-privacy-policy-and-consent-for-treatment.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
@@ -129,8 +130,14 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    
+    public function edit($submission_id)
     {
+        //dd(Auth);
+        $PedimAdultPrivacyPolicy = Pedim_adult_privacy_policy_consent_treatments::find($submission_id); 
+        $client_form_id = $PedimAdultPrivacyPolicy->client_forms_id; 
+        return view('forms.pedim.pedim-adult-privacy-policy-and-consent-for-treatment.edit')->with(array('submission_id' => $submission_id,'client_form_id' => $client_form_id, 'PedimAdultPrivacyPolicy' => $PedimAdultPrivacyPolicy)); 
+        
         //
     }
 
@@ -142,8 +149,68 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        $is_patient_signature_update = "nullable";
+        $is_witness_signature_update = "nullable";
+        if(request('patient_signature_updated') == "yes")
+        {
+        echo 'working1';
+            $is_patient_signature_update = "required"; 
+             
+        }
+
+        if(request('witness_signature_updated') == "yes")
+        { 
+            $is_witness_signature_update = "required";  
+        }
+           
+
+        $valiedation_from_array = [ 
+            'patient_name' => 'required',
+            'telephone' => 'required',
+            'email' => 'required',
+            'dob' => 'required',
+            'patient_signature' => $is_patient_signature_update,
+            'patients_today_date' => 'required',
+            'witness_signature' => $is_witness_signature_update,
+            'witness_name' => 'required',  
+            'witness_today_date' => 'required'
+
+        ];
+
+        
+        $this->validate($request, $valiedation_from_array);
+        dd($is_witness_signature_update);
+        $patient_signature = $request->patient_signature_src;
+        $witness_signature = $request->witness_signature_src;
+        if(request('patient_signature_updated') == "yes")
+        {
+        
+            $patient_signature = app('App\Http\Controllers\SignaturePadController')->update($request->patient_signature);
+             
+        }
+        if(request('witness_signature_updated') == "yes")
+        {
+        
+            $witness_signature = app('App\Http\Controllers\SignaturePadController')->update($request->witness_signature);
+             
+        }
+        
+        dd();
+
+        $adult_privacy_policies = new Pedim_adult_privacy_policy_consent_treatments();
+        $adult_privacy_policies->patient_name = request('patient_name');
+        $adult_privacy_policies->telephone = request('telephone');
+        $adult_privacy_policies->email = request('email');
+        $adult_privacy_policies->dob = request('dob');
+        $adult_privacy_policies->patient_signature = $patient_signature;
+        $adult_privacy_policies->patients_today_date = request('patients_today_date');
+        $adult_privacy_policies->witness_signature = $witness_signature;
+        $adult_privacy_policies->witness_name = request('witness_name');
+        $adult_privacy_policies->witness_today_date = request('witness_today_date');
+        $adult_privacy_policies->client_forms_id = request('client_forms_id');   
+        $adult_privacy_policies->status = 'active';  
+        $adult_privacy_policies->save();
     }
 
     /**

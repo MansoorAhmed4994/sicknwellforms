@@ -1,4 +1,4 @@
-
+ 
  
 @extends((Auth::guard('clients')->check()) ? 'client.layouts.app' : 'layouts.app');
 
@@ -80,43 +80,49 @@
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>App. Date</span>
+                                    <span>Email</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>App. Time</span>
+                                    <span>Telephone</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Number</span>
+                                    <span>Dob</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Patient Email</span>
+                                    <span>Patient Signature</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Contact Management</span>
+                                    <span>Today Date</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Decription</span>
+                                    <span>Witness Signature</span>
+                                </div>
+                            </th>  
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Name</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Answer</span>
+                                    <span>Today Date</span>
                                 </div>
                             </th> 
                                                         <th>
@@ -128,9 +134,33 @@
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
+                                    <span>created_at</span>
+                                </div>
+                            </th>   
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>updated_at</span>
+                                </div>
+                            </th>  
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>created_by</span>
+                                </div>
+                            </th>  
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>updated_by</span>
+                                </div>
+                            </th>  
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
                                     <span>Status</span>
                                 </div>
-                            </th>        
+                            </th>       
                     </tr>
 
 
@@ -143,12 +173,12 @@
                         <tr> 
                             <td>
                                 <div class="d-flex align-items-center">  
-                                    <span><a href="{{route('PedimFeedBackForm.edit',$row->id)}}">Edit</a></span>
+                                    <span><a href="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.edit',$row->id)}}">Edit</a></span>
                                 </div>
                             </td> 
                             <td>
                                 <div class="d-flex align-items-center">  
-                                    <span><a href="{{route('PedimFeedBackForm.create.zoom.meeting',$row->id)}}">Create Meeting</a></span>
+                                    <span><a href="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.create.zoom.meeting',$row->id)}}">Create Meeting</a></span>
                                 </div>
                             </td> 
                             <td>
@@ -163,44 +193,70 @@
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->appointment_date}}</span>
+                                    <span>{{ $row->email}}</span>
                                 </div>
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->appointment_time}}</span>
+                                    <span>{{ $row->telephone}}</span>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->number}}</span>
+                                    <span>{{ $row->dob}}</span>
                                 </div>
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->patient_email}}</span>
+                                    <span><img src="{{asset('manage/storage/'.$row->patient_signature)}}" class="img-fluid"></span>
                                 </div>
                             </td>    
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->contact_managment}}</span>
+                                    <span>{{ $row->patients_today_date}}</span>
                                 </div>
                             </td> 
                             <td>
-                                <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->description}}</span>
+                                <div class="d-flex align-items-center">
+                                <img src="{{asset('manage/storage/'.$row->witness_signature)}}" class="img-fluid"> 
+                                    
                                 </div>
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->answer}}</span>
+                                    <span>{{ $row->witness_name}}</span>
+                                </div>
+                            </td>  
+                            <td>
+                                <div class="d-flex align-items-center"> 
+                                    <span>{{ $row->witness_today_date}}</span>
                                 </div>
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->client_forms_id}}</span>
                                 </div>
-                            </td>  
+                            </td> 
+                            <td>
+                                <div class="d-flex align-items-center"> 
+                                    <span>{{ $row->created_at}}</span>
+                                </div>
+                            </td> 
+                            <td>
+                                <div class="d-flex align-items-center"> 
+                                    <span>{{ $row->updated_at}}</span>
+                                </div>
+                            </td> 
+                            <td>
+                                <div class="d-flex align-items-center"> 
+                                    <span>{{ $row->created_by}}</span>
+                                </div>
+                            </td> 
+                            <td>
+                                <div class="d-flex align-items-center"> 
+                                    <span>{{ $row->updated_by}}</span>
+                                </div>
+                            </td> 
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->status}}</span>

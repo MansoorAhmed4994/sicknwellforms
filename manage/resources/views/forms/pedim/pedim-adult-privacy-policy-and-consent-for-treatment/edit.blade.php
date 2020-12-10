@@ -74,17 +74,7 @@
 <body>
 
 <?php
-        $start_date = "";
-        $end_date = "";
-        $time_zone = "";
-        //echo $appoint_date_range->start_date;
-        if($appoint_date_range != null)
-        {
-            echo 
-            $start_date = "";
-            $end_date = "";
-            $time_zone = "Pacific/Wake";
-        } 
+         
          
         
         ?>
@@ -99,10 +89,9 @@
         <div class="qcm-form">
 
 
-            <form method="post" action="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.create',$client_form_id)}}" class="position-relative">
+            <form method="post" action="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.update',$submission_id)}}" class="position-relative">
                 {{csrf_field()}} 
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
-                    
                     <input type="hidden" value="pedim_adult_privacy_policy_consent_treatments" id="table_name" name="table_name">
 
                 <div class="top-section">
@@ -123,7 +112,7 @@
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value=" @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->patient_name}} @else{{old('patient_name')}}  @endif"
                                                name="patient_name" id="patient_name"
                                                 />
                                     </div>
@@ -132,7 +121,7 @@
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->email}} @else{{old('email')}}  @endif"
                                                name="email" id="email"
                                                 />
                                         <p><small>example@example.com</small></p>
@@ -143,16 +132,15 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
-                                               name="telephone" id="telephone"
-                                                />
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->telephone}} @else{{old('telephone')}}  @endif"
+                                               name="telephone" id="telephone"/>
                                     </div>
                                 </div> 
 
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="{{old('dob')}}" name="dob" id="dob" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value=" @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->dob}}@else{{old('dob')}} @endif" name="dob" id="dob" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -174,8 +162,9 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-4">
-
+                                <div class="col-12 col-md-4" id="patient_signature_pad" style="display:none!important">
+                                    <input type="hidden" id="patient_signature_updated"  name="patient_signature_updated" value="no"> 
+                                    <input type="hidden" id="patient_signature_src"  name="patient_signature_src" value="{{$PedimAdultPrivacyPolicy->patient_signature}}">
                                     <label class="" for="">Patient Signature</label>
                                     <div>
                                         <div  id="sig"  style="width:370px !Important;height: 200px;@if($errors->get('patient_signature')) border-color:red; @endif" ></div>  <br/>
@@ -187,7 +176,14 @@
 
                                 </div>
 
-                                <div style="margin-left: 20px;" class="col-12 col-md-4">
+                                <div class="col-12 col-md-4 signature_pad_image" id="patient_signature_image">
+                                    <img src="{{asset('manage/storage/'.$PedimAdultPrivacyPolicy->patient_signature)}}">
+                                </div>  
+
+
+                                <div style="margin-left: 20px;display:none!important" class="col-12 col-md-4" id="witness_signature_pad"  >
+                                    <input type="hidden" id="witness_signature_updated" name="witness_signature_updated" value="no">   
+                                    <input type="hidden" id="witness_signature_src"  name="witness_signature_src" value="{{$PedimAdultPrivacyPolicy->witness_signature}}"> 
                                     <label class="" for="">Witness Signature</label>
                                     <div>
                                         <div  id="sig2"  style="width:370px !Important;height: 200px;@if($errors->get('witness_signature')) border-color:red; @endif" class=""></div>  <br/>
@@ -199,7 +195,27 @@
 
                                 </div>
 
+                                <div class="col-12 col-md-4 signature_pad_image" id="witness_signature_image">
 
+                                    <img src="{{asset('manage/storage/'.$PedimAdultPrivacyPolicy->witness_signature)}}">
+                                </div>
+
+
+                            </div>
+
+                            
+
+                            <div class="row no-gutters">
+                                <div class="col-12  col-md-4">
+                                    <button type="button" id="cancel_pat_sig" class="btn btn-danger">cancel</button>
+                                    <button type="button" id="edit_pat_sig" class="btn btn-warning">edit</button>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="col-12 ">
+                                        <button type="button" id="cancel_wit_sig" class="btn btn-danger">cancel</button>
+                                        <button type="button" id="edit_wit_sig" class="btn btn-warning">edit</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -216,7 +232,7 @@
                                     <div class="padding-wrap">
                                         <label>Today's Date</label>
                                         <input type="text" 
-                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}}"
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}} @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->patients_today_date}}  @endif"
                                                name="patients_today_date" id="patients_today_date" readonly />
                                     </div>
 
@@ -225,7 +241,7 @@
                                     <label>Witness Name <span class="required"></span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="{{old('witness_name')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value=" @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy ->witness_name}} @else {{old('witness_name')}}  @endif"
                                                name="witness_name" id="witness_name"
                                                 />
                                     </div>
@@ -236,7 +252,7 @@
                                 <div class="col-12 col-md-2">
                                     <label>Today's Date</label>
                                     <div class="padding-wrap">
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}}"
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}} @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->witness_today_date}}  @endif"
                                                name="witness_today_date" id="witness_today_date" readonly />
                                     </div>
 
@@ -332,7 +348,46 @@
                 alert(response);
             }
         });
-    })
+    }) 
+        if("@if($errors->get('witness_signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#witness_signature_pad").show();
+            $("#witness_signature_image").hide();
+            $("#witness_signature_updated").val('yes');
+        } 
+
+        if("@if($errors->get('patient_signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#patient_signature_pad").show();
+            $("#patient_signature_image").hide();
+            $("#patient_signature_updated").val('yes');
+        } 
+
+    $(document).ready(function(){
+        $("#cancel_pat_sig").click(function(){
+            $("#patient_signature_pad").hide();
+            $("#patient_signature_image").show();
+            $("#patient_signature_updated").val('no');
+            
+        });
+        $("#edit_pat_sig").click(function(){
+            $("#patient_signature_pad").show();
+            $("#patient_signature_image").hide();
+            $("#patient_signature_updated").val('yes');
+        });
+
+        
+        $("#cancel_wit_sig").click(function(){
+            $("#witness_signature_pad").hide();
+            $("#witness_signature_image").show();
+            $("#witness_signature_updated").val('no');
+        });
+        $("#edit_wit_sig").click(function(){
+            $("#witness_signature_pad").show();
+            $("#witness_signature_image").hide();
+            $("#witness_signature_updated").val('yes');
+        });
+    });
 </script>
 
 

@@ -933,3 +933,7 @@ div#errormessages {
     width: 100% !important;
     height: auto;
 }
+.signature_pad_image {
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
