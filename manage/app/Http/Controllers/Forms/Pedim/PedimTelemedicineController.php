@@ -27,6 +27,14 @@ class PedimTelemedicineController extends Controller
         //
     }
 
+    public function submissions($client_form_id)
+    { 
+        $submissions = Telemedicine::all()->where('client_forms_id', $client_form_id);
+        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
+         
+        return view('forms.pedim.pedim-telemedicine.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
+        //
+    }
     /**
      * Show the form for creating a new resource.
      *
