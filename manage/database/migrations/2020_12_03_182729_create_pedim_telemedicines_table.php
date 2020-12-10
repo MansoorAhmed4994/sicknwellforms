@@ -21,11 +21,10 @@ class CreatePedimTelemedicinesTable extends Migration
             $table->time('appointment_from');
             $table->time('appointment_to');
             $table->date('appointment_date');
-            $table->text('timezonepicker');
             $table->text('patient_fname');
             $table->text('patient_mname');
             $table->text('patient_lname');
-            $table->bigInteger('telephone');
+            $table->text('telephone');
             $table->text('email');
             $table->text('guardian_fname');
             $table->text('guardian_mname');

@@ -94,7 +94,7 @@
         ?>
 
 
-            <form method="post" action="{{route('PedimTelemedicine.create')}}" class="position-relative">
+            <form method="post" action="{{route('PedimTelemedicine.update',$PedimTelemedicine->id)}}" class="position-relative">
 
             {{csrf_field()}} 
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
@@ -125,7 +125,7 @@
                                     <label>Visit Type <span class="required">*</span></label>
                                     <select
                                             class="form-control custom-mainforminput @if($errors->get('visit_type')) is-invalid @endif"
-                                            value="{{old('visit_type')}}" name="visit_type" id="visit_type">
+                                            value="" name="visit_type" id="visit_type">
                                         <option value=""> </option>
                                         <option value="Covid-19 (Coronavirus) Screening"> Covid-19 (Coronavirus)
                                             Screening </option>
@@ -151,7 +151,7 @@
                                     <textarea
                                             class="form-control custom-mainforminput @if($errors->get('description_of_issue')) is-invalid @endif" 
                                             rows="5" name="description_of_issue"
-                                            id="description_of_issue" value="{{old('description_of_issue')}}">{{old('description_of_issue')}}</textarea>
+                                            id="description_of_issue" >@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->description_of_issue}} @else {{old('description_of_issue')}} @endif</textarea>
                                 </div>
                             </div>
                             <div class="form-group row margin-top">
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="col-12 col-md-4 ">
                                     <div class="datepicker datepicker-div @if($errors->get('appointment_from')) is-invalid-div @endif"
-                                            data-language='en'></div>
+                                    value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->appointment_from}} @else {{old('appointment_from')}} @endif"     data-language='en'></div>
                                 </div>
                                 <div class="col-12 col-md-4 ">
                                     <div class="slot-selection">
@@ -547,10 +547,10 @@
                                     </select>
                                 </div>
                                 <input type="hidden" id="date-hidden" name="appointment_date"
-                                       value="{{old('appointment_date')}}">
+                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->appointment_date}} @else {{old('appointment_date')}} @endif">
                                 <input type="hidden" id="appointment_from-hidden"
-                                       value="{{old('appointment_from')}}" name="appointment_from">
-                                <input type="hidden" id="appointment_to-hidden" value="{{old('appointment_to')}}"
+                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->appointment_from}} @else {{old('appointment_from')}} @endif" name="appointment_from">
+                                <input type="hidden" id="appointment_to-hidden" value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->appointment_to}} @else {{old('appointment_to')}} @endif"
                                        name="appointment_to">
                             </div>
                            <!-- <div class="form-group row margin-top">
@@ -634,7 +634,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('patient_fname')) is-invalid @endif "
                                                        name="patient_fname" id="patient_fname"
-                                                       value="{{old('patient_fname')}}" />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->patient_fname}} @else {{old('patient_fname')}} @endif" />
                                                 <p><small>First name</small></p>
                                             </div>
                                         </div>
@@ -643,7 +643,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('patient_mname')) is-invalid @endif "
                                                        name="patient_mname" id="patient_mname"
-                                                       value="{{old('patient_mname')}}" />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->patient_mname}} @else {{old('patient_mname')}} @endif" />
                                                 <p><small>Middle name</small></p>
                                             </div>
                                         </div>
@@ -652,7 +652,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('patient_lname')) is-invalid @endif"
                                                        name="patient_lname" id="patient_lname"
-                                                       value="{{old('patient_lname')}}" />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->patient_lname}} @else {{old('patient_lname')}} @endif" />
                                                 <p><small>Last name</small></p>
 
                                             </div>
@@ -663,14 +663,14 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <input type="tel"
                                            class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif"
-                                           name="telephone" id="telephone" value="{{old('telephone')}}"
+                                           name="telephone" id="telephone" value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->telephone}} @else {{old('telephone')}} @endif"
                                            data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
                                     <input type="email @if($errors->get('email')) is-invalid @endif"
                                            class="form-control custom-mainforminput "
-                                           value="{{old('email')}}" name="email" id="email" required/>
+                                           value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->email}} @else {{old('email')}} @endif" name="email" id="email" />
                                 </div>
                             </div>
                         </div>
@@ -704,7 +704,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('guardian_fname')) is-invalid @endif"
                                                        name="guardian_fname" id="guardian_fname"
-                                                       value="{{old('guardian_fname')}}" />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->guardian_fname}} @else {{old('guardian_fname')}} @endif" />
                                                 <p><small>First name</small></p>
                                             </div>
                                         </div>
@@ -713,7 +713,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('guardian_mname')) is-invalid @endif"
                                                        name="guardian_mname" id="guardian_mname"
-                                                       value="{{old('guardian_mname')}}" />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->guardian_mname}} @else {{old('guardian_mname')}} @endif" />
                                                 <p><small>Middle name</small></p>
                                             </div>
                                         </div>
@@ -722,7 +722,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('guardian_lname')) is-invalid @endif"
                                                        name="guardian_lname" id="guardian_lname"
-                                                       value="{{old('guardian_lname')}}" />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->guardian_lname}} @else {{old('guardian_lname')}} @endif" />
                                                 <p><small>Last name</small></p>
 
                                             </div>
@@ -730,24 +730,26 @@
                                     </div>
                                 </div>
                                 
+
                                 <div class="col-12 col-md-2">
                                             <div class="padding-wrap">
-                                                <label>Date Of Birth</label>
+                                                <label>Date of birth</label>
                                                 <input type="text"
                                                        class="form-control custom-mainforminput todayDatePicker @if($errors->get('dob')) is-invalid @endif"
-                                                       value="{{old('dob')}}" name="dob" id="dob" readonly />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->dob}} @else {{old('dob')}} @endif" name="dob" id="dob" readonly />
                                             </div>
                                         </div>
+
                                 <div class="col-12 col-md-3">
                                     <div class="padding-wrap">
                                         <label>Is Patient a Minor? <span class="required">*</span></label><br />
                                         <label class="mt-2"><input type="radio" class="mr-2"
                                                                    name="is_patient_minor" id="is_patient_minor"
-                                                                   value="yes" <?php if(old('is_patient_minor') == 'yes'){ echo 'checked';}?>>Yes</label> </div>
+                                                                   value="yes" <?php if(old('is_patient_minor') == 'yes'){ echo 'checked';} elseif($PedimTelemedicine->is_patient_minor == 'yes'){echo 'checked';}?>>Yes</label> </div>
                                     <div class="padding-wrap">
                                         <label class="mt-2"><input type="radio" class="mr-2"
                                                                    name="is_patient_minor" id="is_patient_minor"
-                                                                   value="no" <?php if(old('is_patient_minor') == 'no'){ echo 'checked';}?>>No</label></div>
+                                                                   value="no" <?php if(old('is_patient_minor') == 'no'){ echo 'checked';} elseif($PedimTelemedicine->is_patient_minor == 'no'){echo 'checked';}?>>No</label></div>
 
                                 </div>
                             </div>
@@ -757,50 +759,50 @@
                                     <textarea
                                             class="form-control custom-mainforminput @if($errors->get('symptoms')) is-invalid @endif"
                                             rows="5" name="symptoms"
-                                            id="symptoms">{{old('symptoms')}}</textarea>
+                                            id="symptoms">@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->symptoms}} @else {{old('symptoms')}} @endif</textarea>
                                 </div>
                             </div>
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-3">
                                     <label>Responsible Party (If Minor)</label>
                                     <input type="text" class="form-control custom-mainforminput @if($errors->get('responsible_party_name')) is-invalid @endif" name="responsible_party_name" id="responsible_party_name"
-                                    value="{{old('responsible_party_name')}}">
+                                    value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->responsible_party_name}} @else {{old('responsible_party_name')}} @endif">
                                     <p><small>Enter Full Legal Name
                                         </small></p>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label>Full Name of Insurance Subscriber</label>
                                     <input type="text" class="form-control custom-mainforminput @if($errors->get('insurance_subscriber')) is-invalid @endif" name="insurance_subscriber" id="insurance_subscriber"
-                                           value="{{old('insurance_subscriber')}}">
+                                           value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->insurance_subscriber}} @else {{old('insurance_subscriber')}} @endif">
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Relation to patient</label>
                                     <input type="text" class="form-control custom-mainforminput @if($errors->get('relation_patient')) is-invalid @endif" name="relation_patient" id="relation_patient"
-                                           value="{{old('relation_patient')}}">
+                                           value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->relation_patient}} @else {{old('relation_patient')}} @endif">
                                     <p><small>Self, Father, Mother, Son, etc.
                                         </small></p>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Telephone <span class="required">*</span></label>
                                     <input type="tel" class="form-control custom-mainforminput @if($errors->get('insurance_telephone')) is-invalid @endif" name="insurance_telephone" id="insurance_telephone"
-                                           value="{{old('insurance_telephone')}}">
+                                           value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->insurance_telephone}} @else {{old('insurance_telephone')}} @endif">
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
                                     <input type="email" class="form-control custom-mainforminput @if($errors->get('insurance_email')) is-invalid @endif" name="insurance_email" id="insurance_email"
-                                           value="{{old('insurance_email')}}" >
+                                           value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->insurance_email}} @else {{old('insurance_email')}} @endif">
                                 </div>
                             </div>
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-3">
                                     <label>Primary Insurance Company</label>
                                     <input type="text" class="form-control custom-mainforminput @if($errors->get('primary_insurance_company')) is-invalid @endif" name="primary_insurance_company" id="primary_insurance_company"
-                                           value="{{old('primary_insurance_company')}}">
+                                           value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->primary_insurance_company}} @else {{old('primary_insurance_company')}} @endif">
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label>Secondary Insurance Company</label>
                                     <input type="text" class="form-control custom-mainforminput @if($errors->get('secondary_insurance_company')) is-invalid @endif" name="secondary_insurance_company" id="secondary_insurance_company"
-                                           value="{{old('secondary_insurance_company')}}">
+                                           value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->secondary_insurance_company}} @else {{old('secondary_insurance_company')}} @endif">
                                 </div>
                             </div>
                         </div>
@@ -1032,7 +1034,7 @@
                                             <div class="padding-wrap">
                                                 <label>Click To Accept <span class="required">*</span></label><br />
                                                 <label class="mt-2"><input type="checkbox" class="mr-2" name="accept_financial_policy" id="accept_financial_policy"
-                                                                           value="yes"<?php if(old('accept_financial_policy') == 'yes'){ echo 'checked';}?>>Accept</label>
+                                                                           value="yes"<?php if(old('accept_financial_policy') == 'yes'){ echo 'checked';}elseif($PedimTelemedicine->accept_financial_policy){ echo 'checked';}?>>Accept</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-2">
@@ -1040,7 +1042,7 @@
                                                 <label>Date</label>
                                                 <input type="text"
                                                        class="form-control custom-mainforminput todayDatePicker @if($errors->get('fp_date')) is-invalid @endif"
-                                                       value="{{old('fp_date')}}" name="fp_date" id="fp_date" readonly />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->fp_date}} @else {{old('fp_date')}} @endif" name="fp_date" id="fp_date" readonly />
                                             </div>
                                         </div>
                                     </div>
@@ -1117,7 +1119,7 @@
                                             <div class="padding-wrap">
                                                 <label>Click To Accept <span class="required">*</span></label><br />
                                                 <label class="mt-2"><input type="checkbox" class="mr-2" name="accept_consent_for_treatment" id="accept_consent_for_treatment"
-                                                                           value="accept" <?php if(old('accept_consent_for_treatment') == 'yes'){ echo 'checked';}?>>Accept</label>
+                                                                           value="accept" <?php if(old('accept_consent_for_treatment') == 'yes'){ echo 'checked';}elseif($PedimTelemedicine->accept_consent_for_treatment){ echo 'checked';}?>>Accept</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-2">
@@ -1125,7 +1127,7 @@
                                                 <label>Date</label>
                                                 <input type="text"
                                                        class="form-control custom-mainforminput todayDatePicker @if($errors->get('cft_date')) is-invalid @endif"
-                                                       value="{{old('cft_date')}}" name="cft_date" id="cft_date" readonly />
+                                                       value="@if(isset($PedimTelemedicine)) {{$PedimTelemedicine->cft_date}} @else {{old('cft_date')}} @endif" name="cft_date" id="cft_date" readonly />
                                             </div>
                                         </div>
                                     </div>
@@ -1141,39 +1143,39 @@
                                     <div class="row">
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Google" <?php if(old('hear_about_us') == 'Google'){ echo 'checked';}?>>Google</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Google" <?php if(old('hear_about_us') == 'Google'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Google'){ echo 'Google';}?>>Google</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Facebook" <?php if(old('hear_about_us') == 'Facebook'){ echo 'checked';}?>>Facebook</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Facebook" <?php if(old('hear_about_us') == 'Facebook'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Facebook'){ echo 'Google';}?>>Facebook</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Website" <?php if(old('hear_about_us') == 'Website'){ echo 'checked';}?>>Website</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Website" <?php if(old('hear_about_us') == 'Website'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Website'){ echo 'Google';}?>>Website</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Email" <?php if(old('hear_about_us') == 'Email'){ echo 'checked';}?>>Email</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Email" <?php if(old('hear_about_us') == 'Email'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Email'){ echo 'Google';}?>>Email</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Friends/Family" <?php if(old('hear_about_us') == 'Friends/Family'){ echo 'checked';}?>>Friends/Family</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Friends/Family" <?php if(old('hear_about_us') == 'Friends/Family'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Friends/Family'){ echo 'Google';}?>>Friends/Family</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Billboard" <?php if(old('hear_about_us') == 'Billboard'){ echo 'checked';}?>>Billboard</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Billboard" <?php if(old('hear_about_us') == 'Billboard'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Billboard'){ echo 'Google';}?>>Billboard</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Radio" <?php if(old('hear_about_us') == 'Radio'){ echo 'checked';}?>>Radio</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Radio" <?php if(old('hear_about_us') == 'Radio'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Radio'){ echo 'Google';}?>>Radio</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Drove By" <?php if(old('hear_about_us') == 'Drove By'){ echo 'checked';}?>>Drove By</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Drove By" <?php if(old('hear_about_us') == 'Drove By'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Drove By'){ echo 'Google';}?>>Drove By</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2 d-flex align-items-center"><input type="checkbox" class="mr-2"
-                                                                        name="hear_about_us" id="hear_about_us" value="Other" <?php if(old('hear_about_us') == 'Other'){ echo 'checked';}?>><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
+                                                                        name="hear_about_us" id="hear_about_us" value="Other" <?php if(old('hear_about_us') == 'Other'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Other'){ echo 'Google';}?>><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
                                         </div>
                                     </div>
                                 </div>
@@ -1206,7 +1208,16 @@
 
 <script>
     
-    selectElement('visit_type', '{{old('visit_type')}}');
+    
+
+    if("@if(isset($PedimTelemedicine)){{$PedimTelemedicine->visit_type}}@endif)" != "")
+        { 
+            selectElement('visit_type', '@if(isset($PedimTelemedicine)){{$PedimTelemedicine->visit_type}}@endif');
+        }
+        else
+        {
+            selectElement('visit_type', '{{old('visit_type')}}');
+        }
 </script>
 
 <script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>
