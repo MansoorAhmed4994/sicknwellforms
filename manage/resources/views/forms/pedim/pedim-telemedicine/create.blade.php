@@ -553,8 +553,8 @@
                                 <input type="hidden" id="appointment_to-hidden" value="{{old('appointment_to')}}"
                                        name="appointment_to">
                             </div>
-                           <div class="form-group row margin-top">
-                                <!-- <div class="col-12 col-md-3">
+                           <!-- <div class="form-group row margin-top">
+                                <div class="col-12 col-md-3">
                                     <label>From Time <span class="required">*</span></label>
                                     <select class="form-control custom-mainforminput"  name="appointment_from"  id="appointment_from">
                                         <option value="">  </option>
@@ -619,8 +619,8 @@
                                 <div class="col-12 col-md-6">
                                     <label>Available Appointment Date  <span class="required">*</span></label>
                                     <input type="date" class="form-control custom-mainforminput" name="appointment_date"  id="appointment_date">
-                                </div> -->
-                            </div>
+                                </div>
+                            </div> -->
                         </div>
                         <div class="form-section">
                             <div class="form-group row mt-4">
@@ -742,11 +742,11 @@
                                         <label>Is Patient a Minor? <span class="required">*</span></label><br />
                                         <label class="mt-2"><input type="radio" class="mr-2"
                                                                    name="is_patient_minor" id="is_patient_minor"
-                                                                   value="yes">Yes</label> </div>
+                                                                   value="yes" <?php if(old('is_patient_minor') == 'yes'){ echo 'checked';}?>>Yes</label> </div>
                                     <div class="padding-wrap">
                                         <label class="mt-2"><input type="radio" class="mr-2"
                                                                    name="is_patient_minor" id="is_patient_minor"
-                                                                   value="no">No</label></div>
+                                                                   value="no" <?php if(old('is_patient_minor') == 'no'){ echo 'checked';}?>>No</label></div>
 
                                 </div>
                             </div>
@@ -754,52 +754,52 @@
                                 <div class="col-12 col-md-10">
                                     <label>Symptoms you are experiencing <span class="required">*</span></label>
                                     <textarea
-                                            class="form-control custom-mainforminput "
+                                            class="form-control custom-mainforminput @if($errors->get('symptoms')) is-invalid @endif"
                                             rows="5" name="symptoms"
-                                            id="symptoms"></textarea>
+                                            id="symptoms">{{old('symptoms')}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-3">
                                     <label>Responsible Party (If Minor)</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="responsible_party_name" id="responsible_party_name"
-                                           value="">
+                                    <input type="text" class="form-control custom-mainforminput @if($errors->get('responsible_party_name')) is-invalid @endif" name="responsible_party_name" id="responsible_party_name"
+                                    value="{{old('responsible_party_name')}}">
                                     <p><small>Enter Full Legal Name
                                         </small></p>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label>Full Name of Insurance Subscriber</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="insurance_subscriber" id="insurance_subscriber"
-                                           value="">
+                                    <input type="text" class="form-control custom-mainforminput @if($errors->get('insurance_subscriber')) is-invalid @endif" name="insurance_subscriber" id="insurance_subscriber"
+                                           value="{{old('insurance_subscriber')}}">
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Relation to patient</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="relation_patient" id="relation_patient"
-                                           value="">
+                                    <input type="text" class="form-control custom-mainforminput @if($errors->get('relation_patient')) is-invalid @endif" name="relation_patient" id="relation_patient"
+                                           value="{{old('relation_patient')}}">
                                     <p><small>Self, Father, Mother, Son, etc.
                                         </small></p>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Telephone <span class="required">*</span></label>
-                                    <input type="tel" class="form-control custom-mainforminput " name="insurance_telephone" id="insurance_telephone"
-                                           value="">
+                                    <input type="tel" class="form-control custom-mainforminput @if($errors->get('insurance_telephone')) is-invalid @endif" name="insurance_telephone" id="insurance_telephone"
+                                           value="{{old('insurance_telephone')}}">
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
-                                    <input type="email" class="form-control custom-mainforminput " name="insurance_email" id="insurance_email"
-                                           value="">
+                                    <input type="email" class="form-control custom-mainforminput @if($errors->get('insurance_email')) is-invalid @endif" name="insurance_email" id="insurance_email"
+                                           value="{{old('insurance_email')}}">
                                 </div>
                             </div>
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-3">
                                     <label>Primary Insurance Company</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="primary_insurance_company" id="primary_insurance_company"
-                                           value="">
+                                    <input type="text" class="form-control custom-mainforminput @if($errors->get('primary_insurance_company')) is-invalid @endif" name="primary_insurance_company" id="primary_insurance_company"
+                                           value="{{old('primary_insurance_company')}}">
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label>Secondary Insurance Company</label>
-                                    <input type="text" class="form-control custom-mainforminput " name="secondary_insurance_company" id="secondary_insurance_company"
-                                           value="">
+                                    <input type="text" class="form-control custom-mainforminput @if($errors->get('secondary_insurance_company')) is-invalid @endif" name="secondary_insurance_company" id="secondary_insurance_company"
+                                           value="{{old('secondary_insurance_company')}}">
                                 </div>
                             </div>
                         </div>
@@ -1031,15 +1031,15 @@
                                             <div class="padding-wrap">
                                                 <label>Click To Accept <span class="required">*</span></label><br />
                                                 <label class="mt-2"><input type="checkbox" class="mr-2" name="accept_financial_policy" id="accept_financial_policy"
-                                                                           value="accept">Accept</label>
+                                                                           value="yes"<?php if(old('accept_financial_policy') == 'yes'){ echo 'checked';}?>>Accept</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-2">
                                             <div class="padding-wrap">
                                                 <label>Date</label>
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput todayDatePicker"
-                                                       name="fp_date" id="fp_date" readonly />
+                                                       class="form-control custom-mainforminput todayDatePicker @if($errors->get('fp_date')) is-invalid @endif"
+                                                       value="{{old('fp_date')}}" name="fp_date" id="fp_date" readonly />
                                             </div>
                                         </div>
                                     </div>
@@ -1116,15 +1116,15 @@
                                             <div class="padding-wrap">
                                                 <label>Click To Accept <span class="required">*</span></label><br />
                                                 <label class="mt-2"><input type="checkbox" class="mr-2" name="accept_consent_for_treatment" id="accept_consent_for_treatment"
-                                                                           value="accept">Accept</label>
+                                                                           value="accept" <?php if(old('accept_consent_for_treatment') == 'yes'){ echo 'checked';}?>>Accept</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-2">
                                             <div class="padding-wrap">
                                                 <label>Date</label>
                                                 <input type="text"
-                                                       class="form-control custom-mainforminput todayDatePicker"
-                                                       name="cft_date" id="cft_date" readonly />
+                                                       class="form-control custom-mainforminput todayDatePicker @if($errors->get('cft_date')) is-invalid @endif"
+                                                       value="{{old('cft_date')}}" name="cft_date" id="cft_date" readonly />
                                             </div>
                                         </div>
                                     </div>
@@ -1140,39 +1140,39 @@
                                     <div class="row">
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Google">Google</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Google" <?php if(old('hear_about_us') == 'Google'){ echo 'checked';}?>>Google</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Facebook">Facebook</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Facebook" <?php if(old('hear_about_us') == 'Facebook'){ echo 'checked';}?>>Facebook</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Website">Website</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Website" <?php if(old('hear_about_us') == 'Website'){ echo 'checked';}?>>Website</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Email">Email</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Email" <?php if(old('hear_about_us') == 'Email'){ echo 'checked';}?>>Email</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Friends/Family">Friends/Family</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Friends/Family" <?php if(old('hear_about_us') == 'Friends/Family'){ echo 'checked';}?>>Friends/Family</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Billboard">Billboard</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Billboard" <?php if(old('hear_about_us') == 'Billboard'){ echo 'checked';}?>>Billboard</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Radio">Radio</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Radio" <?php if(old('hear_about_us') == 'Radio'){ echo 'checked';}?>>Radio</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Drove By">Drove By</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Drove By" <?php if(old('hear_about_us') == 'Drove By'){ echo 'checked';}?>>Drove By</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2 d-flex align-items-center"><input type="checkbox" class="mr-2"
-                                                                        name="hear_about_us" id="hear_about_us" value="Other"><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
+                                                                        name="hear_about_us" id="hear_about_us" value="Other" <?php if(old('hear_about_us') == 'Other'){ echo 'checked';}?>><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
                                         </div>
                                     </div>
                                 </div>
