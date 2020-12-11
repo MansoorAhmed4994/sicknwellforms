@@ -9,6 +9,7 @@
             <div class="scrollbar-fancy h-100">
                  
                 @foreach($client->form as $form)
+               
                 <div class="forms-items">
                     <div class="form-item d-flex align-items-center">
                         <i class="fas fa-user"></i>
