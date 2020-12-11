@@ -29,11 +29,11 @@ class FormTableSeeder extends Seeder
         ]);
 
         Form::create([
-            'form_name' => 'InOfficeAppoints',
-            'title' => 'In Office Appoints',
+            'form_name' => 'InOfficeAppointments',
+            'title' => 'In Office Appointments',
             'sub_title' => '',
             'fields_count' => '0',
-            'form_link' => 'InOfficeAppoints',
+            'form_link' => 'InOfficeAppointments',
             'image_path' => '',
             'created_by' => '0',
             'updated_by' => '0',
@@ -42,11 +42,11 @@ class FormTableSeeder extends Seeder
 
         Form::create([
 
-            'form_name' => 'AdultPrivacyPolicyAndConsentForTreatment',
-            'title' => 'Adult Privacy Policy And Consent For Treatment Con...',
+            'form_name' => 'PedimAdultPrivacyPolicyAndConsentForTreatment',
+            'title' => 'Pedim Adult Privacy Policy And Consent For Treatment Con...',
             'sub_title' => '',
             'fields_count' => '0',
-            'form_link' => 'AdultPrivacyPolicyAndConsentForTreatment',
+            'form_link' => 'PedimAdultPrivacyPolicyAndConsentForTreatment',
             'image_path' => '',
             'created_by' => '0',
             'updated_by' => '0',
