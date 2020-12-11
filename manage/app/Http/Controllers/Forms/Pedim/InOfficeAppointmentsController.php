@@ -70,7 +70,7 @@ class InOfficeAppointmentsController extends Controller
         $timezone = appointment_limits::find($InOfficeAppointmentsDetails->client_forms_id);
         $timezone = $timezone->time_zone; 
         
-        $response = $ZoomClientApi->request('POST', 'https://sicknwell.desenador.com/api/create-zoom-meeting', [
+        $response = $ZoomClientApi->request('POST', env("SICKNWELL_ZOOM_API_URL"), [
             'headers' => [
                 'Authorization' => 'Bearer '.$token,
                 'Accept' => 'application/json',

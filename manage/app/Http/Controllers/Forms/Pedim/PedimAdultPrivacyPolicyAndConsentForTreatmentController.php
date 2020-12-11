@@ -245,31 +245,24 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
     }
     
     public function CreateZoomMeeting($id)
-    {
-        
+    { 
         $ZoomClientApi = new Client();
         $token = Str::random(60);
-        $PedimAdultPrivacyPolicy = Pedim_adult_privacy_policy_consent_treatments::find($id);
-        //dd($PedimAdultPrivacyPolicy);
-        $host = 'mansoor.zaheer994@gmail.com';
-        // $host = $PedimAdultPrivacyPolicy->client_forms->client->email;
-        $participant = $PedimAdultPrivacyPolicy->email;
-        //dd($InOfficeAppointmentsDetails->email); 
-        $timestamp = time();  
-       // echo(date("m/d/Y h:i:s a", $timestamp));
-        $start_time = date("m/d/Y h:i:s a", $timestamp);
-        
+        $PedimAdultPrivacyPolicy = Pedim_adult_privacy_policy_consent_treatments::find($id); 
+        //$host = 'mansoor.zaheer994@gmail.com';
+        $host = $PedimAdultPrivacyPolicy->client_forms->client->email;
+        $participant = $PedimAdultPrivacyPolicy->email; 
+        $timestamp = time();   
+        $start_time = date("m/d/Y h:i:s a", $timestamp); 
         $start_time = date('m/d/Y h:i:s a', strtotime($start_time)); 
         $duration = 30;
         $timestamp = strtotime($start_time);
         $start_time = date('yy-m-d\TH:m:s',$timestamp);
-        $start_time = (string)$start_time.'z';
-        // dd($start_time); 
-        //get time zone 
+        $start_time = (string)$start_time.'z'; 
         $timezone = appointment_limits::find($PedimAdultPrivacyPolicy->client_forms_id);
         $timezone = $timezone->time_zone; 
         
-        $response = $ZoomClientApi->request('POST', 'https://sicknwell.desenador.com/api/create-zoom-meeting', [
+        $response = $ZoomClientApi->request('POST', env("SICKNWELL_ZOOM_API_URL"), [
             'headers' => [
                 'Authorization' => 'Bearer '.$token,
                 'Accept' => 'application/json',
@@ -292,24 +285,23 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         
         $response = json_decode($response->getBody(),true);
         //dd($response);
-        if($response['code'] == '201')
-        {
-            //dd($response);
-            
-            
+        if(isset($response['code']))
+        { 
             if(Auth::guard('clients')->check())
             {
                 session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
-                return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
+                return redirect()->route('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
             }
             else
             {
                 session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
-                return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
+                return redirect()->route('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
             } 
         }
-        else{
+        else
+        {
             session()->flash("warning","Some thing went wrong please Create meeting again.");
+            return redirect()->route('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
         }
     }
 }

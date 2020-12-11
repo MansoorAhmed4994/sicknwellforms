@@ -129,7 +129,7 @@ Route::post('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/', 'Form
 Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/edit/{submission_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@edit')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.edit');
 Route::post('/PedimAdultPrivacyPolicyAndConsentForTreatment/update/{Pedim_adult_data_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@update')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.update');
 Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@CreateZoomMeeting')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.create.zoom.meeting'); 
-Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
+
 
 
 //MinorPrivacyPolicyAndConsentForTreatmentController CRUD
@@ -181,7 +181,7 @@ Route::group(['middleware' => ['auth:clients']],function(){
     Route::get('/client/PedimTelemedicine/{clien_form_id}','Forms\Pedim\PedimTelemedicineController@submissions')->name('client.PedimTelemedicine.submissions');
 
     
-    
+    Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
     //Embed Link
     Route::get('/client/form/embed/link/{form_name}/{clien_form_id}', 'Client_formController@FormEmbedLink')->name('client.form.embed.link');
@@ -249,11 +249,7 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/InOfficeAppointments/submissions/{clien_form_id}', 'Forms\Pedim\InOfficeAppointmentsController@submissions')->name('InOfficeAppointments.submissions'); 
     Route::post('/InOfficeAppointments/submissions/', 'Forms\Pedim\InOfficeAppointmentsController@GetVerifiedSubmission')->name('InOfficeAppointments.get.submissions');
     
-    
-    //QcmTelemedicineForm Auth CRUD
-    Route::get('/AdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}', 'QcmTelemedicineFormController@submissions')->name('AdultPrivacyPolicyAndConsentForTreatment.submissions'); 
-    Route::post('/AdultPrivacyPolicyAndConsentForTreatment/submissions/', 'QcmTelemedicineFormController@GetVerifiedSubmission')->name('AdultPrivacyPolicyAndConsentForTreatment.get.submissions'); 
-    
+   
     //PedimFeedBackFormController Auth CRUD
     Route::get('/PedimFeedBackForm/submissions/{clien_form_id}','Forms\Pedim\PedimFeedBackFormController@submissions')->name('PedimFeedBackForm.submissions');
 
@@ -261,7 +257,7 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/PedimTelemedicine/submissions/{clien_form_id}','Forms\Pedim\PedimTelemedicineController@submissions')->name('PedimTelemedicine.submissions');
 
     
-    
+    Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
     
     
     
