@@ -1,13 +1,10 @@
-<?php
+<?php 
 
- 
- namespace Database\Seeders;
- 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Forms;
+use App\Models\Form;
 
-class FormsTableSeeder extends Seeder
+class FormTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +13,8 @@ class FormsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        Forms::truncate();
-        Forms::create([
+        Form::truncate();
+        Form::create([
             'form_name' => 'QcmTelemedicineForm',
             'title' => 'QcmTelemedicine',
             'sub_title' => '',
@@ -32,7 +28,7 @@ class FormsTableSeeder extends Seeder
             
         ]);
 
-        Forms::create([
+        Form::create([
             'form_name' => 'InOfficeAppoints',
             'title' => 'In Office Appoints',
             'sub_title' => '',
@@ -44,7 +40,7 @@ class FormsTableSeeder extends Seeder
             'status' => 'Active',            
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'AdultPrivacyPolicyAndConsentForTreatment',
             'title' => 'Adult Privacy Policy And Consent For Treatment Con...',
@@ -58,7 +54,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'PedimFeedBackForm',
             'title' => 'Pedim Feed Back Form',
@@ -72,7 +68,7 @@ class FormsTableSeeder extends Seeder
   
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'MinorPrivacyPolicyAndConsentForTreatment',
             'title' => 'Minor Privacy Policy And Consent For Treatment',
@@ -86,7 +82,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'ConsentForTreatmentOfAMinor',
             'title' => 'Consent For Treatment Of A Minor',
@@ -100,7 +96,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
                     
             'form_name' => 'ConsentForRapidCovid19Testing',
             'title' => 'Consent For Rapid Covid 19 Testing',
@@ -114,7 +110,7 @@ class FormsTableSeeder extends Seeder
 
         ]);
 
-        Forms::create([
+        Form::create([
                         
             'form_name' => 'PedimTelemedicine',
             'title' => 'Pedim Telemedicine',
@@ -128,7 +124,7 @@ class FormsTableSeeder extends Seeder
 
         ]);
 
-        Forms::create([
+        Form::create([
                         
             'form_name' => 'OccupationAlHealthSafeWorkerProgram',
             'title' => 'OccupationAl Health Safe Worker Program',
@@ -142,7 +138,7 @@ class FormsTableSeeder extends Seeder
 
         ]);
 
-        Forms::create([
+        Form::create([
                         
             'form_name' => 'OccupationAlHealthWorkplacePhysicalsDrugScreen',
             'title' => 'Occupation Al Health Workplace Physicals Drug Scre...',
@@ -156,7 +152,7 @@ class FormsTableSeeder extends Seeder
 
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'QcmContactUs',
             'title' => 'Qcm Contact Us',
@@ -171,7 +167,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'MhstAdultPrivacyPolicyAndConsentForTreatment',
             'title' => 'Mhst Adult Privacy Policy And Consent For Treatmen...',
@@ -185,7 +181,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'MhstMinorPrivacyPolicyAndConsentForTreatment',
             'title' => 'Mhst Minor Privacy Policy And Consent For Treatmen...',
@@ -199,7 +195,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'MhstMedicalReferralForm',
             'title' => 'Mhst Medical Referral Form',
@@ -213,7 +209,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'QcardSelfPaySubscription',
             'title' => 'Qcard Self Pay Subscription',
@@ -227,7 +223,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'PlanDeSaludBarato',
             'title' => 'PlanDe Salud Barato',
@@ -241,7 +237,7 @@ class FormsTableSeeder extends Seeder
                         
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'MhstRegisterHomeSleepTest',
             'title' => 'Mhst Register Home Sleep Test',
@@ -255,7 +251,7 @@ class FormsTableSeeder extends Seeder
 
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'PedimPediatricPatientInformation',
             'title' => 'Pedim Pediatric Patient Information',
@@ -268,7 +264,7 @@ class FormsTableSeeder extends Seeder
             'status' => 'Active',
         ]);
 
-        Forms::create([
+        Form::create([
 
             'form_name' => 'PedimAdultPatientInformation',
             'title' => 'Pedim Adult Patient Information',
@@ -283,3 +279,5 @@ class FormsTableSeeder extends Seeder
         ]);
     }
 }
+
+
