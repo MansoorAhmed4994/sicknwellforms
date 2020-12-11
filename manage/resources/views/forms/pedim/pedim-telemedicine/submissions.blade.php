@@ -74,31 +74,7 @@
                                 </div>
                             </th> 
                             
-                            <th>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>Patient F.Name</span>
-                                </div>
-                            </th> 
-                            <th>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>Patient M.Name</span>
-                                </div>
-                            </th> 
-                            <th>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>Patient L.Name</span>
-                                </div>
-                            </th> 
                             
-                            <th>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>DOB</span>
-                                </div>
-                            </th> 
                                 
                             <th>
                                 <div class="d-flex align-items-center">
@@ -166,23 +142,43 @@
                             <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Symptoms</span>
+                                    <span>Patient F.Name</span>
                                 </div>
                             </th> 
-                                
-                                                        <th>
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Patient M.Name</span>
+                                </div>
+                            </th> 
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Patient L.Name</span>
+                                </div>
+                            </th> 
+                            
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>DOB</span>
+                                </div>
+                            </th> 
+
+                            <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
                                     <span>IS PATIENT MINOR</span>
                                 </div>
                             </th>  
-                                                        <th>
+
+                            <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>RELATION TO PATIENT</span>
+                                    <span>Symptoms</span>
                                 </div>
-                            </th>
-                            
+                            </th> 
+                                
                             <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
@@ -195,7 +191,16 @@
                                     <i class="fas fa-calendar-alt"></i>
                                     <span>SUBSCRIBER</span>
                                 </div>
+                            </th>    
+                                     
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>RELATION TO PATIENT</span>
+                                </div>
                             </th>
+                            
+                            
                             
                             <th>
                                 <div class="d-flex align-items-center">
@@ -469,11 +474,7 @@
                                     <span>{{ $row->primary_insurance_company}}</span>
                                 </div>
                             </td>
-                            <td>
-                                <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->patient_secondary_insurance_company}}</span>
-                                </div>
-                            </td>
+                            
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->secondary_insurance_company}}</span>

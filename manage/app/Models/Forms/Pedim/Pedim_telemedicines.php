@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Models\Forms\Pedim;
-
 use App\Traits\RecordAuthActivity;
-
 use Illuminate\Database\Eloquent\Model;
 
-class Telemedicine extends Model
+class Pedim_telemedicines extends Model
 {
     //
+
     protected $guarded = [
         'id'
     ];
@@ -18,6 +17,7 @@ class Telemedicine extends Model
     public function client_forms()
     {
         //dd();
-        return $this->belongsTo(Client_forms::class,'client_forms_id','id');
+        return $this->belongsTo('App\Models\Client_forms','client_forms_id','id');
     }
+
 }
