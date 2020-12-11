@@ -14,6 +14,7 @@ use App\Models\Clients;
 use App\Models\Client_forms;
 use App\Models\Adult_privacy_policy;
 use App\Models\Forms\Pedim\Pedim_adult_privacy_policy_consent_treatments;
+use Auth;
 
 
 class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
@@ -107,7 +108,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
     { 
         //dd($client_form_id);
         $submissions = Pedim_adult_privacy_policy_consent_treatments::all()->where('client_forms_id', $client_form_id);
-       // dd($submissions);
+        //dd($submissions);
         $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
          
         return view('forms.pedim.pedim-adult-privacy-policy-and-consent-for-treatment.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
@@ -148,13 +149,14 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pedim_adult_privacy_policy_consent_treatments $Pedim_adult_data_id)
     { 
+        //dd($id);
         $is_patient_signature_update = "nullable";
         $is_witness_signature_update = "nullable";
         if(request('patient_signature_updated') == "yes")
         {
-        echo 'working1';
+        //echo 'working1';
             $is_patient_signature_update = "required"; 
              
         }
@@ -180,37 +182,55 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
 
         
         $this->validate($request, $valiedation_from_array);
-        dd($is_witness_signature_update);
+        //dd($is_witness_signature_update);
         $patient_signature = $request->patient_signature_src;
         $witness_signature = $request->witness_signature_src;
         if(request('patient_signature_updated') == "yes")
         {
         
-            $patient_signature = app('App\Http\Controllers\SignaturePadController')->update($request->patient_signature);
+            $patient_signature = app('App\Http\Controllers\SignaturePadController')->update($request->patient_signature,$patient_signature);
              
         }
         if(request('witness_signature_updated') == "yes")
         {
         
-            $witness_signature = app('App\Http\Controllers\SignaturePadController')->update($request->witness_signature);
+            $witness_signature = app('App\Http\Controllers\SignaturePadController')->update($request->witness_signature,$witness_signature);
              
         }
-        
-        dd();
+ 
+        $Pedim_adult_data_id->patient_name = request('patient_name');
+        $Pedim_adult_data_id->telephone = request('telephone');
+        $Pedim_adult_data_id->email = request('email');
+        $Pedim_adult_data_id->dob = request('dob');
+        $Pedim_adult_data_id->patient_signature = $patient_signature;
+        $Pedim_adult_data_id->patients_today_date = request('patients_today_date');
+        $Pedim_adult_data_id->witness_signature = $witness_signature;
+        $Pedim_adult_data_id->witness_name = request('witness_name');
+        $Pedim_adult_data_id->witness_today_date = request('witness_today_date');
+        $Pedim_adult_data_id->client_forms_id = request('client_forms_id');   
+        $Pedim_adult_data_id->status = 'active';  
+        $update_status = $Pedim_adult_data_id->save();
 
-        $adult_privacy_policies = new Pedim_adult_privacy_policy_consent_treatments();
-        $adult_privacy_policies->patient_name = request('patient_name');
-        $adult_privacy_policies->telephone = request('telephone');
-        $adult_privacy_policies->email = request('email');
-        $adult_privacy_policies->dob = request('dob');
-        $adult_privacy_policies->patient_signature = $patient_signature;
-        $adult_privacy_policies->patients_today_date = request('patients_today_date');
-        $adult_privacy_policies->witness_signature = $witness_signature;
-        $adult_privacy_policies->witness_name = request('witness_name');
-        $adult_privacy_policies->witness_today_date = request('witness_today_date');
-        $adult_privacy_policies->client_forms_id = request('client_forms_id');   
-        $adult_privacy_policies->status = 'active';  
-        $adult_privacy_policies->save();
+        if($update_status)
+        {  
+            if(Auth::guard('clients')->check())
+            {
+                session()->flash("success","Successfully Updated"); 
+                return redirect()->route('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$Pedim_adult_data_id->client_forms_id);
+            }
+            else
+            {
+                session()->flash("success","Successfully Updated"); 
+                return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$Pedim_adult_data_id->client_forms_id);
+            }
+
+        }
+        else
+        {
+            session()->flash("warning","Some thing went wrong, please Update again"); 
+            return redirect()->back();
+
+        }
     }
 
     /**
@@ -222,5 +242,74 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function CreateZoomMeeting($id)
+    {
+        
+        $ZoomClientApi = new Client();
+        $token = Str::random(60);
+        $PedimAdultPrivacyPolicy = Pedim_adult_privacy_policy_consent_treatments::find($id);
+        //dd($PedimAdultPrivacyPolicy);
+        $host = 'mansoor.zaheer994@gmail.com';
+        // $host = $PedimAdultPrivacyPolicy->client_forms->client->email;
+        $participant = $PedimAdultPrivacyPolicy->email;
+        //dd($InOfficeAppointmentsDetails->email); 
+        $timestamp = time();  
+       // echo(date("m/d/Y h:i:s a", $timestamp));
+        $start_time = date("m/d/Y h:i:s a", $timestamp);
+        
+        $start_time = date('m/d/Y h:i:s a', strtotime($start_time)); 
+        $duration = 30;
+        $timestamp = strtotime($start_time);
+        $start_time = date('yy-m-d\TH:m:s',$timestamp);
+        $start_time = (string)$start_time.'z';
+        // dd($start_time); 
+        //get time zone 
+        $timezone = appointment_limits::find($PedimAdultPrivacyPolicy->client_forms_id);
+        $timezone = $timezone->time_zone; 
+        
+        $response = $ZoomClientApi->request('POST', 'https://sicknwell.desenador.com/api/create-zoom-meeting', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$token,
+                'Accept' => 'application/json',
+            ], 
+            'form_params' => [ 
+                'body' => [
+        			'topic' => 'checkup',
+        			'type' => 2,
+        			'start_time' => $start_time,
+        			'password' => '',
+        			'agenda' => '',
+                    'timezone' => $timezone,
+                    'duration' => $duration
+        		],
+        		'host' => $host,
+        		'participant' => $participant
+            ],
+            
+        ]);
+        
+        $response = json_decode($response->getBody(),true);
+        //dd($response);
+        if($response['code'] == '201')
+        {
+            //dd($response);
+            
+            
+            if(Auth::guard('clients')->check())
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
+            }
+            else
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
+            } 
+        }
+        else{
+            session()->flash("warning","Some thing went wrong please Create meeting again.");
+        }
     }
 }
