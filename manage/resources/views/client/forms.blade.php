@@ -22,17 +22,17 @@
                                     <div class="dropdown-menu">
                                         <ul> 
                                             <li>
-                                                <a href="{{route('client.'.$form->form_link.'.submissions', $form->pivot->id)}}" class="d-flex align-items-center">
+                                                <a href="{{route($form->form_link.'.submissions', $form->pivot->id)}}" class="d-flex align-items-center">
                                                     <i class="fas fa-eye"></i><span>View Submissions</span>
                                                 </a>
                                             </li>  
                                             <li> 
-                                                <a href="{{route('client.form.embed.link', [$form->form_link,$form->pivot->id])}}" class="d-flex align-items-center">
+                                                <a href="{{route('form.embed.link', [$form->form_link,$form->pivot->id])}}" class="d-flex align-items-center">
                                                     <i class="fas fa-eye"></i><span>Get Embed Links</span>
                                                 </a>
                                             </li> 
                                             <li> 
-                                                <a href="{{route('client.'.$form->form_link.'.submissions', $form->pivot->id)}}" class="d-flex align-items-center">
+                                                <a href="{{route($form->form_link.'.submissions', $form->pivot->id)}}" class="d-flex align-items-center">
                                                     <i class="fas fa-trash"></i><span>Delete</span>
                                                 </a>
                                             </li>
