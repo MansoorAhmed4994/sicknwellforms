@@ -666,12 +666,18 @@
                                            name="telephone" id="telephone" value="{{old('telephone')}}"
                                            data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
+                                
+
                                 <div class="col-12 col-md-2">
-                                    <label>Email <span class="required">*</span></label>
-                                    <input type="email @if($errors->get('email')) is-invalid @endif"
-                                           class="form-control custom-mainforminput "
-                                           value="{{old('email')}}" name="email" id="email" required/>
-                                </div>
+                            <label>Email </label>
+                            <div class="padding-wrap">
+                                <input type="email"
+                                       class="form-control custom-mainforminput  @if($errors->get('email')) is-invalid @endif"
+                                       name="email" id="email"
+                                       value="{{old('email')}}" />
+                                <p><small>example@example.com</small></p>
+                            </div>
+                        </div>
                             </div>
                         </div>
 
@@ -790,6 +796,7 @@
                                     <input type="email" class="form-control custom-mainforminput @if($errors->get('insurance_email')) is-invalid @endif" name="insurance_email" id="insurance_email"
                                            value="{{old('insurance_email')}}" >
                                 </div>
+                                
                             </div>
                             <div class="form-group row mt-4">
                                 <div class="col-12 col-md-3">
