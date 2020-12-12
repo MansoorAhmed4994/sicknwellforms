@@ -78,12 +78,23 @@
         <div class="qcm-form">
 
 
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
+        <form method="post" action="{{route('PedimMinorPrivacyPolicyAndConsentForTreatment.create',$client_form_id)}}" class="position-relative">
+        {{csrf_field()}} 
+           
+                    <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+                    
+                    <input type="hidden" value="pedim_minor_privacy_policy_consent_treatments" id="table_name" name="table_name">
 
 
                 <div class="top-section">
                     <h2>Minor - Privacy Policy, Financial Responsibility and Consent for Treatment</h2>
                 </div>
+                @if(count($errors) > 0)
+                <div class="alert alert-danger my-2" style="font-size: 15px">
+                    <i class="fas fa-exclamation-triangle mr-2"></i><span>Please fill the Required
+                        fields</span>
+                </div>
+                @endif
 
                 <div class="form-section">
                     <div class="form-group row mt-4">
@@ -114,7 +125,7 @@
                                     <div class="padding-wrap">
                                         <input type="email"
                                                class="form-control custom-mainforminput "
-                                               name="patient_email" id="patient_email"
+                                               name="email" id="email"
                                                value="" />
                                         <p><small>example@example.com</small></p>
                                     </div>
@@ -161,51 +172,26 @@
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-4">
-<<<<<<< Updated upstream
                                     <label class="" for="">Parent/Legal Guardian</label>
                                     <div>
-                                        <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                        <div  id="sig"  style="width:370px !Important;height: 200px;@if($errors->get('parent_signature')) border-color:red; @endif" ></div>  <br/>
+
                                     </div>
 
                                     <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="signature64" name="signed" style="display: none"></textarea>
+                                    <textarea class="@if($errors->get('parent_signature')) is-invalid @endif" value="{{old('parent_signature')}}" id="signature64" name="parent_signature" style="display: none"></textarea>
 
-=======
-                                    <div id="signArea" >
-                                        <label>Parent/Legal Guardian</label>
-                                        <div class="sig sigWrapper" style="height:auto;">
-                                            <div class="typed"></div>
-                                            <canvas class="sign-pad" name="sign_parent" id="sign_parent" width="300" height="100"></canvas>
-                                        </div>
-                                        <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
-                Clear
-              </span>
-                                    </div>
->>>>>>> Stashed changes
                                 </div>
                                 <div style="margin-left: 20px;" class="col-12 col-md-4">
                                     <label class="" for="">Witness Signature</label>
                                     <div>
-                                        <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                        <div  id="sig2"  style="width:370px !Important;height: 200px;@if($errors->get('witness_signature')) border-color:red; @endif" class=""></div>  <br/>
+
                                     </div>
 
                                     <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="signature642" name="signed2" style="display: none"></textarea>
+                                    <textarea class="" id="signature642" name="witness_signature" style="display: none">{{old('witness_signature')}}</textarea>
 
-<<<<<<< Updated upstream
-=======
-                                <div class="col-12 col-md-4">
-                                    <div id="signArea_w" >
-                                        <label>Witness Signature</label>
-                                        <div class="sig sigWrapper" style="height:auto;">
-                                            <div class="typed"></div>
-                                            <canvas class="sign-pad" name="sign_witness" id="sign_witness" width="300" height="100"></canvas>
-                                        </div>
-                                        <span class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">
-                Clear
-              </span>
-                                    </div>
->>>>>>> Stashed changes
                                 </div>
 
 
@@ -230,7 +216,7 @@
                                                    <label>Today's Date</label>
                                                    <input type="text" value=""
                                                           class="form-control custom-mainforminput dobpicker  "
-                                                          name="todate" id="todate" readonly />
+                                                          name="patients_today_date" id="patients_today_date" readonly />
                                                </div>
 
                                            </div>
@@ -252,7 +238,7 @@
                                     <div class="padding-wrap">
                                         <input type="text" value=""
                                                class="form-control custom-mainforminput dobpicker  "
-                                               name="wtodate" id="wtodate" readonly />
+                                               name="witness_today_date" id="witness_today_date" readonly />
 
                                     </div>
                                 </div>

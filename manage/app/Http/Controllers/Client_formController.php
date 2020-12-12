@@ -204,8 +204,9 @@ class client_formController extends Controller
         }
         else
         {
-            session()->flash("warning",$response['message']);
-            return view('forms.embed-link')->with(array('client_forms_id'=>$client_forms_id,'form_name'=>$form_name)); 
+            return view('client-forms.create')->with(array('form_id'=>request('form_id')));
+            session()->flash("warning", $response['message']);
+            //return view('forms.embed-link')->with(array('client_forms_id'=>$client_forms_id,'form_name'=>$form_name)); 
             //dd($response['message']); 
         }
         

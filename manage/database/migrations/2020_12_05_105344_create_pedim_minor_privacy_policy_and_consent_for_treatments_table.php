@@ -18,15 +18,15 @@ class CreatePedimMinorPrivacyPolicyAndConsentForTreatmentsTable extends Migratio
 
             $table->bigIncrements('id');
             $table->text('parent_or_legal');
-            $table->bigInteger('telephone');
-            $table->text('patient_email');
             $table->text('patient_name');
+            $table->string('email');
+            $table->bigInteger('telephone');
             $table->date('dob');
-            $table->text('sign_parent');
-            $table->text('sign_witness');
-            $table->date('todate');
+            $table->text('parent_signature');
+            $table->date('patients_today_date');
+            $table->text('witness_signature');
             $table->text('witness_name');
-            $table->date('wtodate');
+            $table->date('witness_today_date');
             $table->bigInteger('client_forms_id');
             $table->timestamps();
             $table->bigInteger('created_by');

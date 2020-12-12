@@ -132,7 +132,7 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->telephone}} @else{{old('telephone')}}  @endif"
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)){{$PedimAdultPrivacyPolicy->telephone}}@else{{old('telephone')}}@endif"
                                                name="telephone" id="telephone"/>
                                     </div>
                                 </div> 
@@ -140,7 +140,7 @@
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value=" @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->dob}}@else{{old('dob')}} @endif" name="dob" id="dob" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)){{$PedimAdultPrivacyPolicy->dob}}@else{{old('dob')}}@endif" name="dob" id="dob" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +232,7 @@
                                     <div class="padding-wrap">
                                         <label>Today's Date</label>
                                         <input type="text" 
-                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}} @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->patients_today_date}}  @endif"
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)){{$PedimAdultPrivacyPolicy->patients_today_date}}@else{{old('witnesspatients_today_date_today_date')}}@endif"
                                                name="patients_today_date" id="patients_today_date" readonly />
                                     </div>
 
@@ -241,7 +241,7 @@
                                     <label>Witness Name <span class="required"></span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value=" @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy ->witness_name}} @else {{old('witness_name')}}  @endif"
+                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)){{$PedimAdultPrivacyPolicy->witness_name}}@else{{old('witness_name')}}@endif"
                                                name="witness_name" id="witness_name"
                                                 />
                                     </div>
@@ -252,7 +252,7 @@
                                 <div class="col-12 col-md-2">
                                     <label>Today's Date</label>
                                     <div class="padding-wrap">
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}} @if(isset($PedimAdultPrivacyPolicy)) {{$PedimAdultPrivacyPolicy->witness_today_date}}  @endif"
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)){{$PedimAdultPrivacyPolicy->witness_today_date}}@else{{old('witness_today_date')}}@endif"
                                                name="witness_today_date" id="witness_today_date" readonly />
                                     </div>
 

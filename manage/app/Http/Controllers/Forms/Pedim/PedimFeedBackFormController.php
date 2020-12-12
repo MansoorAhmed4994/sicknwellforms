@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Client_forms;
 use GuzzleHttp\Client;
 use Illuminate\Support\Str; 
+use App\Models\appointment_limits; 
 use Auth;
 
 class PedimFeedBackFormController extends Controller
@@ -199,11 +200,11 @@ class PedimFeedBackFormController extends Controller
         $token = Str::random(60); 
         $PedimFeedBacks = pedim_feed_backs::find($id);
         $host = $PedimFeedBacks->client_forms->client->email;
-        $participant = $PedimFeedBacks->email;
+        //$host = 'mansoor.zaheer994@gmail.com';
+        $participant = $PedimFeedBacks->patient_email;
         //dd($InOfficeAppointmentsDetails->email);
-        $start_date = $PedimFeedBacks->appointment_date;
-        $start_time = $PedimFeedBacks->appointment_to;  
-        $timepicker = $PedimFeedBacks->appointment_from;  
+        $start_date = $PedimFeedBacks->appointment_date; 
+        $timepicker = $PedimFeedBacks->appointment_time;  
         $start_time = $start_date.' '.$timepicker;
         $start_time = date('m/d/Y h:i:s a', strtotime($start_time)); 
         $duration = (($PedimFeedBacks->duration_hour)*60)+$PedimFeedBacks->duration_minutes;
@@ -214,7 +215,7 @@ class PedimFeedBackFormController extends Controller
         $timezone = appointment_limits::find($PedimFeedBacks->client_forms_id);
         $timezone = $timezone->time_zone; 
         
-        $response = $ZoomClientApi->request('POST', 'https://sicknwell.desenador.com/api/create-zoom-meeting', [
+        $response = $ZoomClientApi->request('POST', env("SICKNWELL_ZOOM_API_URL"), [
             'headers' => [
                 'Authorization' => 'Bearer '.$token,
                 'Accept' => 'application/json',
@@ -236,7 +237,7 @@ class PedimFeedBackFormController extends Controller
         ]);
         
         $response = json_decode($response->getBody(),true);
-        //dd($response);
+        dd($response);
         session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
         
         if(Auth::guard('clients')->check())
