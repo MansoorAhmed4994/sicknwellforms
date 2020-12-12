@@ -70,11 +70,11 @@ class FormTableSeeder extends Seeder
 
         Form::create([
 
-            'form_name' => 'MinorPrivacyPolicyAndConsentForTreatment',
-            'title' => 'Minor Privacy Policy And Consent For Treatment',
+            'form_name' => 'PedimMinorPrivacyPolicyAndConsentForTreatment',
+            'title' => 'Pedim Minor Privacy Policy And Consent For Treatment',
             'sub_title' => '',
             'fields_count' => '0',
-            'form_link' => 'MinorPrivacyPolicyAndConsentForTreatment',
+            'form_link' => 'PedimMinorPrivacyPolicyAndConsentForTreatment',
             'image_path' => '',
             'created_by' => '0',
             'updated_by' => '0',
