@@ -137,8 +137,9 @@ class PedimTelemedicineController extends Controller
         $pedim_telemedicines->client_forms_id = $request->client_forms_id; 
         $pedim_telemedicines->status ='active';
         $pedim_telemedicines->save();
-
+        
         session()->flash("success","Successfully Submited");  
+        
         return view('forms.status');
 
     }
