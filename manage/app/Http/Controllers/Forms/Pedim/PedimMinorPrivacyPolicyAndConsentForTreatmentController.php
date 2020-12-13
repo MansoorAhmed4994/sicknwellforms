@@ -11,7 +11,7 @@ use App\Models\appointment_schedule;
 use App\Models\appointment_limits; 
 use App\Models\Clients;
 use App\Models\Client_forms;
-use App\Models\Forms\Pedim\Pedim_minor_privacy_policy_consent_treatments;
+use App\Models\Forms\Pedim\Pedim_minor_privacy_policy_and_consent_for_treatments;
 use Auth;
 
 class PedimMinorPrivacyPolicyAndConsentForTreatmentController extends Controller
@@ -31,10 +31,19 @@ class PedimMinorPrivacyPolicyAndConsentForTreatmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($client_form_id)
     {
-        
-        return view('forms.pedim.pedim-minor-privacy-policy-and-consent-for-treatment.create');
+        $time_before_interval = available_doctor::all()->where('client_forms_id', $client_form_id)->first();
+        if($time_before_interval)
+        {
+            $time_before_interval->time_before_appointment;
+        }
+        else
+        {
+            $time_before_interval = '';
+        }
+        $appoint_date_range = appointment_limits::all()->where('client_forms_id', $client_form_id)->first(); 
+        return view('forms.pedim.pedim-minor-privacy-policy-and-consent-for-treatment.create')->with(array('time_before_interval'=>$time_before_interval, 'client_form_id' => $client_form_id, 'appoint_date_range' => $appoint_date_range));
         //
     }
 
@@ -64,9 +73,9 @@ class PedimMinorPrivacyPolicyAndConsentForTreatmentController extends Controller
         
         $this->validate($request, $valiedation_from_array);
         $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->witness_signature);
-        $patient_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->patient_signature);
+        $parent_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->parent_signature);
 
-        $minor_privacy_policies = new Pedim_minor_privacy_policy_consent_treatments();
+        $minor_privacy_policies = new Pedim_minor_privacy_policy_and_consent_for_treatments();
         $minor_privacy_policies->parent_or_legal = request('parent_or_legal');
         $minor_privacy_policies->patient_name = request('patient_name');
         $minor_privacy_policies->telephone = request('telephone');
@@ -82,7 +91,7 @@ class PedimMinorPrivacyPolicyAndConsentForTreatmentController extends Controller
         $minor_privacy_policies->save();
 
 
-        session()->flash("success","Successfully Submited");  dd();
+        session()->flash("success","Successfully Submited");  
         return redirect()->route('PedimMinorPrivacyPolicyAndConsentForTreatment',$minor_privacy_policies->client_forms_id);
     }
 

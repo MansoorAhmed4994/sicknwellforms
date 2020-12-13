@@ -66,7 +66,21 @@
 
 <body>
 
-
+<?php
+        $start_date = "";
+        $end_date = "";
+        $time_zone = "";
+        //echo $appoint_date_range->start_date;
+        if($appoint_date_range != null)
+        {
+            echo 
+            $start_date = "";
+            $end_date = "";
+            $time_zone = "Pacific/Wake";
+        } 
+         
+        
+        ?>
 
 <div class="wrapper d-flex flex-column">
     <main class="flex-1 d-flex">
@@ -115,18 +129,18 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="telephone" id="telephone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
+                                               name="telephone" id="telephone"
+                                                />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}"
                                                name="email" id="email"
-                                               value="" />
+                                                />
                                         <p><small>example@example.com</small></p>
                                     </div>
                                 </div>
@@ -136,17 +150,15 @@
                                         <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
                                                name="patient_name" id="patient_name"
-                                               value="" />
+                                                />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
-                                        <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
-                                               name="dob" id="dob" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="{{old('dob')}}" name="dob" id="dob" readonly />
                                     </div>
                                 </div>
 
@@ -214,9 +226,9 @@
 
                                                <div class="padding-wrap">
                                                    <label>Today's Date</label>
-                                                   <input type="text" value=""
-                                                          class="form-control custom-mainforminput dobpicker  "
-                                                          name="patients_today_date" id="patients_today_date" readonly />
+                                                   <input type="text" 
+                                                        class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}}"
+                                                        name="patients_today_date" id="patients_today_date" readonly />
                                                </div>
 
                                            </div>
@@ -225,9 +237,9 @@
                                     <label>Witness Name <span class="required"></span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="{{old('witness_name')}}"
                                                name="witness_name" id="witness_name"
-                                               value="" />
+                                                />
                                     </div>
 
 
@@ -236,8 +248,7 @@
                                 <div class="col-12 col-md-2">
                                     <label>Today's Date</label>
                                     <div class="padding-wrap">
-                                        <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}}"
                                                name="witness_today_date" id="witness_today_date" readonly />
 
                                     </div>
@@ -289,10 +300,10 @@
 
 
 
-    $('#signaturebtn').on('click', function(e)
+    $('#signaturebtn2').on('click', function(e)
     {
         var signature = jQuery("#signature64").val();
-        alert(signature);
+       
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -310,10 +321,10 @@
         });
     })
 
-    $('#signaturebtn').on('click', function(e)
+    $('#signaturebtn2').on('click', function(e)
     {
         var signature = jQuery("#signature642").val();
-        alert(signature);
+        
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -2,9 +2,10 @@
 
 namespace App\Models\Forms\Pedim;
 use App\Traits\RecordAuthActivity;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Pedim_minor_privacy_policy_consent_treatments extends Model
+class Pedim_minor_privacy_policy_and_consent_for_treatments extends Model
 {
     protected $guarded = [
         'id'
