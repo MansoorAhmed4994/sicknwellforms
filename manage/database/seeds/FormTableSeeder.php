@@ -98,11 +98,11 @@ class FormTableSeeder extends Seeder
 
         Form::create([
                     
-            'form_name' => 'ConsentForRapidCovid19Testing',
-            'title' => 'Consent For Rapid Covid 19 Testing',
+            'form_name' => 'PedimConsentForRapidCovid19Testing',
+            'title' => 'Pedim Consent For Rapid Covid 19 Testing',
             'sub_title' => '',
             'fields_count' => '0',
-            'form_link' => 'ConsentForRapidCovid19Testing',
+            'form_link' => 'PedimConsentForRapidCovid19Testing',
             'image_path' => '',
             'created_by' => '0',
             'updated_by' => '0',

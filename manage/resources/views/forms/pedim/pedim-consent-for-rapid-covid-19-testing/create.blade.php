@@ -86,8 +86,13 @@
         <div class="qcm-form">
 
 
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
+            <form method="post" action="{{route('PedimConsentForRapidCovid19Testing.create',$client_form_id)}}" class="position-relative">
 
+            {{csrf_field()}} 
+
+            <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+            
+            <input type="hidden" value="pedim_consent_for_rapid_covid19_testings" id="table_name" name="table_name">
 
                 <div class="top-section">
                     <h2>Consent for Rapid COVID19 Testing</h2>
@@ -175,14 +180,20 @@
                         <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
+                            
                                 <div class="col-12 col-md-4">
-                                    <label class="" >Responsible Party</label>
-                                    <div id="sig1" ></div>  <br/>
 
-                                    <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea id="sign_responsible_party" name="sign_responsible_party" style="display: none"></textarea>
+                                    <label class="" for="">Responsible Party</label>
+                                    <div>
+                                        <div  id="sig1"  style="width:370px !Important;height: 200px;@if($errors->get('sign_responsible_party')) border-color:red; @endif" ></div>  <br/>
+
+                                    </div>
+
+                                    <span id="clear1" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <textarea class="@if($errors->get('sign_responsible_party')) is-invalid @endif" value="{{old('sign_responsible_party')}}" id="signature64" name="sign_responsible_party" style="display: none"></textarea>
 
                                 </div>
+
                                 <div style="margin-left: 10px;" class="col-12 col-md-2">
 
                                     <div class="padding-wrap">
