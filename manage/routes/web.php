@@ -120,7 +120,7 @@ Route::post('/PedimConsentForRapidCovid19Testing/create', 'Forms\Pedim\PedimCons
 Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@create')->name('PedimAdultPrivacyPolicyAndConsentForTreatment'); 
 
 Route::post('/PedimAdultPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@store')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.create');
-//Route::post('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@GetVerifiedSubmission')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.get.submissions');
+Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/edit/{submission_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@edit')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.edit');
 Route::post('/PedimAdultPrivacyPolicyAndConsentForTreatment/update/{Pedim_adult_data_id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@update')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.update');
 Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 'Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@CreateZoomMeeting')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.create.zoom.meeting'); 
@@ -179,7 +179,7 @@ Route::group(['middleware' => ['auth:clients']],function(){
     Route::get('/client/PedimTelemedicine/{clien_form_id}','Forms\Pedim\PedimTelemedicineController@submissions')->name('client.PedimTelemedicine.submissions');
 
     //PedimAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
-    Route::get('/client/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
+    
 
     //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     
