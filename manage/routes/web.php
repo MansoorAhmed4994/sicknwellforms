@@ -263,7 +263,7 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/PedimTelemedicine/submissions/{clien_form_id}','Forms\Pedim\PedimTelemedicineController@submissions')->name('PedimTelemedicine.submissions');
 
     
-    Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
+    
 
     //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     
