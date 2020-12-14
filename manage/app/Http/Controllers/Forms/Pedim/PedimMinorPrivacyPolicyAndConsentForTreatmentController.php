@@ -88,11 +88,23 @@ class PedimMinorPrivacyPolicyAndConsentForTreatmentController extends Controller
         $minor_privacy_policies->witness_today_date = request('witness_today_date');
         $minor_privacy_policies->client_forms_id = request('client_forms_id');   
         $minor_privacy_policies->status = 'active';  
-        $minor_privacy_policies->save();
+        $insert_status = $minor_privacy_policies->save();
 
 
-        session()->flash("success","Successfully Submited");  
-        return redirect()->route('PedimMinorPrivacyPolicyAndConsentForTreatment',$minor_privacy_policies->client_forms_id);
+        if($insert_status)
+        {
+            dd("Successfully Submited");
+            session()->flash("success","Successfully Submited");  
+            return redirect()->route('PedimMinorPrivacyPolicyAndConsentForTreatment',$minor_privacy_policies->client_forms_id);
+        }
+        else
+        {
+            dd("Some thing went wrong, Please try again.");
+            session()->flash("Warning","Some thing went wrong, Please try again.");  
+            return redirect()->route('PedimMinorPrivacyPolicyAndConsentForTreatment',$minor_privacy_policies->client_forms_id);
+        }
+        
+        
     }
 
     /**
