@@ -14,7 +14,7 @@
                     <div class="form-item d-flex align-items-center">
                         <i class="fas fa-user"></i>
                         <div class="name-and-details flex-1"> 
-                        <h4><a href="{{route('client.'.$form->form_link.'.submissions', $form->pivot->id)}}">{{$form->form_name}}</a></h4>
+                        <h4><a href="{{route($form->form_link.'.submissions', $form->pivot->id)}}">{{$form->form_name}}</a></h4>
                         </div>
                         <div class="actions-list align-self-stretch">
                             <ul class="h-100">
