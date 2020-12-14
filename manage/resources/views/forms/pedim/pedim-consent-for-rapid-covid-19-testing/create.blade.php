@@ -107,9 +107,9 @@
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif"
                                                name="patient_name" id="patient_name"
-                                               value="" />
+                                               value="{{old('patient_name')}}" />
                                     </div>
                                 </div>
 
@@ -122,7 +122,7 @@
                                         <div class="row">
                                             <div class="col-12 col-md-3">
                                                 <label class="mt-2"><input type="radio"
-                                                                           name="is_patient_minor" id="is_patient_minor" value="yes"> Yes</label>
+                                                                           name="is_patient_minor" id="is_patient_minor" <?php if(old('is_patient_minor') == 'yes'){ echo 'checked';}?> > Yes</label>
                                             </div>
                                             <div class="col-12 col-md-3">
                                                 <label class="mt-2"><input type="radio"
@@ -136,7 +136,7 @@
                                     <label>Parent or Guardian </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('parent_guardian')) is-invalid @endif"
                                                name="parent_guardian" id="parent_guardian"
                                                value="" />
                                     </div>
@@ -146,7 +146,7 @@
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('patient_email')) is-invalid @endif"
                                                name="patient_email" id="patient_email"
                                                value="" />
                                         <p><small>example@example.com</small></p>
@@ -157,7 +157,7 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif"
                                                name="telephone" id="telephone" value=""
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
@@ -199,7 +199,7 @@
                                     <div class="padding-wrap">
                                         <label>Date<span class="required">*</span> </label>
                                         <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('date')) is-invalid @endif"
                                                name="date" id="date" readonly />
                                     </div>
 
@@ -228,10 +228,8 @@
 </div>
 
 <script type="text/javascript">
-    var base_url = '<?php echo e(url('/')); ?>';
-    var token = "<?php echo csrf_token() ?>";
 
-    var sig1 = $('#sig1').signature({syncField: '#signature641', syncFormat: 'PNG'});
+    var sig1 = $('#sig1').signature({syncField: '#signature64', syncFormat: 'PNG'}); 
 
     $('#clear1').click(function(e) {
         e.preventDefault();
@@ -243,43 +241,6 @@
 
 
 
-    $('#signaturebtn').on('click', function(e)
-    {
-        var signature = jQuery("#signature641").val();
-        alert(signature);
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: base_url + '/signaturepad',
-            data: {
-                signed: signature,
-            },
-            type: 'POST',
-            dataType: 'json',
-            success: function(response)
-            {
-                alert('save');
-            }
-        });
-    })
-
-</script>
-
-
-<script>
-    $(document).ready(function(){
-        $("input[type='radio']").change(function(){
-            if( $(this).val()=="yes")
-            {
-                $("#parent_guardian_div").show();
-            }
-            else
-            {
-                $("#parent_guardian_div").hide();
-            }
-        });
-    });
 </script>
 
 

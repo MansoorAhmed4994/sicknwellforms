@@ -68,8 +68,7 @@ class PedimConsentForRapidCovid19TestingController extends Controller
     {
         //
         $valiedation_from_array = [ 
-            'patient_name' => 'required',
-            'is_patient_minor' => 'required',
+            'patient_name' => 'required', 
             'patient_email' => 'required',
             'telephone' => 'required',
             'sign_responsible_party' => 'required',  
@@ -78,9 +77,10 @@ class PedimConsentForRapidCovid19TestingController extends Controller
         ];
 
         
-        $this->validate($request, $valiedation_from_array);
+        //$this->validate($request, $valiedation_from_array);
+        //dd($request->sign_responsible_party);
         $sign_responsible_party = app('App\Http\Controllers\SignaturePadController')->upload($request->sign_responsible_party);
-
+        //dd($sign_responsible_party);
         $consent_for_covid19 = new Pedim_consent_for_rapid_covid19_testings();
         $consent_for_covid19->patient_name = request('patient_name');
         $consent_for_covid19->is_patient_minor = request('is_patient_minor');
@@ -95,7 +95,7 @@ class PedimConsentForRapidCovid19TestingController extends Controller
 
 
         session()->flash("success","Successfully Submited");  
-        //dd();
+        dd();
         return redirect()->route('PedimConsentForRapidCovid19Testing',$consent_for_covid19->client_forms_id);
     }
 
