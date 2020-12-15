@@ -242,6 +242,8 @@ class PedimTelemedicineController extends Controller
         $pedim_telemedicines->accept_consent_for_treatment = $request->accept_consent_for_treatment;
         $pedim_telemedicines->cft_date = $request->cft_date;
         $pedim_telemedicines->hear_about_us = $request->hear_about_us;
+        $pedim_telemedicines->client_forms_id = $request->client_forms_id; 
+        $pedim_telemedicines->status ='active';
         $update_status=$pedim_telemedicines->save();
 
         if($update_status)
@@ -322,15 +324,24 @@ class PedimTelemedicineController extends Controller
         
         $response = json_decode($response->getBody(),true);
         //dd($response);
-        session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
-        
-        if(Auth::guard('clients')->check())
-        {
-            return redirect()->route('client.PedimTelemedicine.submissions',$PedimTelemedicines->client_forms_id);
+        if(isset($response['code']))
+        { 
+            if(Auth::guard('clients')->check())
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('client.PedimTelemedicine.submissions',$PedimTelemedicines->client_forms_id);
+            }
+            else
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('PedimTelemedicine.submissions',$PedimTelemedicines->client_forms_id);
+            } 
         }
         else
         {
-            return redirect()->route('PedimTelemedicine.submissions',$PedimTelemedicines->client_forms_id);
-        } 
+            session()->flash("warning","Some thing went wrong please Create meeting again.");
+            return redirect()->back();
+        }
+
     }
 }

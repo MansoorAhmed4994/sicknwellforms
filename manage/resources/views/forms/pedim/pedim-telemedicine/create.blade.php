@@ -1124,7 +1124,7 @@
                                             <div class="padding-wrap">
                                                 <label>Click To Accept <span class="required">*</span></label><br />
                                                 <label class="mt-2"><input type="checkbox" class="mr-2" name="accept_consent_for_treatment" id="accept_consent_for_treatment"
-                                                                           value="accept" <?php if(old('accept_consent_for_treatment') == 'yes'){ echo 'checked';}?>>Accept</label>
+                                                                           value="yes" <?php if(old('accept_consent_for_treatment') == 'yes'){ echo 'checked';}?>>Accept</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-2">

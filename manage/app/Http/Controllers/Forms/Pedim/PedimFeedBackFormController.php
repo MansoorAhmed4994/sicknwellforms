@@ -237,16 +237,24 @@ class PedimFeedBackFormController extends Controller
         ]);
         
         $response = json_decode($response->getBody(),true);
-        dd($response);
-        session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
         
-        if(Auth::guard('clients')->check())
-        {
-            return redirect()->route('client.PedimFeedBackForm.submissions',$PedimFeedBacks->client_forms_id);
+        if(isset($response['code']))
+        { 
+            if(Auth::guard('clients')->check())
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('client.PedimFeedBackForm.submissions',$PedimFeedBacks->client_forms_id);
+            }
+            else
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('PedimFeedBackForm.submissions',$PedimFeedBacks->client_forms_id);
+            } 
         }
         else
         {
-            return redirect()->route('PedimFeedBackForm.submissions',$InOfficeAppointmentsDetails->client_forms_id);
-        } 
+            session()->flash("warning","Some thing went wrong please Create meeting again.");
+            return redirect()->back();
+        }
     }
 }
