@@ -1143,39 +1143,39 @@
                                     <div class="row">
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Google" <?php if(old('hear_about_us') == 'Google'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Google'){ echo 'Google';}?>>Google</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Google" <?php if(old('hear_about_us') == 'Google'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Google'){ echo 'checked';}?>>Google</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Facebook" <?php if(old('hear_about_us') == 'Facebook'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Facebook'){ echo 'Google';}?>>Facebook</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Facebook" <?php if(old('hear_about_us') == 'Facebook'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Facebook'){ echo 'checked';}?>>Facebook</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Website" <?php if(old('hear_about_us') == 'Website'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Website'){ echo 'Google';}?>>Website</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Website" <?php if(old('hear_about_us') == 'Website'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Website'){ echo 'checked';}?>>Website</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Email" <?php if(old('hear_about_us') == 'Email'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Email'){ echo 'Google';}?>>Email</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Email" <?php if(old('hear_about_us') == 'Email'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Email'){ echo 'checked';}?>>Email</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Friends/Family" <?php if(old('hear_about_us') == 'Friends/Family'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Friends/Family'){ echo 'Google';}?>>Friends/Family</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Friends/Family" <?php if(old('hear_about_us') == 'Friends/Family'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Friends/Family'){ echo 'checked';}?>>Friends/Family</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Billboard" <?php if(old('hear_about_us') == 'Billboard'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Billboard'){ echo 'Google';}?>>Billboard</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Billboard" <?php if(old('hear_about_us') == 'Billboard'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Billboard'){ echo 'checked';}?>>Billboard</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Radio" <?php if(old('hear_about_us') == 'Radio'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Radio'){ echo 'Google';}?>>Radio</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Radio" <?php if(old('hear_about_us') == 'Radio'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Radio'){ echo 'checked';}?>>Radio</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2"><input type="checkbox" class="mr-2"
-                                                                       name="hear_about_us" id="hear_about_us" value="Drove By" <?php if(old('hear_about_us') == 'Drove By'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Drove By'){ echo 'Google';}?>>Drove By</label>
+                                                                       name="hear_about_us" id="hear_about_us" value="Drove By" <?php if(old('hear_about_us') == 'Drove By'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Drove By'){ echo 'checked';}?>>Drove By</label>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="mt-2 d-flex align-items-center"><input type="checkbox" class="mr-2"
-                                                                        name="hear_about_us" id="hear_about_us" value="Other" <?php if(old('hear_about_us') == 'Other'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Other'){ echo 'Google';}?>><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
+                                                                        name="hear_about_us" id="hear_about_us" value="Other" <?php if(old('hear_about_us') == 'Other'){ echo 'checked';}elseif($PedimTelemedicine->hear_about_us == 'Other'){ echo 'checked';}?>><input type="text" class="form-control custom-mainforminput otherfield"  placeholder="Other" /></label>
                                         </div>
                                     </div>
                                 </div>

@@ -110,7 +110,7 @@
                                 <div class="col-12 col-md-4">
                                     <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
-                                        <input type="text" class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}} @if(isset($PedimFeedBack)) {{$PedimFeedBack->patient_name}}  @endif" name="patient_name" id="patient_name" />
+                                        <input type="text" class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value=" @if(isset($PedimFeedBack)) {{$PedimFeedBack->patient_name}}@else{{old('patient_name')}}  @endif" name="patient_name" id="patient_name" />
                                     </div> 
                                 </div>
                                 <div class="col-12 col-md-4">

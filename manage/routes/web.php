@@ -168,11 +168,8 @@ Route::group(['middleware' => ['auth:clients']],function(){
     
     //InOfficeAppointmentsController Auth CRUD
     Route::get('/client/InOfficeAppointments/{clien_form_id}','Forms\Pedim\InOfficeAppointmentsController@submissions')->name('client.InOfficeAppointments.submissions');
-    
-    //InOfficeAppointmentsController Auth CRUD
-    Route::get('/client/PedimFeedBackForm/{clien_form_id}','Forms\Pedim\PedimFeedBackFormController@submissions')->name('client.PedimFeedBackForm.submissions');
-    
-    //InOfficeAppointmentsController Auth CRUD
+     
+    //PedimFeedBackFormController Auth CRUD
     Route::get('/client/PedimFeedBackForm/{clien_form_id}','Forms\Pedim\PedimFeedBackFormController@submissions')->name('client.PedimFeedBackForm.submissions');
     
     //InOfficeAppointmentsController Auth CRUD
@@ -182,7 +179,7 @@ Route::group(['middleware' => ['auth:clients']],function(){
     Route::get('/client/PedimTelemedicine/{clien_form_id}','Forms\Pedim\PedimTelemedicineController@submissions')->name('client.PedimTelemedicine.submissions');
 
     
-    //PedimTelemedicineController Auth CRUD
+    //PedimAdultPrivacyPolicyAndConsentForTreatment Auth CRUD
     Route::get('/client/PedimAdultPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
     //PedimAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
@@ -265,6 +262,9 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/PedimFeedBackForm/submissions/{clien_form_id}','Forms\Pedim\PedimFeedBackFormController@submissions')->name('PedimFeedBackForm.submissions');
 
     //PedimTelemedicineControllerController Auth CRUD
+    Route::get('/PedimTelemedicine/submissions/{clien_form_id}','Forms\Pedim\PedimTelemedicineController@submissions')->name('PedimTelemedicine.submissions');
+
+    //PedimAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
     

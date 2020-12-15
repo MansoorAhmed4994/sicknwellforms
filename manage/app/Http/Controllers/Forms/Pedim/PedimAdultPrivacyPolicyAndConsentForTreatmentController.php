@@ -284,7 +284,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         ]);
         
         $response = json_decode($response->getBody(),true);
-        //dd($response);
+        // dd($response);
         if(isset($response['code']))
         { 
             if(Auth::guard('clients')->check())
@@ -295,13 +295,13 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
             else
             {
                 session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
-                return redirect()->route('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
+                return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
             } 
         }
         else
         {
             session()->flash("warning","Some thing went wrong please Create meeting again.");
-            return redirect()->route('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions',$PedimAdultPrivacyPolicy->client_forms_id);
+            return redirect()->back();
         }
     }
 }

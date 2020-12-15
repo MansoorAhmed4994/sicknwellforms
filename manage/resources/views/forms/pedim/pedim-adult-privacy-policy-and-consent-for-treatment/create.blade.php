@@ -195,7 +195,7 @@
                                     </div>
 
                                     <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea class="" id="signature642" name="witness_signature" style="display: none">{{old('witness_signature')}}</textarea>
+                                    <textarea class="@if($errors->get('patient_signature')) is-invalid @endif" id="signature642" name="witness_signature" style="display: none">{{old('witness_signature')}}</textarea>
 
                                 </div>
 
