@@ -343,7 +343,7 @@ class QcmTelemedicineFormController extends Controller
 
     public function submissions($client_form_id)
     {
-        
+        //dd('working');
         $submissions = Qcm_telemedicine_data_details::all()->where('client_forms_id', $client_form_id);
         $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
     //dd($submissions->first()->client_forms->client->id);
@@ -507,18 +507,26 @@ class QcmTelemedicineFormController extends Controller
         $Qcm_telemedicine_data_details->cc_expiration = request('cc_expiration');
         $Qcm_telemedicine_data_details->client_forms_id = request('client_forms_id');  
         $Qcm_telemedicine_data_details->status = 'active'; 
-        $Qcm_telemedicine_data_details->save();
+        $updated_status = $Qcm_telemedicine_data_details->save();
         
         // dd($Qcm_telemedicine_data_details->save());
          
-        session()->flash("success","Successfully Submited"); 
-        if(Auth::guard('clients')->check())
+        if($updated_status)
         {
-            return redirect()->route('client.QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+            session()->flash("success","Successfully Submited."); 
+            if(Auth::guard('clients')->check())
+            {
+                return redirect()->route('client.QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+            }
+            else
+            {
+                return redirect()->route('QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+            }
         }
         else
         {
-            return redirect()->route('QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+            session()->flash("Warning","some thing went wrong."); 
+            return redirect()->back();
         }
         
         // if(Auth::guard('clients'))
