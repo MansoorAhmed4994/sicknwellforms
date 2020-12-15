@@ -150,7 +150,7 @@ class QcmTelemedicineFormController extends Controller
         $timezone = $timezone->time_zone;
         //dd($timezone);
         //dd($Qcm_telemedicine_data_details);
-        $response = $ZoomClientApi->request('POST', 'https://sicknwell.desenador.com/api/create-zoom-meeting', [
+        $response = $ZoomClientApi->request('POST', env("SICKNWELL_ZOOM_API_URL"), [
             'headers' => [
                 'Authorization' => 'Bearer '.$token,
                 'Accept' => 'application/json',
@@ -172,49 +172,28 @@ class QcmTelemedicineFormController extends Controller
         ]);
         
         $response = json_decode($response->getBody(),true);
-        //dd($response);
-        session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
-//         if($response['code'] == '201')
-//         {
-             
-//             $provider_url = $response['start_url'];
-//             $patient_url = $response['join_url']; 
+       // dd($response);
         
-        
-            
-//             $success_data .=  '<h1>comming soon</h1><br>';
-//             $success_data .=  "<h3>Provider link: <a href='".$provider_url."'>sicknwellforms.com/provider</a></h3><br>";
-//             $success_data .=  "<h3>Patient link: <a href='$patient_url'>sicknwellforms.com/patient/join/link</a></h3>";
-//             $success_data = "Meeting Successfully Sheduled";
-            
-//             $email_data= array(
-//             'name' =>$request->patient_name,
-//             'message' => $provider_url, 
-// 			'topic' => $request->topic,
-// 			'type' => 2,
-// 			'start_time' => $request->datepicker,
-// 			'password' => '',
-// 			'agenda' => $request->agenda,
-// 			'join_url' => $patient_url,
-// 			'meeting_id' => $data['id'],
-//             );
-            
-//             //dd($email_data);
-//             Mail::to($request->patient_email)->send(new WelcomeMail($email_data)); 
-//             session()->flash("success",$success_data);  
-            
-//             //return view('success-events.meeting-created-successfully')->with('data',$email_data);
-//             return redirect()->route('view-meetings');
-//         }
-        
-        if(Auth::guard('clients')->check())
-        {
-            return redirect()->route('client.QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+         
+        if(isset($response['code']))
+        { 
+            session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account");
+            if(Auth::guard('clients')->check())
+            {
+                return redirect()->route('client.QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+            }
+            else
+            {
+                return redirect()->route('QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+            }
         }
         else
         {
-            return redirect()->route('QcmTelemedicineForm.submissions',$Qcm_telemedicine_data_details->client_forms_id);
+            session()->flash("warning","Some thing went wrong please Create meeting again.");
+            return redirect()->back();
         }
+        
+        
        // dd($response);
     }
      
@@ -418,11 +397,6 @@ class QcmTelemedicineFormController extends Controller
              
         }
         
-        
-        
-        
-        
-        
        // dd($member_ship_validated);
         $valiedation_from_array = [
              
@@ -454,14 +428,10 @@ class QcmTelemedicineFormController extends Controller
             'cc_last_name' => 'required',
             'cc_number' => 'required',
             'cc_cvc' => 'required',
-            'cc_expiration' => 'required',
-            
-            
-            ]
-            ;
+            'cc_expiration' => 'required',    
+        ];
         
-        
-        
+         
         $this->validate($request, $valiedation_from_array);
         
         

@@ -543,7 +543,7 @@
                                     </div>
                                     <div class="col-12 col-md-2">
                                         <label>Email <span class="required">*</span></label>
-                                        <input type="email" class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}" name="email" id="email" />
+                                        <input type="text" class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}" name="email" id="email" required/>
                                     </div>
                                 </div>
                             </div>
@@ -641,7 +641,7 @@
                                         <input type="tel" class="form-control custom-mainforminput  @if($errors->get('patient_telephone')) is-invalid @endif" name="patient_telephone" id="patient_telephone" value="{{old('patient_telephone')}}">
                                     </div>
                                     <div class="col-12 col-md-2">
-                                        <label>Email <span class="required">*</span></label>
+                                        <label>Patient Email <span class="required">*</span></label>
                                         <input type="email" class="form-control custom-mainforminput  @if($errors->get('patient_email')) is-invalid @endif" name="patient_email" id="patient_email" value="{{old('patient_email')}}">
                                     </div>
                                 </div>
