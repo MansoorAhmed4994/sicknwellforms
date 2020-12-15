@@ -93,16 +93,25 @@ class InOfficeAppointmentsController extends Controller
         
         $response = json_decode($response->getBody(),true);
         //dd($response);
-        session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
-        
-        if(Auth::guard('clients')->check())
-        {
-            return redirect()->route('client.InOfficeAppoints.submissions',$InOfficeAppointmentsDetails->client_forms_id);
+
+        if(isset($response['code']))
+        { 
+            session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+            if(Auth::guard('clients')->check())
+            {
+                return redirect()->route('client.InOfficeAppointments.submissions',$InOfficeAppointmentsDetails->client_forms_id);
+            }
+            else
+            {
+                return redirect()->route('InOfficeAppointments.submissions',$InOfficeAppointmentsDetails->client_forms_id);
+            } 
         }
         else
         {
-            return redirect()->route('InOfficeAppoints.submissions',$InOfficeAppointmentsDetails->client_forms_id);
-        } 
+            session()->flash("warning","Some thing went wrong please Create meeting again.");
+            return redirect()->back();
+        }
+ 
     }
 
 

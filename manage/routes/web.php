@@ -45,7 +45,6 @@ Route::post('/QcmTelemedicineForm/create', 'QcmTelemedicineFormController@store'
 //InOfficeAppointments CRUD
 Route::get('/InOfficeAppointments/{clien_form_id}', 'Forms\Pedim\InOfficeAppointmentsController@create')->name('InOfficeAppointments');
 Route::post('/InOfficeAppointments/create', 'Forms\Pedim\InOfficeAppointmentsController@store')->name('InOfficeAppointments.create');  
-Route::post('/InOfficeAppointments/submissions/', 'Forms\Pedim\InOfficeAppointmentsController@GetVerifiedSubmission')->name('InOfficeAppointments.get.submissions');
 Route::get('/InOfficeAppointments/edit/{submission_id}', 'Forms\Pedim\InOfficeAppointmentsController@edit')->name('InOfficeAppointments.edit');
 Route::post('/InOfficeAppointments/update/{submission_id}', 'Forms\Pedim\InOfficeAppointmentsController@update')->name('InOfficeAppointments.update');
 Route::get('/InOfficeAppointments/create/meeting/{id}', 'Forms\Pedim\InOfficeAppointmentsController@CreateZoomMeeting')->name('InOfficeAppointments.create.zoom.meeting'); 
@@ -257,7 +256,6 @@ Route::group(['middleware' => ['auth:web']],function(){
     
     //QcmTelemedicineForm Auth CRUD
     Route::get('/InOfficeAppointments/submissions/{clien_form_id}', 'Forms\Pedim\InOfficeAppointmentsController@submissions')->name('InOfficeAppointments.submissions'); 
-    Route::post('/InOfficeAppointments/submissions/', 'Forms\Pedim\InOfficeAppointmentsController@GetVerifiedSubmission')->name('InOfficeAppointments.get.submissions');
     
 
     
