@@ -71,6 +71,12 @@
                                     <span>ID</span>
                                 </div>
                             </th> 
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Parent or Legal Guardian</span>
+                                </div>
+                            </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
@@ -173,17 +179,22 @@
                         <tr> 
                             <td>
                                 <div class="d-flex align-items-center">  
-                                    <span><a href="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.edit',$row->id)}}">Edit</a></span>
+                                    <span><a href="{{route('PedimMinorPrivacyPolicyAndConsentForTreatment.edit',$row->id)}}">Edit</a></span>
                                 </div>
                             </td> 
                             <td>
                                 <div class="d-flex align-items-center">  
-                                    <span><a href="{{route('PedimAdultPrivacyPolicyAndConsentForTreatment.create.zoom.meeting',$row->id)}}">Create Meeting</a></span>
+                                    <span><a href="{{route('PedimMinorPrivacyPolicyAndConsentForTreatment.create.zoom.meeting',$row->id)}}">Create Meeting</a></span>
                                 </div>
                             </td> 
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->id}}</span>
+                                </div>
+                            </td>  
+                            <td>
+                                <div class="d-flex align-items-center"> 
+                                    <span>{{ $row->parent_or_legal}}</span>
                                 </div>
                             </td>  
                             <td>
@@ -208,7 +219,7 @@
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span><img src="{{asset('manage/storage/'.$row->patient_signature)}}" class="img-fluid"></span>
+                                    <span><img src="{{asset('manage/storage/'.$row->parent_signature)}}" class="img-fluid"></span>
                                 </div>
                             </td>    
                             <td>

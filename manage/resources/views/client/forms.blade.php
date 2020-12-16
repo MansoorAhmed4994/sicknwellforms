@@ -28,7 +28,7 @@
                                                 </a>
                                             </li>  
                                             <li> 
-                                                <a href="{{route('form.embed.link', [$form->form_link,$form->pivot->id])}}" class="d-flex align-items-center">
+                                                <a href="{{route('client.form.embed.link', [$form->form_link,$form->pivot->id])}}" class="d-flex align-items-center">
                                                     <i class="fas fa-eye"></i><span>Get Embed Links</span>
                                                 </a>
                                             </li> 

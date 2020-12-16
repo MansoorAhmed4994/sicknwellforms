@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -52,6 +51,12 @@
 
         }
 
+
+
+
+
+
+
     </script>
 
 
@@ -61,23 +66,15 @@
             element.value = valueToSelect;
         }
 
+
+
     </script>
 </head>
 
 <body>
 
 <?php
-        $start_date = "";
-        $end_date = "";
-        $time_zone = "";
-        //echo $appoint_date_range->start_date;
-        if($appoint_date_range != null)
-        {
-            echo 
-            $start_date = "";
-            $end_date = "";
-            $time_zone = "Pacific/Wake";
-        } 
+         
          
         
         ?>
@@ -92,13 +89,10 @@
         <div class="qcm-form">
 
 
-        <form method="post" action="{{route('PedimMinorPrivacyPolicyAndConsentForTreatment.create',$client_form_id)}}" class="position-relative">
-        {{csrf_field()}} 
-           
+            <form method="post" action="{{route('PedimMinorPrivacyPolicyAndConsentForTreatment.update',$submission_id)}}" class="position-relative">
+                {{csrf_field()}} 
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
-                    
-                    <input type="hidden" value="pedim_minor_privacy_policy_consent_treatments" id="table_name" name="table_name">
-
+                    <input type="hidden" value="pedim_minor_privacy_policy_and_consent_for_treatments" id="table_name" name="table_name">
 
                 <div class="top-section">
                     <h2>Minor - Privacy Policy, Financial Responsibility and Consent for Treatment</h2>
@@ -109,28 +103,17 @@
                         fields</span>
                 </div>
                 @endif
-
                 <div class="form-section">
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
 
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-2">
-                                    <label>Parent or Legal Guardian
-                                        <span class="required">*</span></label>
+                                    <label>Parent or Legal Guardian <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                            class="form-control custom-mainforminput @if($errors->get('parent_or_legal')) is-invalid @endif" value="{{old('parent_or_legal')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('parent_or_legal')) is-invalid @endif" value=" @if(isset($PedimMinorPrivacyPolicy)) {{$PedimMinorPrivacyPolicy->parent_or_legal}} @else{{old('parent_or_legal')}}  @endif"
                                                name="parent_or_legal" id="parent_or_legal"
-                                                />
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <label>Telephone <span class="required">*</span></label>
-                                    <div class="padding-wrap">
-                                        <input type="tel"
-                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
-                                               name="telephone" id="telephone"
                                                 />
                                     </div>
                                 </div>
@@ -138,7 +121,7 @@
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="@if(isset($PedimMinorPrivacyPolicy)) {{$PedimMinorPrivacyPolicy->email}} @else{{old('email')}}  @endif"
                                                name="email" id="email"
                                                 />
                                         <p><small>example@example.com</small></p>
@@ -146,30 +129,36 @@
                                 </div>
 
                                 <div class="col-12 col-md-2">
-                                    <label>Patient's Name (Minor)
-                                        <span class="required">*</span></label>
+                                    <label>Telephone <span class="required">*</span></label>
+                                    <div class="padding-wrap">
+                                        <input type="tel"
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="@if(isset($PedimMinorPrivacyPolicy)){{$PedimMinorPrivacyPolicy->telephone}}@else{{old('telephone')}}@endif"
+                                               name="telephone" id="telephone"/>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-md-2">
+                                    <label>Patient Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value=" @if(isset($PedimMinorPrivacyPolicy)) {{$PedimMinorPrivacyPolicy->patient_name}} @else{{old('patient_name')}}  @endif"
                                                name="patient_name" id="patient_name"
                                                 />
                                     </div>
                                 </div>
+
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="{{old('dob')}}" name="dob" id="dob" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="@if(isset($PedimMinorPrivacyPolicy)){{$PedimMinorPrivacyPolicy->dob}}@else{{old('dob')}}@endif" name="dob" id="dob" readonly />
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
                     </div>
 
-
                     <div class="form-section">
-                        <p>I, , hereby authorize Pediatric and Internal Medicine Specialists, Inc, it’s affiliated physicians and
+                        <p>I hereby authorize Pediatric and Internal Medicine Specialists, Inc, it’s affiliated physicians and
                             other medical personnel in charge of my care to administer examinations, immunizations, treatments and view my
                             prescription history from an external source and telemedicine services as needed or requested by the patient that may
                             be deemed medically necessary in the exercise of their professional judgment.  Additionally, by signing this form I
@@ -179,12 +168,13 @@
                     </div>
 
 
-
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-4">
-                                    <label class="" for="">Parent/Legal Guardian</label>
+                                <div class="col-12 col-md-4" id="parent_signature_pad" style="display:none!important">
+                                    <input type="hidden" id="parent_signature_updated"  name="parent_signature_updated" value="no"> 
+                                    <input type="hidden" id="parent_signature_src"  name="parent_signature_src" value="{{$PedimMinorPrivacyPolicy->parent_signature}}">
+                                    <label class="" for="">Parents Signature</label>
                                     <div>
                                         <div  id="sig"  style="width:370px !Important;height: 200px;@if($errors->get('parent_signature')) border-color:red; @endif" ></div>  <br/>
 
@@ -194,7 +184,15 @@
                                     <textarea class="@if($errors->get('parent_signature')) is-invalid @endif" value="{{old('parent_signature')}}" id="signature64" name="parent_signature" style="display: none"></textarea>
 
                                 </div>
-                                <div style="margin-left: 20px;" class="col-12 col-md-4">
+
+                                <div class="col-12 col-md-4 signature_pad_image" id="parent_signature_image">
+                                    <img src="{{asset('manage/storage/'.$PedimMinorPrivacyPolicy->parent_signature)}}">
+                                </div>  
+
+
+                                <div style="margin-left: 20px;display:none!important" class="col-12 col-md-4" id="witness_signature_pad"  >
+                                    <input type="hidden" id="witness_signature_updated" name="witness_signature_updated" value="no">   
+                                    <input type="hidden" id="witness_signature_src"  name="witness_signature_src" value="{{$PedimMinorPrivacyPolicy->witness_signature}}"> 
                                     <label class="" for="">Witness Signature</label>
                                     <div>
                                         <div  id="sig2"  style="width:370px !Important;height: 200px;@if($errors->get('witness_signature')) border-color:red; @endif" class=""></div>  <br/>
@@ -206,16 +204,32 @@
 
                                 </div>
 
+                                <div class="col-12 col-md-4 signature_pad_image" id="witness_signature_image">
 
+                                    <img src="{{asset('manage/storage/'.$PedimMinorPrivacyPolicy->witness_signature)}}">
+                                </div>
+
+
+                            </div>
+
+                            
+
+                            <div class="row no-gutters">
+                                <div class="col-12  col-md-4">
+                                    <button type="button" id="cancel_pat_sig" class="btn btn-danger">cancel</button>
+                                    <button type="button" id="edit_pat_sig" class="btn btn-warning">edit</button>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="col-12 ">
+                                        <button type="button" id="cancel_wit_sig" class="btn btn-danger">cancel</button>
+                                        <button type="button" id="edit_wit_sig" class="btn btn-warning">edit</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                     </div>
-{{--
-                    <div data-component="divider" style="border-bottom:1px solid #e6e6e6;">
 
-
-                    </div>--}}
 
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
@@ -224,20 +238,19 @@
 
                                 <div class="col-12 col-md-2">
 
-                                               <div class="padding-wrap">
-                                                   <label>Today's Date</label>
-                                                   <input type="text" 
-                                                        class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}}"
-                                                        name="patients_today_date" id="patients_today_date" readonly />
-                                               </div>
+                                    <div class="padding-wrap">
+                                        <label>Today's Date</label>
+                                        <input type="text" 
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="@if(isset($PedimMinorPrivacyPolicy)){{$PedimMinorPrivacyPolicy->patients_today_date}}@else{{old('patients_today_date')}}@endif"
+                                               name="patients_today_date" id="patients_today_date" readonly />
+                                    </div>
 
-                                           </div>
-
+                                </div>
                                 <div class="col-12 col-md-2">
                                     <label>Witness Name <span class="required"></span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="{{old('witness_name')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="@if(isset($PedimMinorPrivacyPolicy)){{$PedimMinorPrivacyPolicy->witness_name}}@else{{old('witness_name')}}@endif"
                                                name="witness_name" id="witness_name"
                                                 />
                                     </div>
@@ -248,17 +261,20 @@
                                 <div class="col-12 col-md-2">
                                     <label>Today's Date</label>
                                     <div class="padding-wrap">
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}}"
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="@if(isset($PedimMinorPrivacyPolicy)){{$PedimMinorPrivacyPolicy->witness_today_date}}@else{{old('witness_today_date')}}@endif"
                                                name="witness_today_date" id="witness_today_date" readonly />
-
                                     </div>
+
+
                                 </div>
+
 
 
                             </div>
                         </div>
 
                     </div>
+
 
                 </div>
                 <div class="form-section last mb-5">
@@ -277,25 +293,26 @@
 </div>
 
 
-
 <script type="text/javascript">
     var base_url = '<?php echo e(url('/')); ?>';
     var token = "<?php echo csrf_token() ?>";
     var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
 
-    $('#clear').click(function(e) {
+    $('#clear').click(function(e) 
+    {
         e.preventDefault();
-        sig.signature('clear');
-        $("#signature64").val('');
+        sig.signature('clear'); 
+ 
     });
 
 
     var sig2 = $('#sig2').signature({syncField: '#signature642', syncFormat: 'PNG'});
 
     $('#clear2').click(function(e) {
-        e.preventDefault();
-        sig2.signature('clear');
-        $("#signature642").val('');
+        e.preventDefault(); 
+        //sig2.signature({syncField: '#signature64', syncFormat: 'PNG'});
+        sig2.signature('clear'); 
+        
     });
 
 
@@ -340,8 +357,49 @@
                 alert(response);
             }
         });
-    })
+    }) 
+        if("@if($errors->get('witness_signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#witness_signature_pad").show();
+            $("#witness_signature_image").hide();
+            $("#witness_signature_updated").val('yes');
+        } 
+
+        if("@if($errors->get('parent_signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#parent_signature_pad").show();
+            $("#parent_signature_image").hide();
+            $("#parent_signature_updated").val('yes');
+        } 
+
+    $(document).ready(function(){
+        $("#cancel_pat_sig").click(function(){
+            $("#parent_signature_pad").hide();
+            $("#parent_signature_image").show();
+            $("#parent_signature_updated").val('no');
+            
+        });
+        $("#edit_pat_sig").click(function(){
+            $("#parent_signature_pad").show();
+            $("#parent_signature_image").hide();
+            $("#parent_signature_updated").val('yes');
+        });
+
+        
+        $("#cancel_wit_sig").click(function(){
+            $("#witness_signature_pad").hide();
+            $("#witness_signature_image").show();
+            $("#witness_signature_updated").val('no');
+        });
+        $("#edit_wit_sig").click(function(){
+            $("#witness_signature_pad").show();
+            $("#witness_signature_image").hide();
+            $("#witness_signature_updated").val('yes');
+        });
+    });
 </script>
+
+
 
 
 <script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>
@@ -368,6 +426,10 @@
 
 <script src="{{ asset('public/theme-resources/js/moment-range.js') }}"></script>
 
+<script src="{{ asset('public/theme-resources/js/jquery.plugin-timepicker.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/jquery.timeentry.js') }}"></script>
+
 <script src="{{ asset('public/theme-resources/js/main.js') }}"></script>
 
 
@@ -376,6 +438,7 @@
 <script src="{{ asset('public/theme-resources/js/jquery.signaturepad.js') }}"></script>
 <script src="{{ asset('public/theme-resources/js/json2.min.js') }}"></script>
 <script src="{{ asset('public/theme-resources/js/html2canvas.js') }}"></script>
+
 
 
 </body>
