@@ -97,7 +97,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         $adult_privacy_policies->save();
 
 
-        session()->flash("success","Successfully Submited");  dd();
+        session()->flash("success","Successfully Submited");  
         return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment',$adult_privacy_policies->client_forms_id);
     }
 

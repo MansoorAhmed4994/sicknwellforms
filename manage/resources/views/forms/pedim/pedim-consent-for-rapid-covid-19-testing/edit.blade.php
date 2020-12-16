@@ -86,7 +86,7 @@
         <div class="qcm-form">
 
 
-            <form method="post" action="{{route('PedimConsentForRapidCovid19Testing.create',$client_form_id)}}" class="position-relative">
+            <form method="post" action="{{route('PedimConsentForRapidCovid19Testing.update',$submission_id)}}" class="position-relative">
 
             {{csrf_field()}} 
 
@@ -114,7 +114,7 @@
                                         <input type="text"
                                                class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif"
                                                name="patient_name" id="patient_name"
-                                               value="{{old('patient_name')}}" />
+                                               value="@if(isset($PedimConsentForRapidCovid19Testing)) {{$PedimConsentForRapidCovid19Testing->patient_name}} @else{{old('patient_name')}}  @endif" />
                                     </div>
 
                                     
@@ -143,9 +143,9 @@
                                     <label>Parent or Guardian </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('parent_guardian')) is-invalid @endif"
+                                               class="form-control custom-mainforminput @if($errors->get('patient_email')) is-invalid @endif"
                                                name="parent_guardian" id="parent_guardian"
-                                               value="{{old('parent_guardian')}}" />
+                                               value="@if(isset($PedimConsentForRapidCovid19Testing)) {{$PedimConsentForRapidCovid19Testing->parent_guardian}} @else{{old('parent_guardian')}}  @endif" />
                                     </div>
                                 </div>
 
@@ -155,7 +155,7 @@
                                         <input type="email"
                                                class="form-control custom-mainforminput @if($errors->get('patient_email')) is-invalid @endif"
                                                name="patient_email" id="patient_email"
-                                               value="{{old('patient_email')}}" />
+                                               value="@if(isset($PedimConsentForRapidCovid19Testing)) {{$PedimConsentForRapidCovid19Testing->patient_email}} @else{{old('patient_email')}}  @endif" />
                                         <p><small>example@example.com</small></p>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                                class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif"
-                                               name="telephone" id="telephone" value="{{old('telephone')}}"
+                                               name="telephone" id="telephone" value="@if(isset($PedimConsentForRapidCovid19Testing)){{$PedimConsentForRapidCovid19Testing->telephone}}@else{{old('telephone')}}@endif"
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
 
                             <div class="row no-gutters">
                             
-                                <div class="col-12 col-md-4">
+                                <!-- <div class="col-12 col-md-4">
 
                                     <label class="" for="">Responsible Party</label>
                                     <div>
@@ -197,22 +197,52 @@
                                     </div>
 
                                     <span id="clear1" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea class="@if($errors->get('sign_responsible_party')) is-invalid @endif" value="{{old('sign_responsible_party')}}" id="signature64" name="sign_responsible_party" style="display: none">{{old('sign_responsible_party')}}</textarea>
+                                    <textarea class="@if($errors->get('sign_responsible_party')) is-invalid @endif" value="{{old('sign_responsible_party')}}" id="signature64" name="sign_responsible_party" style="display: none">@if(isset($PedimConsentForRapidCovid19Testing)){{$PedimConsentForRapidCovid19Testing->date}}@else{{old('date')}}@endif</textarea>
 
-                                </div>
+                                </div> -->
 
-                                <div style="margin-left: 10px;" class="col-12 col-md-2">
+                                    <div class="col-12 col-md-4" id="sign_responsible_party_pad" style="display:none!important">
+                                        <input type="hidden" id="sign_responsible_party_updated"  name="sign_responsible_party_updated" value="no"> 
+                                        <input type="hidden" id="sign_responsible_party_src"  name="sign_responsible_party_src" value="{{$PedimConsentForRapidCovid19Testing->sign_responsible_party}}">
+                                        <label class="" for="">Responsible Party Signature</label>
+                                        <div>
+                                            <div  id="sig1"  style="width:370px !Important;height: 200px;@if($errors->get('sign_responsible_party')) border-color:red; @endif" ></div>  <br/>
 
-                                    <div class="padding-wrap">
-                                        <label>Date<span class="required">*</span> </label>
-                                        <input type="text" value="{{old('date')}}"
-                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('date')) is-invalid @endif"
-                                               name="date" id="date" readonly />
+                                        </div>
+
+                                        <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                        <textarea class="@if($errors->get('sign_responsible_party')) is-invalid @endif" value="{{old('sign_responsible_party')}}" id="signature64" name="sign_responsible_party" style="display: none"></textarea>
+
                                     </div>
 
+                                    <div class="col-12 col-md-4 signature_pad_image" id="sign_responsible_party_image">
+                                        <img src="{{asset('manage/storage/'.$PedimConsentForRapidCovid19Testing->sign_responsible_party)}}">
+                                    </div>
+
+                                    <div style="margin-left: 10px;" class="col-12 col-md-2">
+
+                                        <div class="padding-wrap">
+                                            <label>Date<span class="required">*</span> </label>
+                                            <input type="text" value="@if(isset($PedimConsentForRapidCovid19Testing)){{$PedimConsentForRapidCovid19Testing->date}}@else{{old('date')}}@endif"
+                                                class="form-control custom-mainforminput dobpicker  @if($errors->get('date')) is-invalid @endif"
+                                                name="date" id="date" readonly />
+                                        </div>
+
+                                    </div>
+                            </div>
+
+                                
+
+                                <div class="row no-gutters">
+                                    <div class="col-12  col-md-4">
+                                        <button type="button" id="cancel_pat_sig" class="btn btn-danger">cancel</button>
+                                        <button type="button" id="edit_pat_sig" class="btn btn-warning">edit</button>
+                                    </div>
                                 </div>
 
-                            </div>
+                                 
+
+                            
                         </div>
 
                     </div>
@@ -235,20 +265,67 @@
 </div>
 
 <script type="text/javascript">
+    var base_url = '<?php echo e(url('/')); ?>';
+    var token = "<?php echo csrf_token() ?>";
 
     var sig1 = $('#sig1').signature({syncField: '#signature64', syncFormat: 'PNG'}); 
 
     $('#clear1').click(function(e) {
         e.preventDefault();
         sig1.signature('clear');
-        $("#signature64").val('');
     });
+
+
+    $('#signaturebtn2').on('click', function(e)
+    {
+        var signature = jQuery("#signature64").val();
+       
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert('save');
+            }
+        });
+    })
+
+        if("@if($errors->get('sign_responsible_party'))true @else'false'@endif" == "true ")
+        { 
+            $("#sign_responsible_party_pad").show();
+            $("#sign_responsible_party_image").hide();
+            $("#sign_responsible_party_updated").val('yes');
+        } 
+
+    $(document).ready(function(){
+        $("#cancel_pat_sig").click(function(){
+            $("#sign_responsible_party_pad").hide();
+            $("#sign_responsible_party_image").show();
+            $("#sign_responsible_party_updated").val('no');
+            
+        });
+        $("#edit_pat_sig").click(function(){
+            $("#sign_responsible_party_pad").show();
+            $("#sign_responsible_party_image").hide();
+            $("#sign_responsible_party_updated").val('yes');
+        });
+
+    });
+    
 
 
 
 
 
 </script>
+
 
 <script>
     $(document).ready(function(){

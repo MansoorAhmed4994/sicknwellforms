@@ -96,6 +96,7 @@ Route::post('/PedimAdultPatientInformation/create', 'Forms\Pedim\PedimAdultPatie
 Route::get('/PedimPediatricPatientInformation/{clien_form_id}', 'Forms\Pedim\PedimPediatricPatientInformationController@create')->name('PedimPediatricPatientInformation');
 Route::post('/PedimPediatricPatientInformation/create', 'Forms\Pedim\PedimPediatricPatientInformationController@store')->name('PedimPediatricPatientInformation.create');
 
+
 //PedimTelemedicineController CRUD 
 Route::get('/PedimTelemedicine/{clien_form_id}', 'Forms\Pedim\PedimTelemedicineController@create')->name('PedimTelemedicine');
 Route::post('/PedimTelemedicine/create', 'Forms\Pedim\PedimTelemedicineController@store')->name('PedimTelemedicine.create');
@@ -113,6 +114,9 @@ Route::get('/PedimFeedBackForm/create/meeting/{id}', 'Forms\Pedim\PedimFeedBackF
 //ConsentForRapidCovid19Testing CRUD
 Route::get('/PedimConsentForRapidCovid19Testing/{clien_form_id}', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@create')->name('PedimConsentForRapidCovid19Testing');
 Route::post('/PedimConsentForRapidCovid19Testing/create', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@store')->name('PedimConsentForRapidCovid19Testing.create');
+Route::get('/PedimConsentForRapidCovid19Testing/edit/{submission_id}', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@edit')->name('PedimConsentForRapidCovid19Testing.edit');
+Route::post('/PedimConsentForRapidCovid19Testing/update/{consent_for_covid19}', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@update')->name('PedimConsentForRapidCovid19Testing.update');
+Route::get('/PedimConsentForRapidCovid19Testing/create/meeting/{id}', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@CreateZoomMeeting')->name('PedimConsentForRapidCovid19Testing.create.zoom.meeting'); 
 
 
 //AdultPrivacyPolicyAndConsentForTreatmentController CRUD
@@ -172,7 +176,10 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //PedimFeedBackFormController Auth CRUD
     Route::get('/client/PedimFeedBackForm/{clien_form_id}','Forms\Pedim\PedimFeedBackFormController@submissions')->name('client.PedimFeedBackForm.submissions');
     
-    //InOfficeAppointmentsController Auth CRUD
+    //PedimConsentForRapidCovid19TestingController Auth CRUD
+    Route::get('/client/PedimConsentForRapidCovid19Testing/{clien_form_id}','Forms\Pedim\PedimConsentForRapidCovid19TestingController@submissions')->name('client.PedimConsentForRapidCovid19Testing.submissions');
+
+    
     
 
     //PedimTelemedicineController Auth CRUD
@@ -264,6 +271,9 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
     //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
+
+    //PedimConsentForRapidCovid19TestingController Auth CRUD
+    Route::get('/PedimConsentForRapidCovid19Testing/submissions/{clien_form_id}','Forms\Pedim\PedimConsentForRapidCovid19TestingController@submissions')->name('PedimConsentForRapidCovid19Testing.submissions');
     
     
     
