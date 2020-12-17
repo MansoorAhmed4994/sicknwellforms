@@ -205,14 +205,12 @@ Route::group(['middleware' => ['auth:clients']],function(){
  
 
 Route::group(['middleware' => ['auth:web']],function(){ 
-
-    
-    
     
     //Route::get('/admin/dashboard', function () { return view('form-templetes'); })->name('admin.dashboard') ;
     Route::get('/admin/dashboard', 'FormsController@index')->name('admin.dashboard') ;
 
-    Route::get('/form-class', function () { return view('form-class'); })->name('form-class') ; 
+    Route::get('/form-class', function (){return view('form-class');})->name('form-class');
+    
     Route::get('/form-templetes', 'FormsController@index')->name('form-templetes') ; 
 
     Route::get('/form-demo', function () { return view('forms.form-templetes'); })->name('form-demo') ; 
