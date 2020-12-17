@@ -271,14 +271,12 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
     //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
-<<<<<<< HEAD
 
     //PedimConsentForRapidCovid19TestingController Auth CRUD
     Route::get('/PedimConsentForRapidCovid19Testing/submissions/{clien_form_id}','Forms\Pedim\PedimConsentForRapidCovid19TestingController@submissions')->name('PedimConsentForRapidCovid19Testing.submissions');
-=======
+
     Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
 
->>>>>>> 028a29e075ee14c6e8200447c77dbbd79675c711
     
     
     
