@@ -133,7 +133,6 @@ Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/create/meeting/{id}',
 //MinorPrivacyPolicyAndConsentForTreatmentController CRUD
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@create')->name('PedimMinorPrivacyPolicyAndConsentForTreatment');
 Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/create', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@store')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.create');
-// Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/edit/{submission_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@edit')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.edit');
 Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/update/{Pedim_minor_data_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@update')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.update');
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@CreateZoomMeeting')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.create.zoom.meeting'); 
