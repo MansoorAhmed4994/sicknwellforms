@@ -52,6 +52,7 @@ class client_formController extends Controller
     public function store(Request $request)
     {
         $form_id = request('form_id');
+        
         // $clients = Clients::where('email','6@gmail.com')->first();
         // $client_forms = Client_forms::find(1);
 
@@ -103,9 +104,10 @@ class client_formController extends Controller
 
         
         $response = json_decode($response->getBody(),true);
-        //dd($response);
+        
         if($response['code'] == '201')
         {
+            //dd();
             $client = new Clients(); 
             $client->name = request('full_name');
             $client->company_name = request('company_name');
@@ -204,8 +206,10 @@ class client_formController extends Controller
         }
         else
         {
-            return view('client-forms.create')->with(array('form_id'=>request('form_id')));
+            //sdd('else');
             session()->flash("warning", $response['message']);
+            return view('client-forms.create')->with(array('form_id'=>request('form_id')));
+            
             //return view('forms.embed-link')->with(array('client_forms_id'=>$client_forms_id,'form_name'=>$form_name)); 
             //dd($response['message']); 
         }

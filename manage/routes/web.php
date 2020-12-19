@@ -133,7 +133,6 @@ Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/create/meeting/{id}',
 //MinorPrivacyPolicyAndConsentForTreatmentController CRUD
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@create')->name('PedimMinorPrivacyPolicyAndConsentForTreatment');
 Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/create', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@store')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.create');
-// Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/edit/{submission_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@edit')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.edit');
 Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/update/{Pedim_minor_data_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@update')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.update');
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@CreateZoomMeeting')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.create.zoom.meeting'); 
@@ -205,14 +204,12 @@ Route::group(['middleware' => ['auth:clients']],function(){
  
 
 Route::group(['middleware' => ['auth:web']],function(){ 
-
-    
-    
     
     //Route::get('/admin/dashboard', function () { return view('form-templetes'); })->name('admin.dashboard') ;
     Route::get('/admin/dashboard', 'FormsController@index')->name('admin.dashboard') ;
 
-    Route::get('/form-class', function () { return view('form-class'); })->name('form-class') ; 
+    Route::get('/form-class', function (){return view('form-class');})->name('form-class');
+    
     Route::get('/form-templetes', 'FormsController@index')->name('form-templetes') ; 
 
     Route::get('/form-demo', function () { return view('forms.form-templetes'); })->name('form-demo') ; 
@@ -272,20 +269,11 @@ Route::group(['middleware' => ['auth:web']],function(){
 
     //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
 
-
     //PedimConsentForRapidCovid19TestingController Auth CRUD
     Route::get('/PedimConsentForRapidCovid19Testing/submissions/{clien_form_id}','Forms\Pedim\PedimConsentForRapidCovid19TestingController@submissions')->name('PedimConsentForRapidCovid19Testing.submissions');
 
     Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
 
-  
-    
-    
-    
-    
-    
-    
-    
     
     
     
