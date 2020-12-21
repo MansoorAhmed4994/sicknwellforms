@@ -16,4 +16,5 @@ class Mhst_adult_privacy_policy_consent_treatments extends Model
     {
         //dd();
         return $this->belongsTo('App\Models\Client_forms','client_forms_id','id');
+    }
 }
