@@ -232,7 +232,7 @@
                                     <div class="padding-wrap">
                                         <label>Today's Date</label>
                                         <input type="text" 
-                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)){{$PedimAdultPrivacyPolicy->patients_today_date}}@else{{old('witnesspatients_today_date_today_date')}}@endif"
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="@if(isset($PedimAdultPrivacyPolicy)){{$PedimAdultPrivacyPolicy->patients_today_date}}@else{{old('patients_today_date')}}@endif"
                                                name="patients_today_date" id="patients_today_date" readonly />
                                     </div>
 
