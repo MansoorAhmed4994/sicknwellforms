@@ -98,12 +98,22 @@
         <div class="qcm-form">
 
 
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
-
+                <form method="post" action="{{route('MhstMinorPrivacyPolicyAndConsentForTreatment.create',$client_form_id)}}" class="position-relative">
+        {{csrf_field()}} 
+           
+                    <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+                    
+                    <input type="hidden" value="mhst_minor_privacy_policy_consent_treatments" id="table_name" name="table_name">
 
                 <div class="top-section">
                     <h2>MHST - Minor - Privacy Policy and Consent For Treatment</h2>
                 </div>
+                @if(count($errors) > 0)
+                <div class="alert alert-danger my-2" style="font-size: 15px">
+                    <i class="fas fa-exclamation-triangle mr-2"></i><span>Please fill the Required
+                        fields</span>
+                </div>
+                @endif
 
                 <div class="form-group row mt-4">
                     <div class="col-12 col-md-12">
@@ -115,9 +125,9 @@
                                     <span class="required">*</span></label>
                                 <div class="padding-wrap">
                                     <input type="text"
-                                           class="form-control custom-mainforminput "
+                                           class="form-control custom-mainforminput @if($errors->get('parent_name')) is-invalid @endif"
                                            name="parent_name" id="parent_name"
-                                           value="" />
+                                           value="{{old('parent_name')}}" />
                                 </div>
                             </div>
 
@@ -125,9 +135,9 @@
                                 <label>Email <span class="required">*</span></label>
                                 <div class="padding-wrap">
                                     <input type="email"
-                                           class="form-control custom-mainforminput "
+                                           class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif"
                                            name="email" id="email"
-                                           value="" />
+                                           value="{{old('email')}}" />
                                 </div>
                             </div>
 
@@ -135,8 +145,8 @@
                                 <label>Telephone <span class="required">*</span></label>
                                 <div class="padding-wrap">
                                     <input type="tel"
-                                           class="form-control custom-mainforminput "
-                                           name="telephone" id="telephone" value=""
+                                           class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif"
+                                           name="telephone" id="telephone" value="{{old('telephone')}}"
                                            data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
                             </div>
@@ -146,16 +156,16 @@
                                     <span class="required">*</span></label>
                                 <div class="padding-wrap">
                                     <input type="text"
-                                           class="form-control custom-mainforminput "
+                                           class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif"
                                            name="patient_name" id="patient_name"
-                                           value="" />
+                                           value="{{old('patient_name')}}" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-2">
                                 <div class="padding-wrap">
                                     <label>Date of birth</label>
-                                    <input type="text" value=""
-                                           class="form-control custom-mainforminput dobpicker  "
+                                    <input type="text" value="{{old('dob')}}"
+                                           class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif"
                                            name="dob" id="dob" readonly />
                                 </div>
                             </div>
@@ -187,11 +197,11 @@
                             <div class="col-12 col-md-4">
                                 <label class="" for="">Parent or Legal Guardian Signature</label>
                                 <div>
-                                    <div  id="sig"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                    <div  id="sig"  style="width:370px !Important;height: 200px;@if($errors->get('parent_signature'))border-color:red; @endif" ></div>  <br/>
                                 </div>
 
 
-                                <textarea id="signature64" name="signed" style="display: none"></textarea>
+                                <textarea class="@if($errors->get('parent_signature')) is-invalid @endif" id="signature64" name="parent_signature" style="display: none">{{old('parent_signature')}}</textarea>
                                 <span id="clear" class="clearButton" role="button" tabindex="2" style="float: right; margin-right: 10px; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
 
 
@@ -203,9 +213,9 @@
 
                                 <label class="" for="">Witness Signature</label>
                                 <div>
-                                    <div  id="sig2"  style="width:370px !Important;height: 200px;" ></div>  <br/>
+                                    <div  id="sig2"  style="width:370px !Important;height: 200px;@if($errors->get('witness_signature'))border-color:red; @endif" ></div>  <br/>
                                 </div>
-                                <textarea id="signature642" name="signed2" style="display: none" ></textarea>
+                                <textarea class="@if($errors->get('witness_signature')) is-invalid @endif" id="signature642" name="witness_signature" style="display: none" >{{old('witness_signature')}}</textarea>
                                 <span id="clear2" class="clearButton" role="button" tabindex="2" style="float: right; margin-right: 10px; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
 
                             </div>
@@ -228,8 +238,8 @@
 
                                 <div class="padding-wrap">
                                     <label >Today's Date</label>
-                                    <input type="text" value=""
-                                           class="form-control custom-mainforminput dobpicker  "
+                                    <input type="text" value="{{old('todate')}}"
+                                           class="form-control custom-mainforminput dobpicker  @if($errors->get('todate')) is-invalid @endif"
                                            name="todate" id="todate" readonly />
                                 </div>
 
@@ -239,9 +249,9 @@
                                 <label >Witness Name <span class="required"></span></label>
                                 <div class="padding-wrap">
                                     <input type="text"
-                                           class="form-control custom-mainforminput "
+                                           class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif"
                                            name="witness_name" id="witness_name"
-                                           value="" />
+                                           value="{{old('witness_name')}}" />
                                 </div>
 
 
@@ -251,8 +261,8 @@
                             <div class="col-12 col-md-2">
                                 <label>Today's Date</label>
                                 <div class="padding-wrap">
-                                    <input  type="text" value=""
-                                            class="form-control custom-mainforminput dobpicker  "
+                                    <input  type="text" value="{{old('wtodate')}}"
+                                            class="form-control custom-mainforminput dobpicker  @if($errors->get('wtodate')) is-invalid @endif"
                                             name="wtodate" id="wtodate" readonly />
                                 </div>
                             </div>

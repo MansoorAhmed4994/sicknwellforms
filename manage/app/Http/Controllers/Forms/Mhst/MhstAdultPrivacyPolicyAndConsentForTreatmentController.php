@@ -92,7 +92,7 @@ class MhstAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         session()->flash("success","Successfully Submited");  
         return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment',$adult_privacy_policies->client_forms_id);
     }
-    }
+    
 
     /**
      * Display the specified resource.

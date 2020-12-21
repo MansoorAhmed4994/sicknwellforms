@@ -75,6 +75,10 @@ Route::post('/MhstAdultPrivacyPolicyAndConsentForTreatment/create', 'Forms\Mhst\
 //MhstMinorPrivacyPolicyAndConsentForTreatmentController CRUD
 Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@create')->name('MhstMinorPrivacyPolicyAndConsentForTreatment');
 Route::post('/MhstMinorPrivacyPolicyAndConsentForTreatment/create', 'Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@store')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.create');
+Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/edit/{submission_id}', 'Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@edit')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.edit');
+Route::post('/MhstMinorPrivacyPolicyAndConsentForTreatment/update/{Mhst_minor_data_id}', 'Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@update')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.update');
+Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 'Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@CreateZoomMeeting')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.create.zoom.meeting'); 
+
 
 //MhstMedicalReferralFormController CRUD 
 Route::get('/MhstMedicalReferralForm/{clien_form_id}', 'Forms\Mhst\MhstMedicalReferralFormController@create')->name('MhstMedicalReferralForm');
@@ -178,6 +182,8 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //PedimConsentForRapidCovid19TestingController Auth CRUD
     Route::get('/client/PedimConsentForRapidCovid19Testing/{clien_form_id}','Forms\Pedim\PedimConsentForRapidCovid19TestingController@submissions')->name('client.PedimConsentForRapidCovid19Testing.submissions');
 
+    //MhstMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
+    Route::get('/client/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
     
     
 
@@ -275,7 +281,8 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
 
     
-    
+    //MhstMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
+    Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
     
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     
