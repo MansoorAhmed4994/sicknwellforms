@@ -20,11 +20,11 @@ class CreateMhstAdultPrivacyPolicyConsentTreatmentsTable extends Migration
             $table->string('email');
             $table->bigInteger('telephone');
             $table->date('dob');
-            $table->text('parent_signature');
+            $table->text('patient_signature');
+            $table->date('patients_today_date');
             $table->text('witness_signature');
-            $table->date('todate');
             $table->text('witness_name');
-            $table->date('wtodate');
+            $table->date('witness_today_date');
             $table->bigInteger('client_forms_id');
             $table->timestamps();
             $table->bigInteger('created_by');
