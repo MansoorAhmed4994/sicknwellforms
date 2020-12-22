@@ -132,6 +132,7 @@ Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/create/meeting/{id}',
 
 //MinorPrivacyPolicyAndConsentForTreatmentController CRUD
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@create')->name('PedimMinorPrivacyPolicyAndConsentForTreatment');
+
 Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/create', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@store')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.create');
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/edit/{submission_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@edit')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.edit');
 Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/update/{Pedim_minor_data_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@update')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.update');
@@ -267,11 +268,10 @@ Route::group(['middleware' => ['auth:web']],function(){
     //PedimAdultPrivacyPolicyAndConsentForTreatment Auth CRUD
     Route::get('/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
-    //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
-
     //PedimConsentForRapidCovid19TestingController Auth CRUD
     Route::get('/PedimConsentForRapidCovid19Testing/submissions/{clien_form_id}','Forms\Pedim\PedimConsentForRapidCovid19TestingController@submissions')->name('PedimConsentForRapidCovid19Testing.submissions');
 
+    //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
 
     
