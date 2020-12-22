@@ -376,40 +376,7 @@
                             </div></div>
                     </div>
 
-                    <div class="form-group row mt-4">
-                        <div class="col-12 col-md-12">
-                            <div class="row no-gutters">
-<<<<<<< HEAD
-                        <div class="col-12 col-md-3">
-                            <label>City</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="city_patient" id="city_patient"
-                                       value="" />
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-3">
-                            <label>State</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="state_patient" id="state_patient"
-                                       value="" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <label>Zip</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="zip_patient" id="zip_patient"
-                                       value="" />
-                            </div>
-                        </div>
-                            </div></div>
-                    </div>
+                    
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
@@ -422,9 +389,7 @@
                                        value="" />
                             </div>
                         </div>
-=======
-
->>>>>>> c3d5be79c8d5bfeb5c93f920b0337e359af8094e
+ 
 
                         <div class="col-12 col-md-2">
                             <label>Weight</label>
@@ -444,29 +409,7 @@
                                        value="" />
                             </div>
                         </div>
-
-<<<<<<< HEAD
-                        <div class="col-12 col-md-4">
-
-                            <label>Insurance Card Front</label>
-                            <div class="padding-wrap">
-                                <input type="file"
-                                       class="form-control custom-mainforminput "
-                                       name="card_front" id="card_front"
-                                       value=""  />
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-4">
-                            <label>Insurance Card Back</label>
-                            <div class="padding-wrap">
-                                <input type="file"
-                                       class="form-control custom-mainforminput "
-                                       name="card_back" id="card_back"
-                                       value="" />
-                            </div>
-                        </div>
-=======
+ 
                                 <div class="col-12 col-md-3">
 
                                     <label>Insurance Card Front</label>
@@ -477,8 +420,7 @@
                                                value=""  />
                                     </div>
                                 </div>
->>>>>>> c3d5be79c8d5bfeb5c93f920b0337e359af8094e
-
+ 
                                 <div class="col-12 col-md-3">
                                     <label>Insurance Card Back</label>
                                     <div class="padding-wrap">

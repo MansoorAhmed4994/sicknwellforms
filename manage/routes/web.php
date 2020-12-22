@@ -285,15 +285,10 @@ Route::group(['middleware' => ['auth:web']],function(){
     //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
 
-<<<<<<< HEAD
-    
-    //MhstMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
-    Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
-=======
+ 
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
-    
->>>>>>> 27c9550ff236794eabc0eb9e97552f91c6d884a7
+ 
     
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     
