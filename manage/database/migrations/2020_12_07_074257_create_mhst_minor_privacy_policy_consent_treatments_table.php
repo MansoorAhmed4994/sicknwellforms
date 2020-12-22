@@ -18,7 +18,7 @@ class CreateMhstMinorPrivacyPolicyConsentTreatmentsTable extends Migration
             $table->bigIncrements('id');
             $table->text('parent_name');
             $table->string('email');
-            $table->bigInteger('telephone');
+            $table->text('telephone');
             $table->text('patient_name');
             $table->date('dob');
             $table->text('parent_signature');

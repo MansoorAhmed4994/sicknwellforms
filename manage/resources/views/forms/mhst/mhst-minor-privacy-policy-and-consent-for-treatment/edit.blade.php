@@ -33,12 +33,9 @@
     <script src="{{ asset('public/theme-resources/js/jquery-3.4.1.min.js') }}"></script>
 
     <script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
-    
-    
-    
-    
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet"> 
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -55,6 +52,11 @@
         }
 
 
+
+
+
+
+
     </script>
 
 
@@ -67,28 +69,15 @@
 
 
     </script>
-     
 </head>
-
-<?php
-        $start_date = "";
-        $end_date = "";
-        $time_zone = "";
-        //echo $appoint_date_range->start_date;
-        if($appoint_date_range != null)
-        {
-            echo 
-            $start_date = "";
-            $end_date = "";
-            $time_zone = "Pacific/Wake";
-        } 
-         
-        
-        ?>
 
 <body>
 
-
+<?php
+         
+         
+        
+        ?>
 
 <div class="wrapper d-flex flex-column">
     <main class="flex-1 d-flex">
@@ -100,14 +89,13 @@
         <div class="qcm-form">
 
 
-        <form method="post" action="{{route('MhstAdultPrivacyPolicyAndConsentForTreatment.create',$client_form_id)}}" class="position-relative">
+            <form method="post" action="{{route('MhstMinorPrivacyPolicyAndConsentForTreatment.update',$submission_id)}}" class="position-relative">
                 {{csrf_field()}} 
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
-                    
-                    <input type="hidden" value="mhst_adult_privacy_policy_consent_treatments" id="table_name" name="table_name">
+                    <input type="hidden" value="mhst_minor_privacy_policy_and_consent_for_treatments" id="table_name" name="table_name">
 
                 <div class="top-section">
-                    <h2>Mhst Adult - Privacy Policy and Consent For Treatment</h2>
+                    <h2>MHST - Minor - Privacy Policy and Consent For Treatment</h2>
                 </div>
                 @if(count($errors) > 0)
                 <div class="alert alert-danger my-2" style="font-size: 15px">
@@ -121,11 +109,11 @@
 
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-2">
-                                    <label>Patient Name <span class="required">*</span></label>
+                                    <label>Parent or Legal Guardian <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
-                                               name="patient_name" id="patient_name"
+                                               class="form-control custom-mainforminput @if($errors->get('parent_or_legal')) is-invalid @endif" value=" @if(isset($MhstMinorPrivacyPolicy)) {{$MhstMinorPrivacyPolicy->parent_name}} @else{{old('parent_name')}}  @endif"
+                                               name="parent_name" id="parent_name"
                                                 />
                                     </div>
                                 </div>
@@ -133,7 +121,7 @@
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="@if(isset($MhstMinorPrivacyPolicy)) {{$MhstMinorPrivacyPolicy->email}} @else{{old('email')}}  @endif"
                                                name="email" id="email"
                                                 />
                                         <p><small>example@example.com</small></p>
@@ -144,16 +132,24 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
-                                               name="telephone" id="telephone"
-                                                />
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="@if(isset($MhstMinorPrivacyPolicy)){{$MhstMinorPrivacyPolicy->telephone}}@else{{old('telephone')}}@endif"
+                                               name="telephone" id="telephone"/>
                                     </div>
                                 </div> 
+                                <div class="col-12 col-md-2">
+                                    <label>Patient Name <span class="required">*</span></label>
+                                    <div class="padding-wrap">
+                                        <input type="text"
+                                               class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value=" @if(isset($MhstMinorPrivacyPolicy)) {{$MhstMinorPrivacyPolicy->patient_name}} @else{{old('patient_name')}}  @endif"
+                                               name="patient_name" id="patient_name"
+                                                />
+                                    </div>
+                                </div>
 
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="{{old('dob')}}" name="dob" id="dob" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif" value="@if(isset($MhstMinorPrivacyPolicy)){{$MhstMinorPrivacyPolicy->dob}}@else{{old('dob')}}@endif" name="dob" id="dob" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -175,20 +171,28 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                                <div class="col-12 col-md-4">
-
-                                    <label class="" for="">Patient Signature</label>
+                                <div class="col-12 col-md-4" id="parent_signature_pad" style="display:none!important">
+                                    <input type="hidden" id="parent_signature_updated"  name="parent_signature_updated" value="no"> 
+                                    <input type="hidden" id="parent_signature_src"  name="parent_signature_src" value="{{$MhstMinorPrivacyPolicy->parent_signature}}">
+                                    <label class="" for="">Parents Signature</label>
                                     <div>
-                                        <div  id="sig"  style="width:370px !Important;height: 200px;@if($errors->get('patient_signature')) border-color:red; @endif" ></div>  <br/>
+                                        <div  id="sig"  style="width:370px !Important;height: 200px;@if($errors->get('parent_signature')) border-color:red; @endif" ></div>  <br/>
 
                                     </div>
 
                                     <span id="clear" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea class="@if($errors->get('patient_signature')) is-invalid @endif" value="{{old('patient_signature')}}" id="signature64" name="patient_signature" style="display: none"></textarea>
+                                    <textarea class="@if($errors->get('parent_signature')) is-invalid @endif" value="{{old('parent_signature')}}" id="signature64" name="parent_signature" style="display: none"></textarea>
 
                                 </div>
 
-                                <div style="margin-left: 20px;" class="col-12 col-md-4">
+                                <div class="col-12 col-md-4 signature_pad_image" id="parent_signature_image">
+                                    <img src="{{asset('manage/storage/'.$MhstMinorPrivacyPolicy->parent_signature)}}">
+                                </div>  
+
+
+                                <div style="margin-left: 20px;display:none!important" class="col-12 col-md-4" id="witness_signature_pad"  >
+                                    <input type="hidden" id="witness_signature_updated" name="witness_signature_updated" value="no">   
+                                    <input type="hidden" id="witness_signature_src"  name="witness_signature_src" value="{{$MhstMinorPrivacyPolicy->witness_signature}}"> 
                                     <label class="" for="">Witness Signature</label>
                                     <div>
                                         <div  id="sig2"  style="width:370px !Important;height: 200px;@if($errors->get('witness_signature')) border-color:red; @endif" class=""></div>  <br/>
@@ -196,11 +200,31 @@
                                     </div>
 
                                     <span id="clear2" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                    <textarea class="@if($errors->get('patient_signature')) is-invalid @endif" id="signature642" name="witness_signature" style="display: none">{{old('witness_signature')}}</textarea>
+                                    <textarea class="" id="signature642" name="witness_signature" style="display: none">{{old('witness_signature')}}</textarea>
 
                                 </div>
 
+                                <div class="col-12 col-md-4 signature_pad_image" id="witness_signature_image">
 
+                                    <img src="{{asset('manage/storage/'.$MhstMinorPrivacyPolicy->witness_signature)}}">
+                                </div>
+
+
+                            </div>
+
+                            
+
+                            <div class="row no-gutters">
+                                <div class="col-12  col-md-4">
+                                    <button type="button" id="cancel_pat_sig" class="btn btn-danger">cancel</button>
+                                    <button type="button" id="edit_pat_sig" class="btn btn-warning">edit</button>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="col-12 ">
+                                        <button type="button" id="cancel_wit_sig" class="btn btn-danger">cancel</button>
+                                        <button type="button" id="edit_wit_sig" class="btn btn-warning">edit</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -217,8 +241,8 @@
                                     <div class="padding-wrap">
                                         <label>Today's Date</label>
                                         <input type="text" 
-                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('patients_today_date')) is-invalid @endif" value="{{old('patients_today_date')}}"
-                                               name="patients_today_date" id="patients_today_date" readonly />
+                                               class="form-control custom-mainforminput dobpicker  @if($errors->get('todate')) is-invalid @endif" value="@if(isset($MhstMinorPrivacyPolicy)){{$MhstMinorPrivacyPolicy->todate}}@else{{old('todate')}}@endif"
+                                               name="todate" id="todate" readonly />
                                     </div>
 
                                 </div>
@@ -226,7 +250,7 @@
                                     <label>Witness Name <span class="required"></span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="{{old('witness_name')}}"
+                                               class="form-control custom-mainforminput @if($errors->get('witness_name')) is-invalid @endif" value="@if(isset($MhstMinorPrivacyPolicy)){{$MhstMinorPrivacyPolicy->witness_name}}@else{{old('witness_name')}}@endif"
                                                name="witness_name" id="witness_name"
                                                 />
                                     </div>
@@ -237,8 +261,8 @@
                                 <div class="col-12 col-md-2">
                                     <label>Today's Date</label>
                                     <div class="padding-wrap">
-                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('witness_today_date')) is-invalid @endif" value="{{old('witness_today_date')}}"
-                                               name="witness_today_date" id="witness_today_date" readonly />
+                                        <input type="text" class="form-control custom-mainforminput dobpicker  @if($errors->get('wtodate')) is-invalid @endif" value="@if(isset($MhstMinorPrivacyPolicy)){{$MhstMinorPrivacyPolicy->wtodate}}@else{{old('wtodate')}}@endif"
+                                               name="wtodate" id="wtodate" readonly />
                                     </div>
 
 
@@ -267,7 +291,6 @@
 
     </main>
 </div>
-
 
 
 <script type="text/javascript">
@@ -334,17 +357,49 @@
                 alert(response);
             }
         });
-    })
-</script>   
+    }) 
+        if("@if($errors->get('witness_signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#witness_signature_pad").show();
+            $("#witness_signature_image").hide();
+            $("#witness_signature_updated").val('yes');
+        } 
 
-    
-   
-    
-    
-    
-    
-    
+        if("@if($errors->get('parent_signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#parent_signature_pad").show();
+            $("#parent_signature_image").hide();
+            $("#parent_signature_updated").val('yes');
+        } 
+
+    $(document).ready(function(){
+        $("#cancel_pat_sig").click(function(){
+            $("#parent_signature_pad").hide();
+            $("#parent_signature_image").show();
+            $("#parent_signature_updated").val('no');
+            
+        });
+        $("#edit_pat_sig").click(function(){
+            $("#parent_signature_pad").show();
+            $("#parent_signature_image").hide();
+            $("#parent_signature_updated").val('yes');
+        });
+
+        
+        $("#cancel_wit_sig").click(function(){
+            $("#witness_signature_pad").hide();
+            $("#witness_signature_image").show();
+            $("#witness_signature_updated").val('no');
+        });
+        $("#edit_wit_sig").click(function(){
+            $("#witness_signature_pad").show();
+            $("#witness_signature_image").hide();
+            $("#witness_signature_updated").val('yes');
+        });
+    });
 </script>
+
+
 
 
 <script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>
@@ -370,6 +425,10 @@
 <script src="{{ asset('public/theme-resources/js/moment-timezone-with-data.js') }}"></script>
 
 <script src="{{ asset('public/theme-resources/js/moment-range.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/jquery.plugin-timepicker.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/jquery.timeentry.js') }}"></script>
 
 <script src="{{ asset('public/theme-resources/js/main.js') }}"></script>
 
