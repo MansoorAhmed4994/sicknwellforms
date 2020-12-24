@@ -36,6 +36,7 @@ class CreateQcmOccupationalHealthWorkplacePhysicalsDrugScreensTable extends Migr
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('qcm_occupational_health_workplace_physicals_drug_screens');
+        
     }
 }

@@ -36,6 +36,7 @@ class CreateQcmOccupationalHealthSafeWorkerProgramsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('qcm_occupational_health_safe_worker_programs');
+        
     }
 }

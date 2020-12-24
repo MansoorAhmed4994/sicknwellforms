@@ -35,6 +35,7 @@ class CreateQcmContactUsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('qcm_contact_us');
+        
     }
 }
