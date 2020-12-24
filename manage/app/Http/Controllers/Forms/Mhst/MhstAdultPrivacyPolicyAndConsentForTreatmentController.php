@@ -94,9 +94,6 @@ class MhstAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         session()->flash("success","Successfully Submited");  
         return redirect()->route('MhstAdultPrivacyPolicyAndConsentForTreatment',$adult_privacy_policies->client_forms_id);
     }
-<<<<<<< HEAD
-=======
-
 
     public function submissions($client_form_id)
     { 
@@ -107,7 +104,6 @@ class MhstAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
          
         return view('forms.mhst.mhst-adult-privacy-policy-and-consent-for-treatment.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
     }
->>>>>>> 27c9550ff236794eabc0eb9e97552f91c6d884a7
     
 
     /**
