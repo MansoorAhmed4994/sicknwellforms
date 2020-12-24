@@ -228,7 +228,8 @@ class PedimConsentForRapidCovid19TestingController extends Controller
         $PedimConsentForRapidCovid19Testing = Pedim_consent_for_rapid_covid19_testings::find($id); 
         //$host = 'mansoor.zaheer994@gmail.com';
         $host = $PedimConsentForRapidCovid19Testing->client_forms->client->email;
-        $participant = $PedimConsentForRapidCovid19Testing->email; 
+        $participant = $PedimConsentForRapidCovid19Testing->patient_email; 
+        //dd($participant);
         $timestamp = time();   
         $start_time = date("m/d/Y h:i:s a", $timestamp); 
         $start_time = date('m/d/Y h:i:s a', strtotime($start_time)); 
@@ -251,7 +252,7 @@ class PedimConsentForRapidCovid19TestingController extends Controller
         			'start_time' => $start_time,
         			'password' => '',
         			'agenda' => '',
-                    'timezone' => $timezone,
+                    'timezone' => $timezone, 
                     'duration' => $duration
         		],
         		'host' => $host,
@@ -259,9 +260,9 @@ class PedimConsentForRapidCovid19TestingController extends Controller
             ],
             
         ]);
-        
+       // dd(json_decode($response->getBody(),true));
         $response = json_decode($response->getBody(),true);
-        // dd($response);
+        
         if(isset($response['code']))
         { 
             if(Auth::guard('clients')->check())

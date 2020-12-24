@@ -32,7 +32,7 @@ class CreateQcmQcardSelfPaySubcriptionsTable extends Migration
             $table->text('full_name_membership');
             $table->text('telephone_membership');
             $table->text('email_membership');
-            $table->text('relation_patient')->nullable();
+            $table->text('relation_patient')->nullable(true);
             $table->date('todate');
             $table->text('signature');
             $table->bigInteger('client_forms_id');

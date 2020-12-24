@@ -17,8 +17,8 @@ class CreateAppointmentLimitsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('client_forms_id');
             $table->string('time_zone', 225);
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->date('start_date')->nullable(true);
+            $table->date('end_date')->nullable(true);
             $table->timestamps();
             $table->bigInteger('created_by');
             $table->bigInteger('updated_by');
