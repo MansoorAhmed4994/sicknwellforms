@@ -86,6 +86,11 @@ Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 
 //MhstMedicalReferralFormController CRUD 
 Route::get('/MhstMedicalReferralForm/{clien_form_id}', 'Forms\Mhst\MhstMedicalReferralFormController@create')->name('MhstMedicalReferralForm');
 Route::post('/MhstMedicalReferralForm/create', 'Forms\Mhst\MhstMedicalReferralFormController@store')->name('MhstMedicalReferralForm.create');
+Route::get('/MhstMedicalReferralForm/edit/{submission_id}', 'Forms\Mhst\MhstMedicalReferralFormController@edit')->name('MhstMedicalReferralForm.edit');
+Route::post('/MhstMedicalReferralForm/update/{Mhst_adult_data_id}', 'Forms\Mhst\MhstMedicalReferralFormController@update')->name('MhstMedicalReferralForm.update');
+Route::get('/MhstMedicalReferralForm/create/meeting/{id}', 'Forms\Mhst\MhstMedicalReferralFormController@CreateZoomMeeting')->name('MhstMedicalReferralForm.create.zoom.meeting'); 
+
+
 
 //QcardSelfPaySubscriptionController CRUD 
 Route::get('/QcardSelfPaySubscription/{clien_form_id}', 'QcardSelfPaySubscriptionController@create')->name('QcardSelfPaySubscriptionr');
@@ -205,6 +210,8 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/client/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
+    //MhstMedicalReferralFormController Auth CRUD
+    Route::get('/client/MhstMedicalReferralForm/submissions/{clien_form_id}','Forms\Mhst\MhstMedicalReferralFormController@submissions')->name('client.MhstMedicalReferralForm.submissions');
 
     
     //Embed Link
@@ -293,7 +300,10 @@ Route::group(['middleware' => ['auth:web']],function(){
  
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
- 
+
+    //MhstMedicalReferralFormController Auth CRUD
+    Route::get('/MhstMedicalReferralForm/submissions/{clien_form_id}','Forms\Mhst\MhstMedicalReferralFormController@submissions')->name('MhstMedicalReferralForm.submissions');
+
 
     
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

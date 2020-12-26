@@ -81,14 +81,23 @@
         </style>
         <div class="qcm-form">
 
-
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
-
+        
+        <form method="post" action="{{route('MhstMedicalReferralForm.create',$client_form_id)}}" class="position-relative">
+                {{csrf_field()}} 
+                    <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+                    
+                    <input type="hidden" value="mhst_medical_referral_forms" id="table_name" name="table_name">
 
                 <div class="top-section">
 
                     <strong style="color: blue; font-size: 14pt" >Physician Information</strong>
                 </div>
+                @if(count($errors) > 0)
+                <div class="alert alert-danger my-2" style="font-size: 15px">
+                    <i class="fas fa-exclamation-triangle mr-2"></i><span>Please fill the Required
+                        fields</span>
+                </div>
+                @endif
 
                     <div class="form-group row mt-4">
 
@@ -100,9 +109,9 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                        class="form-control custom-mainforminput @if($errors->get('provider_name')) is-invalid @endif" value="{{old('provider_name')}}"
                                                name="provider_name" id="provider_name"
-                                               value="" />
+                                            />
                                     </div>
                                 </div>
 
@@ -110,9 +119,9 @@
                                     <label>Telephone </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
+                                        class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
                                                name="telephone" id="telephone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                                />
                                     </div>
                                 </div>
 
@@ -120,8 +129,8 @@
                                     <label>Fax </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="fax" id="fax" value=""
+                                        class="form-control custom-mainforminput @if($errors->get('fax')) is-invalid @endif" value="{{old('fax')}}"
+                                               name="fax" id="fax" 
                                         />
                                     </div>
                                 </div>
@@ -131,9 +140,9 @@
                                     <label>Emails </label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput "
+                                        class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}"
                                                name="email" id="email"
-                                               value="" />
+                                               />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-3">
@@ -141,9 +150,9 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                        class="form-control custom-mainforminput @if($errors->get('contact_person')) is-invalid @endif" value="{{old('contact_person')}}"
                                                name="contact_person" id="contact_person"
-                                               value="" />
+                                               />
                                     </div>
                                 </div>
 
@@ -177,9 +186,9 @@
                                                 <label>Facility Name</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                           class="form-control custom-mainforminput "
+                                                    class="form-control custom-mainforminput @if($errors->get('facility_name')) is-invalid @endif" value="{{old('facility_name')}}"
                                                            name="facility_name" id="facility_name"
-                                                           value="" />
+                                                           />
                                                 </div>
                                             </div>
 
@@ -187,9 +196,9 @@
                                                 <label>Address 1</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                           class="form-control custom-mainforminput "
+                                                    class="form-control custom-mainforminput @if($errors->get('address')) is-invalid @endif" value="{{old('address')}}"
                                                            name="address" id="address"
-                                                           value="" />
+                                                            />
                                                 </div>
                                             </div>
 
@@ -197,9 +206,9 @@
                                                 <label>Address 2</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                           class="form-control custom-mainforminput "
+                                                    class="form-control custom-mainforminput @if($errors->get('address_2')) is-invalid @endif" value="{{old('address_2')}}"
                                                            name="address_2" id="address_2"
-                                                           value="" />
+                                                            />
                                                 </div>
                                             </div>
                                             </div></div>
@@ -212,9 +221,9 @@
                                                 <label>City</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                           class="form-control custom-mainforminput "
+                                                    class="form-control custom-mainforminput @if($errors->get('city')) is-invalid @endif" value="{{old('city')}}"
                                                            name="city" id="city"
-                                                           value="" />
+                                                            />
                                                 </div>
                                             </div>
 
@@ -222,18 +231,18 @@
                                                 <label>State</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                           class="form-control custom-mainforminput "
+                                                    class="form-control custom-mainforminput @if($errors->get('state')) is-invalid @endif" value="{{old('state')}}"
                                                            name="state" id="state"
-                                                           value="" />
+                                                           />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-3">
                                                 <label>Zip</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                           class="form-control custom-mainforminput "
+                                                    class="form-control custom-mainforminput @if($errors->get('zip')) is-invalid @endif" value="{{old('zip')}}"
                                                            name="zip" id="zip"
-                                                           value="" />
+                                                            />
                                                 </div>
                                             </div>
 
@@ -256,9 +265,9 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                        class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
                                                name="patient_name" id="patient_name"
-                                               value="" />
+                                                />
                                     </div>
                                 </div>
 
@@ -266,7 +275,7 @@
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
                                         <input type="text" value=""
-                                               class="form-control custom-mainforminput dobpicker  "
+                                        class="form-control custom-mainforminput dobpicker @if($errors->get('dob')) is-invalid @endif" value="{{old('dob')}}"
                                                name="dob" id="dob" readonly />
                                     </div>
                                 </div>
@@ -275,9 +284,9 @@
                                     <label>Phone Number </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="phone" id="phone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                        class="form-control custom-mainforminput @if($errors->get('phone')) is-invalid @endif" value="{{old('phone')}}"
+                                               name="phone" id="phone" 
+                                                />
                                     </div>
                                 </div>
 
@@ -286,9 +295,9 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="alternate_phone" id="alternate_phone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                        class="form-control custom-mainforminput @if($errors->get('alternate_phone')) is-invalid @endif" value="{{old('alternate_phone')}}"
+                                               name="alternate_phone" id="alternate_phone"
+                                                />
                                     </div>
                                 </div>
 
@@ -296,18 +305,18 @@
                                     <label>Email</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
+                                        class="form-control custom-mainforminput @if($errors->get('email_patient')) is-invalid @endif" value="{{old('email_patient')}}"
                                                name="email_patient" id="email_patient"
-                                               value="" />
+                                                />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>City</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="city" id="city_patient"
-                                               value="" />
+                                        class="form-control custom-mainforminput @if($errors->get('city_patient')) is-invalid @endif" value="{{old('city_patient')}}"
+                                               name="city_patient" id="city_patient"
+                                                />
                                     </div>
                                 </div>
 
@@ -325,9 +334,9 @@
                                     <label>State</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="state" id="state_patient"
-                                               value="" />
+                                        class="form-control custom-mainforminput @if($errors->get('state_patient')) is-invalid @endif" value="{{old('state_patient')}}"
+                                               name="state_patient" id="state_patient"
+                                                />
                                     </div>
                                 </div>
 
@@ -336,9 +345,9 @@
                                     <label>Zip</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="zip" id="zip_patient"
-                                               value="" />
+                                        class="form-control custom-mainforminput @if($errors->get('zip_patient')) is-invalid @endif" value="{{old('zip_patient')}}"
+                                               name="zip_patient" id="zip_patient"
+                                                />
                                     </div>
                                 </div>
 
@@ -347,9 +356,9 @@
                             <label>Address</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                       class="form-control custom-mainforminput "
+                                class="form-control custom-mainforminput @if($errors->get('address_patient')) is-invalid @endif" value="{{old('address_patient')}}"
                                        name="address_patient" id="address_patient"
-                                       value="" />
+                                        />
                             </div>
                         </div>
 
@@ -357,21 +366,21 @@
                             <label>Address 2</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                       class="form-control custom-mainforminput "
+                                class="form-control custom-mainforminput @if($errors->get('address_2_patient')) is-invalid @endif" value="{{old('address_2_patient')}}"
                                        name="address_2_patient" id="address_2_patient"
-                                       value="" />
+                                        />
                             </div>
                         </div>
 
-                                <div class="col-12 col-md-2">
-                                    <label>Height</label>
-                                    <div class="padding-wrap">
-                                        <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="height" id="height"
-                                               value="" />
-                                    </div>
-                                </div>
+                        <div class="col-12 col-md-2">
+                            <label>Height</label>
+                            <div class="padding-wrap">
+                                <input type="text"
+                                class="form-control custom-mainforminput @if($errors->get('height')) is-invalid @endif" value="{{old('height')}}"
+                                        name="height" id="height"
+                                         />
+                            </div>
+                        </div>
 
                             </div></div>
                     </div>
@@ -380,33 +389,25 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="row no-gutters">
-                        <div class="col-12 col-md-3">
-                            <label>Height</label>
-                            <div class="padding-wrap">
-                                <input type="text"
-                                       class="form-control custom-mainforminput "
-                                       name="height" id="height"
-                                       value="" />
-                            </div>
-                        </div>
+                        
  
 
                         <div class="col-12 col-md-2">
                             <label>Weight</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                       class="form-control custom-mainforminput "
+                                class="form-control custom-mainforminput @if($errors->get('weight')) is-invalid @endif" value="{{old('weight')}}"
                                        name="weight" id="weight"
-                                       value="" />
+                                        />
                             </div>
                         </div>
                         <div class="col-12 col-md-2">
                             <label>Neck Size</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                       class="form-control custom-mainforminput "
+                                class="form-control custom-mainforminput @if($errors->get('neck_size')) is-invalid @endif" value="{{old('neck_size')}}"
                                        name="neck_size" id="neck_size"
-                                       value="" />
+                                        />
                             </div>
                         </div>
  
@@ -414,20 +415,20 @@
 
                                     <label>Insurance Card Front</label>
                                     <div class="padding-wrap">
-                                        <input type="file"
-                                               class="form-control custom-mainforminput "
-                                               name="file" id="front_card"
-                                               value=""  />
+                                        <input type="text"
+                                        class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value="{{old('card_front')}}"
+                                               name="card_front" id="card_front"
+                                                />
                                     </div>
                                 </div>
  
                                 <div class="col-12 col-md-3">
                                     <label>Insurance Card Back</label>
                                     <div class="padding-wrap">
-                                        <input type="file"
-                                               class="form-control custom-mainforminput "
-                                               name="file" id="back_card"
-                                               value="" />
+                                        <input type="text"
+                                        class="form-control custom-mainforminput @if($errors->get('card_back')) is-invalid @endif" value="{{old('card_back')}}"
+                                               name="card_back" id="card_back"
+                                                />
                                     </div>
                                 </div>
                             </div></div>
@@ -453,16 +454,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Hypertention">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Hypertention" <?php if(old('symptoms') == '*Hypertention'){ echo 'checked';}?>>
                             <label> *Hypertention </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*History of Stroke">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*History of Stroke" <?php if(old('symptoms') == '*History of Stroke'){ echo 'checked';}?>>
                             <label > *History of Stroke </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Impaired Cognition">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Impaired Cognition" <?php if(old('symptoms') == '*Impaired Cognition'){ echo 'checked';}?>>
                             <label > *Impaired Cognition </label>
                         </div>
                     </div>
@@ -470,16 +471,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Ischemic Heart Disease">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Ischemic Heart Disease" <?php if(old('symptoms') == '*Ischemic Heart Disease'){ echo 'checked';}?>>
                             <label> *Ischemic Heart Disease </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Mood Disorders">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Mood Disorders" <?php if(old('symptoms') == '*Mood Disorders'){ echo 'checked';}?>>
                             <label > *Mood Disorders </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Excessive Daytime Sleepiness">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Excessive Daytime Sleepiness" <?php if(old('*Excessive Daytime Sleepiness') == 'Google'){ echo 'checked';}?>>
                             <label > *Excessive Daytime Sleepiness </label>
                         </div>
                     </div>
@@ -488,16 +489,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Insomnia">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Insomnia" <?php if(old('symptoms') == '*Insomnia'){ echo 'checked';}?>>
                             <label> *Insomnia </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Atrial Fibrillation">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Atrial Fibrillation" <?php if(old('symptoms') == 'Atrial Fibrillation'){ echo 'checked';}?>>
                             <label > Atrial Fibrillation </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Reflux">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Reflux" <?php if(old('symptoms') == 'Reflux'){ echo 'checked';}?>>
                             <label > Reflux </label>
                         </div>
                     </div>
@@ -506,16 +507,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Witnessed Apnea">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Witnessed Apnea" <?php if(old('symptoms') == 'Witnessed Apnea'){ echo 'checked';}?>>
                             <label> Witnessed Apnea </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Congestive Heart Failure">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Congestive Heart Failure" <?php if(old('symptoms') == 'Congestive Heart Failure'){ echo 'checked';}?>>
                             <label > Congestive Heart Failure </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" value="Diabetes">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Diabetes" <?php if(old('symptoms') == 'Diabetes'){ echo 'checked';}?>>
                             <label> Diabetes </label>
                         </div>
                     </div>
@@ -524,16 +525,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Memory Loss">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Memory Loss" <?php if(old('symptoms') == 'Memory Loss'){ echo 'checked';}?>>
                             <label> Memory Loss </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Depression">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Depression" <?php if(old('symptoms') == 'Depression'){ echo 'checked';}?>>
                             <label > Depression </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Sleep Disturbance">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Sleep Disturbance" <?php if(old('symptoms') == 'Sleep Disturbance'){ echo 'checked';}?>>
                             <label> Sleep Disturbance </label>
                         </div>
                     </div>
@@ -542,16 +543,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Seizures">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Seizures" <?php if(old('symptoms') == 'Seizures'){ echo 'checked';}?>>
                             <label> Seizures </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="COPD">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="COPD" <?php if(old('symptoms') == 'COPD'){ echo 'checked';}?>>
                             <label > COPD </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Morning Headache">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Morning Headache" <?php if(old('symptoms') == 'Morning Headache'){ echo 'checked';}?>>
                             <label> Morning Headache </label>
                         </div>
                     </div>
@@ -560,18 +561,18 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Nocturia">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Nocturia" <?php if(old('symptoms') == 'Nocturia'){ echo 'checked';}?>>
                             <label> Nocturia </label>
                         </div>
 
                         <div style="display: flex;" class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Large neck size (greater than 17&quot; for men, greater than 16&quot; for women).">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Large neck size (greater than 17 for men, greater than 16 for women)." <?php if(old('symptoms') == 'Large neck size (greater than 17 for men, greater than 16 for women).'){ echo 'checked';}?>>
                             <label>&nbsp;Large neck size (greater than 17" for men, greater than 16" for women)</label>
                         </div>
 
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Other">
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Other" <?php if(old('symptoms') == 'Other'){ echo 'checked';}?>>
                             <label> Other </label>
                         </div>
                     </div>
@@ -585,11 +586,11 @@
                             <div class="row">
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="oxygen" id="oxygen" value="yes"> Yes</label>
+                                                               name="oxygen" id="oxygen" value="yes"  <?php if(old('oxygen') == 'yes'){ echo 'checked';}?>> Yes</label>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="oxygen" id="oxygen" value="no" > No</label>
+                                                               name="oxygen" id="oxygen" value="no"  <?php if(old('oxygen') == 'yes'){ echo 'checked';}?>> No</label>
                                 </div>
                             </div>
                         </div>
@@ -601,7 +602,7 @@
                             </label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                       class="form-control custom-mainforminput "
+                                class="form-control custom-mainforminput @if($errors->get('lpm')) is-invalid @endif" value="{{old('lpm')}}"
                                        name="lpm" id="lpm"
                                        value="" />
                             </div>
@@ -626,7 +627,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea">
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.33 Obstructive Sleep Apnea" <?php if(old('diagnostic_codes') == 'G47.33 Obstructive Sleep Apnea'){ echo 'checked';}?>>
                             <label> G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea </label>
                         </div>
 
@@ -634,7 +635,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence">
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.10 Other Hypersomnia-Excessive Daytime Somnolence" <?php if(old('diagnostic_codes') == 'G47.10 Other Hypersomnia-Excessive Daytime Somnolence'){ echo 'checked';}?>>
                             <label > G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence </label>
 
                         </div>
@@ -648,7 +649,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Commercial 95800">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Commercial 95800" <?php if(old('sleep_testing') == 'Commercial 95800'){ echo 'checked';}?>>
                             <label > Commercial 95800 </label>
 
                         </div>
@@ -656,7 +657,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Medicare G0399">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Medicare G0399" <?php if(old('sleep_testing') == 'Medicare G0399'){ echo 'checked';}?>>
                             <label > Medicare G0399</label>
 
                         </div>
@@ -664,7 +665,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Self-Pay $169">
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Self-Pay $169" <?php if(old('sleep_testing') == 'Self-Pay $169'){ echo 'checked';}?>>
                             <label > Self-Pay $169</label>
 
                         </div>
@@ -679,9 +680,9 @@
                         <div class="col-12 col-md-10">
                             <label>Comment</label>
                             <textarea
-                                    class="form-control custom-mainforminput "
+                            class="form-control custom-mainforminput @if($errors->get('comment')) is-invalid @endif" value="{{old('comment')}}"
                                     rows="4" name="comment"
-                                    id="comment"></textarea>
+                                    id="comment">{{old('comment')}}</textarea>
                         </div>
                     </div>
 
@@ -693,7 +694,7 @@
                             <div class="padding-wrap">
                                 <label>Referring Physician Name<span class="required">*</span> </label>
                                 <input type="text" value=""
-                                       class="form-control custom-mainforminput "
+                                class="form-control custom-mainforminput @if($errors->get('physician_name')) is-invalid @endif" value="{{old('physician_name')}}"
                                        name="physician_name" id="physician_name"  />
                             </div>
 
@@ -701,10 +702,12 @@
 
                         <div style="margin-left: 20px;" class="col-12 col-md-4">
                             <label class="" >Signature<span class="required">*</span></label>
-                            <div id="sig1" class="kbw-signature"></div>  <br/>
+                            <div>
+                                        <div  id="sig1"  style="width:370px !Important;height: 200px;@if($errors->get('signature')) border-color:red; @endif" ></div>  <br/>
+                            </div>
+                            <span id="clear1" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                            <textarea class="@if($errors->get('signature')) is-invalid @endif" value="{{old('signature')}}" id="signature64" name="signature" style="display: none">{{old('signature')}}</textarea>
 
-                            <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                            <textarea id="signature" name="signature" style="display: none"></textarea>
 
                         </div>
 
@@ -728,7 +731,7 @@
     var base_url = '<?php echo e(url('/')); ?>';
     var token = "<?php echo csrf_token() ?>";
 
-    var sig1 = $('#sig1').signature({syncField: '#signature641', syncFormat: 'PNG'});
+    var sig1 = $('#sig1').signature({syncField: '#signature64', syncFormat: 'PNG'});
 
     $('#clear1').click(function(e) {
         e.preventDefault();
