@@ -125,7 +125,7 @@ class MhstMedicalReferralFormController extends Controller
         $medical_referral_forms->sleep_testing = request('sleep_testing');
         $medical_referral_forms->comment = request('comment');
         $medical_referral_forms->physician_name = request('physician_name');
-        $medical_referral_forms->signature = request('signature');
+        $medical_referral_forms->signature = $signature;
         $medical_referral_forms->client_forms_id = request('client_forms_id');   
         $medical_referral_forms->status = 'active';  
         $medical_referral_forms->save();
@@ -135,6 +135,17 @@ class MhstMedicalReferralFormController extends Controller
         return redirect()->route('MhstMedicalReferralForm',$medical_referral_forms->client_forms_id);
     }
     
+
+    public function submissions($client_form_id)
+    { 
+        //dd($client_form_id);
+        $submissions = Mhst_medical_referral_forms::all()->where('client_forms_id', $client_form_id);
+        //dd($submissions);
+        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
+         
+        return view('forms.mhst.mhst-medical-referral-form.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
+    }
+
 
     /**
      * Display the specified resource.
@@ -153,11 +164,15 @@ class MhstMedicalReferralFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($submission_id)
     {
+        //dd(Auth);
+        $MhstMedicalReferralForm = Mhst_medical_referral_forms::find($submission_id); 
+        $client_form_id = $MhstMedicalReferralForm->client_forms_id; 
+        return view('forms.mhst.mhst-medical-referral-form.edit')->with(array('submission_id' => $submission_id,'client_form_id' => $client_form_id, 'MhstMedicalReferralForm' => $MhstMedicalReferralForm)); 
+        
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -165,9 +180,117 @@ class MhstMedicalReferralFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Mhst_medical_referral_forms $Mhst_medical_referral_data_id)
+    { 
+        // dd($Mhst_medical_referral_data_id);
+        $signature_update = "nullable";
+        if(request('signature_updated') == "yes")
+        {
+        //echo 'working1';
+            $is_signature_update = "required"; 
+             
+        }
+
+           
+
+        $valiedation_from_array = [ 
+            'provider_name' => 'required',
+            'telephone' => 'required',
+            'fax' => 'required',
+            'email' => 'required',
+            'contact_person' => 'required',
+            'patient_name' => 'required',
+            'dob' => 'required',
+            'phone' => 'required',  
+            'email_patient' => 'required',
+            'address_patient' => 'required',
+            'city_patient' => 'required',
+            'state_patient' => 'required',
+            'zip_patient' => 'required',
+            'height' => 'required',  
+            'weight' => 'required',
+            'neck_size' => 'required',
+            'card_front' => 'required',
+            'card_back' => 'required',
+            'symptoms' => 'required',  
+            'oxygen' => 'required',
+            'diagnostic_codes' => 'required',
+            'sleep_testing' => 'required',
+            'comment' => 'required',
+            'physician_name' => 'required',  
+            'signature' => $is_signature_update,
+
+        ];
+
+        
+        $this->validate($request, $valiedation_from_array);
+        //dd($is_witness_signature_update);
+        $signature = $request->signature_src;
+        if(request('signature_updated') == "yes")
+        {
+        
+            $signature = app('App\Http\Controllers\SignaturePadController')->update($request->signature,$signature);
+             
+        }
+       
+        $Mhst_medical_referral_data_id->provider_name = request('provider_name');
+        $Mhst_medical_referral_data_id->telephone = request('telephone');
+        $Mhst_medical_referral_data_id->fax = request('fax');
+        $Mhst_medical_referral_data_id->email = request('email');
+        $Mhst_medical_referral_data_id->contact_person = request('contact_person');
+        $Mhst_medical_referral_data_id->facility_name = request('facility_name');
+        $Mhst_medical_referral_data_id->address = request('address');
+        $Mhst_medical_referral_data_id->address_2 = request('address_2');
+        $Mhst_medical_referral_data_id->city = request('city');
+        $Mhst_medical_referral_data_id->state = request('state');
+        $Mhst_medical_referral_data_id->zip = request('zip');
+        $Mhst_medical_referral_data_id->patient_name = request('patient_name');
+        $Mhst_medical_referral_data_id->dob = request('dob');
+        $Mhst_medical_referral_data_id->phone = request('phone');
+        $Mhst_medical_referral_data_id->alternate_phone = request('alternate_phone');
+        $Mhst_medical_referral_data_id->email_patient = request('email_patient');
+        $Mhst_medical_referral_data_id->address_patient = request('address_patient');
+        $Mhst_medical_referral_data_id->address_2_patient = request('address_2_patient');
+        $Mhst_medical_referral_data_id->city_patient = request('city_patient');
+        $Mhst_medical_referral_data_id->state_patient = request('state_patient');
+        $Mhst_medical_referral_data_id->zip_patient = request('zip_patient');
+        $Mhst_medical_referral_data_id->height = request('height');
+        $Mhst_medical_referral_data_id->weight = request('weight');
+        $Mhst_medical_referral_data_id->neck_size = request('neck_size');
+        $Mhst_medical_referral_data_id->card_front = request('card_front');
+        $Mhst_medical_referral_data_id->card_back = request('card_back');
+        $Mhst_medical_referral_data_id->symptoms = request('symptoms');
+        $Mhst_medical_referral_data_id->oxygen = request('oxygen');
+        $Mhst_medical_referral_data_id->lpm = request('lpm');
+        $Mhst_medical_referral_data_id->diagnostic_codes = request('diagnostic_codes');
+        $Mhst_medical_referral_data_id->sleep_testing = request('sleep_testing');
+        $Mhst_medical_referral_data_id->comment = request('comment');
+        $Mhst_medical_referral_data_id->physician_name = request('physician_name');
+        $Mhst_medical_referral_data_id->signature = $signature;
+        $Mhst_medical_referral_data_id->client_forms_id = request('client_forms_id');   
+        $Mhst_medical_referral_data_id->status = 'active';  
+        $update_status = $Mhst_medical_referral_data_id->save();
+
+        if($update_status)
+        {  
+            if(Auth::guard('clients')->check())
+            {
+                session()->flash("success","Successfully Updated"); 
+                return redirect()->route('client.MhstMedicalReferralForm.submissions',$Mhst_medical_referral_data_id->client_forms_id);
+            }
+            else
+            {
+                session()->flash("success","Successfully Updated"); 
+                return redirect()->route('MhstMedicalReferralForm.submissions',$Mhst_medical_referral_data_id->client_forms_id);
+            }
+
+        }
+        else
+        {
+            session()->flash("warning","Some thing went wrong, please Update again"); 
+            return redirect()->back();
+
+        }
     }
 
     /**

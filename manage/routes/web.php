@@ -87,7 +87,7 @@ Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 
 Route::get('/MhstMedicalReferralForm/{clien_form_id}', 'Forms\Mhst\MhstMedicalReferralFormController@create')->name('MhstMedicalReferralForm');
 Route::post('/MhstMedicalReferralForm/create', 'Forms\Mhst\MhstMedicalReferralFormController@store')->name('MhstMedicalReferralForm.create');
 Route::get('/MhstMedicalReferralForm/edit/{submission_id}', 'Forms\Mhst\MhstMedicalReferralFormController@edit')->name('MhstMedicalReferralForm.edit');
-Route::post('/MhstMedicalReferralForm/update/{Mhst_adult_data_id}', 'Forms\Mhst\MhstMedicalReferralFormController@update')->name('MhstMedicalReferralForm.update');
+Route::post('/MhstMedicalReferralForm/update/{Mhst_medical_referral_data_id}', 'Forms\Mhst\MhstMedicalReferralFormController@update')->name('MhstMedicalReferralForm.update');
 Route::get('/MhstMedicalReferralForm/create/meeting/{id}', 'Forms\Mhst\MhstMedicalReferralFormController@CreateZoomMeeting')->name('MhstMedicalReferralForm.create.zoom.meeting'); 
 
 

@@ -15,7 +15,7 @@ class Mhst_medical_referral_forms extends Model
     //
     public function client_forms()
     {
-        //dd();
+        dd();
         return $this->belongsTo('App\Models\Client_forms','client_forms_id','id');
     } 
 }
