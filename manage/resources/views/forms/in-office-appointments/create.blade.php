@@ -87,7 +87,7 @@
                             <div class="form-section">
 
                                 <div class="form-group row margin-top">
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-sm-6 col-md-4">
                                         <label>Visit Type <span class="required">*</span></label>
                                         <select class="form-control custom-mainforminput  @if($errors->get('visit_type')) is-invalid @endif" value="{{old('visit_type')}}" name="visit_type" id="visit_type">
                                             <option value=""> </option>
@@ -110,7 +110,7 @@
                                         </select>
                                     </div>
                                     
-                                    <div class="col-12 col-md-8">
+                                    <div class="col-12 col-sm-6 col-md-8">
                                         <label>Description of issue <span class="required">*</span></label>
                                         <textarea
                                             class="form-control custom-mainforminput @if($errors->get('description')) is-invalid @endif"
@@ -121,11 +121,11 @@
                                     <div class="col-12">
                                         <h6 class="date-valset">Please select a date</h6>
                                     </div>
-                                    <div class="col-12 col-md-4 ">
+                                    <div class="col-12 col-sm-6 col-md-4 ">
                                         <div class="datepicker datepicker-div @if($errors->get('appointment_from')) is-invalid-div @endif"
                                             data-language='en'></div>
                                     </div>
-                                    <div class="col-12 col-md-4 ">
+                                    <div class="col-12 col-sm-6 col-md-4 ">
                                         <div class="slot-selection">
                                             <div class="main-titlee">
 
@@ -139,8 +139,8 @@
                                         </div>
                                     </div>
                                     <div class="d-block w-100"></div>
-                                    <div class="col-12 col-md-4"></div>
-                                    <div class="col-12 col-md-4"> 
+                                    <div class="col-12 col-sm-6 col-md-4"></div>
+                                    <div class="col-12 col-sm-6 col-md-4"> 
                                         <select class="timezonePicker" id="timezonepicker" @if(isset($appoint_date_range->time_zone)) disabled @endif>
                                             <option value="Europe/Andorra">Europe/Andorra</option>
                                             <option value="Asia/Dubai">Asia/Dubai</option>
@@ -512,21 +512,21 @@
                                             <label>Patient Name <span class="required">*</span></label>
                                         </div>
                                         <div class="row no-gutters">
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-sm-4 col-md-4">
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                         class="form-control custom-mainforminput @if($errors->get('first_name')) is-invalid @endif" name="first_name" id="first_name" value="{{old('first_name')}}" />
                                                     <p><small>First name</small></p>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-sm-4 col-md-4">
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                         class="form-control custom-mainforminput @if($errors->get('middle_name')) is-invalid @endif" name="middle_name" id="middle_name" value="{{old('middle_name')}}" />
                                                     <p><small>Middle name</small></p>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-sm-4 col-md-4">
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                         class="form-control custom-mainforminput @if($errors->get('last_name')) is-invalid @endif" name="last_name" id="last_name" value="{{old('last_name')}}" />
@@ -536,12 +536,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-sm-6 col-md-2">
                                         <label>Telephone <span class="required">*</span></label>
                                         <input type="tel"
                                             class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" name="telephone" id="telephone" value="{{old('telephone')}}" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-sm-6 col-md-2">
                                         <label>Email <span class="required">*</span></label>
                                         <input type="text" class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}" name="email" id="email" required/>
                                     </div>
@@ -572,21 +572,21 @@
                                             <label>Patient Name <span class="required">*</span></label>
                                         </div>
                                         <div class="row no-gutters">
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-sm-4 col-md-4">
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                         class="form-control custom-mainforminput @if($errors->get('patient_fname')) is-invalid @endif" name="patient_fname" id="patient_fname" value="{{old('patient_fname')}}" />
                                                     <p><small>First name</small></p>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-sm-4 col-md-4">
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                         class="form-control custom-mainforminput @if($errors->get('patient_mname')) is-invalid @endif" name="patient_mname" id="patient_mname" value="{{old('patient_mname')}}" />
                                                     <p><small>Middle name</small></p>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-sm-4 col-md-4">
                                                 <div class="padding-wrap">
                                                     <input type="text"
                                                         class="form-control custom-mainforminput @if($errors->get('patient_lname')) is-invalid @endif" name="patient_lname" id="patient_lname" value="{{old('patient_lname')}}" />
@@ -596,7 +596,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-sm-6 col-md-2">
                                         <div class="padding-wrap">
                                             <label>Date of birth</label>
                                             <input type="text" value="{{old('dob')}}"
@@ -604,7 +604,7 @@
                                                 name="dob" id="dob" readonly />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12  col-sm-6 col-md-3">
                                         <div class="padding-wrap">
                                             <label>Is Patient a Minor? <span class="required">*</span></label><br />
                                             <label class="mt-2"><input type="radio" class="mr-2" name="is_patient_minor" id="is_patient_minor" value="yes" <?php if(old('accept_financial_policy') == 'yes'){ echo 'checked';}?>>Yes</label>
@@ -619,39 +619,39 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mt-4">
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-sm-6 col-md-3">
                                         <label>Responsible Party (If Minor)</label>
                                         <input type="text" class="form-control custom-mainforminput @if($errors->get('patient_responsible_part')) is-invalid @endif" name="patient_responsible_part" id="patient_responsible_part" value="{{old('patient_responsible_part')}}">
                                         <p><small>Enter Full Legal Name
                                             </small></p>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-sm-6 col-md-3">
                                         <label>Full Name of Insurance Subscriber</label>
                                         <input type="text" class="form-control custom-mainforminput @if($errors->get('patient_insurance_subscriber')) is-invalid @endif" name="patient_insurance_subscriber" id="patient_insurance_subscriber" value="{{old('patient_insurance_subscriber')}}">
                                     </div>
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12  col-sm-4 col-md-2">
                                         <label>Relation to patient</label>
                                         <input type="text" class="form-control custom-mainforminput  @if($errors->get('relation_patient')) is-invalid @endif" name="relation_patient" id="relation_patient"
                                             value="{{old('relation_patient')}}">
                                         <p><small>Self, Father, Mother, Son, etc.
                                             </small></p>
                                     </div>
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12  col-sm-4 col-md-2">
                                         <label>Telephone <span class="required">*</span></label>
                                         <input type="tel" class="form-control custom-mainforminput  @if($errors->get('patient_telephone')) is-invalid @endif" name="patient_telephone" id="patient_telephone" value="{{old('patient_telephone')}}">
                                     </div>
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12  col-sm-4 col-md-2">
                                         <label>Patient Email <span class="required">*</span></label>
                                         <input type="email" class="form-control custom-mainforminput  @if($errors->get('patient_email')) is-invalid @endif" name="patient_email" id="patient_email" value="{{old('patient_email')}}">
                                     </div>
                                 </div>
-                                <div class="form-group row mt-4">
-                                    <div class="col-12 col-md-3">
+                                <div class="form-group  row mt-4">
+                                    <div class="col-12    col-sm-6 col-md-3">
                                         <label>Primary Insurance Company</label>
                                         <input type="text" class="form-control custom-mainforminput  @if($errors->get('patient_primary_insurance_company')) is-invalid @endif" name="patient_primary_insurance_company" id="patient_primary_insurance_company"
                                             value="{{old('patient_primary_insurance_company')}}">
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12   col-sm-6 col-md-3">
                                         <label>Secondary Insurance Company</label>
                                         <input type="text" class="form-control custom-mainforminput  @if($errors->get('patient_secondary_insurance_company')) is-invalid @endif" name="patient_secondary_insurance_company" id="patient_secondary_insurance_company"
                                             value="{{old('patient_secondary_insurance_company')}}">
@@ -902,7 +902,7 @@
                                                     <label class="mt-2"><input type="checkbox" class="mr-2" id="accept_financial_policy" name="accept_financial_policy"  value="yes" <?php if(old('accept_financial_policy') == 'yes'){ echo 'checked';}?>>Accept</label>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-2">
+                                            <div class="col-12 col-sm-6 col-md-2">
                                                 <div class="padding-wrap">
                                                     <label>Date</label>
                                                     <input type="text"

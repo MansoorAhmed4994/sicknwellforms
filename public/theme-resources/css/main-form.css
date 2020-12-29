@@ -14,6 +14,7 @@
     width: 100%;
     overflow-x: hidden;
     /*overflow: scroll;*/
+    padding: 5px;
 }
 
 .qcm-form p,
