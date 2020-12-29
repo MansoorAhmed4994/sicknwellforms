@@ -21,6 +21,10 @@
     font-size: 1.4em;
 }
 
+.qcm-form form {
+    padding-bottom: 5px;
+}
+
 .qcm-form p {
     line-height: 1.6em;
 }
