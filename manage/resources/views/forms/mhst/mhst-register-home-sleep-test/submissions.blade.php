@@ -167,52 +167,237 @@
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Cellular Phone Number </span>
+                                    <span>Payment Method</span>
                                 </div>
                             </th> 
                             <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Daytime Telephone Number</span>
+                                    <span>Patient's Name</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>State of Residence</span>
+                                    <span>Patient's Email</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>hear about us</span>
+                                    <span>Primary Insurance Company</span>
                                 </div>
                             </th> 
                                                         
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Shipping Address</span>
+                                    <span>Member ID#</span>
                                 </div>
                             </th>  
                             <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Shipping Address Line 2</span>
+                                    <span>Subscriber Name</span>
                                 </div>
                             </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>Shipping City </span>
-                                </div>
-                            </th> 
-                                                        <th>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>Shipping State</span>
+                                    <span>Secondary Insurance Company </span>
                                 </div>
                             </th>
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Member ID#</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Subscriber Name</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Insurance Card Front </span>
+                                </div>
+                            </th> 
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Insurance Card Back</span>
+                                </div>
+                            </th> 
+                                                    
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Primary physician</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Physician Telephone </span>
+                                </div>
+                            </th> 
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Extension</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Photo of Physician Script</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Patient Name </span>
+                                </div>
+                            </th> 
+                                                        
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>DOB</span>
+                                </div>
+                            </th>  
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Patient Minor</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Parent or Guardian</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Email</span>
+                                </div>
+                            </th> 
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Telephone</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Term Condition</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Today's Date</span>
+                                </div>
+                            </th> 
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Signature</span>
+                                </div>
+                            </th> 
+                                                    
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Full Name</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Warrant or Sign In</span>
+                                </div>
+                            </th> 
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Name</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Email</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Number</span>
+                                </div>
+                            </th> 
+                                                        
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>DOB</span>
+                                </div>
+                            </th>  
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Snoring</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Tired</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Observed</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Pressure</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Body</span>
+                                </div>
+                            </th> 
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Age</span>
+                                </div>
+                            </th> 
+                                                        
+                                                        <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Neck</span>
+                                </div>
+                            </th>  
+                            <th>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Gender</span>
+                                </div>
+                            </th> 
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
