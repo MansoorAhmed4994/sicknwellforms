@@ -65,6 +65,9 @@ Route::post('/QcmContactUs/create', 'QcmContactUsController@store')->name('QcmCo
 //MhstRegisterHomeSleepTestController CRUD 
 Route::get('/MhstRegisterHomeSleepTest/{clien_form_id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@create')->name('MhstRegisterHomeSleepTest');
 Route::post('/MhstRegisterHomeSleepTest/create', 'Forms\Mhst\MhstRegisterHomeSleepTestController@store')->name('MhstRegisterHomeSleepTest.create');
+Route::get('/MhstRegisterHomeSleepTest/edit/{submission_id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@edit')->name('MhstRegisterHomeSleepTest.edit');
+Route::post('/MhstRegisterHomeSleepTest/update/{Mhst_adult_data_id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@update')->name('MhstRegisterHomeSleepTest.update');
+Route::get('/MhstRegisterHomeSleepTest/create/meeting/{id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@CreateZoomMeeting')->name('MhstRegisterHomeSleepTest.create.zoom.meeting'); 
 
 //MhstAdultPrivacyPolicyAndConsentForTreatmentController CRUD
 Route::get('/MhstAdultPrivacyPolicyAndConsentForTreatment/{clien_form_id}', 'Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@create')->name('MhstAdultPrivacyPolicyAndConsentForTreatment');
@@ -205,6 +208,8 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/client/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
+    //MhstRegisterHomeSleepTestController Auth CRUD
+    Route::get('/client/MhstRegisterHomeSleepTest/submissions/{clien_form_id}','Forms\Mhst\MhstRegisterHomeSleepTestController@submissions')->name('client.MhstRegisterHomeSleepTest.submissions');
 
     
     //Embed Link
@@ -293,6 +298,10 @@ Route::group(['middleware' => ['auth:web']],function(){
  
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
+
+    //MhstRegisterHomeSleepTestController Auth CRUD
+    Route::get('/MhstRegisterHomeSleepTest/submissions/{clien_form_id}','Forms\Mhst\MhstRegisterHomeSleepTestController@submissions')->name('MhstRegisterHomeSleepTest.submissions');
+
  
 
     

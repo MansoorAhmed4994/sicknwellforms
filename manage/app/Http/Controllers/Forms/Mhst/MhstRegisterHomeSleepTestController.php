@@ -53,6 +53,7 @@ class MhstRegisterHomeSleepTestController extends Controller
         
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -67,6 +68,12 @@ class MhstRegisterHomeSleepTestController extends Controller
 
         $is_patient_minor = "no";
 
+        $pay_via_credit_card = "nullable";
+        $patient_name = "nullable";
+
+        $full_name = "nullable";
+
+
         if(request('is_patient_minor') == "yes")
         {
             
@@ -75,6 +82,122 @@ class MhstRegisterHomeSleepTestController extends Controller
             $is_patient_minor = request('is_patient_minor');
              
         }
+        if(request('pay_via_credit_card') == "Telemedicine Consultation $ 98.00" || request('pay_via_credit_card') == "Home Sleep Test $ 169.00" || request('pay_via_credit_card') == "Telemedicine Follow-up Consultation $ 98.00" || request('pay_via_credit_card') == "Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00" || request('pay_via_credit_card') == "Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00")
+        { 
+            //dd('working');
+            
+            $valiedation_from_array = [ 
+                'is_patient_minor' => $is_patient_minor_validated,
+                'full_name' => 'required',
+                'email' => 'required',
+                'number' => 'required',
+                'state' => 'required',
+                'hear_about_us' => 'required',
+                'shipping_address' => 'required',
+                'shipping_city' => 'required',
+                'shipping_state' => 'required',
+                'shipping_zip' => 'required',  
+                'dob' => 'required',
+                'gender' => 'required',
+                'name_patient_terms' => 'required',
+                'dob_patient_terms' => 'required',
+                'email_patient_terms' => 'required',
+                'patient_telephone_terms' => 'required',
+                'term_condition' => 'required',
+                'todate' => 'required',
+                'signature' => 'required',
+                'full_name_patient_terms' => 'required',  
+                'legal_signature' => 'required',
+                'name_questions' => 'required',
+                'email_questions' => 'required',
+                'telephone_questions' => 'required',  
+                'dob_questions' => 'required'
+    
+            ];
+    
+            
+            $this->validate($request, $valiedation_from_array);
+        }
+        
+
+        else if(request('patient_name') != "")
+        { 
+            //dd('working2');
+            
+            $valiedation_from_array = [
+
+                'is_patient_minor' => $is_patient_minor_validated,
+                'patient_email' => 'required',
+                'insurance_name' => 'required',
+                'member_id_1' => 'required',
+                'subcribers_name_1' => 'required',
+                'secondary_insurance_name' => 'required',  
+                'member_id_2' => 'required',
+                'subcribers_name_2' => 'required',
+                'front_card' => 'required',
+                'back_card' => 'required',
+                'physician_tel' => 'required',
+                'extension' => 'required',
+                'phy_script' => 'required',
+                'full_name' => 'required',
+                'email' => 'required',
+                'number' => 'required',
+                'state' => 'required',
+                'hear_about_us' => 'required',
+                'shipping_address' => 'required',
+                'shipping_city' => 'required',
+                'shipping_state' => 'required',
+                'shipping_zip' => 'required',  
+                'dob' => 'required',
+                'gender' => 'required',
+                'name_patient_terms' => 'required',
+                'dob_patient_terms' => 'required',
+                'email_patient_terms' => 'required',
+                'patient_telephone_terms' => 'required',
+                'term_condition' => 'required',
+                'todate' => 'required',
+                'signature' => 'required',
+                'full_name_patient_terms' => 'required',  
+                'legal_signature' => 'required',
+                'name_questions' => 'required',
+                'email_questions' => 'required',
+                'telephone_questions' => 'required',  
+                'dob_questions' => 'required'
+    
+            ];
+    
+            
+            $this->validate($request, $valiedation_from_array);
+        }
+
+        else if(request('full_name') != "")
+        { 
+            //dd('working3');
+            
+            $valiedation_from_array = [ 
+                'patient_name' => 'required',
+                'patient_email' => 'required',
+                'insurance_name' => 'required',
+                'member_id_1' => 'required',
+                'subcribers_name_1' => 'required',
+                'secondary_insurance_name' => 'required',  
+                'member_id_2' => 'required',
+                'subcribers_name_2' => 'required',
+                'front_card' => 'required',
+                'back_card' => 'required',
+                'physician_tel' => 'required',
+                'extension' => 'required',
+                'phy_script' => 'required',
+                'pay_via_credit_card' => 'required'
+            ];
+    
+            
+            $this->validate($request, $valiedation_from_array);
+        }
+        
+        
+
+        //dd('not working');
 
         $valiedation_from_array = [ 
             'is_patient_minor' => $is_patient_minor_validated,
@@ -182,6 +305,16 @@ class MhstRegisterHomeSleepTestController extends Controller
         }
     }
 
+    public function submissions($client_form_id)
+    { 
+        //dd($client_form_id);
+        $submissions = Mhst_register_home_sleep_tests::all()->where('client_forms_id', $client_form_id);
+        //dd($submissions);
+        $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
+         
+        return view('forms.mhst.mhst-register-home-sleep-test.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
+    }
+
     /**
      * Display the specified resource.
      *
@@ -199,8 +332,13 @@ class MhstRegisterHomeSleepTestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($submission_id)
     {
+        //dd(Auth);
+        $MhstRegiterHomeSleep = Mhst_register_home_sleep_tests::find($submission_id); 
+        $client_form_id = $MhstRegiterHomeSleep->client_forms_id; 
+        return view('forms.mhst.mhst-register-home-sleep-test.edit')->with(array('submission_id' => $submission_id,'client_form_id' => $client_form_id, 'MhstRegiterHomeSleep' => $MhstRegiterHomeSleep)); 
+        
         //
     }
 
