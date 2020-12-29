@@ -19,8 +19,8 @@ class CreateMhstRegisterHomeSleepTestsTable extends Migration
             $table->bigIncrements('id');
             $table->text('full_name');
             $table->text('email');
-            $table->bigInteger('number');
-            $table->bigInteger('d_number')->nullable(true);
+            $table->text('number');
+            $table->text('d_number')->nullable(true);
             $table->text('state');
             $table->text('hear_about_us');
             $table->text('shipping_address');
@@ -32,7 +32,7 @@ class CreateMhstRegisterHomeSleepTestsTable extends Migration
             $table->text('gender');
             $table->text('race')->nullable(true);
             $table->text('preferred_language')->nullable(true);
-            $table->double('pay_via_credit_card')->nullable(true);
+            $table->text('pay_via_credit_card')->nullable(true);
             $table->text('patient_name')->nullable(true);
             $table->text('patient_email')->nullable(true);
             $table->text('insurance_name')->nullable(true);
@@ -44,14 +44,15 @@ class CreateMhstRegisterHomeSleepTestsTable extends Migration
             $table->text('front_card')->nullable(true);
             $table->text('back_card')->nullable(true);
             $table->text('patient_physician')->nullable(true);
-            $table->text('physician_tel')->nullable(true);
+            $table->bigInteger('physician_tel')->nullable(true);
             $table->text('extension')->nullable(true);
             $table->text('phy_script')->nullable(true);
             $table->text('name_patient_terms');
             $table->date('dob_patient_terms');
-            $table->text('is_patient_minor')->nullable(true);
+            $table->text('is_patient_minor');
+            $table->text('parent_guardian')->nullable(true);
             $table->text('email_patient_terms');
-            $table->text('telephone_patient_terms');
+            $table->text('patient_telephone_terms');
             $table->text('term_condition');
             $table->date('todate');
             $table->text('signature');
@@ -59,7 +60,7 @@ class CreateMhstRegisterHomeSleepTestsTable extends Migration
             $table->text('legal_signature');
             $table->text('name_questions');
             $table->text('email_questions');
-            $table->bigInteger('telephone_questions');
+            $table->text('telephone_questions');
             $table->date('dob_questions');
             $table->text('snoring')->nullable(true);
             $table->text('tired')->nullable(true);
