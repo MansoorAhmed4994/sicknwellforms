@@ -82,7 +82,7 @@
         <div class="qcm-form">
 
         
-        <form method="post" action="{{route('MhstMedicalReferralForm.create',$client_form_id)}}" class="position-relative">
+        <form method="post" action="{{route('MhstMedicalReferralForm.update',$submission_id)}}" class="position-relative">
                 {{csrf_field()}} 
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
                     
@@ -109,7 +109,7 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('provider_name')) is-invalid @endif" value="{{old('provider_name')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('provider_name')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->provider_name}} @else{{old('provider_name')}}  @endif"
                                                name="provider_name" id="provider_name"
                                             />
                                     </div>
@@ -119,7 +119,7 @@
                                     <label>Telephone </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                        class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->telephone}} @else{{old('telephone')}}  @endif"
                                                name="telephone" id="telephone" value=""
                                                 />
                                     </div>
@@ -129,7 +129,7 @@
                                     <label>Fax </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('fax')) is-invalid @endif" value="{{old('fax')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('fax')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->fax}} @else{{old('fax')}}  @endif"
                                                name="fax" id="fax" 
                                         />
                                     </div>
@@ -140,7 +140,7 @@
                                     <label>Emails </label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                        class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="{{old('email')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->email}} @else{{old('email')}}  @endif"
                                                name="email" id="email"
                                                />
                                     </div>
@@ -150,7 +150,7 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('contact_person')) is-invalid @endif" value="{{old('contact_person')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('contact_person')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->contact_person}} @else{{old('contact_person')}}  @endif"
                                                name="contact_person" id="contact_person"
                                                />
                                     </div>
@@ -186,7 +186,7 @@
                                                 <label>Facility Name</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                    class="form-control custom-mainforminput @if($errors->get('facility_name')) is-invalid @endif" value="{{old('facility_name')}}"
+                                                    class="form-control custom-mainforminput @if($errors->get('facility_name')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->facility_name}} @else{{old('facility_name')}}  @endif"
                                                            name="facility_name" id="facility_name"
                                                            />
                                                 </div>
@@ -196,7 +196,7 @@
                                                 <label>Address 1</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                    class="form-control custom-mainforminput @if($errors->get('address')) is-invalid @endif" value="{{old('address')}}"
+                                                    class="form-control custom-mainforminput @if($errors->get('address')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->address}} @else{{old('address')}}  @endif"
                                                            name="address" id="address"
                                                             />
                                                 </div>
@@ -206,7 +206,7 @@
                                                 <label>Address 2</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                    class="form-control custom-mainforminput @if($errors->get('address_2')) is-invalid @endif" value="{{old('address_2')}}"
+                                                    class="form-control custom-mainforminput @if($errors->get('address_2')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->address_2}} @else{{old('address_2')}}  @endif"
                                                            name="address_2" id="address_2"
                                                             />
                                                 </div>
@@ -221,7 +221,7 @@
                                                 <label>City</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                    class="form-control custom-mainforminput @if($errors->get('city')) is-invalid @endif" value="{{old('city')}}"
+                                                    class="form-control custom-mainforminput @if($errors->get('city')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->city}} @else{{old('city')}}  @endif"
                                                            name="city" id="city"
                                                             />
                                                 </div>
@@ -231,7 +231,7 @@
                                                 <label>State</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                    class="form-control custom-mainforminput @if($errors->get('state')) is-invalid @endif" value="{{old('state')}}"
+                                                    class="form-control custom-mainforminput @if($errors->get('state')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->state}} @else{{old('state')}}  @endif"
                                                            name="state" id="state"
                                                            />
                                                 </div>
@@ -240,7 +240,7 @@
                                                 <label>Zip</label>
                                                 <div class="padding-wrap">
                                                     <input type="text"
-                                                    class="form-control custom-mainforminput @if($errors->get('zip')) is-invalid @endif" value="{{old('zip')}}"
+                                                    class="form-control custom-mainforminput @if($errors->get('zip')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->zip}} @else{{old('zip')}}  @endif"
                                                            name="zip" id="zip"
                                                             />
                                                 </div>
@@ -265,7 +265,7 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value="{{old('patient_name')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->patient_name}} @else{{old('patient_name')}}  @endif"
                                                name="patient_name" id="patient_name"
                                                 />
                                     </div>
@@ -275,7 +275,7 @@
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
                                         <input type="text" value=""
-                                        class="form-control custom-mainforminput dobpicker @if($errors->get('dob')) is-invalid @endif" value="{{old('dob')}}"
+                                        class="form-control custom-mainforminput dobpicker @if($errors->get('dob')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->dob}} @else{{old('dob')}}  @endif"
                                                name="dob" id="dob" readonly />
                                     </div>
                                 </div>
@@ -284,7 +284,7 @@
                                     <label>Phone Number </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                        class="form-control custom-mainforminput @if($errors->get('phone')) is-invalid @endif" value="{{old('phone')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('phone')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->phone}} @else{{old('phone')}}  @endif"
                                                name="phone" id="phone" 
                                                 />
                                     </div>
@@ -295,7 +295,7 @@
                                     </label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                        class="form-control custom-mainforminput @if($errors->get('alternate_phone')) is-invalid @endif" value="{{old('alternate_phone')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('alternate_phone')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->alternate_phone}} @else{{old('alternate_phone')}}  @endif"
                                                name="alternate_phone" id="alternate_phone"
                                                 />
                                     </div>
@@ -305,7 +305,7 @@
                                     <label>Email</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('email_patient')) is-invalid @endif" value="{{old('email_patient')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('email_patient')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->email_patient}} @else{{old('email_patient')}}  @endif"
                                                name="email_patient" id="email_patient"
                                                 />
                                     </div>
@@ -314,7 +314,7 @@
                                     <label>City</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('city_patient')) is-invalid @endif" value="{{old('city_patient')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('city_patient')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->city_patient}} @else{{old('city_patient')}}  @endif"
                                                name="city_patient" id="city_patient"
                                                 />
                                     </div>
@@ -334,7 +334,7 @@
                                     <label>State</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('state_patient')) is-invalid @endif" value="{{old('state_patient')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('state_patient')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->state_patient}} @else{{old('state_patient')}}  @endif"
                                                name="state_patient" id="state_patient"
                                                 />
                                     </div>
@@ -345,7 +345,7 @@
                                     <label>Zip</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('zip_patient')) is-invalid @endif" value="{{old('zip_patient')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('zip_patient')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->zip_patient}} @else{{old('zip_patient')}}  @endif"
                                                name="zip_patient" id="zip_patient"
                                                 />
                                     </div>
@@ -356,7 +356,7 @@
                             <label>Address</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                class="form-control custom-mainforminput @if($errors->get('address_patient')) is-invalid @endif" value="{{old('address_patient')}}"
+                                class="form-control custom-mainforminput @if($errors->get('address_patient')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->address_patient}} @else{{old('address_patient')}}  @endif"
                                        name="address_patient" id="address_patient"
                                         />
                             </div>
@@ -366,7 +366,7 @@
                             <label>Address 2</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                class="form-control custom-mainforminput @if($errors->get('address_2_patient')) is-invalid @endif" value="{{old('address_2_patient')}}"
+                                class="form-control custom-mainforminput @if($errors->get('address_2_patient')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->address_2_patient}} @else{{old('address_2_patient')}}  @endif"
                                        name="address_2_patient" id="address_2_patient"
                                         />
                             </div>
@@ -376,7 +376,7 @@
                             <label>Height</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                class="form-control custom-mainforminput @if($errors->get('height')) is-invalid @endif" value="{{old('height')}}"
+                                class="form-control custom-mainforminput @if($errors->get('height')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->height}} @else{{old('height')}}  @endif"
                                         name="height" id="height"
                                          />
                             </div>
@@ -396,7 +396,7 @@
                             <label>Weight</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                class="form-control custom-mainforminput @if($errors->get('weight')) is-invalid @endif" value="{{old('weight')}}"
+                                class="form-control custom-mainforminput @if($errors->get('weight')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->weight}} @else{{old('weight')}}  @endif"
                                        name="weight" id="weight"
                                         />
                             </div>
@@ -405,7 +405,7 @@
                             <label>Neck Size</label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                class="form-control custom-mainforminput @if($errors->get('neck_size')) is-invalid @endif" value="{{old('neck_size')}}"
+                                class="form-control custom-mainforminput @if($errors->get('neck_size')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->neck_size}} @else{{old('neck_size')}}  @endif"
                                        name="neck_size" id="neck_size"
                                         />
                             </div>
@@ -416,7 +416,7 @@
                                     <label>Insurance Card Front</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value="{{old('card_front')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->card_front}} @else{{old('card_front')}}  @endif"
                                                name="card_front" id="card_front"
                                                 />
                                     </div>
@@ -426,7 +426,7 @@
                                     <label>Insurance Card Back</label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('card_back')) is-invalid @endif" value="{{old('card_back')}}"
+                                        class="form-control custom-mainforminput @if($errors->get('card_back')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->card_back}} @else{{old('card_back')}}  @endif"
                                                name="card_back" id="card_back"
                                                 />
                                     </div>
@@ -454,16 +454,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Hypertention" <?php if(old('symptoms') == '*Hypertention'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Hypertention" <?php if(old('symptoms') == '*Hypertention'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == '*Hypertention'){echo 'checked';}?>>
                             <label> *Hypertention </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*History of Stroke" <?php if(old('symptoms') == '*History of Stroke'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*History of Stroke" <?php if(old('symptoms') == '*History of Stroke'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == '*History of Stroke'){echo 'checked';}?>>
                             <label > *History of Stroke </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Impaired Cognition" <?php if(old('symptoms') == '*Impaired Cognition'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Impaired Cognition" <?php if(old('symptoms') == '*Impaired Cognition'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == '*Impaired Cognition'){echo 'checked';}?>>
                             <label > *Impaired Cognition </label>
                         </div>
                     </div>
@@ -471,16 +471,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Ischemic Heart Disease" <?php if(old('symptoms') == '*Ischemic Heart Disease'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Ischemic Heart Disease" <?php if(old('symptoms') == '*Ischemic Heart Disease'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == '*Ischemic Heart Disease'){echo 'checked';}?>>
                             <label> *Ischemic Heart Disease </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Mood Disorders" <?php if(old('symptoms') == '*Mood Disorders'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Mood Disorders" <?php if(old('symptoms') == '*Mood Disorders'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == '*Mood Disorders'){echo 'checked';}?>>
                             <label > *Mood Disorders </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Excessive Daytime Sleepiness" <?php if(old('*Excessive Daytime Sleepiness') == 'Google'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Excessive Daytime Sleepiness" <?php if(old('*Excessive Daytime Sleepiness') == 'Google'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == '*Excessive Daytime Sleepiness'){echo 'checked';}?>>
                             <label > *Excessive Daytime Sleepiness </label>
                         </div>
                     </div>
@@ -489,16 +489,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="*Insomnia" <?php if(old('symptoms') == '*Insomnia'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="*Insomnia" <?php if(old('symptoms') == '*Insomnia'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == '*Insomnia'){echo 'checked';}?>>
                             <label> *Insomnia </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Atrial Fibrillation" <?php if(old('symptoms') == 'Atrial Fibrillation'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Atrial Fibrillation" <?php if(old('symptoms') == 'Atrial Fibrillation'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Atrial Fibrillation'){echo 'checked';}?>>
                             <label > Atrial Fibrillation </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Reflux" <?php if(old('symptoms') == 'Reflux'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Reflux" <?php if(old('symptoms') == 'Reflux'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Reflux'){echo 'checked';}?>>
                             <label > Reflux </label>
                         </div>
                     </div>
@@ -507,16 +507,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Witnessed Apnea" <?php if(old('symptoms') == 'Witnessed Apnea'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Witnessed Apnea" <?php if(old('symptoms') == 'Witnessed Apnea'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Witnessed Apnea'){echo 'checked';}?>>
                             <label> Witnessed Apnea </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Congestive Heart Failure" <?php if(old('symptoms') == 'Congestive Heart Failure'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Congestive Heart Failure" <?php if(old('symptoms') == 'Congestive Heart Failure'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Congestive Heart Failure'){echo 'checked';}?>>
                             <label > Congestive Heart Failure </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Diabetes" <?php if(old('symptoms') == 'Diabetes'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Diabetes" <?php if(old('symptoms') == 'Diabetes'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Diabetes'){echo 'checked';}?>>
                             <label> Diabetes </label>
                         </div>
                     </div>
@@ -525,16 +525,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Memory Loss" <?php if(old('symptoms') == 'Memory Loss'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Memory Loss" <?php if(old('symptoms') == 'Memory Loss'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Memory Loss'){echo 'checked';}?>>
                             <label> Memory Loss </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Depression" <?php if(old('symptoms') == 'Depression'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Depression" <?php if(old('symptoms') == 'Depression'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Depression'){echo 'checked';}?>>
                             <label > Depression </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Sleep Disturbance" <?php if(old('symptoms') == 'Sleep Disturbance'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Sleep Disturbance" <?php if(old('symptoms') == 'Sleep Disturbance'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Sleep Disturbance'){echo 'checked';}?>>
                             <label> Sleep Disturbance </label>
                         </div>
                     </div>
@@ -543,16 +543,16 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Seizures" <?php if(old('symptoms') == 'Seizures'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Seizures" <?php if(old('symptoms') == 'Seizures'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Seizures'){echo 'checked';}?>>
                             <label> Seizures </label>
                         </div>
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="COPD" <?php if(old('symptoms') == 'COPD'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="COPD" <?php if(old('symptoms') == 'COPD'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'COPD'){echo 'checked';}?>>
                             <label > COPD </label>
                         </div>
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Morning Headache" <?php if(old('symptoms') == 'Morning Headache'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Morning Headache" <?php if(old('symptoms') == 'Morning Headache'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Morning Headache'){echo 'checked';}?>>
                             <label> Morning Headache </label>
                         </div>
                     </div>
@@ -561,18 +561,18 @@
 
                         <div class="col-12 col-md-3">
 
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Nocturia" <?php if(old('symptoms') == 'Nocturia'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Nocturia" <?php if(old('symptoms') == 'Nocturia'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Nocturia'){echo 'checked';}?>>
                             <label> Nocturia </label>
                         </div>
 
                         <div style="display: flex;" class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Large neck size (greater than 17 for men, greater than 16 for women)." <?php if(old('symptoms') == 'Large neck size (greater than 17 for men, greater than 16 for women).'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Large neck size (greater than 17 for men, greater than 16 for women)." <?php if(old('symptoms') == 'Large neck size (greater than 17 for men, greater than 16 for women).'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Large neck size (greater than 17 for men, greater than 16 for women).'){echo 'checked';}?>>
                             <label>&nbsp;Large neck size (greater than 17" for men, greater than 16" for women)</label>
                         </div>
 
 
                         <div class="col-12 col-md-3">
-                            <input type="checkbox" name="symptoms" id="symptoms" value="Other" <?php if(old('symptoms') == 'Other'){ echo 'checked';}?>>
+                            <input type="checkbox" name="symptoms" id="symptoms" value="Other" <?php if(old('symptoms') == 'Other'){ echo 'checked';} elseif($MhstMedicalReferralForm->symptoms == 'Other'){echo 'checked';}?>>
                             <label> Other </label>
                         </div>
                     </div>
@@ -586,11 +586,11 @@
                             <div class="row">
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="oxygen" id="oxygen" value="yes"  <?php if(old('oxygen') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                               name="oxygen" id="oxygen" value="yes"  <?php if(old('oxygen') == 'yes'){ echo 'checked';} elseif($MhstMedicalReferralForm->oxygen == 'yes'){echo 'checked';}?>> Yes</label>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label class="mt-2"><input type="radio"
-                                                               name="oxygen" id="oxygen" value="no"  <?php if(old('oxygen') == 'yes'){ echo 'checked';}?>> No</label>
+                                                               name="oxygen" id="oxygen" value="no"  <?php if(old('oxygen') == 'yes'){ echo 'checked';} elseif($MhstMedicalReferralForm->oxygen == 'no'){echo 'checked';}?>> No</label>
                                 </div>
                             </div>
                         </div>
@@ -602,7 +602,7 @@
                             </label>
                             <div class="padding-wrap">
                                 <input type="text"
-                                class="form-control custom-mainforminput @if($errors->get('lpm')) is-invalid @endif" value="{{old('lpm')}}"
+                                class="form-control custom-mainforminput @if($errors->get('lpm')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->lpm}} @else{{old('lpm')}}  @endif"
                                        name="lpm" id="lpm"
                                        value="" />
                             </div>
@@ -627,7 +627,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.33 Obstructive Sleep Apnea" <?php if(old('diagnostic_codes') == 'G47.33 Obstructive Sleep Apnea'){ echo 'checked';}?>>
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.33 Obstructive Sleep Apnea" <?php if(old('diagnostic_codes') == 'G47.33 Obstructive Sleep Apnea'){ echo 'checked';} elseif($MhstMedicalReferralForm->diagnostic_codes == 'G47.33 Obstructive Sleep Apnea'){echo 'checked';}?>>
                             <label> G47.33&nbsp; &nbsp; &nbsp;Obstructive Sleep Apnea </label>
                         </div>
 
@@ -635,7 +635,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.10 Other Hypersomnia-Excessive Daytime Somnolence" <?php if(old('diagnostic_codes') == 'G47.10 Other Hypersomnia-Excessive Daytime Somnolence'){ echo 'checked';}?>>
+                            <input type="checkbox" name="diagnostic_codes" id="diagnostic_codes" value="G47.10 Other Hypersomnia-Excessive Daytime Somnolence" <?php if(old('diagnostic_codes') == 'G47.10 Other Hypersomnia-Excessive Daytime Somnolence'){ echo 'checked';} elseif($MhstMedicalReferralForm->diagnostic_codes == 'G47.10 Other Hypersomnia-Excessive Daytime Somnolence'){echo 'checked';}?>>
                             <label > G47.10&nbsp; &nbsp; &nbsp;Other Hypersomnia-Excessive Daytime Somnolence </label>
 
                         </div>
@@ -649,7 +649,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Commercial 95800" <?php if(old('sleep_testing') == 'Commercial 95800'){ echo 'checked';}?>>
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Commercial 95800" <?php if(old('sleep_testing') == 'Commercial 95800'){ echo 'checked';} elseif($MhstMedicalReferralForm->sleep_testing == 'Commercial 95800'){echo 'checked';}?>>
                             <label > Commercial 95800 </label>
 
                         </div>
@@ -657,7 +657,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Medicare G0399" <?php if(old('sleep_testing') == 'Medicare G0399'){ echo 'checked';}?>>
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Medicare G0399" <?php if(old('sleep_testing') == 'Medicare G0399'){ echo 'checked';}  elseif($MhstMedicalReferralForm->sleep_testing == 'Medicare G0399'){echo 'checked';}?>>
                             <label > Medicare G0399</label>
 
                         </div>
@@ -665,7 +665,7 @@
                     <div class="form-group row mt-4">
                         <div class="col-12 col-md-6">
 
-                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Self-Pay $169" <?php if(old('sleep_testing') == 'Self-Pay $169'){ echo 'checked';}?>>
+                            <input type="checkbox" name="sleep_testing" id="sleep_testing" value="Self-Pay $169" <?php if(old('sleep_testing') == 'Self-Pay $169'){ echo 'checked';}  elseif($MhstMedicalReferralForm->sleep_testing == 'Self-Pay $169'){echo 'checked';}?>>
                             <label > Self-Pay $169</label>
 
                         </div>
@@ -680,7 +680,7 @@
                         <div class="col-12 col-md-10">
                             <label>Comment</label>
                             <textarea
-                            class="form-control custom-mainforminput @if($errors->get('comment')) is-invalid @endif" value="{{old('comment')}}"
+                            class="form-control custom-mainforminput @if($errors->get('comment')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->comment}} @else{{old('comment')}}  @endif"
                                     rows="4" name="comment"
                                     id="comment">{{old('comment')}}</textarea>
                         </div>
@@ -693,24 +693,43 @@
 
                             <div class="padding-wrap">
                                 <label>Referring Physician Name<span class="required">*</span> </label>
-                                <input type="text" value=""
-                                class="form-control custom-mainforminput @if($errors->get('physician_name')) is-invalid @endif" value="{{old('physician_name')}}"
+                                <input type="text"
+                                class="form-control custom-mainforminput @if($errors->get('physician_name')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->physician_name}} @else{{old('physician_name')}}  @endif"
                                        name="physician_name" id="physician_name"  />
                             </div>
 
                         </div>
+                    </div>
+                    <div class="col-12 col-md-12">
 
-                        <div style="margin-left: 20px;" class="col-12 col-md-4">
-                            <label class="" >Signature<span class="required">*</span></label>
-                            <div>
-                                        <div  id="sig1"  style="width:370px !Important;height: 200px;@if($errors->get('signature')) border-color:red; @endif" ></div>  <br/>
-                            </div>
-                            <span id="clear1" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                            <textarea class="@if($errors->get('signature')) is-invalid @endif" value="{{old('signature')}}" id="signature64" name="signature" style="display: none">{{old('signature')}}</textarea>
 
+                        <div style="display:none!important" class="col-12 col-md-4" id="signature_pad"  >
+                                    <input type="hidden" id="signature_updated" name="signature_updated" value="no">   
+                                    <input type="hidden" id="signature_src"  name="signature_src" value="{{$MhstMedicalReferralForm->signature}}"> 
+                                    <label class="" for="">Signature</label>
+                                    <div>
+                                        <div  id="sig1"  style="margin-bottom: 10px;width:370px !Important;height: 200px;@if($errors->get('signature')) border-color:red; @endif" class=""></div>  <br/>
+
+                                    </div>
+
+                                    <span id="clear1" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <textarea class="" id="signature64" name="signature" style="display: none">{{old('signature')}}</textarea>
 
                         </div>
 
+                        <div class="col-12 col-md-4 signature_pad_image" id="signature_image">
+
+                            <img src="{{asset('manage/storage/'.$MhstMedicalReferralForm->signature)}}">
+                        </div>
+
+                    </div>
+
+                    <div class="row no-gutters">
+                        <div style="margin-left: 30px;" class="col-12  col-md-4">
+                            <button type="button" id="cancel_sig" class="btn btn-danger">cancel</button>
+                            <button type="button" id="edit_sig" class="btn btn-warning">edit</button>
+                        </div>
+                        
                     </div>
                <hr>
 
@@ -763,6 +782,33 @@
             }
         });
     })
+
+    if("@if($errors->get('signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#signature_pad").show();
+            $("#signature_image").hide();
+            $("#signature_updated").val('yes');
+        } 
+
+        
+
+    $(document).ready(function(){
+        
+
+        
+        $("#cancel_sig").click(function(){
+            $("#signature_pad").hide();
+            $("#signature_image").show();
+            $("#signature_updated").val('no');
+        });
+        $("#edit_sig").click(function(){
+            $("#signature_pad").show();
+            $("#signature_image").hide();
+            $("#signature_updated").val('yes');
+        });
+    });
+
+
 
 </script>
 
