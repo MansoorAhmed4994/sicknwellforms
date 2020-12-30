@@ -89,6 +89,7 @@ class MhstMedicalReferralFormController extends Controller
 
         
         $this->validate($request, $valiedation_from_array);
+        $card_front = app('App\Http\Controllers\Forms\Mhst\MhstMedicalReferralFormController')->upload($request->card_front);
         $signature = app('App\Http\Controllers\SignaturePadController')->upload($request->signature);
 
         $medical_referral_forms = new Mhst_medical_referral_forms();
@@ -116,7 +117,7 @@ class MhstMedicalReferralFormController extends Controller
         $medical_referral_forms->height = request('height');
         $medical_referral_forms->weight = request('weight');
         $medical_referral_forms->neck_size = request('neck_size');
-        $medical_referral_forms->card_front = request('card_front');
+        $medical_referral_forms->card_front = $card_front;
         $medical_referral_forms->card_back = request('card_back');
         $medical_referral_forms->symptoms = request('symptoms');
         $medical_referral_forms->oxygen = request('oxygen');
@@ -303,4 +304,98 @@ class MhstMedicalReferralFormController extends Controller
     {
         //
     }
+
+
+    public function CreateZoomMeeting($id)
+    { 
+        $ZoomClientApi = new Client();
+        $token = Str::random(60);
+        $MhstMedicalReferralForm = Mhst_medical_referral_forms::find($id); 
+        // $host = 'usmanjawed458@gmail.com';
+        $host = $MhstMedicalReferralForm->client_forms->client->email;
+        $participant = $MhstMedicalReferralForm->email_patient; 
+        $timestamp = time();   
+        $start_time = date("m/d/Y h:i:s a", $timestamp); 
+        $start_time = date('m/d/Y h:i:s a', strtotime($start_time)); 
+        $duration = 30;
+        $timestamp = strtotime($start_time);
+        $start_time = date('yy-m-d\TH:m:s',$timestamp);
+        $start_time = (string)$start_time.'z'; 
+        $timezone = appointment_limits::find($MhstMedicalReferralForm->client_forms_id);
+        $timezone = $timezone->time_zone; 
+        
+        $response = $ZoomClientApi->request('POST', env("SICKNWELL_ZOOM_API_URL"), [
+            'headers' => [
+                'Authorization' => 'Bearer '.$token,
+                'Accept' => 'application/json',
+            ], 
+            'form_params' => [ 
+                'body' => [
+        			'topic' => 'checkup',
+        			'type' => 2,
+        			'start_time' => $start_time,
+        			'password' => '',
+        			'agenda' => '',
+                    'timezone' => $timezone,
+                    'duration' => $duration
+        		],
+        		'host' => $host,
+        		'participant' => $participant
+            ],
+            
+        ]);
+        
+        $response = json_decode($response->getBody(),true);
+        // dd($response);
+        if(isset($response['code']))
+        { 
+            if(Auth::guard('clients')->check())
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('client.MhstMedicalReferralForm.submissions',$MhstMedicalReferralForm->client_forms_id);
+            }
+            else
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('MhstMedicalReferralForm.submissions',$MhstMedicalReferralForm->client_forms_id);
+            } 
+        }
+        else
+        {
+            session()->flash("warning","Some thing went wrong please Create meeting again.");
+            return redirect()->back();
+        }
+    }
+
+
+    public function upload($card_front)
+    {
+			
+	    // $folderPath = base_path('public/theme-resources/forms/signatures/');
+		// $folderPath = str_replace('manage\\', '', $folderPath);
+		// $folderPath = str_replace('manage/', '', $folderPath);
+		$file_base_path = '/app/public/forms/Mhst/';
+		$folderPath = storage_path('/');
+		//asset('/manage/storage/app/public/forms/signatures/')
+		//dd($folderPath);
+	  
+	    // $image_parts = explode(";base64,", $signature);
+		
+	    // $image_type_aux = explode("image/", $image_parts[0]);
+		
+	    // $image_type = $image_type_aux[1];
+		
+	    // $image_base64 = base64_decode($image_parts[1]);
+		  
+		$file_inner_path = $file_base_path.uniqid().'.'.'PNG';
+		
+		$file = $folderPath.$file_inner_path;
+		 
+		file_put_contents($file, $card_front); 
+		dd($file);
+	    return $file_inner_path;
+	    //return back()->with('success', 'success Full upload signature');
+	}
+
+
 }

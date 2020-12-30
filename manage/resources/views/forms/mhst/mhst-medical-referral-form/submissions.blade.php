@@ -458,7 +458,7 @@
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->card_front}}</span>
+                                    <img src="{{asset('manage/storage/'.$row->card_front)}}" class="img-fluid"> 
                                 </div>
                             </td>  
                             <td>

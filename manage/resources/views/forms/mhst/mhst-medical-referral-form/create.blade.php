@@ -415,7 +415,7 @@
 
                                     <label>Insurance Card Front</label>
                                     <div class="padding-wrap">
-                                        <input type="text"
+                                        <input type="file"
                                         class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value="{{old('card_front')}}"
                                                name="card_front" id="card_front"
                                                 />
