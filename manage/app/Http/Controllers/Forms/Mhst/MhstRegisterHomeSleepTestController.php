@@ -14,6 +14,7 @@ use App\Models\appointment_limits;
 use App\Models\Clients;
 use App\Models\Client_forms;
 use Illuminate\Support\Facades\Storage; 
+
 use App\Models\Forms\Mhst\Mhst_register_home_sleep_tests;
 use Auth;
 
@@ -334,6 +335,7 @@ class MhstRegisterHomeSleepTestController extends Controller
      */
     public function edit($submission_id)
     {
+        
         //dd(Auth);
         $MhstRegiterHomeSleep = Mhst_register_home_sleep_tests::find($submission_id); 
         $client_form_id = $MhstRegiterHomeSleep->client_forms_id; 
@@ -341,7 +343,7 @@ class MhstRegisterHomeSleepTestController extends Controller
         
         //
     }
-
+ 
     /**
      * Update the specified resource in storage.
      *
@@ -351,7 +353,7 @@ class MhstRegisterHomeSleepTestController extends Controller
      */
     public function update(Request $request, Mhst_register_home_sleep_tests $register_home_sleep)
     {
-        //
+        //dd($register_home_sleep);
         $is_patient_minor_validated = "nullable";
 
         $is_patient_minor = "no";
@@ -627,4 +629,68 @@ class MhstRegisterHomeSleepTestController extends Controller
     {
         //
     }
+
+
+    public function CreateZoomMeeting($id)
+    { 
+        $ZoomClientApi = new Client();
+        $token = Str::random(60);
+        $MhstRegiterHomeSleep = Mhst_register_home_sleep_tests::find($id); 
+        //$host = 'mansoor.zaheer994@gmail.com';
+        $host = $MhstRegiterHomeSleep->client_forms->client->email;
+        $participant = $MhstRegiterHomeSleep->email; 
+        $timestamp = time();   
+        $start_time = date("m/d/Y h:i:s a", $timestamp); 
+        $start_time = date('m/d/Y h:i:s a', strtotime($start_time)); 
+        $duration = 30;
+        $timestamp = strtotime($start_time);
+        $start_time = date('yy-m-d\TH:m:s',$timestamp);
+        $start_time = (string)$start_time.'z'; 
+        $timezone = appointment_limits::find($MhstRegiterHomeSleep->client_forms_id);
+        $timezone = $timezone->time_zone; 
+        
+        $response = $ZoomClientApi->request('POST', env("SICKNWELL_ZOOM_API_URL"), [
+            'headers' => [
+                'Authorization' => 'Bearer '.$token,
+                'Accept' => 'application/json',
+            ], 
+            'form_params' => [ 
+                'body' => [
+        			'topic' => 'checkup',
+        			'type' => 2,
+        			'start_time' => $start_time,
+        			'password' => '',
+        			'agenda' => '',
+                    'timezone' => $timezone,
+                    'duration' => $duration
+        		],
+        		'host' => $host,
+        		'participant' => $participant
+            ],
+            
+        ]);
+        
+        $response = json_decode($response->getBody(),true);
+        // dd($response);
+        if(isset($response['code']))
+        { 
+            if(Auth::guard('clients')->check())
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('client.MhstRegisterHomeSleepTest.submissions',$MhstRegiterHomeSleep->client_forms_id);
+            }
+            else
+            {
+                session()->flash("success","Meeting Created Successfully Kindly Login In To Your Zoom Account"); 
+                return redirect()->route('MhstRegisterHomeSleepTest.submissions',$MhstRegiterHomeSleep->client_forms_id);
+            } 
+        }
+        else
+        {
+            session()->flash("warning","Some thing went wrong please Create meeting again.");
+            return redirect()->back();
+        }
+    }
+
+
 }

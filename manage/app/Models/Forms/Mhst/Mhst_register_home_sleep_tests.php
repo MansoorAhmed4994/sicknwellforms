@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mhst_register_home_sleep_tests extends Model
 {
+    
     //
     protected $guarded = [
         'id'

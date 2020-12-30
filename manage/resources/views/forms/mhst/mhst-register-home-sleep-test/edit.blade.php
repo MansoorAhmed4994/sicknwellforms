@@ -82,8 +82,8 @@
         <div class="qcm-form">
 
 
-            <<form method="post" action="{{route('MhstRegisterHomeSleepTest.update',$client_form_id)}}" class="position-relative">
-        {{csrf_field()}} 
+            <<form method="post" action="{{route('MhstRegisterHomeSleepTest.update',$submission_id)}}" class="position-relative">
+                {{csrf_field()}} 
            
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
                     
@@ -1119,7 +1119,7 @@
                                     <label class="" for="">Signature</label>
                                     <div>
                                         <div  id="sig1"  style="margin-bottom: 10px;width:370px !Important;height: 200px;@if($errors->get('signature')) border-color:red; @endif" class=""></div>  <br/>
-                                    <label class="" for="">Signature</label>          
+                                    
 
                                     </div>
 
@@ -1132,7 +1132,7 @@
                                         <img src="{{asset('manage/storage/'.$MhstRegiterHomeSleep->signature)}}">
                                     </div>
 
-                                    <div class="col-12 col-md-3 ">
+                                    <div class="col-12 col-md-3  ml-3 ">
 
                                         <div class="padding-wrap">
                                             <label>Type Full Name<span class="required">*</span> </label>
@@ -1145,7 +1145,7 @@
 
                                 </div>
                                 <div class="row no-gutters">
-                                    <div style="margin-left: 30px;" class="col-12  col-md-4">
+                                    <div  class="col-12  col-md-4">
                                         <button type="button" id="cancel_sig" class="btn btn-danger">cancel</button>
                                         <button type="button" id="edit_sig" class="btn btn-warning">edit</button>
                                     </div>
