@@ -1139,9 +1139,9 @@
                             <div class="col-12 col-md-12">
                                 <label><span class="required">*</span> </label>
                                 <div class="row no-gutters">
-                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="&nbsp; I understand that checking this box constitutes a legal signature confirming that I
-                                        acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents"<?php if(old('legal_signature') == '&nbsp; I understand that checking this box constitutes a legal signature confirming that I
-                                        acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents'){ echo 'checked';}?>>
+                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="I understand that checking this box constitutes a legal signature confirming that I
+                                        acknowledge and warrant the truthfulness of the information provided in these documents"<?php if(old('legal_signature') == 'I understand that checking this box constitutes a legal signature confirming that I
+                                        acknowledge and warrant the truthfulness of the information provided in these documents'){ echo 'checked';}?>>
                                         &nbsp; I understand that checking this box constitutes a legal signature confirming that I
                                         acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents
                                     </label>
@@ -1149,7 +1149,7 @@
                                 </div>
                                 <br>
                                 <div class="row no-gutters">
-                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="&nbsp; Sign me up for continued sleep health tips and updates." <?php if(old('legal_signature') == 'yes'){ echo 'checked';}?>>
+                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="Sign me up for continued sleep health tips and updates." <?php if(old('legal_signature') == 'Sign me up for continued sleep health tips and updates.'){ echo 'checked';}?>>
                                         &nbsp; Sign me up for continued sleep health tips and updates.</label>
                                 </div>
 

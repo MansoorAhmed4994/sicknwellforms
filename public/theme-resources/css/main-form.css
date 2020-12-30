@@ -13,12 +13,16 @@
     position: relative;
     width: 100%;
     overflow-x: hidden;
-    /*overflow: scroll;*/
+    padding: 4px;
 }
 
 .qcm-form p,
 .qcm-form label {
     font-size: 1.4em;
+}
+
+.qcm-form form {
+    padding-bottom: 5px;
 }
 
 .qcm-form p {

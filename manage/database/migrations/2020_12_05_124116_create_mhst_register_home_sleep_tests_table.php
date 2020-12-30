@@ -32,7 +32,7 @@ class CreateMhstRegisterHomeSleepTestsTable extends Migration
             $table->text('gender');
             $table->text('race')->nullable(true);
             $table->text('preferred_language')->nullable(true);
-            $table->double('pay_via_credit_card')->nullable(true);
+            $table->text('pay_via_credit_card')->nullable(true);
             $table->text('patient_name')->nullable(true);
             $table->text('patient_email')->nullable(true);
             $table->text('insurance_name')->nullable(true);

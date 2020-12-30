@@ -82,8 +82,8 @@
         <div class="qcm-form">
 
 
-            <<form method="post" action="{{route('MhstRegisterHomeSleepTest.update',$client_form_id)}}" class="position-relative">
-        {{csrf_field()}} 
+            <<form method="post" action="{{route('MhstRegisterHomeSleepTest.update',$submission_id)}}" class="position-relative">
+                {{csrf_field()}} 
            
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
                     
@@ -124,7 +124,7 @@
                                         <input type="email"
                                                class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif"
                                                name="email" id="email"
-                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->email}} @else{{old('email')}}  @endif" />
                                         <p><small>example@example.com</small></p>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput @if($errors->get('number')) is-invalid @endif"
-                                                       name="number" id="number" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                                       name="number" id="number" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->number}} @else{{old('number')}}  @endif"
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
@@ -152,7 +152,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput @if($errors->get('d_number')) is-invalid @endif"
-                                                       name="d_number" id="d_number" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                                       name="d_number" id="d_number" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->d_number}} @else{{old('d_number')}}  @endif"
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
@@ -164,7 +164,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('state')) is-invalid @endif"
                                                        name="state" id="state"
-                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->state}} @else{{old('state')}}  @endif" />
                                             </div>
                                         </div>
 
@@ -214,7 +214,7 @@
                                             <input type="text"
                                                    class="form-control custom-mainforminput @if($errors->get('shipping_address')) is-invalid @endif"
                                                    name="shipping_address" id="shipping_address"
-                                                   value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                   value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->shipping_address}} @else{{old('shipping_address')}}  @endif" />
                                         </div>
                                     </div>
 
@@ -223,7 +223,7 @@
                                         <div class="padding-wrap">
                                             <input type="text"
                                                    class="form-control custom-mainforminput @if($errors->get('shipping_line')) is-invalid @endif"
-                                                   name="shipping_line" id="shipping_line" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                                   name="shipping_line" id="shipping_line" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->shipping_line}} @else{{old('shipping_line')}}  @endif"
                                             />
                                         </div>
                                     </div>
@@ -243,7 +243,7 @@
                                             <input type="text"
                                                    class="form-control custom-mainforminput @if($errors->get('shipping_city')) is-invalid @endif"
                                                    name="shipping_city" id="shipping_city"
-                                                   value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                   value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->shipping_city}} @else{{old('shipping_city')}}  @endif" />
                                         </div>
                                     </div>
 
@@ -252,7 +252,7 @@
                                         <div class="padding-wrap">
                                             <input type="text"
                                                    class="form-control custom-mainforminput @if($errors->get('shipping_state')) is-invalid @endif"
-                                                   name="shipping_state" id="shipping_state" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                                   name="shipping_state" id="shipping_state" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->shipping_state}} @else{{old('shipping_state')}}  @endif"
                                             />
                                         </div>
                                     </div>
@@ -263,7 +263,7 @@
                                             <input type="text"
                                                    class="form-control custom-mainforminput @if($errors->get('shipping_zip')) is-invalid @endif"
                                                    name="shipping_zip" id="shipping_zip"
-                                                   value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                   value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->shipping_zip}} @else{{old('shipping_zip')}}  @endif" />
                                         </div>
                                     </div>
 
@@ -284,7 +284,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="padding-wrap">
                                     <label>Date of birth</label>
-                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->dob}} @else{{old('dob')}}  @endif"
                                            class="form-control custom-mainforminput dobpicker  @if($errors->get('dob')) is-invalid @endif"
                                            name="dob" id="dob" readonly />
                                 </div>
@@ -308,7 +308,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="padding-wrap">
                                     <label>Race</label>
-                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->race}} @else{{old('race')}}  @endif"
                                            class="form-control custom-mainforminput @if($errors->get('race')) is-invalid @endif"
                                            name="race" id="race" />
                                 </div>
@@ -317,7 +317,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="padding-wrap">
                                     <label>Preferred Language</label>
-                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->preferred_language}} @else{{old('preferred_language')}}  @endif"
                                            class="form-control custom-mainforminput @if($errors->get('preferred_language')) is-invalid @endif"
                                            name="preferred_language" id="preferred_language" />
                                 </div>
@@ -403,20 +403,20 @@
                                         <div class="row">
                                             <div class="col-12 col-md-12">
 
-                                                <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="98.00" <?php if(old('pay_via_credit_card') == '98.00'){ echo 'checked';}?>>  Telemedicine Consultation $ 98.00
+                                                <label class="mt-2"><input type="checkbox" 
+                                                name="pay_via_credit_card" id="pay_via_credit_card" value="Telemedicine Consultation $ 98.00" <?php if(old('pay_via_credit_card') == 'Telemedicine Consultation $ 98.00'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'Telemedicine Consultation $ 98.00'){ echo 'checked';}?>>  Telemedicine Consultation $ 98.00
 
                                                     <p style="font-size: 10pt; color: grey;">Consultation with Board Certified Sleep Doctor. Select this option if you have been referred by
                                                         Primary Doctor, Dentist or are experiencing sleep related issues.
                                                     </p>
 
                                                 </label>
-                                            </div>
+                                            </div> 
 
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                                           name="pay_via_credit_card" id="pay_via_credit_card" value="169.00" <?php if(old('pay_via_credit_card') == '169.00'){ echo 'checked';}?>>  Home Sleep Test $ 169.00
+                                                                           name="pay_via_credit_card" id="pay_via_credit_card" value="Home Sleep Test $ 169.00" <?php if(old('pay_via_credit_card') == 'Home Sleep Test $ 169.00'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'Home Sleep Test $ 169.00'){ echo 'checked';}?>>  Home Sleep Test $ 169.00
 
                                                     <p style="font-size: 10pt; color: grey;">Select this option if initial Sleep Consultation has already
                                                         been done by a Certified Sleep Doctor.
@@ -427,7 +427,7 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="98.00" <?php if(old('pay_via_credit_card') == '98.00'){ echo 'checked';}?>>  Telemedicine Follow-up Consultation $ 98.00
+                                                name="pay_via_credit_card" id="pay_via_credit_card" value="Telemedicine Follow-up Consultation $ 98.00" <?php if(old('pay_via_credit_card') == 'Telemedicine Follow-up Consultation $ 98.00'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'Telemedicine Follow-up Consultation $ 98.00'){ echo 'checked';}?>>  Telemedicine Follow-up Consultation $ 98.00
 
                                                     <p style="font-size: 10pt; color: grey;">Consultation with Board Certified Sleep Doctor.
                                                         Follow-up consultation to discuss results and course of action needed.
@@ -439,7 +439,8 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="250.00" <?php if(old('pay_via_credit_card') == '250.00'){ echo 'checked';}?>>  Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00
+                                                name="pay_via_credit_card" id="pay_via_credit_card" value="Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00" <?php if(old('pay_via_credit_card') == 'Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00'){ echo 'checked';}?>>  
+                                                Telemedicine Consultation & Home Sleep Test (Options 1 & 2 combined) $ 250.00
 
                                                     <p style="font-size: 10pt; color: grey;">Select this option if this is the first time dealing with issue or referred by your Primary Doctor or Dentist.
                                                         Telemedicine Consultation with Doctor and Home Sleep Test Package. $17.00 Savings.
@@ -451,7 +452,8 @@
                                             <div class="col-12 col-md-12">
 
                                                 <label class="mt-2"><input type="checkbox"
-                                                name="pay_via_credit_card" id="pay_via_credit_card" value="300.00" <?php if(old('pay_via_credit_card') == '300.00'){ echo 'checked';}?>>   Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00
+                                                name="pay_via_credit_card" id="pay_via_credit_card" value="Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00" <?php if(old('pay_via_credit_card') == 'Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00'){ echo 'checked';}?>> 
+                                                  Telemedicine Consultation, Home Sleep Test & Follow-up Telemedicine Consult (Options 1, 2 & 3 combined) $ 300.00
 
                                                     <p style="font-size: 10pt; color: grey;">Select this option if this is the first time dealing
                                                         with issue and referred by your Primary Doctor or Dentist. Telemedicine Consultation with Doctor.
@@ -494,7 +496,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('patient_name')) is-invalid @endif"
                                                                name="patient_name" id="patient_name"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->patient_name}} @else{{old('patient_name')}}  @endif" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3">
@@ -503,7 +505,7 @@
                                                         <input type="email"
                                                                class="form-control custom-mainforminput @if($errors->get('patient_email')) is-invalid @endif"
                                                                name="patient_email" id="patient_email"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->patient_email}} @else{{old('patient_email')}}  @endif" />
                                                     </div>
                                                 </div>
 
@@ -516,7 +518,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('insurance_name')) is-invalid @endif"
                                                                name="insurance_name" id="insurance_name"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->insurance_name}} @else{{old('insurance_name')}}  @endif" />
                                                     </div>
                                                 </div>
 
@@ -529,7 +531,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('member_id_1')) is-invalid @endif"
                                                                name="member_id_1" id="member_id_1"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->member_id_1}} @else{{old('member_id_1')}}  @endif" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3">
@@ -538,7 +540,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('subcribers_name_1')) is-invalid @endif"
                                                                name="subcribers_name_1" id="subcribers_name_1"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->subcribers_name_1}} @else{{old('subcribers_name_1')}}  @endif" />
                                                     </div>
                                                 </div>
 
@@ -552,7 +554,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('secondary_insurance_name')) is-invalid @endif"
                                                                name="secondary_insurance_name" id="secondary_insurance_name"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->secondary_insurance_name}} @else{{old('secondary_insurance_name')}}  @endif" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -564,7 +566,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('member_id_2')) is-invalid @endif"
                                                                name="member_id_2" id="member_id_2"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->member_id_2}} @else{{old('member_id_2')}}  @endif" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3">
@@ -573,7 +575,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('subcribers_name_2')) is-invalid @endif"
                                                                name="subcribers_name_2" id="subcribers_name_2"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->subcribers_name_2}} @else{{old('subcribers_name_2')}}  @endif" />
                                                     </div>
                                                 </div>
 
@@ -587,7 +589,7 @@
                                                         <input type="file"
                                                                class="form-control custom-mainforminput @if($errors->get('front_card')) is-invalid @endif"
                                                                name="front_card" id="front_card"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"  />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->front_card}} @else{{old('front_card')}}  @endif"  />
                                                     </div>
                                                 </div>
                                             </div>
@@ -599,7 +601,7 @@
                                                         <input type="file"
                                                                class="form-control custom-mainforminput @if($errors->get('back_card')) is-invalid @endif"
                                                                name="back_card" id="back_card"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->back_card}} @else{{old('back_card')}}  @endif" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -622,7 +624,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('patient_physician')) is-invalid @endif"
                                                                name="patient_physician" id="patient_physician"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->patient_physician}} @else{{old('patient_physician')}}  @endif" />
                                                     </div>
                                                 </div>
 
@@ -632,7 +634,7 @@
                                                         <input type="tel"
                                                                class="form-control custom-mainforminput @if($errors->get('physician_tel')) is-invalid @endif"
                                                                name="physician_tel" id="physician_tel"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->physician_tel}} @else{{old('physician_tel')}}  @endif" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3">
@@ -641,7 +643,7 @@
                                                         <input type="text"
                                                                class="form-control custom-mainforminput @if($errors->get('extension')) is-invalid @endif"
                                                                name="extension" id="extension"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->extension}} @else{{old('extension')}}  @endif" />
                                                     </div>
                                                 </div>
 
@@ -655,7 +657,7 @@
                                                         <input type="file"
                                                                class="form-control custom-mainforminput @if($errors->get('phy_script')) is-invalid @endif"
                                                                name="phy_script" id="phy_script"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->phy_script}} @else{{old('phy_script')}}  @endif" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -696,13 +698,13 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('name_patient_terms')) is-invalid @endif"
                                                        name="name_patient_terms" id="name_patient_terms"
-                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->name_patient_terms}} @else{{old('name_patient_terms')}}  @endif" />
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4">
                                             <label >Date of Birth<span class="required">*</span></label>
-                                            <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                            <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->dob_patient_terms}} @else{{old('dob_patient_terms')}}  @endif"
                                                    class="form-control custom-mainforminput dobpicker  @if($errors->get('dob_patient_terms')) is-invalid @endif"
                                                    name="dob_patient_terms" id="dob_patient_terms" readonly />
                                         </div>
@@ -740,7 +742,7 @@
                                                 <input type="text"
                                                        class="form-control custom-mainforminput @if($errors->get('parent_guardian')) is-invalid @endif"
                                                        name="parent_guardian" id="parent_guardian"
-                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->parent_guardian}} @else{{old('parent_guardian')}}  @endif" />
                                             </div>
                                         </div>
 
@@ -750,7 +752,7 @@
                                                 <input type="email"
                                                        class="form-control custom-mainforminput @if($errors->get('email_patient_terms')) is-invalid @endif"
                                                        name="email_patient_terms" id="email_patient_terms"
-                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                                       value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->email_patient_terms}} @else{{old('email_patient_terms')}}  @endif" />
                                             </div>
                                         </div>
 
@@ -759,7 +761,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput @if($errors->get('patient_telephone_terms')) is-invalid @endif"
-                                                       name="patient_telephone_terms" id="patient_telephone_terms" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                                       name="patient_telephone_terms" id="patient_telephone_terms" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->patient_telephone_terms}} @else{{old('patient_telephone_terms')}}  @endif"
                                                        data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
@@ -1044,7 +1046,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                                   name="term_condition" id="term_condition" value="I agree and have reviewed the Consent for Treatment Section." <?php if(old('term_condition') == 'I agree and have reviewed the Consent for Treatment Section.'){ echo 'checked';}?>>
+                                                   name="term_condition" id="term_condition" value="I agree and have reviewed the Consent for Treatment Section." <?php if(old('term_condition') == 'I agree and have reviewed the Consent for Treatment Section.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I agree and have reviewed the Consent for Treatment Section.'){ echo 'checked';}?>>
                                         I agree and have reviewed the Consent for Treatment Section.
                                     </label>
                                 </div>
@@ -1058,7 +1060,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                    name="term_condition" id="term_condition" value="I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving." <?php if(old('term_condition') == 'I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.'){ echo 'checked';}?>>
+                                    name="term_condition" id="term_condition" value="I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving." <?php if(old('term_condition') == 'I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.'){ echo 'checked';}?>>
                                         I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.
                                     </label>
                                 </div>
@@ -1072,7 +1074,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                    name="term_condition" id="term_condition" value="I agree and accept the Financial Responsibility Section." <?php if(old('term_condition') == 'I agree and accept the Financial Responsibility Section.'){ echo 'checked';}?>>
+                                    name="term_condition" id="term_condition" value="I agree and accept the Financial Responsibility Section." <?php if(old('term_condition') == 'I agree and accept the Financial Responsibility Section.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I agree and accept the Financial Responsibility Section.'){ echo 'checked';}?>>
 
                                         I agree and accept the Financial Responsibility Section.
                                     </label>
@@ -1087,7 +1089,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                    name="term_condition" id="term_condition" value="I agree to the Terms & Conditions." <?php if(old('term_condition') == 'I agree to the Terms & Conditions.'){ echo 'checked';}?>>
+                                    name="term_condition" id="term_condition" value="I agree to the Terms & Conditions." <?php if(old('term_condition') == 'I agree to the Terms & Conditions.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I agree to the Terms & Conditions.'){ echo 'checked';}?>>
 
                                         I agree to the Terms & Conditions.
                                     </label>
@@ -1100,7 +1102,7 @@
                             <div class="col-12 col-md-2">
                                 <div class="padding-wrap">
                                     <label>Today's Date<span class="required">*</span></label>
-                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->todate}} @else{{old('todate')}}  @endif"
                                            class="form-control custom-mainforminput dobpicker  @if($errors->get('todate')) is-invalid @endif"
                                            name="todate" id="todate" readonly />
                                 </div>
@@ -1111,21 +1113,30 @@
                             <div class="col-12 col-md-12">
 
                                 <div class="row no-gutters">
-                                    <div class="col-12 col-md-4">
-                                        <label class="" >Signature<span class="required">*</span></label>
-                                        <div>
-                                            <div  id="sig1"  style="width:380px !Important;height: 200px; @if($errors->get('signature')) border-color:red; @endif" ></div>  <br/>
-                                        </div>
-                                        <span id="clear1" class="clearButton" role="button" tabindex="2" style="float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
-                                        <textarea class="@if($errors->get('sign_responsible_party')) is-invalid @endif" value="{{old('sign_responsible_party')}}" id="signature641" name="signature" style="display: none">{{old('signature')}}</textarea>
+                                <div style="display:none!important" class="col-12 col-md-4" id="signature_pad"  >
+                                    <input type="hidden" id="signature_updated" name="signature_updated" value="no">   
+                                    <input type="hidden" id="signature_src"  name="signature_src" value="{{$MhstRegiterHomeSleep->signature}}"> 
+                                    <label class="" for="">Signature</label>
+                                    <div>
+                                        <div  id="sig1"  style="margin-bottom: 10px;width:370px !Important;height: 200px;@if($errors->get('signature')) border-color:red; @endif" class=""></div>  <br/>
+                                    
 
                                     </div>
 
-                                    <div class="col-12 col-md-3 ">
+                                    <span id="clear1" class="clearButton" role="button" tabindex="2" style=" margin-right:10px; float: right; text-decoration: underline; color: black; text-decoration-style: solid">Clear</span>
+                                    <textarea class="" id="signature64" name="signature" style="display: none">{{old('signature')}}</textarea>
+
+                                    </div>
+                                    <div class="col-12 col-md-4 signature_pad_image" id="signature_image">
+                                                  
+                                        <img src="{{asset('manage/storage/'.$MhstRegiterHomeSleep->signature)}}">
+                                    </div>
+
+                                    <div class="col-12 col-md-3  ml-3 ">
 
                                         <div class="padding-wrap">
                                             <label>Type Full Name<span class="required">*</span> </label>
-                                            <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                            <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name_patient_terms}} @else{{old('full_name_patient_terms')}}  @endif"
                                                    class="form-control custom-mainforminput @if($errors->get('full_name_patient_terms')) is-invalid @endif"
                                                    name="full_name_patient_terms" id="full_name_patient_terms" />
                                         </div>
@@ -1133,6 +1144,13 @@
                                     </div>
 
                                 </div>
+                                <div class="row no-gutters">
+                                    <div  class="col-12  col-md-4">
+                                        <button type="button" id="cancel_sig" class="btn btn-danger">cancel</button>
+                                        <button type="button" id="edit_sig" class="btn btn-warning">edit</button>
+                                    </div>
+                        
+                    </div>
                             </div>
 
                         </div>
@@ -1141,21 +1159,17 @@
                             <div class="col-12 col-md-12">
                                 <label><span class="required">*</span> </label>
                                 <div class="row no-gutters">
-                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="&nbsp; I understand that checking this box constitutes a legal signature confirming that I
-                                        acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents"<?php if(old('legal_signature') == '&nbsp; I understand that checking this box constitutes a legal signature confirming that I
-                                        acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents'){ echo 'checked';}elseif($MhstRegiterHomeSleep->legal_signature == '&nbsp; I understand that checking this box constitutes a legal signature confirming that I
-                                        acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents'){echo 'checked';}?>>
-                                        &nbsp; I understand that checking this box constitutes a legal signature confirming that I
-                                        acknowledge and warrant the truthfulness of the information provided in these &nbsp;&nbsp;&nbsp;&nbsp;documents
+                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="I understand that checking this box constitutes a legal signature confirming that I acknowledge and warrant the truthfulness of the information provided in these documents"<?php if(old('legal_signature') == 'I understand that checking this box constitutes a legal signature confirming that I acknowledge and warrant the truthfulness of the information provided in these documents'){ echo 'checked';}elseif($MhstRegiterHomeSleep->legal_signature == 'I understand that checking this box constitutes a legal signature confirming that I acknowledge and warrant the truthfulness of the information provided in these documents'){echo 'checked';}?>>
+                                        I understand that checking this box constitutes a legal signature confirming that I
+                                        acknowledge and warrant the truthfulness of the information provided in these documents
                                     </label>
 
                                 </div>
                                 
                                 <br>
                                 <div class="row no-gutters">
-                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="&nbsp; Sign me up for continued sleep health tips and updates." <?php if(old('legal_signature') == '&nbsp; Sign me up for continued sleep health tips and updates.'){ echo 'checked';}
-                                    elseif($MhstRegiterHomeSleep->legal_signature == '&nbsp; Sign me up for continued sleep health tips and updates.){echo 'checked';}'?>>
-                                        &nbsp; Sign me up for continued sleep health tips and updates.</label>
+                                    <label><input type="radio" name="legal_signature" id="legal_signature" value="Sign me up for continued sleep health tips and updates."<?php if(old('legal_signature') == 'Sign me up for continued sleep health tips and updates.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->legal_signature == 'Sign me up for continued sleep health tips and updates.'){echo 'checked';}?>>
+                                        Sign me up for continued sleep health tips and updates.</label>
                                 </div>
 
 
@@ -1186,7 +1200,7 @@
                                     <input type="text"
                                            class="form-control custom-mainforminput @if($errors->get('name_questions')) is-invalid @endif"
                                            name="name_questions" id="name_questions"
-                                           value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                           value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->name_questions}} @else{{old('name_questions')}}  @endif" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-3">
@@ -1195,7 +1209,7 @@
                                     <input type="email"
                                            class="form-control custom-mainforminput @if($errors->get('email_questions')) is-invalid @endif"
                                            name="email_questions" id="email_questions"
-                                           value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif" />
+                                           value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->email_questions}} @else{{old('email_questions')}}  @endif" />
                                 </div>
                             </div>
 
@@ -1204,7 +1218,7 @@
                                 <div class="padding-wrap">
                                     <input type="tel"
                                            class="form-control custom-mainforminput @if($errors->get('telephone_questions')) is-invalid @endif"
-                                           name="telephone_questions" id="telephone_questions" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                           name="telephone_questions" id="telephone_questions" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->telephone_questions}} @else{{old('telephone_questions')}}  @endif"
                                            data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
                             </div>
@@ -1214,7 +1228,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="padding-wrap">
                                     <label>Date of birth<span class="required">*</span></label>
-                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->full_name}} @else{{old('full_name')}}  @endif"
+                                    <input type="text" value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->dob_questions}} @else{{old('dob_questions')}}  @endif"
                                            class="form-control custom-mainforminput dobpicker  @if($errors->get('dob_questions')) is-invalid @endif"
                                            name="dob_questions" id="dob_questions" readonly />
                                 </div>
@@ -1239,11 +1253,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="snoring" id="snoring" value="yes" <?php if(old('snoring') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                           name="snoring" id="snoring" value="yes" <?php if(old('snoring') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->snoring == 'yes'){echo 'checked';}?>> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="snoring" id="snoring" value="no" <?php if(old('snoring') == 'no'){ echo 'checked';}?>> No</label>
+                                                           name="snoring" id="snoring" value="no" <?php if(old('snoring') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->snoring == 'no'){echo 'checked';}?>> No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1260,11 +1274,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="tired" id="tired" value="yes" <?php if(old('tired') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                           name="tired" id="tired" value="yes" <?php if(old('tired') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->snoring == 'yes'){echo 'checked';}?>> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="tired" id="tired" value="no" <?php if(old('tired') == 'no'){ echo 'checked';}?>> No</label>
+                                                           name="tired" id="tired" value="no" <?php if(old('tired') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->snoring == 'no'){echo 'checked';}?>> No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1281,11 +1295,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="observed" id="observed" value="yes" <?php if(old('observed') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                           name="observed" id="observed" value="yes" <?php if(old('observed') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->observed == 'yes'){echo 'checked';}?>> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="observed" id="observed" value="no" <?php if(old('observed') == 'no'){ echo 'checked';}?>> No</label>
+                                                           name="observed" id="observed" value="no" <?php if(old('observed') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->observed == 'no'){echo 'checked';}?>> No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1302,11 +1316,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="pressure" id="pressure" value="yes" <?php if(old('pressure') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                           name="pressure" id="pressure" value="yes" <?php if(old('pressure') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pressure == 'yes'){echo 'checked';}?>> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="pressure" id="pressure" value="no" <?php if(old('pressure') == 'no'){ echo 'checked';}?>> No</label>
+                                                           name="pressure" id="pressure" value="no" <?php if(old('pressure') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pressure == 'no'){echo 'checked';}?>> No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1323,11 +1337,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="body" id="body" value="yes" <?php if(old('body') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                           name="body" id="body" value="yes" <?php if(old('body') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->body == 'yes'){echo 'checked';}?>> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="body" id="body" value="no" <?php if(old('body') == 'no'){ echo 'checked';}?>> No</label>
+                                                           name="body" id="body" value="no" <?php if(old('body') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->body == 'no'){echo 'checked';}?>> No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1344,11 +1358,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="age" id="age" value="yes" <?php if(old('age') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                           name="age" id="age" value="yes" <?php if(old('age') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->age == 'yes'){echo 'checked';}?>> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="age" id="age" value="no" <?php if(old('age') == 'no'){ echo 'checked';}?>> No</label>
+                                                           name="age" id="age" value="no" <?php if(old('age') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->age == 'no'){echo 'checked';}?>> No</label>
                             </div>
                         </div>
                         <div class="form-section">
@@ -1365,11 +1379,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="neck" id="neck" value="yes" <?php if(old('neck') == 'yes'){ echo 'checked';}?>> Yes</label>
+                                                           name="neck" id="neck" value="yes" <?php if(old('neck') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->neck == 'yes'){echo 'checked';}?>> Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="neck" id="neck" value="no" <?php if(old('neck') == 'no'){ echo 'checked';}?>> No</label>
+                                                           name="neck" id="neck" value="no" <?php if(old('neck') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->neck == 'no'){echo 'checked';}?>> No</label>
                             </div>
                         </div>
                         <div style="margin-top: 20px;">
@@ -1386,11 +1400,11 @@
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="gender_questions" id="gender_questions" value="yes" <?php if(old('gender_questions') == 'yes'){ echo 'checked';}?>>  Yes</label>
+                                                           name="gender_questions" id="gender_questions" value="yes" <?php if(old('gender_questions') == 'yes'){ echo 'checked';}elseif($MhstRegiterHomeSleep->gender_questions == 'yes'){echo 'checked';}?>>  Yes</label>
                             </div>
                             <div class="col-12 col-md-2">
                                 <label class="mt-2"><input type="radio"
-                                                           name="gender_questions" id="gender_questions" value="no" <?php if(old('gender_questions') == 'no'){ echo 'checked';}?>>  No</label>
+                                                           name="gender_questions" id="gender_questions" value="no" <?php if(old('gender_questions') == 'no'){ echo 'checked';}elseif($MhstRegiterHomeSleep->gender_questions == 'no'){echo 'checked';}?>>  No</label>
                             </div>
                         </div>
                         <div id="accordion3" class="custom-accordion">
@@ -1534,6 +1548,73 @@
     
     
 </script>
+
+<script type="text/javascript">
+    var base_url = '<?php echo e(url('/')); ?>';
+    var token = "<?php echo csrf_token() ?>";
+
+    var sig1 = $('#sig1').signature({syncField: '#signature64', syncFormat: 'PNG'});
+
+    $('#clear1').click(function(e) {
+        e.preventDefault();
+        sig1.signature('clear');
+        $("#signature64").val('');
+    });
+
+
+
+
+
+    $('#signaturebtn').on('click', function(e)
+    {
+        var signature = jQuery("#signature641").val();
+        alert(signature);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: base_url + '/signaturepad',
+            data: {
+                signed: signature,
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function(response)
+            {
+                alert('save');
+            }
+        });
+    })
+
+    if("@if($errors->get('signature'))true @else'false'@endif" == "true ")
+        { 
+            $("#signature_pad").show();
+            $("#signature_image").hide();
+            $("#signature_updated").val('yes');
+        } 
+
+        
+
+    $(document).ready(function(){
+        
+
+        
+        $("#cancel_sig").click(function(){
+            $("#signature_pad").hide();
+            $("#signature_image").show();
+            $("#signature_updated").val('no');
+        });
+        $("#edit_sig").click(function(){
+            $("#signature_pad").show();
+            $("#signature_image").hide();
+            $("#signature_updated").val('yes');
+        });
+    });
+
+
+
+</script>
+
 
 <script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>
 

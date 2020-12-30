@@ -25,6 +25,7 @@
         var token = "<?php echo csrf_token() ?>";
         
     </script>
+    
 </head>
 <body>
     <div class="wrapper d-flex flex-column">

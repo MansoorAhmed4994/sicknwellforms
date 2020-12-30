@@ -66,7 +66,7 @@ Route::post('/QcmContactUs/create', 'QcmContactUsController@store')->name('QcmCo
 Route::get('/MhstRegisterHomeSleepTest/{clien_form_id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@create')->name('MhstRegisterHomeSleepTest');
 Route::post('/MhstRegisterHomeSleepTest/create', 'Forms\Mhst\MhstRegisterHomeSleepTestController@store')->name('MhstRegisterHomeSleepTest.create');
 Route::get('/MhstRegisterHomeSleepTest/edit/{submission_id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@edit')->name('MhstRegisterHomeSleepTest.edit');
-Route::post('/MhstRegisterHomeSleepTest/update/{Mhst_adult_data_id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@update')->name('MhstRegisterHomeSleepTest.update');
+Route::post('/MhstRegisterHomeSleepTest/update/{register_home_sleep}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@update')->name('MhstRegisterHomeSleepTest.update');
 Route::get('/MhstRegisterHomeSleepTest/create/meeting/{id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@CreateZoomMeeting')->name('MhstRegisterHomeSleepTest.create.zoom.meeting'); 
 
 //MhstAdultPrivacyPolicyAndConsentForTreatmentController CRUD
@@ -213,12 +213,19 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/client/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 364b4f9970eb7eabc2e12b48c8f229ecd8e10704
     //MhstRegisterHomeSleepTestController Auth CRUD
     Route::get('/client/MhstRegisterHomeSleepTest/submissions/{clien_form_id}','Forms\Mhst\MhstRegisterHomeSleepTestController@submissions')->name('client.MhstRegisterHomeSleepTest.submissions');
 
     //MhstMedicalReferralFormController Auth CRUD
     Route::get('/client/MhstMedicalReferralForm/submissions/{clien_form_id}','Forms\Mhst\MhstMedicalReferralFormController@submissions')->name('client.MhstMedicalReferralForm.submissions');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 364b4f9970eb7eabc2e12b48c8f229ecd8e10704
 
     
     //Embed Link
@@ -308,6 +315,10 @@ Route::group(['middleware' => ['auth:web']],function(){
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 364b4f9970eb7eabc2e12b48c8f229ecd8e10704
     //MhstRegisterHomeSleepTestController Auth CRUD
     Route::get('/MhstRegisterHomeSleepTest/submissions/{clien_form_id}','Forms\Mhst\MhstRegisterHomeSleepTestController@submissions')->name('MhstRegisterHomeSleepTest.submissions');
 
@@ -316,6 +327,10 @@ Route::group(['middleware' => ['auth:web']],function(){
     //MhstMedicalReferralFormController Auth CRUD
     Route::get('/MhstMedicalReferralForm/submissions/{clien_form_id}','Forms\Mhst\MhstMedicalReferralFormController@submissions')->name('MhstMedicalReferralForm.submissions');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 364b4f9970eb7eabc2e12b48c8f229ecd8e10704
 
     
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
