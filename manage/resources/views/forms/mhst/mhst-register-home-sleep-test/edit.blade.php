@@ -1046,7 +1046,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                                   name="term_condition" id="term_condition" value="I agree and have reviewed the Consent for Treatment Section." <?php if(old('term_condition') == 'I agree and have reviewed the Consent for Treatment Section.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'I agree and have reviewed the Consent for Treatment Section.'){ echo 'checked';}?>>
+                                                   name="term_condition" id="term_condition" value="I agree and have reviewed the Consent for Treatment Section." <?php if(old('term_condition') == 'I agree and have reviewed the Consent for Treatment Section.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I agree and have reviewed the Consent for Treatment Section.'){ echo 'checked';}?>>
                                         I agree and have reviewed the Consent for Treatment Section.
                                     </label>
                                 </div>
@@ -1060,7 +1060,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                    name="term_condition" id="term_condition" value="I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving." <?php if(old('term_condition') == 'I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.'){ echo 'checked';}?>>
+                                    name="term_condition" id="term_condition" value="I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving." <?php if(old('term_condition') == 'I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.'){ echo 'checked';}?>>
                                         I acknowledge that I have read and understand the section on Sleep Deprived and Drowsy Driving.
                                     </label>
                                 </div>
@@ -1074,7 +1074,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                    name="term_condition" id="term_condition" value="I agree and accept the Financial Responsibility Section." <?php if(old('term_condition') == 'I agree and accept the Financial Responsibility Section.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'I agree and accept the Financial Responsibility Section.'){ echo 'checked';}?>>
+                                    name="term_condition" id="term_condition" value="I agree and accept the Financial Responsibility Section." <?php if(old('term_condition') == 'I agree and accept the Financial Responsibility Section.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I agree and accept the Financial Responsibility Section.'){ echo 'checked';}?>>
 
                                         I agree and accept the Financial Responsibility Section.
                                     </label>
@@ -1089,7 +1089,7 @@
                                 <div class="row no-gutters">
 
                                     <label ><input type="checkbox"
-                                    name="term_condition" id="term_condition" value="I agree to the Terms & Conditions." <?php if(old('term_condition') == 'I agree to the Terms & Conditions.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->pay_via_credit_card == 'I agree to the Terms & Conditions.'){ echo 'checked';}?>>
+                                    name="term_condition" id="term_condition" value="I agree to the Terms & Conditions." <?php if(old('term_condition') == 'I agree to the Terms & Conditions.'){ echo 'checked';}elseif($MhstRegiterHomeSleep->term_condition == 'I agree to the Terms & Conditions.'){ echo 'checked';}?>>
 
                                         I agree to the Terms & Conditions.
                                     </label>

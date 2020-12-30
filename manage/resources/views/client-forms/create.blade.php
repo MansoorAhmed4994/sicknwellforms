@@ -1,5 +1,70 @@
 @extends('layouts.app')
 
+<!doctype html>
+<html lang="en">
+
+<head>
+   
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/bootstrap.min.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/all.min.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/noty.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/noty-bootstrap-v4.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/style.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/responsive.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/airdatepicker.min.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/select2.min.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/jquery.signaturepad.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('public/theme-resources/css/main-form.css') }}" />
+
+    <script src="{{ asset('public/theme-resources/js/jquery-3.4.1.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
+
+<script>
+
+    function selectElement(id, valueToSelect) {
+
+        let element = document.getElementById(id);
+
+        element.value = valueToSelect;
+
+    }
+
+
+
+
+
+
+
+</script>
+
+
+<script>
+    function selectElement(id, valueToSelect) {
+        let element = document.getElementById(id);
+        element.value = valueToSelect;
+    }
+
+
+
+</script>
+</head>
+
+
 @section('content')
 <h2 class="main-heading">Add Client</h2>
 <div class="flex-1">
@@ -15,16 +80,16 @@
                                 <div class="col-12 col-md-4 col-lg-4">
                                     <label class="mb-2">Full Name</label>
                                     <input type="text" class="form-control custominput @if($errors->get('full_name')) validate-field-red @endif" placeholder="Type here"
-                                        name="full_name" />
+                                        name="full_name" value="{{old('full_name')}}"  />
                                 </div>
                                 <div class="col-12 col-md-4 col-lg-4">
                                     <label class="mb-2">Company Name</label>
                                     <input type="text" class="form-control custominput @if($errors->get('company_name')) validate-field-red @endif" name="company_name"
-                                        placeholder="Type here" />
+                                        placeholder="Type here"value="{{old('company_name')}}"  />
                                 </div>
                                 <div class="col-12 col-md-4 col-lg-4">
                                     <label class="mb-2">Job Title</label>
-                                    <select class="form-control custominput @if($errors->get('job_title')) validate-field-red @endif" name="job_title">
+                                    <select name="job_title" id="job_title" class="form-control custominput @if($errors->get('job_title')) is-invalid validate-field-red @endif"  value="{{old('job_title')}}">
                                         <option value="">Select</option>
                                         <option value="Vice President / Assistant Vice President">Vice
                                             President / Assistant Vice President</option>
@@ -56,7 +121,8 @@
                                 <div class="row form-group align-items-center">
                                     <div class="col-12 col-md-4 col-lg-4">
                                         <label class="mb-2">Speciality</label>
-                                        <select class="form-control custominput @if($errors->get('industry')) validate-field-red @endif" name="industry">
+                                        <select class="form-control custominput @if($errors->get('industry')) validate-field-red @endif" name="industry" id="industry" value="{{old('industry')}}">
+                                            <option value="">Select</option>
                                             <option value="Primary Care">Primary Care</option>
                                             <option value="Dentist">Dentist</option>
                                             <option value="Sleep Medicine">Sleep Medicine</option>
@@ -67,12 +133,12 @@
                                     <div class="col-12 col-md-4 col-lg-4">
                                         <label class="mb-2">Username</label>
                                         <input type="text" name="user_name" class="form-control custominput @if($errors->get('user_name')) validate-field-red @endif"
-                                        placeholder="Type here" />
+                                        placeholder="Type here" value="{{old('user_name')}}"  />
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-4">
                                         <label class="mb-2">Email Address</label>
-                                        <input type="email" name="email" class="form-control custominput @if($errors->get('password')) validate-field-red @endif"
-                                        placeholder="Type here" />
+                                        <input type="email" name="email" class="form-control custominput @if($errors->get('email')) validate-field-red @endif"
+                                        placeholder="Type here" value="{{old('email')}}" />
                                     </div>
                                 </div>
                             <div class="row form-group align-items-start">
@@ -82,7 +148,7 @@
                                             <input name="password" type="password" id="passwordmain"
                                         class="form-control custominput @if($errors->get('password')) validate-field-red @endif" placeholder="Type here" />
                                             <div class="input-group-append">
-                                              <span class="input-group-text"><i class="fas fa-eye"></i>                                            
+                                              <span class="input-group-text" value="{{old('password')}}" ><i class="fas fa-eye"></i>                                            
                                             </span>
                                             </div>
                                           </div>
@@ -93,7 +159,7 @@
                                             <input name="confirm_password" type="password" class="form-control custominput @if($errors->get('confirm_password')) validate-field-red @endif"
                                             placeholder="Type here" />
                                             <div class="input-group-append">
-                                              <span class="input-group-text"><i class="fas fa-eye"></i>                                            
+                                              <span class="input-group-text" value="{{old('confirm_password')}}" ><i class="fas fa-eye"></i>                                            
                                             </span>
                                             </div>
                                           </div>
@@ -101,7 +167,7 @@
                                 <div class="col-12 col-md-4 col-lg-4">
                                     <label class="mb-2">Available Doctors</label>
                                     <select class="form-control custominput @if($errors->get('available_doctors')) validate-field-red @endif" id="available_doctors"
-                                        name="available_doctors">
+                                        name="available_doctors" value="{{old('available_doctors')}}">
                                         <option value="">Select</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -125,12 +191,12 @@
                                 <div class="col-12 col-md-6">
                                     <label class="mb-2">Appointment Duration per meeting <small>(in
                                             minutes)</small></label>
-                                    <input type="number" id="duration" class="form-control custominput"
+                                    <input type="number" name="duration" id="duration" class="form-control custominput @if($errors->get('duration')) validate-field-red @endif"
                                         placeholder="Type here" value="30" />
                                 </div>
                                 <div class="col-12 col-md-6 timezone-col">
                                     <label class="mb-2">Preferred Timezone</label>
-                                    <select class="timezonePicker create" id="timezonepicker" name="preferred_timezone" style="width: 100%">
+                                    <select class="timezonePicker create  @if($errors->get('preferred_timezone')) validate-field-red @endif" id="timezonepicker" name="preferred_timezone" style="width: 100%">
                                         <option value="Europe/Andorra">Europe/Andorra</option>
                                         <option value="Asia/Dubai">Asia/Dubai</option>
                                         <option value="Asia/Kabul">Asia/Kabul</option>
@@ -504,11 +570,11 @@
                                                 <div class="row align-items-end">
                                                     <div class="col-12 col-md-3">
                                                         <label class="mb-2">Start from</label>
-                                                        <input class="form-control custominput timeEntry start_time" placeholder="__-__ AM" />
+                                                        <input  name="start_time" id="start_time" class="form-control custominput timeEntry start_time  @if($errors->get('start_time')) validate-field-red @endif" placeholder="__-__ AM" />
                                                     </div>
                                                     <div class="col-12 col-md-3">
                                                         <label class="mb-2">End at</label>
-                                                        <input class="form-control custominput timeEntry end_time" placeholder="__-__ AM" />
+                                                        <input name="end_time" id="end_time" class="form-control custominput timeEntry end_time  @if($errors->get('end_time')) validate-field-red @endif" placeholder="__-__ AM" />
                                                     </div>
                                                     <div class="col-12 col-md-6">
                                                         <button class="btn-cust add-interval-time-btn">Add +</button>
@@ -544,7 +610,7 @@
                                     <label>Appointment Lead Time <br /><small>(in minutes)</small></label>
                                 </div>
                                 <div class="col-12 col-md-8 col-lg-3">
-                                    <input name="time_before_appointment" value="0" type="number" class="form-control custominput"
+                                    <input name="time_before_appointment" id="time_before_appointment" value="0" type="number" class="form-control custominput @if($errors->get('time_before_appointment')) validate-field-red @endif"
                                         placeholder="Type here" />
                                 </div>
                             </div>
@@ -623,6 +689,9 @@
                                 </div>
                             </div>
                             <div style="height: 150px"></div>
+
+
+                            
                         </div>
                     </div>
 
@@ -631,4 +700,56 @@
         </div>
     </div>
 </div>
+
+<script>
+    
+    selectElement('job_title', '{{old('job_title')}}');
+    selectElement('industry', '{{old('industry')}}');
+    selectElement('available_doctors', '{{old('available_doctors')}}');
+
+</script>
+
+<script src="{{ asset('public/theme-resources/js/popper.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/smooth-scrollbar.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/noty.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/jquery.inputmask.bundle.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/iframeResizer.contentWindow.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/airdatepicker.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/airdatepicker.en.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/moment.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/select2.full.min.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/moment-timezone-with-data.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/moment-range.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/jquery.plugin-timepicker.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/jquery.timeentry.js') }}"></script>
+
+<script src="{{ asset('public/theme-resources/js/main.js') }}"></script>
+
+
+<script src="{{ asset('public/theme-resources/js/numeric-1.2.6.min.js') }}"></script>
+<script src="{{ asset('public/theme-resources/js/bezier.js') }}"></script>
+<script src="{{ asset('public/theme-resources/js/jquery.signaturepad.js') }}"></script>
+<script src="{{ asset('public/theme-resources/js/json2.min.js') }}"></script>
+<script src="{{ asset('public/theme-resources/js/html2canvas.js') }}"></script>
+
+
+
+</body>
+
+</html>
+
 @endsection
