@@ -15,6 +15,9 @@ use App\Models\Clients;
 use App\Models\Client_forms;
 use Illuminate\Support\Facades\Storage; 
 use App\Models\Forms\Mhst\Mhst_medical_referral_forms;
+
+
+use Illuminate\Support\Facades\File;
 use Auth;
 
 class MhstMedicalReferralFormController extends Controller
@@ -56,6 +59,41 @@ class MhstMedicalReferralFormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    public function storage_upload($file,$file_base_path)
+    {
+              
+        
+
+        $folderPath = storage_path('/');  
+        
+
+        $path = storage_path('/').''.$file_base_path;
+        
+        if(!File::isDirectory($path)){
+
+            File::makeDirectory($path, 0777, true, true);
+    
+        }        
+   
+        //$file->move($destinationPath,$file->getClientOriginalName());
+
+        $fileName = time().'.'.$file->getClientOriginalExtension();  
+        //dd(public_path('uploads'));
+        $destination_path = $folderPath.''.$file_base_path;
+
+       $file->move($destination_path, $fileName);
+        
+       $File_final_path = $file_base_path.''.$fileName;
+
+       dd($File_final_path);
+        
+       return $File_final_path;  
+
+    }
+    
+
     public function store(Request $request)
     {
         $valiedation_from_array = [ 
@@ -88,8 +126,8 @@ class MhstMedicalReferralFormController extends Controller
         ];
 
         
-        $this->validate($request, $valiedation_from_array);
-        $card_front = app('App\Http\Controllers\Forms\Mhst\MhstMedicalReferralFormController')->upload($request->card_front);
+        //$this->validate($request, $valiedation_from_array);
+        $card_front = $this->storage_upload($request->card_front,'/app/public/forms/Mhst/');
         $signature = app('App\Http\Controllers\SignaturePadController')->upload($request->signature);
 
         $medical_referral_forms = new Mhst_medical_referral_forms();
@@ -366,36 +404,6 @@ class MhstMedicalReferralFormController extends Controller
             return redirect()->back();
         }
     }
-
-
-    public function upload($card_front)
-    {
-			
-	    // $folderPath = base_path('public/theme-resources/forms/signatures/');
-		// $folderPath = str_replace('manage\\', '', $folderPath);
-		// $folderPath = str_replace('manage/', '', $folderPath);
-		$file_base_path = '/app/public/forms/Mhst/';
-		$folderPath = storage_path('/');
-		//asset('/manage/storage/app/public/forms/signatures/')
-		//dd($folderPath);
-	  
-	    // $image_parts = explode(";base64,", $signature);
-		
-	    // $image_type_aux = explode("image/", $image_parts[0]);
-		
-	    // $image_type = $image_type_aux[1];
-		
-	    // $image_base64 = base64_decode($image_parts[1]);
-		  
-		$file_inner_path = $file_base_path.uniqid().'.'.'PNG';
-		
-		$file = $folderPath.$file_inner_path;
-		 
-		file_put_contents($file, $card_front); 
-		dd($file);
-	    return $file_inner_path;
-	    //return back()->with('success', 'success Full upload signature');
-	}
 
 
 }
