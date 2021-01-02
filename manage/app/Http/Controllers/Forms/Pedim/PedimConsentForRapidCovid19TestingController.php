@@ -80,7 +80,7 @@ class PedimConsentForRapidCovid19TestingController extends Controller
         $this->validate($request, $valiedation_from_array);
         
         //dd($request->sign_responsible_party);
-        $sign_responsible_party = app('App\Http\Controllers\SignaturePadController')->upload($request->sign_responsible_party);
+        $sign_responsible_party = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->sign_responsible_party,'/app/public/forms/signatures/PedimConsentForRapidCovid19Testing/');
         //dd($sign_responsible_party);
         $consent_for_covid19 = new Pedim_consent_for_rapid_covid19_testings();
         $consent_for_covid19->patient_name = request('patient_name');

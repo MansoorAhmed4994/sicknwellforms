@@ -238,7 +238,7 @@ class MhstRegisterHomeSleepTestController extends Controller
         $front_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->front_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
         $back_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->back_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
         $phy_script = app('App\Http\Controllers\UploadImageController')->storage_upload($request->phy_script,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
-        $signature = app('App\Http\Controllers\SignaturePadController')->upload($request->signature);
+        $signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->signature,'/app/public/forms/signatures/MhstRegiterHomeSleep/');
         
 
         $register_home_sleep = new Mhst_register_home_sleep_tests();

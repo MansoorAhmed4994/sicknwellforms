@@ -73,8 +73,8 @@ class MhstAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
 
         
         $this->validate($request, $valiedation_from_array);
-        $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->witness_signature);
-        $patient_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->patient_signature);
+        $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->witness_signature,'/app/public/forms/signatures/MhstAdultPrivacyPolicy/');
+        $patient_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->patient_signature,'/app/public/forms/signatures/MhstAdultPrivacyPolicy/');
 
         $adult_privacy_policies = new Mhst_adult_privacy_policy_consent_treatments();
         $adult_privacy_policies->patient_name = request('patient_name');

@@ -72,8 +72,8 @@ class PedimMinorPrivacyPolicyAndConsentForTreatmentController extends Controller
 
         
         $this->validate($request, $valiedation_from_array);
-        $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->witness_signature);
-        $parent_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->parent_signature);
+        $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->witness_signature,'/app/public/forms/signatures/PedimMinorPrivacyPolicy/');
+        $parent_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->parent_signature,'/app/public/forms/signatures/PedimMinorPrivacyPolicy/');
 
         $minor_privacy_policies = new Pedim_minor_privacy_policy_and_consent_for_treatments();
         $minor_privacy_policies->parent_or_legal = request('parent_or_legal');

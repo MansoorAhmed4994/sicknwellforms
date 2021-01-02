@@ -76,8 +76,8 @@ class MhstMinorPrivacyPolicyAndConsentForTreatmentController extends Controller
 
         
         $this->validate($request, $valiedation_from_array);
-        $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->witness_signature);
-        $parent_signature = app('App\Http\Controllers\SignaturePadController')->upload($request->parent_signature);
+        $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->witness_signature,'/app/public/forms/signatures/MhstMinorPrivacyPolicy/');
+        $parent_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->parent_signature,'/app/public/forms/signatures/MhstMinorPrivacyPolicy/');
 
         $minor_privacy_policies = new Mhst_minor_privacy_policy_consent_treatments();
         $minor_privacy_policies->parent_name = request('parent_name');

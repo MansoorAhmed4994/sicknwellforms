@@ -97,8 +97,8 @@ class MhstMedicalReferralFormController extends Controller
         $this->validate($request, $valiedation_from_array);
         $card_front = app('App\Http\Controllers\UploadImageController')->storage_upload($request->card_front,'/app/public/forms/Mhst/MhstMedicalReferralForm/');
         $card_back = app('App\Http\Controllers\UploadImageController')->storage_upload($request->card_back,'/app/public/forms/Mhst/MhstMedicalReferralForm/');
-        $signature = app('App\Http\Controllers\SignaturePadController')->upload($request->signature);
-        dd($card_front , $card_back);
+        $signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->signature,'/app/public/forms/signatures/MhstMedicalReferralForm/');
+        // dd($card_front , $card_back);
         $medical_referral_forms = new Mhst_medical_referral_forms();
         $medical_referral_forms->provider_name = request('provider_name');
         $medical_referral_forms->telephone = request('telephone');
