@@ -425,7 +425,7 @@
                                 <div class="col-12 col-md-3">
                                     <label>Insurance Card Back</label>
                                     <div class="padding-wrap">
-                                        <input type="text"
+                                        <input type="file"
                                         class="form-control custom-mainforminput @if($errors->get('card_back')) is-invalid @endif" value="{{old('card_back')}}"
                                                name="card_back" id="card_back"
                                                 />

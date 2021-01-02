@@ -60,38 +60,6 @@ class MhstMedicalReferralFormController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-    public function storage_upload($file,$file_base_path)
-    {
-              
-        
-
-        $folderPath = storage_path('/');  
-        
-
-        $path = storage_path('/').''.$file_base_path;
-        
-        if(!File::isDirectory($path)){
-
-            File::makeDirectory($path, 0777, true, true);
-    
-        }        
-   
-        //$file->move($destinationPath,$file->getClientOriginalName());
-
-        $fileName = time().'.'.$file->getClientOriginalExtension();  
-        //dd(public_path('uploads'));
-        $destination_path = $folderPath.''.$file_base_path;
-
-       $file->move($destination_path, $fileName);
-        
-       $File_final_path = $file_base_path.''.$fileName;
-
-       dd($File_final_path);
-        
-       return $File_final_path;  
-
-    }
     
 
     public function store(Request $request)
@@ -126,10 +94,11 @@ class MhstMedicalReferralFormController extends Controller
         ];
 
         
-        //$this->validate($request, $valiedation_from_array);
-        $card_front = $this->storage_upload($request->card_front,'/app/public/forms/Mhst/');
+        $this->validate($request, $valiedation_from_array);
+        $card_front = app('App\Http\Controllers\UploadImageController')->storage_upload($request->card_front,'/app/public/forms/Mhst/MhstMedicalReferralForm/');
+        $card_back = app('App\Http\Controllers\UploadImageController')->storage_upload($request->card_back,'/app/public/forms/Mhst/MhstMedicalReferralForm/');
         $signature = app('App\Http\Controllers\SignaturePadController')->upload($request->signature);
-
+        dd($card_front , $card_back);
         $medical_referral_forms = new Mhst_medical_referral_forms();
         $medical_referral_forms->provider_name = request('provider_name');
         $medical_referral_forms->telephone = request('telephone');
@@ -156,7 +125,7 @@ class MhstMedicalReferralFormController extends Controller
         $medical_referral_forms->weight = request('weight');
         $medical_referral_forms->neck_size = request('neck_size');
         $medical_referral_forms->card_front = $card_front;
-        $medical_referral_forms->card_back = request('card_back');
+        $medical_referral_forms->card_back = $card_back;
         $medical_referral_forms->symptoms = request('symptoms');
         $medical_referral_forms->oxygen = request('oxygen');
         $medical_referral_forms->lpm = request('lpm');
