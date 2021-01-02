@@ -82,7 +82,7 @@
         <div class="qcm-form">
 
 
-            <<form method="post" action="{{route('MhstRegisterHomeSleepTest.create',$client_form_id)}}" class="position-relative">
+            <<form method="post" action="{{route('MhstRegisterHomeSleepTest.create',$client_form_id)}}" class="position-relative" enctype="multipart/form-data">
         {{csrf_field()}} 
            
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">

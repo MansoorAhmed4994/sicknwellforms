@@ -16,6 +16,9 @@ use App\Models\Client_forms;
 use Illuminate\Support\Facades\Storage; 
 
 use App\Models\Forms\Mhst\Mhst_register_home_sleep_tests;
+use Illuminate\Support\Facades\File;
+
+
 use Auth;
 
 class MhstRegisterHomeSleepTestController extends Controller
@@ -232,6 +235,9 @@ class MhstRegisterHomeSleepTestController extends Controller
         
         $this->validate($request, $valiedation_from_array);
         
+        $front_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->front_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
+        $back_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->back_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
+        $phy_script = app('App\Http\Controllers\UploadImageController')->storage_upload($request->phy_script,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
         $signature = app('App\Http\Controllers\SignaturePadController')->upload($request->signature);
         
 
@@ -260,12 +266,12 @@ class MhstRegisterHomeSleepTestController extends Controller
         $register_home_sleep->secondary_insurance_name = request('secondary_insurance_name');
         $register_home_sleep->member_id_2 = request('member_id_2');
         $register_home_sleep->subcribers_name_2 = request('subcribers_name_2');
-        $register_home_sleep->front_card = request('front_card');
-        $register_home_sleep->back_card = request('back_card');
+        $register_home_sleep->front_card = $front_card;
+        $register_home_sleep->back_card = $back_card;
         $register_home_sleep->patient_physician = request('patient_physician');
         $register_home_sleep->physician_tel = request('physician_tel');
         $register_home_sleep->extension = request('extension');
-        $register_home_sleep->phy_script = request('phy_script');
+        $register_home_sleep->phy_script = $phy_script;
         $register_home_sleep->name_patient_terms = request('name_patient_terms');
         $register_home_sleep->dob_patient_terms = request('dob_patient_terms');
         $register_home_sleep->is_patient_minor = $is_patient_minor;

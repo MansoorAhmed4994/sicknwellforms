@@ -533,7 +533,7 @@
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->preferred_language}}</span>
                                 </div>
-                            </td> 
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->pay_via_credit_card}}</span>
@@ -578,17 +578,17 @@
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->subcribers_name_2}}</span>
                                 </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center"> 
+                                    <img src="{{asset('manage/storage/'.$row->front_card)}}" class="img-fluid"> 
+                                </div>
                             </td>  
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->front_card}}</span>
+                                    <img src="{{asset('manage/storage/'.$row->back_card)}}" class="img-fluid"> 
                                 </div>
-                            </td> 
-                            <td>
-                                <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->back_card}}</span>
-                                </div>
-                            </td>  
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->patient_physician}}</span>
@@ -603,12 +603,13 @@
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->extension}}</span>
                                 </div>
-                            </td>  
+                            </td> 
+                             
                             <td>
                                 <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->phy_script}}</span>
+                                    <img src="{{asset('manage/storage/'.$row->phy_script)}}" class="img-fluid"> 
                                 </div>
-                            </td>  
+                            </td> 
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->name_patient_terms}}</span>
