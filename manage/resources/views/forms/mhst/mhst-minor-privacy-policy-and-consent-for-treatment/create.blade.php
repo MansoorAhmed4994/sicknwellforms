@@ -30,19 +30,20 @@
 
     <link rel="stylesheet" href="{{ asset('public/theme-resources/css/main-form.css') }}" />
 
-    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
-    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+  
+    
 
     <script src="{{ asset('public/theme-resources/js/jquery-3.4.1.min.js') }}"></script>
 
     <script src="{{ asset('public/theme-resources/js/timepicker.js') }}"></script>
 
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ asset('public/signature/jquery.signature.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/signature/jquery.signature.css') }}">
 
 
     <script>
