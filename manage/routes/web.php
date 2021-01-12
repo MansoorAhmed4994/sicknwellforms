@@ -224,7 +224,7 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //Embed Link
     Route::get('/client/form/embed/link/{form_name}/{clien_form_id}', 'Client_formController@FormEmbedLink')->name('client.form.embed.link');
     
-    
+     
 }); 
 
  

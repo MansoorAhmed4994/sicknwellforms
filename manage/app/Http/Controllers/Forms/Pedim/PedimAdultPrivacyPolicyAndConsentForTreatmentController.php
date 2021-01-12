@@ -62,7 +62,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
     public function store(Request $request)
     {
         
-        //dd($witness_signature);
+        
 
         $valiedation_from_array = [ 
             'patient_name' => 'required',
@@ -76,12 +76,13 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
             'witness_today_date' => 'required'
 
         ];
-
+        
         
         $this->validate($request, $valiedation_from_array);
+        
         $witness_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->witness_signature,'/app/public/forms/signatures/PedimAdultPrivacyPolicy/');
         $patient_signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->patient_signature,'/app/public/forms/signatures/PedimAdultPrivacyPolicy/');
-
+        
         $adult_privacy_policies = new Pedim_adult_privacy_policy_consent_treatments();
         $adult_privacy_policies->patient_name = request('patient_name');
         $adult_privacy_policies->telephone = request('telephone');
@@ -98,6 +99,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
 
 
         session()->flash("success","Successfully Submited");  
+        dd('ghft');
         return redirect()->route('PedimAdultPrivacyPolicyAndConsentForTreatment',$adult_privacy_policies->client_forms_id);
     }
 
