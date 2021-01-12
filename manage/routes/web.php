@@ -213,6 +213,7 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/client/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
+
     //MhstRegisterHomeSleepTestController Auth CRUD
     Route::get('/client/MhstRegisterHomeSleepTest/submissions/{clien_form_id}','Forms\Mhst\MhstRegisterHomeSleepTestController@submissions')->name('client.MhstRegisterHomeSleepTest.submissions');
 
@@ -224,7 +225,7 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //Embed Link
     Route::get('/client/form/embed/link/{form_name}/{clien_form_id}', 'Client_formController@FormEmbedLink')->name('client.form.embed.link');
     
-     
+    
 }); 
 
  
@@ -302,7 +303,7 @@ Route::group(['middleware' => ['auth:web']],function(){
 
     
     //MhstMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
-    Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
+    //Route::get('/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
 
  
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD

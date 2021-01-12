@@ -248,7 +248,7 @@ class client_formController extends Controller
     // }
     
     public function FormEmbedLink($form_name,$client_forms_id)
-    {  dd();
+    {  //dd();
         return view('forms.embed-link')->with(array('client_forms_id'=>$client_forms_id,'form_name'=>$form_name)); 
         
     } 
