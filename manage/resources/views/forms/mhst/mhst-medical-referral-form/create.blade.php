@@ -120,7 +120,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                         class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
-                                               name="telephone" id="telephone" value=""
+                                               name="telephone" id="telephone" data-inputmask='"mask": "(999) 999-9999"' data-mask
                                                 />
                                     </div>
                                 </div>
@@ -285,7 +285,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                         class="form-control custom-mainforminput @if($errors->get('phone')) is-invalid @endif" value="{{old('phone')}}"
-                                               name="phone" id="phone" 
+                                               name="phone" id="phone"  data-inputmask='"mask": "(999) 999-9999"' data-mask
                                                 />
                                     </div>
                                 </div>
@@ -296,7 +296,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                         class="form-control custom-mainforminput @if($errors->get('alternate_phone')) is-invalid @endif" value="{{old('alternate_phone')}}"
-                                               name="alternate_phone" id="alternate_phone"
+                                               name="alternate_phone" id="alternate_phone" data-inputmask='"mask": "(999) 999-9999"' data-mask
                                                 />
                                     </div>
                                 </div>
