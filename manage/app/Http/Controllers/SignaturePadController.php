@@ -76,7 +76,7 @@ class SignaturePadController extends Controller
 	
 
 	
-    public function update($signature,$file_base_path)
+    public function update_signature($signature,$file_base_path)
     {  
 	   
 		$folderPath = storage_path('/');

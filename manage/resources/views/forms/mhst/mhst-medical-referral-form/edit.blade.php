@@ -82,7 +82,7 @@
         <div class="qcm-form">
 
         
-        <form method="post" action="{{route('MhstMedicalReferralForm.update',$submission_id)}}" class="position-relative">
+        <form method="post" action="{{route('MhstMedicalReferralForm.update',$submission_id)}}" enctype="multipart/form-data" class="position-relative">
                 {{csrf_field()}} 
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
                     
@@ -275,8 +275,7 @@
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
                                         <input type="text" value=""
-                                        class="form-control custom-mainforminput dobpicker @if($errors->get('dob')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->dob}} @else{{old('dob')}}  @endif"
-                                               name="dob" id="dob" readonly />
+                                        class="form-control custom-mainforminput dobpicker @if($errors->get('dob')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->dob}} @else{{old('dob') }}  @endif" name="dob" id="dob" readonly /> 
                                     </div>
                                 </div>
 
@@ -411,25 +410,37 @@
                             </div>
                         </div>
  
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-3" style="margin-right: 10px;">
 
-                                    <label>Insurance Card Front</label>
-                                    <div class="padding-wrap">
-                                        <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->card_front}} @else{{old('card_front')}}  @endif"
-                                               name="card_front" id="card_front"
-                                                />
-                                    </div>
+                                    <label>Insurance Card Front</label> 
+                                    <!-- <input type="hidden" class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->card_front}} @else{{old('card_front')}}  @endif" name="card_front" id="card_front"  />
+                                      -->
+                                    <input type="hidden" class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value="no" name="card_front" id="card_front"  />
+                                    
+                                    <div class="card" style="width: 18rem;">
+                                        <input type="file" id="front_card_image_upload" class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" style="display:none" name="front_card_image_upload"   />
+                                        <img class="card-img-top" id="front_card_image" src="{{asset('manage/storage/'.$MhstMedicalReferralForm->card_front)}}" alt="Card image cap">
+                                        <div class="card-body"> 
+                                            <button type="button" id="cancel_front_card" class="btn btn-danger">cancel</button>
+                                            <button type="button" id="edit_front_card" class="btn btn-warning">edit</button>
+                                        </div>
+                                    </div> 
                                 </div>
  
                                 <div class="col-12 col-md-3">
-                                    <label>Insurance Card Back</label>
-                                    <div class="padding-wrap">
-                                        <input type="text"
-                                        class="form-control custom-mainforminput @if($errors->get('card_back')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->card_back}} @else{{old('card_back')}}  @endif"
-                                               name="card_back" id="card_back"
-                                                />
-                                    </div>
+                                    <label>Insurance Card Back</label>                                     
+                                    <!-- <input type="hidden"  class="form-control custom-mainforminput @if($errors->get('card_back')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->card_back}} @else{{old('card_back')}}  @endif" name="card_back" id="card_back" /> -->
+                                    <input type="hidden"  class="form-control custom-mainforminput @if($errors->get('card_back')) is-invalid @endif" value="no" name="card_back" id="card_back" />
+                                    <div class="card" style="width: 18rem;">
+                                    <input type="file" id="back_card_image_upload" class="form-control custom-mainforminput @if($errors->get('back_card_image_upload')) is-invalid @endif" style="display:none" name="back_card_image_upload"  />
+                                    
+                                        <img class="card-img-top" id="back_card_image" src="{{asset('manage/storage/'.$MhstMedicalReferralForm->card_back)}}" alt="Card image cap">
+                                        <div class="card-body"> 
+                                            <button type="button" id="cancel_back_card" class="btn btn-danger">cancel</button>
+                                            <button type="button" id="edit_back_card" class="btn btn-warning">edit</button>
+                                        </div>
+                                    </div> 
+
                                 </div>
                             </div></div>
                     </div>
@@ -765,7 +776,7 @@
     $('#signaturebtn').on('click', function(e)
     {
         var signature = jQuery("#signature641").val();
-        alert(signature);
+        //alert(signature);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -806,6 +817,30 @@
             $("#signature_image").hide();
             $("#signature_updated").val('yes');
         });
+
+        $("#edit_front_card").click(function(){
+            $("#front_card_image").hide();
+            $("#front_card_image_upload").show();
+            $("#card_front").val('yes');
+        });
+        $("#cancel_front_card").click(function(){
+            $("#front_card_image").show();
+            $("#front_card_image_upload").hide();
+            $("#card_front").val('no');
+        });
+
+        $("#edit_back_card").click(function(){
+            $("#back_card_image").hide();
+            $("#back_card_image_upload").show();
+            $("#card_back").val('yes');
+        });
+        $("#cancel_back_card").click(function(){
+            $("#back_card_image").show();
+            $("#back_card_image_upload").hide();
+            $("#card_back").val('no');
+        });
+
+
     });
 
 

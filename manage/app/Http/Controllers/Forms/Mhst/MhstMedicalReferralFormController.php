@@ -92,7 +92,7 @@ class MhstMedicalReferralFormController extends Controller
             'signature' => 'required'
 
         ];
-
+ 
         
         $this->validate($request, $valiedation_from_array);
         $card_front = app('App\Http\Controllers\UploadImageController')->storage_upload($request->card_front,'/app/public/forms/Mhst/MhstMedicalReferralForm/');
@@ -192,15 +192,27 @@ class MhstMedicalReferralFormController extends Controller
     { 
         // dd($Mhst_medical_referral_data_id);
         $signature_update = "nullable";
+        $is_signature_update ="nullable";
+        $is_card_front_update ="nullable";
+        $is_card_back_update ="nullable";
+        $front_card_image_path = "";
+        $back_card_image_path = "";
+        
         if(request('signature_updated') == "yes")
         {
-        //echo 'working1';
             $is_signature_update = "required"; 
-             
         }
 
-           
+        if(request('card_front') == "yes")
+        {
+            $is_card_front_update = "required"; 
+        }
 
+        if(request('card_back') == "yes")
+        {
+            $is_card_back_update = "required"; 
+        }
+           
         $valiedation_from_array = [ 
             'provider_name' => 'required',
             'telephone' => 'required',
@@ -218,12 +230,12 @@ class MhstMedicalReferralFormController extends Controller
             'height' => 'required',  
             'weight' => 'required',
             'neck_size' => 'required',
-            'card_front' => 'required',
-            'card_back' => 'required',
+            'card_front' => $is_card_front_update,
+            'back_card_image_upload' => $is_card_back_update,
             'symptoms' => 'required',  
             'oxygen' => 'required',
             'diagnostic_codes' => 'required',
-            'sleep_testing' => 'required',
+            'sleep_testing' => 'required', 
             'comment' => 'required',
             'physician_name' => 'required',  
             'signature' => $is_signature_update,
@@ -231,16 +243,48 @@ class MhstMedicalReferralFormController extends Controller
         ];
 
         
+        
+        
+        
         $this->validate($request, $valiedation_from_array);
         //dd($is_witness_signature_update);
-        $signature = $request->signature_src;
+          
+        if(request('card_front') == "yes")
+        {
+            $front_card_image_path = app('App\Http\Controllers\UploadImageController')->update_image_upload($request->front_card_image_upload,'/app/public/forms/Mhst/MhstMedicalReferralForm/FrontCard/');            
+        }
+        else
+        {
+            
+            $front_card_image_path = $Mhst_medical_referral_data_id->card_front;
+           
+        }
+        //dd($front_card_image_path);
+        if(request('card_back') == "yes")
+        {
+            $back_card_image_path = app('App\Http\Controllers\UploadImageController')->update_image_upload($request->back_card_image_upload,'/app/public/forms/Mhst/MhstMedicalReferralForm/BackCard/');
+            //dd($back_card_image_path);
+        }
+        else
+        {
+            $back_card_image_path = $Mhst_medical_referral_data_id->card_back;
+        }
+        
         if(request('signature_updated') == "yes")
         {
-        
-            $signature = app('App\Http\Controllers\SignaturePadController')->update($request->signature,$signature);
+          
+            $signature = app('App\Http\Controllers\SignaturePadController')->update_signature($request->signature,$Mhst_medical_referral_data_id->signature);
              
         }
-       
+        else
+        {
+            $signature = $Mhst_medical_referral_data_id->signature;
+        }
+
+        
+
+
+        //dd($signature);
         $Mhst_medical_referral_data_id->provider_name = request('provider_name');
         $Mhst_medical_referral_data_id->telephone = request('telephone');
         $Mhst_medical_referral_data_id->fax = request('fax');
@@ -265,8 +309,8 @@ class MhstMedicalReferralFormController extends Controller
         $Mhst_medical_referral_data_id->height = request('height');
         $Mhst_medical_referral_data_id->weight = request('weight');
         $Mhst_medical_referral_data_id->neck_size = request('neck_size');
-        $Mhst_medical_referral_data_id->card_front = request('card_front');
-        $Mhst_medical_referral_data_id->card_back = request('card_back');
+        $Mhst_medical_referral_data_id->card_front = $front_card_image_path;
+        $Mhst_medical_referral_data_id->card_back = $back_card_image_path;
         $Mhst_medical_referral_data_id->symptoms = request('symptoms');
         $Mhst_medical_referral_data_id->oxygen = request('oxygen');
         $Mhst_medical_referral_data_id->lpm = request('lpm');
@@ -279,6 +323,7 @@ class MhstMedicalReferralFormController extends Controller
         $Mhst_medical_referral_data_id->status = 'active';  
         $update_status = $Mhst_medical_referral_data_id->save();
 
+        //dd($front_card_image_path);
         if($update_status)
         {  
             if(Auth::guard('clients')->check())
