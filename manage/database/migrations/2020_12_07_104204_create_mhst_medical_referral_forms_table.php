@@ -17,7 +17,7 @@ class CreateMhstMedicalReferralFormsTable extends Migration
         Schema::create('mhst_medical_referral_forms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('provider_name');
-            $table->bigInteger('telephone');
+            $table->text('telephone');
             $table->text('fax');
             $table->string('email');
             $table->text('contact_person');
