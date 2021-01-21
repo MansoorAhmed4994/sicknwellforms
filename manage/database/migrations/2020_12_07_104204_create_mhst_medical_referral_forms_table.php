@@ -29,8 +29,8 @@ class CreateMhstMedicalReferralFormsTable extends Migration
             $table->text('zip')->nullable(true);
             $table->text('patient_name');
             $table->date('dob');
-            $table->bigInteger('phone');
-            $table->bigInteger('alternate_phone')->nullable(true);
+            $table->text('phone');
+            $table->text('alternate_phone')->nullable(true);
             $table->string('email_patient');
             $table->text('address_patient');
             $table->text('address_2_patient')->nullable(true);
