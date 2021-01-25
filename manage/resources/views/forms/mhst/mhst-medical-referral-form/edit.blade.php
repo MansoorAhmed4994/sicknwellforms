@@ -274,7 +274,7 @@
                                 <div class="col-12 col-md-2">
                                     <div class="padding-wrap">
                                         <label>Date of birth</label>
-                                        <input type="text" value=""
+                                        <input type="text"
                                         class="form-control custom-mainforminput dobpicker @if($errors->get('dob')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->dob}} @else{{old('dob') }}  @endif" name="dob" id="dob" readonly /> 
                                     </div>
                                 </div>
@@ -691,9 +691,9 @@
                         <div class="col-12 col-md-10">
                             <label>Comment</label>
                             <textarea
-                            class="form-control custom-mainforminput @if($errors->get('comment')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->comment}} @else{{old('comment')}}  @endif"
+                            class="form-control custom-mainforminput @if($errors->get('comment')) is-invalid @endif" 
                                     rows="4" name="comment"
-                                    id="comment">{{old('comment')}}</textarea>
+                                    id="comment">@if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->comment}} @else{{old('comment')}}  @endif</textarea>
                         </div>
                     </div>
 
