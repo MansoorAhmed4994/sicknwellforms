@@ -544,7 +544,8 @@
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
                                                        name="Home Phone_1" id="Home Phone_1"
-                                                       value="" />
+                                                       value=""
+                                                       data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
 
@@ -554,7 +555,8 @@
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
                                                        name="Cell Phone_1" id="Cell Phone_1"
-                                                       value="" />
+                                                       value=""
+                                                       data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
 
@@ -592,7 +594,8 @@
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
                                                        name="Home Phone_2" id="Home Phone_2"
-                                                       value="" />
+                                                       value=""
+                                                       data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
 
@@ -602,7 +605,8 @@
                                                 <input type="tel"
                                                        class="form-control custom-mainforminput "
                                                        name="Cell Phone_2" id="Cell Phone_2"
-                                                       value="" />
+                                                       value=""
+                                                       data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>
                                         </div>
 
@@ -2916,7 +2920,7 @@
                                             <div class="padding-wrap">
                                                 <input type="text" value=""
                                                        class="form-control custom-mainforminput  "
-                                                       id="phone_office"/>
+                                                       id="phone_office" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div></div>
 
                                         <div class="col-12 col-md-2">
@@ -3228,7 +3232,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel" value=""
                                                        class="form-control custom-mainforminput  "
-                                                       id="pre_phone"/>
+                                                       id="pre_phone" data-inputmask='"mask": "(999) 999-9999"' data-mask/>
                                             </div></div>
 
                                         <div class="col-12 col-md-2">
@@ -3283,7 +3287,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel" value=""
                                                        class="form-control custom-mainforminput  "
-                                                       id="pre_phone"/>
+                                                       id="pre_phone" data-inputmask='"mask": "(999) 999-9999"' data-mask/>
                                             </div></div>
 
                                         <div class="col-12 col-md-2">
@@ -3336,7 +3340,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel" value=""
                                                        class="form-control custom-mainforminput  "
-                                                       id="pre_phone"/>
+                                                       id="pre_phone" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div></div>
 
                                         <div class="col-12 col-md-2">
@@ -3389,7 +3393,7 @@
                                             <div class="padding-wrap">
                                                 <input type="tel" value=""
                                                        class="form-control custom-mainforminput  "
-                                                       id="pre_phone"/>
+                                                       id="pre_phone" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div></div>
 
                                         <div class="col-12 col-md-2">

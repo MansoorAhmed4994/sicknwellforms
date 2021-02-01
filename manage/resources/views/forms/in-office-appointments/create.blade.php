@@ -638,7 +638,7 @@
                                     </div>
                                     <div class="col-12  col-sm-4 col-md-2">
                                         <label>Telephone <span class="required">*</span></label>
-                                        <input type="tel" class="form-control custom-mainforminput  @if($errors->get('patient_telephone')) is-invalid @endif" name="patient_telephone" id="patient_telephone" value="{{old('patient_telephone')}}">
+                                        <input type="tel" class="form-control custom-mainforminput  @if($errors->get('patient_telephone')) is-invalid @endif" name="patient_telephone" id="patient_telephone" value="{{old('patient_telephone')}}" data-inputmask='"mask": "(999) 999-9999"' data-mask>
                                     </div>
                                     <div class="col-12  col-sm-4 col-md-2">
                                         <label>Patient Email <span class="required">*</span></label>

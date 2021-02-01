@@ -144,7 +144,7 @@
                                     <div class="padding-wrap">
                                         <input type="tel"
                                                class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="{{old('telephone')}}"
-                                               name="telephone" id="telephone"
+                                               name="telephone" id="telephone"  data-inputmask='"mask": "(999) 999-9999"' data-mask 
                                                 />
                                     </div>
                                 </div> 

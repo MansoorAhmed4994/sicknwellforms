@@ -789,7 +789,7 @@
                                 <div class="col-12 col-md-2">
                                     <label>Telephone <span class="required">*</span></label>
                                     <input type="tel" class="form-control custom-mainforminput @if($errors->get('insurance_telephone')) is-invalid @endif" name="insurance_telephone" id="insurance_telephone"
-                                           value="{{old('insurance_telephone')}}">
+                                           value="{{old('insurance_telephone')}}" data-inputmask='"mask": "(999) 999-9999"' data-mask>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <label>Email <span class="required">*</span></label>
