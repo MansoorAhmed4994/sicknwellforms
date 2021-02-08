@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+ 
     <title>Document</title>
 
     <link rel="stylesheet" href="{{ asset('public/theme-resources/css/bootstrap.min.css') }}" />
@@ -82,7 +82,7 @@
         <div class="qcm-form">
 
 
-            <<form method="post" action="{{route('MhstRegisterHomeSleepTest.update',$submission_id)}}" class="position-relative">
+            <form method="post" action="{{route('MhstRegisterHomeSleepTest.update',$submission_id)}}" class="position-relative"  enctype="multipart/form-data">
                 {{csrf_field()}} 
            
                     <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
@@ -99,7 +99,7 @@
                 @endif
 
 
-                    <div class="wizard-sec active ">
+                    <div class="wizard-sec active" id="tab-1">
                         <div class="top-section">
                             <h2>Sleep Test Registration</h2>
                         </div>
@@ -335,7 +335,7 @@
                         </div>
                     </div>
 
-                    <div class="wizard-sec">
+                    <div class="wizard-sec" id="tab-2">
                         <div class="form-group row mt-4">
                             <div class="col-12 col-md-6">
                                 <strong style="color: blue; font-size: 12pt; font-weight: bold">Payment options and availability of service. </strong>
@@ -580,31 +580,40 @@
                                                 </div>
 
 
-                                            </div>
+                                            </div> 
 
-                                            <div class="form-group row mt-4">
-                                                <div class="col-12 col-md-3">
-                                                    <label>Insurance Card Front Upload</label>
-                                                    <div class="padding-wrap">
-                                                        <input type="file"
-                                                               class="form-control custom-mainforminput @if($errors->get('front_card')) is-invalid @endif"
-                                                               name="front_card" id="front_card"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->front_card}} @else{{old('front_card')}}  @endif"  />
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="form-group row mt-4">
-                                                <div class="col-12 col-md-3">
-                                                    <label>Insurance Card Back Upload</label>
-                                                    <div class="padding-wrap">
-                                                        <input type="file"
-                                                               class="form-control custom-mainforminput @if($errors->get('back_card')) is-invalid @endif"
-                                                               name="back_card" id="back_card"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->back_card}} @else{{old('back_card')}}  @endif" />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="col-12 col-md-3" style="margin-right: 10px;">
+
+                                    <label>Card Front</label> 
+                                    
+                                    
+                                    <input type="hidden" class="form-control custom-mainforminput @if($errors->get('front_card')) is-invalid @endif" value="no" name="front_card" id="front_card"  />
+                                    
+                                    <div class="card" style="width: 18rem;">
+                                    <input type="file" id="front_card_image_upload" class="form-control custom-mainforminput @if($errors->get('front_card_image_upload')) is-invalid @endif" style="display:none" name="front_card_image_upload"   />
+                                        <img class="card-img-top" id="front_card_image" src="{{asset('manage/storage/'.$MhstRegiterHomeSleep->front_card)}}" alt="Card image cap">
+                                        <div class="card-body"> 
+                                            <button type="button" id="cancel_front_card" class="btn btn-danger">cancel</button>
+                                            <button type="button" id="edit_front_card" class="btn btn-warning">edit</button>
+                                        </div>
+                                    </div> 
+                                </div>
+ 
+                                <div class="col-12 col-md-3">
+                                    <label>Card Back</label>  
+                                    <input type="hidden"  class="form-control custom-mainforminput @if($errors->get('back_card')) is-invalid @endif" value="no" name="back_card" id="back_card" />
+                                    <div class="card" style="width: 18rem;">
+                                    
+                                    <input type="file" class="form-control custom-mainforminput @if($errors->get('back_card_image_upload')) is-invalid @endif" style="display:none" name="back_card_image_upload" id="back_card_image_upload"/>
+                                        <img class="card-img-top" id="back_card_image" src="{{asset('manage/storage/'.$MhstRegiterHomeSleep->back_card)}}" alt="Card image cap">
+                                        <div class="card-body"> 
+                                            <button type="button" id="cancel_back_card" class="btn btn-danger">cancel</button>
+                                            <button type="button" id="edit_back_card" class="btn btn-warning">edit</button>
+                                        </div>
+                                    </div> 
+
+                                </div>
                                         </div>
 
                                         <div class="form-section">
@@ -648,18 +657,20 @@
                                                 </div>
 
 
-                                            </div>
+                                            </div> 
 
-                                            <div class="form-group row mt-4">
-                                                <div class="col-12 col-md-3">
-                                                    <label>Upload Photo of Physician Script</label>
-                                                    <div class="padding-wrap">
-                                                        <input type="file"
-                                                               class="form-control custom-mainforminput @if($errors->get('phy_script')) is-invalid @endif"
-                                                               name="phy_script" id="phy_script"
-                                                               value="@if(isset($MhstRegiterHomeSleep)) {{$MhstRegiterHomeSleep->phy_script}} @else{{old('phy_script')}}  @endif" />
+                                            <div class="col-12 col-md-3">
+                                                <label>Upload Photo of Physician Script</label>  
+                                                <input type="hidden" class="form-control custom-mainforminput @if($errors->get('phy_script')) is-invalid @endif" value="no" name="phy_script" id="phy_script" />
+                                                <div class="card" style="width: 18rem;">
+                                                <input type="file" class="form-control custom-mainforminput @if($errors->get('phy_script_image_upload')) is-invalid @endif" style="display:none" name="phy_script_image_upload" id="phy_script_image_upload"/>
+                                                    <img class="card-img-top" id="phy_script_image" src="{{asset('manage/storage/'.$MhstRegiterHomeSleep->phy_script)}}" alt="Physician image cap">
+                                                    <div class="card-body"> 
+                                                        <button type="button" id="cancel_phy_image" class="btn btn-danger">cancel</button>
+                                                        <button type="button" id="edit_phy_image" class="btn btn-warning">edit</button>
                                                     </div>
-                                                </div>
+                                                </div> 
+
                                             </div>
 
                                         </div>
@@ -671,13 +682,15 @@
                         </div>
                         <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
+                                
+                            <button type="button" class="btn btn-warning mr-1" id="tab-2-back-btn">Back</button>
                                 <input type="submit" value="Submit & Continue"
                                        id="btnSaveSign3"
                                        class="submitbtn nextprevbtn next" style="background: red;" />
                             </div>
                         </div>
                     </div>
-                    <div class="wizard-sec">
+                    <div class="wizard-sec"  id="tab-3">
                         <div class="top-section">
                             <h2 style="color: blue" >Register for a Home Sleep Testing – Terms & Conditions</h2>
                         </div>
@@ -1178,6 +1191,7 @@
 
                         <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-warning mr-1" id="tab-3-back-btn">Back</button>
                                 <input type="submit" value="Almost Done, Submit & Continue To Last Step"
                                        id="btnSaveSign4"
                                        class="submitbtn nextprevbtn next" style="background: red;" />
@@ -1185,7 +1199,7 @@
                         </div>
                     </div>
 
-                    <div class="wizard-sec">
+                    <div class="wizard-sec"  id="tab-4">
                         <div style="text-align: center; font-size: 14pt">
                             <h3 style="color: blue" >STOP BANG - Questionnaire </h3>
                             <span style="color: #808080; font-size: 10pt;">(<strong>S</strong>noring - <strong>T</strong>ired - <strong>O</strong>bserved - <strong>P</strong>ressure - <strong>B</strong>ody - <strong>A</strong>ge - <strong>N</strong>eck - <strong>G</strong>ender)<br><br>
@@ -1450,6 +1464,8 @@
 
                         <div class="form-section last mb-5">
                             <div class="d-flex justify-content-center">
+                                
+                                <button type="button" class="btn btn-warning mr-1" id="tab-4-back-btn">Back</button>
                                 <input type="submit" value="Click Here To Submit & Finish"
                                        id="signaturebtn"
                                        class="submitbtn" style="background: red;" />
@@ -1524,6 +1540,43 @@
             }
         });
     });
+
+    
+
+    $("#edit_front_card").click(function(){
+            $("#front_card_image").hide();
+            $("#front_card_image_upload").show();
+            $("#front_card").val('yes');
+        });
+        $("#cancel_front_card").click(function(){
+            $("#front_card_image").show();
+            $("#front_card_image_upload").hide();
+            $("#front_card").val('no');
+        });
+
+        $("#edit_back_card").click(function(){
+            $("#back_card_image").hide();
+            $("#back_card_image_upload").show();
+            $("#back_card").val('yes');
+        });
+        $("#cancel_back_card").click(function(){
+            $("#back_card_image").show();
+            $("#back_card_image_upload").hide();
+            $("#back_card").val('no');
+        });
+
+        $("#edit_phy_image").click(function(){
+            $("#phy_script_image").hide();
+            $("#phy_script_image_upload").show();
+            $("#phy_script").val('yes');
+        });        
+        $("#cancel_phy_image").click(function(){
+            $("#phy_script_image").show();
+            $("#phy_script_image_upload").hide();
+            $("#phy_script").val('no');
+        });
+
+        
 </script>
 
 <script>
@@ -1560,10 +1613,6 @@
         sig1.signature('clear');
         $("#signature64").val('');
     });
-
-
-
-
 
     $('#signaturebtn').on('click', function(e)
     {
@@ -1611,7 +1660,20 @@
         });
     });
 
+    $('#tab-2-back-btn').click(function() {
+        $('#tab-2').removeClass('active');
+        $('#tab-1').addClass('active');
+    });
 
+    $('#tab-3-back-btn').click(function() {
+        $('#tab-3').removeClass('active');
+        $('#tab-2').addClass('active');
+    });
+
+    $('#tab-4-back-btn').click(function() {
+        $('#tab-4').removeClass('active');
+        $('#tab-3').addClass('active');
+    });
 
 </script>
 

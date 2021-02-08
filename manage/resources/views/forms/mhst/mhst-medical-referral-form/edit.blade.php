@@ -413,8 +413,6 @@
                                 <div class="col-12 col-md-3" style="margin-right: 10px;">
 
                                     <label>Insurance Card Front</label> 
-                                    <!-- <input type="hidden" class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value=" @if(isset($MhstMedicalReferralForm)) {{$MhstMedicalReferralForm->card_front}} @else{{old('card_front')}}  @endif" name="card_front" id="card_front"  />
-                                      -->
                                     <input type="hidden" class="form-control custom-mainforminput @if($errors->get('card_front')) is-invalid @endif" value="no" name="card_front" id="card_front"  />
                                     
                                     <div class="card" style="width: 18rem;">
@@ -442,7 +440,8 @@
                                     </div> 
 
                                 </div>
-                            </div></div>
+                            </div>
+                        </div>
                     </div>
 
 <hr>
@@ -711,6 +710,7 @@
 
                         </div>
                     </div>
+                    
                     <div class="col-12 col-md-12">
 
 

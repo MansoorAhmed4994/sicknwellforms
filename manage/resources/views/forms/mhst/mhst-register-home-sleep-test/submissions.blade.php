@@ -274,13 +274,7 @@
                                     <i class="fas fa-calendar-alt"></i>
                                     <span>Patient Minor</span>
                                 </div>
-                            </th> 
-                                                        <th>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>Parent or Guardian</span>
-                                </div>
-                            </th> 
+                            </th>  
                                                         <th>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-calendar-alt"></i>
@@ -624,12 +618,7 @@
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->is_patient_minor}}</span>
                                 </div>
-                            </td>  
-                            <td>
-                                <div class="d-flex align-items-center"> 
-                                    <span>{{ $row->parent_guardian}}</span>
-                                </div>
-                            </td>  
+                            </td>   
                             <td>
                                 <div class="d-flex align-items-center"> 
                                     <span>{{ $row->email_patient_terms}}</span>

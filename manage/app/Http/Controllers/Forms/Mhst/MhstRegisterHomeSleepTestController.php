@@ -235,9 +235,9 @@ class MhstRegisterHomeSleepTestController extends Controller
         
         $this->validate($request, $valiedation_from_array);
         
-        $front_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->front_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
-        $back_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->back_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
-        $phy_script = app('App\Http\Controllers\UploadImageController')->storage_upload($request->phy_script,'/app/public/forms/Mhst/MhstRegisterHomeSleepTestForm/');
+        $front_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->front_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepForm/FrontCard/');
+        $back_card = app('App\Http\Controllers\UploadImageController')->storage_upload($request->back_card,'/app/public/forms/Mhst/MhstRegisterHomeSleepForm/BackCard/');
+        $phy_script = app('App\Http\Controllers\UploadImageController')->storage_upload($request->phy_script,'/app/public/forms/Mhst/MhstRegisterHomeSleepForm/Physician/');
         $signature = app('App\Http\Controllers\SignaturePadController')->upload_signature($request->signature,'/app/public/forms/signatures/MhstRegiterHomeSleep/');
         
 
@@ -274,8 +274,7 @@ class MhstRegisterHomeSleepTestController extends Controller
         $register_home_sleep->phy_script = $phy_script;
         $register_home_sleep->name_patient_terms = request('name_patient_terms');
         $register_home_sleep->dob_patient_terms = request('dob_patient_terms');
-        $register_home_sleep->is_patient_minor = $is_patient_minor;
-        $register_home_sleep->parent_guardian = request('parent_guardian');
+        $register_home_sleep->is_patient_minor = $is_patient_minor; 
         $register_home_sleep->email_patient_terms = request('email_patient_terms');
         $register_home_sleep->patient_telephone_terms = request('patient_telephone_terms');
         $register_home_sleep->term_condition = request('term_condition');
@@ -298,7 +297,7 @@ class MhstRegisterHomeSleepTestController extends Controller
         $register_home_sleep->client_forms_id = request('client_forms_id');   
         $register_home_sleep->status = 'active';  
         $insert_status = $register_home_sleep->save();
-
+ 
 
         if($insert_status)
         {
@@ -361,23 +360,38 @@ class MhstRegisterHomeSleepTestController extends Controller
     {
         //dd($register_home_sleep);
         $is_patient_minor_validated = "nullable";
-
-        $is_patient_minor = "no";
-
+        $is_card_front_update ="nullable";
+        $is_card_back_update ="nullable";  
+        $front_card_image_path = "";
+        $back_card_image_path = "";
+        $is_patient_minor = "no"; 
         $pay_via_credit_card = "nullable";
-        $patient_name = "nullable";
-
-        $full_name = "nullable";
-
+        $patient_name = "nullable"; 
+        $full_name = "nullable"; 
         $signature_update = "nullable";
+        $is_signature_update ="nullable";
+        $is_physician_photo_updated = "nullable";
+        $physician_photo_path = "";
 
         //dd($full_name);
 
         if(request('signature_updated') == "yes")
+        { 
+            $is_signature_update = "required";  
+        }
+        if(request('card_front') == "yes")
         {
-        //echo 'working1';
-            $is_signature_update = "required"; 
-             
+            $is_card_front_update = "required"; 
+        }
+
+        if(request('card_back') == "yes")
+        {
+            $is_card_back_update = "required"; 
+        }
+
+        if(request('phy_script') == "yes")
+        {
+            $is_physician_photo_updated = "required"; 
         }
 
 
@@ -403,7 +417,7 @@ class MhstRegisterHomeSleepTestController extends Controller
                 'shipping_address' => 'required',
                 'shipping_city' => 'required',
                 'shipping_state' => 'required',
-                'shipping_zip' => 'required',  
+                'shipping_zip' => 'required', 
                 'dob' => 'required',
                 'gender' => 'required',
                 'name_patient_terms' => 'required',
@@ -441,8 +455,8 @@ class MhstRegisterHomeSleepTestController extends Controller
                 'secondary_insurance_name' => 'required',  
                 'member_id_2' => 'required',
                 'subcribers_name_2' => 'required',
-                'front_card' => 'required',
-                'back_card' => 'required',
+                'front_card_image_upload' => $is_card_front_update,
+                'back_card_image_upload' => $is_card_back_update, 
                 'physician_tel' => 'required',
                 'extension' => 'required',
                 'phy_script' => 'required',
@@ -463,7 +477,7 @@ class MhstRegisterHomeSleepTestController extends Controller
                 'patient_telephone_terms' => 'required',
                 'term_condition' => 'required',
                 'todate' => 'required',
-                'signature' => 'required',
+                'signature' => $is_signature_update,
                 'full_name_patient_terms' => 'required',  
                 'legal_signature' => 'required',
                 'name_questions' => 'required',
@@ -494,7 +508,7 @@ class MhstRegisterHomeSleepTestController extends Controller
                 'back_card' => 'required',
                 'physician_tel' => 'required',
                 'extension' => 'required',
-                'phy_script' => 'required',
+                'phy_script' => $is_physician_photo_updated,
                 'pay_via_credit_card' => 'required'
             ];
     
@@ -538,12 +552,47 @@ class MhstRegisterHomeSleepTestController extends Controller
         
         $this->validate($request, $valiedation_from_array);
 
+        if(request('front_card') == "yes")
+        {
+            $front_card_image_path = app('App\Http\Controllers\UploadImageController')->update_image_upload($request->front_card_image_upload,'/app/public/forms/Mhst/MhstRegisterHomeSleepForm/FrontCard/');            
+            //dd('Yes: '.$front_card_image_path);
+        }
+        else
+        {
+            $front_card_image_path = $register_home_sleep->front_card;
+            //dd('no: '.$front_card_image_path);
+        }
+        //dd($front_card_image_path);
+        if(request('back_card') == "yes")
+        {
+            $back_card_image_path = app('App\Http\Controllers\UploadImageController')->update_image_upload($request->back_card_image_upload,'/app/public/forms/Mhst/MhstRegisterHomeSleepForm/BackCard/');
+            //dd('yes: '.$back_card_image_path);
+        }
+        else
+        {
+            $back_card_image_path = $register_home_sleep->back_card;
+            //dd('No: '.$back_card_image_path);
+        }
+        
+        if(request('phy_script') == "yes")
+        {
+            
+            $physician_photo_path = app('App\Http\Controllers\UploadImageController')->update_image_upload($request->phy_script_image_upload,'/app/public/forms/Mhst/MhstRegisterHomeSleepForm/Physician/');
+            //dd($physician_photo_path);
+        }
+        else
+        {
+            $physician_photo_path = $register_home_sleep->phy_script;
+        } 
+
         $signature = $request->signature_src;
         if(request('signature_updated') == "yes")
+        { 
+            $signature = app('App\Http\Controllers\SignaturePadController')->update_signature($request->signature,$signature);
+        }
+        else
         {
-        
-            $signature = app('App\Http\Controllers\SignaturePadController')->update($request->signature,$signature);
-             
+            $signature = $register_home_sleep->signature;
         }
         
         $register_home_sleep->full_name = request('full_name');
@@ -570,16 +619,15 @@ class MhstRegisterHomeSleepTestController extends Controller
         $register_home_sleep->secondary_insurance_name = request('secondary_insurance_name');
         $register_home_sleep->member_id_2 = request('member_id_2');
         $register_home_sleep->subcribers_name_2 = request('subcribers_name_2');
-        $register_home_sleep->front_card = request('front_card');
-        $register_home_sleep->back_card = request('back_card');
+        $register_home_sleep->front_card = $front_card_image_path;
+        $register_home_sleep->back_card = $back_card_image_path;
         $register_home_sleep->patient_physician = request('patient_physician');
         $register_home_sleep->physician_tel = request('physician_tel');
         $register_home_sleep->extension = request('extension');
-        $register_home_sleep->phy_script = request('phy_script');
+        $register_home_sleep->phy_script = $physician_photo_path;
         $register_home_sleep->name_patient_terms = request('name_patient_terms');
         $register_home_sleep->dob_patient_terms = request('dob_patient_terms');
-        $register_home_sleep->is_patient_minor = $is_patient_minor;
-        $register_home_sleep->parent_guardian = request('parent_guardian');
+        $register_home_sleep->is_patient_minor = $is_patient_minor; 
         $register_home_sleep->email_patient_terms = request('email_patient_terms');
         $register_home_sleep->patient_telephone_terms = request('patient_telephone_terms');
         $register_home_sleep->term_condition = request('term_condition');
