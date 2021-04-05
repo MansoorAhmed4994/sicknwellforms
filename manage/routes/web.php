@@ -59,8 +59,12 @@ Route::get('/OccupationAlHealthWorkplacePhysicalsDrugScreen/{clien_form_id}', 'O
 Route::post('/OccupationAlHealthWorkplacePhysicalsDrugScreen/create', 'OccupationAlHealthWorkplacePhysicalsDrugScreenController@store')->name('OccupationAlHealthWorkplacePhysicalsDrugScreen.create');
 
 //QcmContactUsController CRUD 
-Route::get('/QcmContactUs/{clien_form_id}', 'QcmContactUsController@create')->name('QcmContactUs');
-Route::post('/QcmContactUs/create', 'QcmContactUsController@store')->name('QcmContactUs.create');
+Route::get('/QcmContactUs/{clien_form_id}', 'Forms\Qcm\QcmContactUsController@create')->name('QcmContactUs');
+Route::post('/QcmContactUs/create', 'Forms\Qcm\QcmContactUsController@store')->name('QcmContactUs.create');
+Route::get('/QcmContactUs/edit/{submission_id}', 'Forms\Qcm\QcmContactUsController@edit')->name('QcmContactUs.edit');
+Route::post('/QcmContactUs/update/{Qcm_contact_us_Table}', 'Forms\Qcm\QcmContactUsController@update')->name('QcmContactUs.update');
+Route::get('/QcmContactUs/create/meeting/{id}', 'Forms\Qcm\QcmContactUsController@CreateZoomMeeting')->name('QcmContactUs.create.zoom.meeting'); 
+
 
 //MhstRegisterHomeSleepTestController CRUD 
 Route::get('/MhstRegisterHomeSleepTest/{clien_form_id}', 'Forms\Mhst\MhstRegisterHomeSleepTestController@create')->name('MhstRegisterHomeSleepTest');
@@ -184,6 +188,12 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //QcmTelemedicineForm Auth CRUD
     Route::get('/client/QcmTelemedicineForm/submissions/{clien_form_id}','QcmTelemedicineFormController@submissions')->name('client.QcmTelemedicineForm.submissions'); 
     
+    //QcmTelemedicineForm Auth CRUD
+    Route::get('/client/QcmContactUs/submissions/{clien_form_id}','Forms\Qcm\QcmContactUsController@submissions')->name('client.QcmContactUs.submissions'); 
+    
+
+
+
     //InOfficeAppointmentsController Auth CRUD
     Route::get('/client/InOfficeAppointments/{clien_form_id}','Forms\Pedim\InOfficeAppointmentsController@submissions')->name('client.InOfficeAppointments.submissions');
 
@@ -193,26 +203,21 @@ Route::group(['middleware' => ['auth:clients']],function(){
     
     //PedimConsentForRapidCovid19TestingController Auth CRUD
     Route::get('/client/PedimConsentForRapidCovid19Testing/{clien_form_id}','Forms\Pedim\PedimConsentForRapidCovid19TestingController@submissions')->name('client.PedimConsentForRapidCovid19Testing.submissions');
-
-    //MhstMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
-    Route::get('/client/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
-    
-    
-
+  
     //PedimTelemedicineController Auth CRUD
     Route::get('/client/PedimTelemedicine/{clien_form_id}','Forms\Pedim\PedimTelemedicineController@submissions')->name('client.PedimTelemedicine.submissions');
-
 
     //PedimAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/client/PedimAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.PedimAdultPrivacyPolicyAndConsentForTreatment.submissions');
 
     //PedimMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
-
     Route::get('/client/PedimMinorPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.PedimMinorPrivacyPolicyAndConsentForTreatment.submissions');
+
+
+
 
     //MhstAdultPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/client/MhstAdultPrivacyPolicyAndConsentForTreatment/submissions/{clien_form_id}','Forms\Mhst\MhstAdultPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstAdultPrivacyPolicyAndConsentForTreatment.submissions');
-
 
     //MhstRegisterHomeSleepTestController Auth CRUD
     Route::get('/client/MhstRegisterHomeSleepTest/submissions/{clien_form_id}','Forms\Mhst\MhstRegisterHomeSleepTestController@submissions')->name('client.MhstRegisterHomeSleepTest.submissions');
@@ -220,6 +225,9 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //MhstMedicalReferralFormController Auth CRUD
     Route::get('/client/MhstMedicalReferralForm/submissions/{clien_form_id}','Forms\Mhst\MhstMedicalReferralFormController@submissions')->name('client.MhstMedicalReferralForm.submissions');
 
+    //MhstMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
+    Route::get('/client/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
+    
 
     
     //Embed Link
@@ -279,6 +287,9 @@ Route::group(['middleware' => ['auth:web']],function(){
     
     //QcmTelemedicineForm Auth CRUD
     Route::get('/QcmTelemedicineForm/submissions/{clien_form_id}', 'QcmTelemedicineFormController@submissions')->name('QcmTelemedicineForm.submissions');  
+    
+    //QcmTelemedicineForm Auth CRUD
+    Route::get('/QcmContactUs/submissions/{clien_form_id}', 'QcmContactUsController@submissions')->name('QcmContactUs.submissions');  
     
     //QcmTelemedicineForm Auth CRUD
     Route::get('/InOfficeAppointments/submissions/{clien_form_id}', 'Forms\Pedim\InOfficeAppointmentsController@submissions')->name('InOfficeAppointments.submissions'); 

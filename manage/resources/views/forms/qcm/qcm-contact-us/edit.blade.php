@@ -68,10 +68,23 @@
         </style>
         <div class="qcm-form">
 
+ 
+            <form method="post" action="{{route('QcmContactUs.update',$submission_id)}}" class="position-relative">
+            {{csrf_field()}}
 
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
-
+                <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+                
+                <input type="hidden" value="mhst_register_home_sleep_tests" id="table_name" name="table_name">
                 <div class="custom-wizard">
+
+                    @if(count($errors) > 0)
+                    <div class="alert alert-danger my-2" style="font-size: 15px">
+                        <i class="fas fa-exclamation-triangle mr-2"></i><span>Please fill the Required
+                            fields</span>
+                    </div>
+                    @endif
+
+
                     <div class="top-section">
                         <h2>Contact Us</h2>
                     </div>
@@ -94,10 +107,7 @@
                                         <label>First Name <span class="required">*</span></label>
                                     </div>
                                     <div class="padding-wrap">
-                                        <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="first_name" id="first_name"
-                                               value="" />
+                                        <input type="text" class="form-control custom-mainforminput @if($errors->get('first_name')) is-invalid @endif" value="@if(isset($QcmContactForms)) {{$QcmContactForms->first_name}} @else{{old('first_name')}}  @endif" name="first_name" id="first_name"/>
                                     </div>
                                 </div>
 
@@ -114,9 +124,7 @@
                                     </div>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="last_name" id="last_name"
-                                               value="" />
+                                               class="form-control custom-mainforminput  @if($errors->get('last_name')) is-invalid @endif" value="@if(isset($QcmContactForms)) {{$QcmContactForms->last_name}} @else{{old('last_name')}}  @endif" name="last_name" id="last_name"/>
                                     </div>
                                 </div>
                             </div>
@@ -132,9 +140,7 @@
                                     <label>Phone Number <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="telephone" id="telephone" value=""
-                                               data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                               class="form-control custom-mainforminput  @if($errors->get('phone_number')) is-invalid @endif" value="@if(isset($QcmContactForms)) {{$QcmContactForms->phone_number}} @else{{old('phone_number')}}  @endif" name="phone_number" id="phone_number" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>
                             </div>
@@ -148,8 +154,7 @@
                                     <label>Your Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput "
-                                               value="" name="email" id="email" />
+                                               class="form-control custom-mainforminput  @if($errors->get('email')) is-invalid @endif" value="@if(isset($QcmContactForms)) {{$QcmContactForms->email}} @else{{old('email')}}  @endif" name="email" id="email" />
                                     </div>
                                 </div>
 
@@ -161,8 +166,8 @@
                             <label>Comment Box</label>
                             <textarea
                                     class="form-control custom-mainforminput "
-                                    rows="4" name="comment"
-                                    id="comment"></textarea>
+                                    rows="4" name="comment_box"
+                                    id="comment_box">@if(isset($QcmContactForms)) {{$QcmContactForms->comment_box}} @else{{old('comment_box')}}  @endif</textarea>
                         </div>
                     </div>
 

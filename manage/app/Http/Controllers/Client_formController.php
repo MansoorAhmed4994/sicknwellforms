@@ -75,7 +75,7 @@ class client_formController extends Controller
             'time_before_appointment' => 'required'
         
         ]);
-
+            
         $ZoomClientApi = new Client(); 
         //  $response = $client->post('https://sicknwell.desenador.com/api/test123', ['firstname'=> 'faizan' , 'lastname'=>'pass', 'email'=>'faizanzaheer747@gmail.com', 'pass' => '123']);
         
@@ -86,7 +86,7 @@ class client_formController extends Controller
         //     'Accept' => 'application/json',
         //     ],
         // ]);
-        
+         
         
         $response = $ZoomClientApi->request('POST', 'https://sicknwell.desenador.com/api/test123', [
             'headers' => [
@@ -104,7 +104,7 @@ class client_formController extends Controller
 
         
         $response = json_decode($response->getBody(),true);
-        
+        //dd();
         if($response['code'] == '201')
         {
             //dd();

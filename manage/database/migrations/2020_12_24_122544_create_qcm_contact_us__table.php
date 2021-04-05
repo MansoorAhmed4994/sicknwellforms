@@ -13,13 +13,13 @@ class CreateQcmContactUsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qcm_contact_us', function (Blueprint $table) {
+        Schema::create('Qcm_contact_forms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('first_name');
             $table->text('last_name');
             $table->text('phone_number');
             $table->text('email');
-            $table->text('comment_box');
+            $table->text('comment_box')->nullable(true);
             $table->bigInteger('client_forms_id');
             $table->timestamps();
             $table->bigInteger('created_by');
@@ -35,7 +35,7 @@ class CreateQcmContactUsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qcm_contact_us');
+        Schema::dropIfExists('Qcm_contact_forms');
         
     }
 }
