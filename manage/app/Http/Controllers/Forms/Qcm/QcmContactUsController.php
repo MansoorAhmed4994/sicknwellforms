@@ -103,7 +103,7 @@ class QcmContactUsController extends Controller
         //dd($submissions);
         $client_id = Client_forms::all()->where('id', $client_form_id)->first()->clients_id; 
          
-        return view('forms.Qcm.Qcm-contact-us.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
+        return view('forms.qcm.qcm-contact-us.submissions')->with(array('submissions'=>$submissions,'client_id'=>$client_id)); 
     }
 
     

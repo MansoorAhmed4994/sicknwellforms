@@ -1,10 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Forms\Pedim;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;     
+use App\Models\available_doctor; 
+use App\Models\appointment_schedule;
+use App\Models\appointment_limits; 
+use App\Models\Clients;
+use App\Models\Client_forms;
+use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\File;
+use Auth;
 
-class ConsentForTreatmentOfAMinorController extends Controller
+class PedimConsentForTreatmentOfAMinorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +35,7 @@ class ConsentForTreatmentOfAMinorController extends Controller
     public function create()
     {
         //
-        return view('forms.consent-for-treatment-of-a-minor.create');
+        return view('forms.pedim.pedim-consent-for-treatment-of-a-minor.create');
     }
 
     /**
@@ -36,7 +47,7 @@ class ConsentForTreatmentOfAMinorController extends Controller
     public function store(Request $request)
     {
         //
-    }
+    } 
 
     /**
      * Display the specified resource.

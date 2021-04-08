@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class OccupationAlHealthWorkplacePhysicalsDrugScreenController extends Controller
+class QcmOccupationAlHealthWorkplacePhysicalsDrugScreenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class OccupationAlHealthWorkplacePhysicalsDrugScreenController extends Controlle
      */
     public function create()
     {
-        return view('forms.occupation-al-health-place-physical-drug-screen.create');
+        return view('forms.qcm.qcm-occupation-al-health-place-physical-drug-screen.create');
     }
 
     /**

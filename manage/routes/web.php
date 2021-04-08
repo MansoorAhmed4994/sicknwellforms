@@ -55,8 +55,8 @@ Route::get('/OccupationAlHealthSafeWorkerProgram/{clien_form_id}', 'OccupationAl
 Route::post('/OccupationAlHealthSafeWorkerProgram/create', 'OccupationAlHealthSafeWorkerProgramController@store')->name('OccupationAlHealthSafeWorkerProgram.create');
 
 //OccupationAlHealthWorkplacePhysicalsDrugScreenController CRUD
-Route::get('/OccupationAlHealthWorkplacePhysicalsDrugScreen/{clien_form_id}', 'OccupationAlHealthWorkplacePhysicalsDrugScreenController@create')->name('OccupationAlHealthWorkplacePhysicalsDrugScreen');
-Route::post('/OccupationAlHealthWorkplacePhysicalsDrugScreen/create', 'OccupationAlHealthWorkplacePhysicalsDrugScreenController@store')->name('OccupationAlHealthWorkplacePhysicalsDrugScreen.create');
+Route::get('/QcmOccupationAlHealthWorkplacePhysicalsDrugScreen/{clien_form_id}', 'QcmOccupationAlHealthWorkplacePhysicalsDrugScreenController@create')->name('QcmOccupationAlHealthWorkplacePhysicalsDrugScreen');
+Route::post('/QcmOccupationAlHealthWorkplacePhysicalsDrugScreen/create', 'QcmOccupationAlHealthWorkplacePhysicalsDrugScreenController@store')->name('QcmOccupationAlHealthWorkplacePhysicalsDrugScreen.create');
 
 //QcmContactUsController CRUD 
 Route::get('/QcmContactUs/{clien_form_id}', 'Forms\Qcm\QcmContactUsController@create')->name('QcmContactUs');
@@ -129,7 +129,11 @@ Route::post('/PedimFeedBackForm/create', 'Forms\Pedim\PedimFeedBackFormControlle
 Route::get('/PedimFeedBackForm/edit/{submission_id}', 'Forms\Pedim\PedimFeedBackFormController@edit')->name('PedimFeedBackForm.edit');
 Route::post('/PedimFeedBackForm/update/{pedim_feed_backs}', 'Forms\Pedim\PedimFeedBackFormController@update')->name('PedimFeedBackForm.update');
 Route::get('/PedimFeedBackForm/create/meeting/{id}', 'Forms\Pedim\PedimFeedBackFormController@CreateZoomMeeting')->name('PedimFeedBackForm.create.zoom.meeting'); 
- 
+
+//PedimConsentForTreatmentOfAMinor CRUD
+Route::get('/PedimConsentForTreatmentOfAMinor/{clien_form_id}', 'Forms\Pedim\PedimConsentForTreatmentOfAMinorController@create')->name('PedimConsentForTreatmentOfAMinor');
+Route::post('/PedimConsentForTreatmentOfAMinor/create', 'Forms\Pedim\PedimConsentForTreatmentOfAMinorController@store')->name('PedimConsentForTreatmentOfAMinor.create');
+
 //ConsentForRapidCovid19Testing CRUD
 Route::get('/PedimConsentForRapidCovid19Testing/{clien_form_id}', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@create')->name('PedimConsentForRapidCovid19Testing');
 Route::post('/PedimConsentForRapidCovid19Testing/create', 'Forms\Pedim\PedimConsentForRapidCovid19TestingController@store')->name('PedimConsentForRapidCovid19Testing.create');
@@ -156,6 +160,8 @@ Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/create', 'Forms\Pedi
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/edit/{submission_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@edit')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.edit');
 Route::post('/PedimMinorPrivacyPolicyAndConsentForTreatment/update/{Pedim_minor_data_id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@update')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.update');
 Route::get('/PedimMinorPrivacyPolicyAndConsentForTreatment/create/meeting/{id}', 'Forms\Pedim\PedimMinorPrivacyPolicyAndConsentForTreatmentController@CreateZoomMeeting')->name('PedimMinorPrivacyPolicyAndConsentForTreatment.create.zoom.meeting'); 
+
+
 // SignaturePadController
 Route::post('signaturepad','SignaturePadController@upload')->name('signaturepad.upload');
 
