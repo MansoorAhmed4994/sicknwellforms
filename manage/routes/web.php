@@ -50,10 +50,6 @@ Route::post('/InOfficeAppointments/update/{submission_id}', 'Forms\Pedim\InOffic
 Route::get('/InOfficeAppointments/create/meeting/{id}', 'Forms\Pedim\InOfficeAppointmentsController@CreateZoomMeeting')->name('InOfficeAppointments.create.zoom.meeting'); 
 
 
-//OccupationAlHealthSafeWorkerProgramController CRUD 
-Route::get('/OccupationAlHealthSafeWorkerProgram/{clien_form_id}', 'OccupationAlHealthSafeWorkerProgramController@create')->name('OccupationAlHealthSafeWorkerProgram');
-Route::post('/OccupationAlHealthSafeWorkerProgram/create', 'OccupationAlHealthSafeWorkerProgramController@store')->name('OccupationAlHealthSafeWorkerProgram.create');
-
 //OccupationAlHealthWorkplacePhysicalsDrugScreenController CRUD
 Route::get('/QcmOccupationAlHealthWorkplacePhysicalsDrugScreen/{clien_form_id}', 'QcmOccupationAlHealthWorkplacePhysicalsDrugScreenController@create')->name('QcmOccupationAlHealthWorkplacePhysicalsDrugScreen');
 Route::post('/QcmOccupationAlHealthWorkplacePhysicalsDrugScreen/create', 'QcmOccupationAlHealthWorkplacePhysicalsDrugScreenController@store')->name('QcmOccupationAlHealthWorkplacePhysicalsDrugScreen.create');
@@ -64,6 +60,14 @@ Route::post('/QcmContactUs/create', 'Forms\Qcm\QcmContactUsController@store')->n
 Route::get('/QcmContactUs/edit/{submission_id}', 'Forms\Qcm\QcmContactUsController@edit')->name('QcmContactUs.edit');
 Route::post('/QcmContactUs/update/{Qcm_contact_us_Table}', 'Forms\Qcm\QcmContactUsController@update')->name('QcmContactUs.update');
 Route::get('/QcmContactUs/create/meeting/{id}', 'Forms\Qcm\QcmContactUsController@CreateZoomMeeting')->name('QcmContactUs.create.zoom.meeting'); 
+
+
+//OccupationAlHealthSafeWorkerProgramController CRUD 
+Route::get('/QcmOccupationAlHealthSafeWorkerProgram/{clien_form_id}', 'Forms\Qcm\QcmOccupationAlHealthSafeWorkerProgramController@create')->name('QcmOccupationAlHealthSafeWorkerProgram');
+Route::post('/QcmOccupationAlHealthSafeWorkerProgram/create', 'Forms\Qcm\QcmOccupationAlHealthSafeWorkerProgramController@store')->name('QcmOccupationAlHealthSafeWorkerProgram.create');
+Route::get('/QcmOccupationAlHealthSafeWorkerProgram/edit/{submission_id}', 'Forms\Qcm\QcmOccupationAlHealthSafeWorkerProgramController@edit')->name('QcmOccupationAlHealthSafeWorkerProgram.edit');
+Route::post('/QcmOccupationAlHealthSafeWorkerProgram/update/{Qcm_OHSWP_table}', 'Forms\Qcm\QcmOccupationAlHealthSafeWorkerProgramController@update')->name('QcmOccupationAlHealthSafeWorkerProgram.update');
+Route::get('/QcmOccupationAlHealthSafeWorkerProgram/create/meeting/{id}', 'Forms\Qcm\QcmOccupationAlHealthSafeWorkerProgramController@CreateZoomMeeting')->name('QcmOccupationAlHealthSafeWorkerProgram.create.zoom.meeting'); 
 
 
 //MhstRegisterHomeSleepTestController CRUD 
@@ -197,7 +201,9 @@ Route::group(['middleware' => ['auth:clients']],function(){
     //QcmTelemedicineForm Auth CRUD
     Route::get('/client/QcmContactUs/submissions/{clien_form_id}','Forms\Qcm\QcmContactUsController@submissions')->name('client.QcmContactUs.submissions'); 
     
-
+    //QcmOccupationAlHealthSafeWorkerProgram Auth CRUD
+    Route::get('/client/QcmOccupationAlHealthSafeWorkerProgram/submissions/{clien_form_id}','Forms\Qcm\QcmOccupationAlHealthSafeWorkerProgramController@submissions')->name('client.QcmOccupationAlHealthSafeWorkerProgram.submissions');
+    
 
 
     //InOfficeAppointmentsController Auth CRUD
@@ -233,6 +239,7 @@ Route::group(['middleware' => ['auth:clients']],function(){
 
     //MhstMinorPrivacyPolicyAndConsentForTreatmentController Auth CRUD
     Route::get('/client/MhstMinorPrivacyPolicyAndConsentForTreatment/{clien_form_id}','Forms\Mhst\MhstMinorPrivacyPolicyAndConsentForTreatmentController@submissions')->name('client.MhstMinorPrivacyPolicyAndConsentForTreatment.submissions');
+    
     
 
     
@@ -298,7 +305,10 @@ Route::group(['middleware' => ['auth:web']],function(){
     Route::get('/QcmContactUs/submissions/{clien_form_id}', 'QcmContactUsController@submissions')->name('QcmContactUs.submissions');  
     
     //QcmTelemedicineForm Auth CRUD
-    Route::get('/InOfficeAppointments/submissions/{clien_form_id}', 'Forms\Pedim\InOfficeAppointmentsController@submissions')->name('InOfficeAppointments.submissions'); 
+    Route::get('/InOfficeAppointments/submissions/{clien_form_id}', 'Forms\Pedim\InOfficeAppointmentsController@submissions')->name('InOfficeAppointments.submissions');
+    
+    //QcmTelemedicineForm Auth CRUD
+    Route::get('/QcmOccupationAlHealthSafeWorkerProgram/submissions/{clien_form_id}', 'QcmOccupationAlHealthSafeWorkerProgramController@submissions')->name('QcmOccupationAlHealthSafeWorkerProgram.submissions');   
     
 
     

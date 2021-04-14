@@ -179,7 +179,7 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
             'witness_signature' => $is_witness_signature_update,
             'witness_name' => 'required',  
             'witness_today_date' => 'required'
-
+ 
         ];
 
         
@@ -190,13 +190,13 @@ class PedimAdultPrivacyPolicyAndConsentForTreatmentController extends Controller
         if(request('patient_signature_updated') == "yes")
         {
         
-            $patient_signature = app('App\Http\Controllers\SignaturePadController')->update($request->patient_signature,$patient_signature);
+            $patient_signature = app('App\Http\Controllers\SignaturePadController')->update_signature($request->patient_signature,$patient_signature);
              
         }
         if(request('witness_signature_updated') == "yes")
         {
         
-            $witness_signature = app('App\Http\Controllers\SignaturePadController')->update($request->witness_signature,$witness_signature);
+            $witness_signature = app('App\Http\Controllers\SignaturePadController')->update_signature($request->witness_signature,$witness_signature);
              
         }
  

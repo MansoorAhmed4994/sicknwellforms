@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+ 
 <head>
     <title>{{ config('app.name', 'SICKNWELL') }}</title>
 
@@ -62,7 +62,7 @@
     </script>
 </head>
 
-<body>
+<body> 
 
 <div class="wrapper d-flex flex-column">
     <main class="flex-1 d-flex">
@@ -72,11 +72,24 @@
             }
         </style>
         <div class="qcm-form">
+       
 
-
-            <form method="post" action="http://sicknwellforms.desenador.com/QcmTelemedicineForm/create" class="position-relative">
-
+        <form method="post" action="{{route('QcmOccupationAlHealthSafeWorkerProgram.update',$submission_id)}}" class="position-relative">
+                {{csrf_field()}}
+                <input type="hidden" value="{{$client_form_id}}" id="client_forms_id" name="client_forms_id">
+                <input type="hidden" value="qcm_occupational_health_safe_worker_programs" id="table_name" name="table_name">
                 <div class="custom-wizard">
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger my-2" style="font-size: 15px">
+                            <i class="fas fa-exclamation-triangle mr-2"></i><span>Please fill the Required
+                                fields</span>
+                        </div>
+                    @endif
+                    @if(session()->has('success'))
+                        <center><div class='alert alert-success custom-alert'>
+                            <strong></strong>{{session()->get('success')}}         
+                        </div></center>
+                    @endif 
                     <div class="top-section">
                         <h2>Contact Us</h2>
                     </div>
@@ -87,26 +100,23 @@
                             <div class="row no-gutters">
                                 <div class="col-12 col-md-4">
                                     <div class="row no-gutters">
-                                        <label>First Name <span class="required">*</span></label>
-                                    </div>
+                                        <label>First Name <span class="required" >*</span></label>
+                                    </div> 
                                     <div class="padding-wrap">
-                                        <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="first_name" id="first_name"
-                                               value="" />
+                                        <input type="text" class="form-control custom-mainforminput   @if($errors->get('first_name')) is-invalid @endif" value="@if(isset($QcmOccupationAlHealthSafeWorkerProgram)) {{$QcmOccupationAlHealthSafeWorkerProgram->first_name}} @else{{old('first_name')}}  @endif" name="first_name" id="first_name" />
                                     </div>
                                 </div>
 
-
+ 
                                 <div class="col-12 col-md-4">
                                     <div class="row no-gutters">
                                         <label>Last Name <span class="required">*</span></label>
                                     </div>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               name="patient_last_name" id="patient_last_name"
-                                               value="" />
+                                               class="form-control custom-mainforminput @if($errors->get('last_name')) is-invalid @endif" value="@if(isset($QcmOccupationAlHealthSafeWorkerProgram)) {{$QcmOccupationAlHealthSafeWorkerProgram->last_name}} @else{{old('last_name')}}  @endif"
+                                               name="last_name" id="last_name"
+                                                />
 
 
                                     </div>
@@ -123,8 +133,8 @@
                                     <label>Email <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="email"
-                                               class="form-control custom-mainforminput "
-                                               value="" name="email" id="email" />
+                                               class="form-control custom-mainforminput @if($errors->get('email')) is-invalid @endif" value="@if(isset($QcmOccupationAlHealthSafeWorkerProgram)) {{$QcmOccupationAlHealthSafeWorkerProgram->email}} @else{{old('email')}}  @endif"
+                                                 name="email" id="email" />
                                     </div>
                                 </div>
 
@@ -132,8 +142,8 @@
                                     <label>Telephone <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="tel"
-                                               class="form-control custom-mainforminput "
-                                               name="telephone" id="telephone" value=""
+                                               class="form-control custom-mainforminput @if($errors->get('telephone')) is-invalid @endif" value="@if(isset($QcmOccupationAlHealthSafeWorkerProgram)) {{$QcmOccupationAlHealthSafeWorkerProgram->telephone}} @else{{old('telephone')}}  @endif"
+                                               name="telephone" id="telephone"  
                                                data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                 </div>
@@ -148,8 +158,8 @@
                                     <label>Company Name <span class="required">*</span></label>
                                     <div class="padding-wrap">
                                         <input type="text"
-                                               class="form-control custom-mainforminput "
-                                               value="" name="companyname" id="companyname" />
+                                               class="form-control custom-mainforminput @if($errors->get('company_name')) is-invalid @endif" value="@if(isset($QcmOccupationAlHealthSafeWorkerProgram)) {{$QcmOccupationAlHealthSafeWorkerProgram->company_name}} @else{{old('company_name')}}  @endif"
+                                                 name="company_name" id="company_name" />
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +169,7 @@
                         <div class="col-12 col-md-6">
                             <label>Message<span class="required">*</span></label>
                             <textarea
-                                    class="form-control custom-mainforminput "
+                                    class="form-control custom-mainforminput @if($errors->get('message')) is-invalid @endif" 
                                     rows="4" name="message"
                                     id="message"></textarea>
                         </div>

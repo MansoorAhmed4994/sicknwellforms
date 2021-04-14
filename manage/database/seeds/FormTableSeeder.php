@@ -126,7 +126,7 @@ class FormTableSeeder extends Seeder
 
         Form::create([
                         
-            'form_name' => 'OccupationAlHealthSafeWorkerProgram',
+            'form_name' => 'QcmOccupationAlHealthSafeWorkerProgram',
             'title' => 'OccupationAl Health Safe Worker Program',
             'sub_title' => '',
             'fields_count' => '0',
@@ -140,7 +140,7 @@ class FormTableSeeder extends Seeder
 
         Form::create([
                         
-            'form_name' => 'OccupationAlHealthWorkplacePhysicalsDrugScreen',
+            'form_name' => 'QcmOccupationAlHealthWorkplacePhysicalsDrugScreen',
             'title' => 'Occupation Al Health Workplace Physicals Drug Scre...',
             'sub_title' => '',
             'fields_count' => '0',

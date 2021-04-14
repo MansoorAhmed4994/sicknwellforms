@@ -171,8 +171,8 @@ class PedimConsentForRapidCovid19TestingController extends Controller
         $sign_responsible_party = $request->sign_responsible_party_src;
         if(request('sign_responsible_party_updated') == "yes")
         {
-        
-            $patient_signature = app('App\Http\Controllers\SignaturePadController')->update($request->sign_responsible_party,$sign_responsible_party);
+   
+            $patient_signature = app('App\Http\Controllers\SignaturePadController')->update_signature($request->sign_responsible_party,$sign_responsible_party);
              
         }
     
@@ -208,17 +208,6 @@ class PedimConsentForRapidCovid19TestingController extends Controller
             return redirect()->back();
 
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function CreateZoomMeeting($id)

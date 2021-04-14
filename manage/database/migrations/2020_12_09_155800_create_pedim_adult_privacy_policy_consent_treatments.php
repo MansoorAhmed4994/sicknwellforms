@@ -17,7 +17,7 @@ class CreatePedimAdultPrivacyPolicyConsentTreatments extends Migration
             $table->bigIncrements('id');
             $table->text('patient_name');
             $table->string('email');
-            $table->bigInteger('telephone');
+            $table->string('telephone');
             $table->date('dob');
             $table->text('patient_signature');
             $table->date('patients_today_date');

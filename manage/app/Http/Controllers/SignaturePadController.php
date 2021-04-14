@@ -98,4 +98,29 @@ class SignaturePadController extends Controller
 	    return $file_base_path;
 	    //return back()->with('success', 'success Full upload signature');
     }
+	
+
+	
+    public function update($signature,$file_base_path)
+    {  
+	   
+		$folderPath = storage_path('/');
+
+	    $image_parts = explode(";base64,", $signature);
+		
+	    $image_type_aux = explode("image/", $image_parts[0]);
+		
+	    $image_type = $image_type_aux[1];
+		
+	    $image_base64 = base64_decode($image_parts[1]); 
+		   
+
+		$file = $folderPath.$file_base_path;
+		//dd($file);
+	    //$file = 'file:///C:/xampp/htdocs/sicknwellforms/public/theme-resources/forms/signatures/'. uniqid() . '.'.$image_type;
+		file_put_contents($file, $image_base64); 
+		
+	    return $file_base_path;
+	    //return back()->with('success', 'success Full upload signature');
+    }
 }

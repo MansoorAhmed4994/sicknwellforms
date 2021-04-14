@@ -20,7 +20,7 @@ class CreateQcmOccupationalHealthSafeWorkerProgramsTable extends Migration
             $table->text('email');
             $table->text('telephone');
             $table->text('company_name');
-            $table->text('message');
+            $table->text('message')->nullable(true);
             $table->bigInteger('client_forms_id');
             $table->timestamps();
             $table->bigInteger('created_by');
