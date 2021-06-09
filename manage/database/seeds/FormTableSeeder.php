@@ -276,7 +276,24 @@ class FormTableSeeder extends Seeder
             'updated_by' => '0',
             'status' => 'Active',
 
+        ]); 
+
+        Form::create([
+
+            'form_name' => 'PedimAppointmentRequestNewPatient',
+            'title' => 'Pedim Request Appointment New Patient',
+            'sub_title' => '',
+            'fields_count' => '0',
+            'form_link' => 'PedimAppointmentRequestNewPatient',
+            'image_path' => '',
+            'created_by' => '0',
+            'updated_by' => '0',
+            'status' => 'Active',
+
         ]);
+
+        
+        
     }
 }
 

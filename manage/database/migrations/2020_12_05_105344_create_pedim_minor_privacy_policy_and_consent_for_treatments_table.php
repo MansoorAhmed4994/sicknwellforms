@@ -20,7 +20,7 @@ class CreatePedimMinorPrivacyPolicyAndConsentForTreatmentsTable extends Migratio
             $table->text('parent_or_legal');
             $table->text('patient_name');
             $table->string('email');
-            $table->bigInteger('telephone');
+            $table->string('telephone');
             $table->date('dob');
             $table->text('parent_signature');
             $table->date('patients_today_date');
